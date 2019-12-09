@@ -11,4 +11,5 @@ import { RegisterUserRoutingModule } from './register-user-routing.module';
     RegisterUserRoutingModule
   ]
 })
+//sadjdamdçl
 export class RegisterUserModule { }
