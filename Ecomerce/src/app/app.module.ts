@@ -7,17 +7,22 @@ import { AppComponent } from './app.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { ProdutoUniComponent } from './produto-uni/produto-uni.component';
 import { TesteComponenteComponent } from './teste-componente/teste-componente.component';
+import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterUserComponent, 
+     
     ProdutoUniComponent, 
-    TesteComponenteComponent
+    TesteComponenteComponent, 
+    LoginUsuarioComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
