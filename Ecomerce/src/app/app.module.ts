@@ -9,6 +9,7 @@ import { ProdutoUniComponent } from './produto-uni/produto-uni.component';
 import { TesteComponenteComponent } from './teste-componente/teste-componente.component';
 import { LoginUsuarioComponent } from './login-usuario/login-usuario.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
      
     ProdutoUniComponent, 
     TesteComponenteComponent, 
-    LoginUsuarioComponent
+    LoginUsuarioComponent, HomeComponent
   ],
   imports: [
     BrowserModule,
