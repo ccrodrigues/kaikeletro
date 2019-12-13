@@ -17,3 +17,6 @@ import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+jhhhhh
