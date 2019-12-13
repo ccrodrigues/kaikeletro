@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
 
 @NgModule({
   declarations: [
