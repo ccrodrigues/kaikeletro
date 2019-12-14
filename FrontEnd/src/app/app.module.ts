@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
 import { HomeComponent } from './home/home.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
