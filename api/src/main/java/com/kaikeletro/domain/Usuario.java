@@ -1,11 +1,19 @@
 package com.kaikeletro.domain;
 
+import java.sql.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.validator.constraints.UniqueElements;
+
+import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "usuario")
@@ -17,10 +25,76 @@ public class Usuario {
         @SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USUARIO_NAME_SEQ")
 	private int id;
 	
+	@NotNull
+	private String nome;
+	
+	@Column(unique = true)
 	private String email;
 
 	public int getId() {
 		return id;
+	}
+	
+	public String senha;
+	
+	public Date dataDeNascimento;
+	
+	@Column(unique=true)
+	@NotNull
+	public long cpf;
+
+	public int telefone;
+	
+	public int celular;
+	
+	
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public Date getDataDeNascimento() {
+		return dataDeNascimento;
+	}
+
+	public void setDataDeNascimento(Date dataDeNascimento) {
+		this.dataDeNascimento = dataDeNascimento;
+	}
+
+	public long getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(long cpf) {
+		this.cpf = cpf;
+	}
+
+	public int getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(int telefone) {
+		this.telefone = telefone;
+	}
+
+	public int getCelular() {
+		return celular;
+	}
+
+	public void setCelular(int celular) {
+		this.celular = celular;
 	}
 
 	public void setId(int id) {
