@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MsgErroComponent } from './forms/msg-erro/msg-erro.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [MsgErroComponent],
   imports: [
     CommonModule
   ]
