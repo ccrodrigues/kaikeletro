@@ -10,6 +10,8 @@ import { MenuComponent } from './menu/menu.component';
 import { HomeModule } from './home/home.module';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
+
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     HomeModule,
     CollapseModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

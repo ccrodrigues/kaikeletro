@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaikeletro.domain.Categoria;
+import com.kaikeletro.domain.Produto;
 import com.kaikeletro.services.CategoriaService;
 
 @RestController
@@ -31,6 +32,12 @@ public class CategoriaController {
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Optional <Categoria> > findbyId(@PathVariable("id")int id){
 		return ResponseEntity.ok().body(categoriaService.findById(id));
+	}
+	
+	//Buscar Produto pelo Nome
+	@RequestMapping(value="/nome/{nomeBusca}", method=RequestMethod.GET)
+	public ResponseEntity<List <Categoria> > findProdutosByName(@PathVariable("nomeBusca")String nomeBusca){
+		return ResponseEntity.ok().body(categoriaService.findByNome(nomeBusca));
 	}
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
