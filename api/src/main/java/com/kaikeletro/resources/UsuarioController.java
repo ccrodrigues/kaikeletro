@@ -44,15 +44,15 @@ public class UsuarioController {
 	public ResponseEntity<Boolean> deleteById(@PathVariable("id") int id) {
 		return ResponseEntity.ok().body(service.deleteById(id));
 	}
+
+	
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public ResponseEntity<Usuario> save(@RequestBody @Valid Usuario usuario) {
-
 		return ResponseEntity.ok().body(service.save(usuario));
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
 	public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable("id") int id) {
-
 		return ResponseEntity.ok().body(service.updatebyID(usuario, id));
 	}
 
