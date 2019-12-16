@@ -1,5 +1,6 @@
 package com.kaikeletro.services;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,8 +11,12 @@ import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.repositories.UsuarioRepository;
 
 @Service
-public class UsuarioService {
+public class UsuarioService implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Autowired
 	private UsuarioRepository userRepo;
 
@@ -52,4 +57,6 @@ public class UsuarioService {
 		return true;
 	}
 
+	public UsuarioService() {
+	}
 }

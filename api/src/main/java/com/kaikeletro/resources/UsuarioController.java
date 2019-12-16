@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaikeletro.domain.Usuario;
-
-import javassist.tools.rmi.ObjectNotFoundException;
+import com.kaikeletro.services.UsuarioService;
 
 @RestController
 @RequestMapping(value = "/usuarios")
@@ -40,7 +39,7 @@ public class UsuarioController {
 	public ResponseEntity<Boolean> deleteById(@PathVariable("id") int id) {
 		return ResponseEntity.ok().body(service.deleteById(id));
 	}
-// Je suis neuveu
+
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public ResponseEntity<Usuario> save(@RequestBody @Valid Usuario usuario) {
 
@@ -50,7 +49,7 @@ public class UsuarioController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
 	public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable("id") int id) {
 
-		return ResponseEntity.ok().body(service.updatebyID(id, usuario));
+		return ResponseEntity.ok().body(service.updatebyID( usuario, id));
 	}
 
 }

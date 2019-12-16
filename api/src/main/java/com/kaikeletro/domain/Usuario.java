@@ -1,6 +1,5 @@
 package com.kaikeletro.domain;
 
-import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
 
 import com.sun.istack.NotNull;
 
@@ -36,15 +34,16 @@ public class Usuario {
 	
 	public String senha;
 	
-	public Date dataDeNascimento;
+
+	public String dataDeNascimento;
 	
 	@Column(unique=true)
 	@NotNull
 	public long cpf;
 
-	public int telefone;
+	public long telefone;
 	
-	public int celular;
+	public long celular;
 	
 	
 	
@@ -64,11 +63,11 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public Date getDataDeNascimento() {
+	public String getDataDeNascimento() {
 		return dataDeNascimento;
 	}
 
-	public void setDataDeNascimento(Date dataDeNascimento) {
+	public void setDataDeNascimento(String dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
 	}
 
@@ -80,20 +79,20 @@ public class Usuario {
 		this.cpf = cpf;
 	}
 
-	public int getTelefone() {
+	public long getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(int telefone) {
-		this.telefone = telefone;
+	public void setTelefone(long l) {
+		this.telefone = l;
 	}
 
-	public int getCelular() {
+	public long getCelular() {
 		return celular;
 	}
 
-	public void setCelular(int celular) {
-		this.celular = celular;
+	public void setCelular(long l) {
+		this.celular = l;
 	}
 
 	public void setId(int id) {
