@@ -1,14 +1,18 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardAdmComponent } from './dashboard-adm.component';
 import { ProdutosComponent } from './produtos/produtos.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
+import { ListaComponent } from './produtos/lista/lista.component';
 
 
 const routes: Routes = [
   { path: '', component: DashboardAdmComponent },
-  { path: 'produtos', component: ProdutosComponent },
-  { path: 'usuarios', component: UsuariosComponent }
+  { path: 'produtos', component: ProdutosComponent,  
+    children: [ {
+      path: '',
+      component: ListaComponent,
+      outlet: 'list'
+    }] }
 ];
 
 @NgModule({
