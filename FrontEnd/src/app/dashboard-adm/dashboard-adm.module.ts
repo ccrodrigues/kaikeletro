@@ -3,15 +3,24 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardAdmRoutingModule } from './dashboard-adm-routing.module';
 import { DashboardAdmComponent } from './dashboard-adm.component';
+import { RouterLinkActive } from '@angular/router';
+import { ProdutosComponent } from './produtos/produtos.component';
+import { ProdutosModule } from './produtos/produtos.module';
+import { AdicionarComponent } from './produtos/adicionar/adicionar.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 @NgModule({
   declarations: [
-    DashboardAdmComponent
+    DashboardAdmComponent,
+    ProdutosComponent,
+    AdicionarComponent,
+    UsuariosComponent
   ],
   imports: [
     CommonModule,
-    DashboardAdmRoutingModule
+    DashboardAdmRoutingModule,
+    ProdutosModule
   ]
 })
 export class DashboardAdmModule { }
