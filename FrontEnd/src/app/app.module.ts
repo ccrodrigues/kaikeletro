@@ -20,7 +20,6 @@ import { SharedModule } from './shared/shared.module';
     AppComponent,
     UsuarioLoginComponent,
     MsgErroComponent,
-    DashboardAdmComponent,
     MenuComponent
     
   ],
