@@ -1,3 +1,9 @@
 <p>funciounou </p>
 <!-- <app-carousel></app-carousel> -->
 <app-carousel></app-carousel>
+
+
+<div *ngFor="let prod of produtos">
+    
+    <app-produtos categoria="{{prod.categoria}}" nome="teste" descricaoProduto="teste" preco="150.00"imgSRC="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQmcSTRHhG4S2zNew4RWQCGteSlgMNrnZVRt2RHbskz8l3hP_046vyZ8dFY2B8d0ABm9Dl7N0Yk0jl4jGjlMqinbdKqa7IH1-areV6uZFaJst1rUNeXG0mx5w&usqp=CAc"></app-produtos>
+</div>
