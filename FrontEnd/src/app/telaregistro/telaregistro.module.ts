@@ -5,7 +5,6 @@ import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MsgErroComponent } from '../shared/forms/msg-erro/msg-erro.component';
-import { NgxViacepModule } from '@brunoc/ngx-viacep';
 import { CepDetalhesComponent } from '../shared/cep-detalhes/cep-detalhes.component';
 
 
@@ -16,8 +15,7 @@ import { CepDetalhesComponent } from '../shared/cep-detalhes/cep-detalhes.compon
     SharedModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-    NgxViacepModule
+    ReactiveFormsModule
   ]
 })
 export class TelaRegistroModule { }

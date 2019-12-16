@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 
-// import { ToastrService } from 'ngx-toastr';
 import { ViaCepService } from '../shared/services/via-cep.service';
 
 import { Validacoes } from '../shared/validacoes';
@@ -20,7 +19,7 @@ export class TelaRegistroComponent implements OnInit {
   regForm : FormGroup;
   searchEndereco : Endereco;
 
-  constructor(private formBuilder : FormBuilder) { }
+  constructor(private formBuilder : FormBuilder, private viaCep : ViaCepService) { }
 
   ngOnInit() {
     this.regForm = this.formBuilder.group( 
@@ -35,7 +34,7 @@ export class TelaRegistroComponent implements OnInit {
       confirmarSenha: ['', Validators.compose([Validators.required])],
 
       endereco: this.formBuilder.group({
-        cep: ['', [Validators.required, Validacoes.cepValidator]],
+        cep: ['', [Validators.required]],
         numero: ['', Validators.required],
         complemento: [''],
         lougradouro: ['', Validators.required],
@@ -45,6 +44,12 @@ export class TelaRegistroComponent implements OnInit {
       }),
     }
     );
+  }
+
+  buscarCep(cep){
+    console.log("Evento de botão funcionando");
+    console.log(cep);
+    console.log(this.viaCep.getEnderecoPorCep(cep));
   }
 
   onSubmit(){

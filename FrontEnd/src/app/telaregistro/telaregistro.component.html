@@ -52,7 +52,8 @@
 
       <div class="col-md-3">
         <label for="cep" class="control-label">CEP</label>
-        <input type="text" class="form-control" id="cep" formControlName="cep">
+        <input #cep type="text" class="form-control" id="cep" formControlName="cep">
+        <button class="btn btn-primary" (click)="buscarCep(cep.value)">Buscar</button>
       </div><br>
 
       <div class="col-sm-10">

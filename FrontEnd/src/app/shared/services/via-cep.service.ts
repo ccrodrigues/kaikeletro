@@ -10,7 +10,7 @@ export class ViaCepService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getEnderecoPorCep(endereco: string): Observable<Endereco> {
+  getEnderecoPorCep(endereco) {  // :Observable<Endereco> {
     return this.httpClient.get<Endereco>(`https://viacep.com.br/ws/${endereco}/json/`);
   }
 
