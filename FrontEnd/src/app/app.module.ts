@@ -11,7 +11,6 @@ import { CarouselComponent } from './home/carousel/carousel.component';
 @NgModule({
   declarations: [
     AppComponent
-    
   ],
   imports: [
     BrowserModule,

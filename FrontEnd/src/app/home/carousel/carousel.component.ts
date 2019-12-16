@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
 
 @Component({
@@ -10,10 +10,18 @@ import { CarouselConfig } from 'ngx-bootstrap/carousel';
   ]
 })
 export class CarouselComponent implements OnInit {
-
+  
+  @Input() slides ; 
   constructor() { }
 
   ngOnInit() {
+    if(this.slides == null || this.slides == undefined || this.slides == ""){
+     this.slides= [
+        {image: 'assets/images/promo1.jpg'},
+        {image: 'assets/images/promo1.jpg'},
+        {image: 'assets/images/promo1.jpg'},
+      ];
+    }
   }
 
 }
