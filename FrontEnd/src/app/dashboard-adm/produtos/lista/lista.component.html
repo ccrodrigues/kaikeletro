@@ -1,0 +1,46 @@
+<h2><small class="form-text text-muted negrito-padding text-center">Lista de Produtos</small></h2>
+
+<div class="row barraPesquisa">
+    <div class="col-9 padding-0">
+        <input type="text" class="form-control" placeholder="Pesquise...">
+    </div>
+
+    <div class="col-2 padding-0">
+        <select name="pesquisaPor" class="form-control padding-0">
+            <option value="id">ID</option>
+            <option value="nome">NOME</option>
+        </select>
+    </div>
+
+    <div class="col-1 padding-0">
+        <button class="btn btn-sm btn-cheio btn-success">o</button>
+    </div>
+</div>
+
+
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>R$</th>
+            <th>Categoria</th>
+            <th>Ver mais</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>4223</td>
+            <td>Moto g8 plus</td>
+            <td>899,00</td>
+            <td>Eletronico</td>
+            <td>
+                <button class="btn btn-info btn-sm" (click)="showMore(prod)">+</button>
+                <button class="btn btn-danger btn-sm">x</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<app-show-more *ngIf="isShowMore"></app-show-more>
