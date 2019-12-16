@@ -8,6 +8,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { HomeComponent } from './home.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ProdutosDetalhesComponent } from './produtos-detalhes/produtos-detalhes.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ProdutosDetalhesComponent } from './produtos-detalhes/produtos-detalhes
     CommonModule,
     HomeRoutingModule, 
     FormsModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    SharedModule
   ],
   exports:[
     HomeComponent
