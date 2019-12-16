@@ -10,19 +10,18 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.CollectionId;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "usuario")
+
 public class Usuario {
 
+
 	@Id
-	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_NAME_SEQ")
-        @SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USUARIO_NAME_SEQ")
+	@SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USUARIO_NAME_SEQ")
 	private int id;
 	
 	@NotNull
