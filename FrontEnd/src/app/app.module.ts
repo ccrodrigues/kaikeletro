@@ -15,7 +15,7 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     HomeComponent,
-    TelaRegistroComponent,
+    TelaRegistroComponent
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,7 @@ export class TelaRegistroComponent implements OnInit {
   constructor(private formBuilder : FormBuilder,
               private viaCep : ViaCepService) { }
 
+
   ngOnInit() {
     this.regForm = this.formBuilder.group( 
     { 
@@ -35,7 +36,7 @@ export class TelaRegistroComponent implements OnInit {
       confirmarSenha: ['', Validators.compose([Validators.required])],
 
       endereco: this.formBuilder.group({
-        cep: ['', [Validators.required, Validacoes.cepValidator]],
+        cep: ['', [Validators.required]],
         numero: ['', Validators.required],
         complemento: [''],
         lougradouro: ['', Validators.required],

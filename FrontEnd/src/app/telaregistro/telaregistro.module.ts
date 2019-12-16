@@ -15,7 +15,7 @@ import { CepDetalhesComponent } from '../shared/cep-detalhes/cep-detalhes.compon
     SharedModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ]
 })
 export class TelaRegistroModule { }
