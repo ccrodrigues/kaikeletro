@@ -4,26 +4,33 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.validation.constraints.NotNull;
+
 
 @Entity
 public class EnderecoUsuario implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@PrimaryKeyJoinColumn
 	private int idEndereco;
-	@Id
-	//@OneToMany(mappedBy = "Usuario")
-	private int idCliente;
+
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario fk_Usuario;
+	
 	private String logradouro;
 	private int numero;
 	@NotNull
 	private int cep;
 	private String cidade;
 	private String estado;
-	private String pais;
 
 	public int getIdEndereco() {
 		return idEndereco;
@@ -33,13 +40,6 @@ public class EnderecoUsuario implements Serializable {
 		this.idEndereco = idEndereco;
 	}
 
-	public int getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(int idCliente) {
-		this.idCliente = idCliente;
-	}
 
 	public String getLogradouro() {
 		return logradouro;
@@ -81,12 +81,5 @@ public class EnderecoUsuario implements Serializable {
 		this.estado = estado;
 	}
 
-	public String getPais() {
-		return pais;
-	}
-
-	public void setPais(String pais) {
-		this.pais = pais;
-	}
 
 }
