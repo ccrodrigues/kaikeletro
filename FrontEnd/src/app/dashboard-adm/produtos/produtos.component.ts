@@ -9,7 +9,13 @@ export class ProdutosComponent implements OnInit {
 
   constructor() { }
 
+  isLista : boolean = true;
+
   ngOnInit() {
   }
 
+  esconder() {
+    console.log()
+    this.isLista = !this.isLista;
+  }
 }
