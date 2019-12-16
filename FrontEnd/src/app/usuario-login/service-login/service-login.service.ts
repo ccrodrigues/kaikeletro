@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 })
 export class ServiceLoginService {
   @Input() isAutenticado: boolean;
+  url : String = '';
   
 
   constructor(private router: Router) { 
@@ -20,6 +21,9 @@ fazerLogin(email : string, senha : string){
     this.isAutenticado = true;
     this.router.navigate(['']);
 
+  } else if (email == 'b' && senha =='b'){
+           this.isAutenticado = true;
+           this.router.navigate(['dashboardAdm'])
   }
   else{
     //redirecionar para o Login
@@ -38,8 +42,8 @@ getIsAutenticado(){
   
 
 // }
-// getOneUsuario(id){
-// return 
+getOneUsuario(id){
+return 
 
-// }
+}
 }
