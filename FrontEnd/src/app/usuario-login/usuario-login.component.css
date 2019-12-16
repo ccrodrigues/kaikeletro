@@ -1,0 +1,48 @@
+.container{
+    height: 100%;
+    align-content: center;
+    }
+    .card{
+        height: 350px;
+        margin-top: auto;
+        margin-bottom: auto;
+        width: 400px;
+        background-color: white;
+        -webkit-box-shadow: 12px 12px 8px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    12px 12px 8px rgba(50, 50, 50, 0.77);
+        box-shadow:         12px 12px 8px rgba(50, 50, 50, 0.77);
+        filter:alpha(opacity=50); 
+        opacity:0.7;
+        }
+        .card-header h4{
+            color: black;
+            }
+        
+
+
+.login_btn{
+    color: black;
+    background-color: white;
+    width: 100px;
+    }
+.login_btn:hover{
+    color: black;
+    background-color: white;
+    }
+
+
+.divCenter{
+    width: 200px; 
+    height: 100px; 
+    left: 50%; 
+    margin: -200px 0 0 -300px; 
+    position: absolute; 
+    top: 50%;
+
+}
+.cadastro{
+    height: 100%;
+    align-content: center;
+    color: antiquewhite;
+
+}
