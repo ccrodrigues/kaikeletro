@@ -55,5 +55,6 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable("id") int id) {
 		return ResponseEntity.ok().body(service.updatebyID(usuario, id));
 	}
+	///
 
 }
