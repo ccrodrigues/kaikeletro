@@ -1,0 +1,101 @@
+nav.navbar-mine {
+    background-color: blue;
+    color: rgb(0, 0, 255);  
+}
+
+
+
+li{
+    color: white;
+
+}
+
+.menu{
+    color: white;
+    
+}
+
+.navbar-nav>li>a:hover{
+    color: orange;
+    font: bold;
+   
+}
+
+.divisor{
+	width:1px;
+	height:16px;
+	background: white;
+	margin: 16px 10px;
+}
+
+a{
+    color:white;
+    opacity: 1;
+}
+
+.img-logo{
+
+    height:100px;
+	width:200px;
+
+	display:block;
+	
+    color:transparent;
+}
+
+#btn-busca{
+    margin-left: 5px;
+}
+
+.navbar-nav > li >a{
+    color: white;
+  }
+
+  
+
+  .barra-topo{
+    background-color: rgb(119, 211, 214);
+  }
+
+  .search-form{
+      margin-left: 90px;
+  }
+
+  .subscribe{
+  
+    height: 30px;
+    width: 26;
+    padding: 0;
+
+ }
+
+ #left{float:left;width:100px;}
+
+#right{float:right;width:100px;}
+
+#center{margin:0 auto;width:100px;}
+
+/*
+ #grupoImagem{
+     margin-right: 10px;
+ }
+
+  .box{
+      display: inline-block;
+      padding: 10px;
+  }
+*/
+
+.box{
+    float: right;
+    margin-right: 15px;
+}
+ 
+  
+
+
+
+
+  
+
+

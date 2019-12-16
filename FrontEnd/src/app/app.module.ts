@@ -3,33 +3,40 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
-import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
 import { HomeComponent } from './home/home.component';
-import { AdicionarComponent } from './dashboard/adicionar/adicionar.component';
+import { CarouselComponent } from './home/carousel/carousel.component';
+import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
+import { UsuarioLoginComponent } from './usuario-login/usuario-login.component';
+import { MsgErroComponent } from './usuario-login/msg-erro/msg-erro.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { MenuComponent } from './menu/menu.component';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeModule } from './home/home.module';
+import { AdicionarComponent } from './dashboard-adm/adicionar/adicionar.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    AdicionarComponent
-=======
-import { HomeModule } from './home/home.module';
-import { CarouselComponent } from './home/carousel/carousel.component';
-
-
-
-@NgModule({
-  declarations: [
-    AppComponent
->>>>>>> 13f5cf21baeac70ec3b5fecf9fde109db34eaadd
+    UsuarioLoginComponent,
+    MsgErroComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CollapseModule.forRoot(),
+    BrowserAnimationsModule,
     HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
