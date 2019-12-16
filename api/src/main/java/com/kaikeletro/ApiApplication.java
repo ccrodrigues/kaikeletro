@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.Produto;
 import com.kaikeletro.repositories.CategoriaRepository;
 import com.kaikeletro.repositories.ProdutoRepository;
+import com.kaikeletro.domain.Usuario;
 
 @SpringBootApplication
 public class ApiApplication implements CommandLineRunner{
@@ -23,6 +23,7 @@ public class ApiApplication implements CommandLineRunner{
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
+		
 	}
 	
 	@Override
