@@ -1,6 +1,5 @@
 package com.kaikeletro.domain;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,37 +15,33 @@ import com.sun.istack.NotNull;
 
 public class Usuario {
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_NAME_SEQ")
 	@SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USUARIO_NAME_SEQ")
 	private int id;
-	
+
 	@NotNull
 	private String nome;
-	
+
 	@Column(unique = true)
 	private String email;
 
 	public int getId() {
 		return id;
 	}
-	
+
 	public String senha;
-	
 
 	public String dataDeNascimento;
-	
-	@Column(unique=true)
+
+	@Column(unique = true)
 	@NotNull
 	public long cpf;
 
 	public long telefone;
-	
+
 	public long celular;
-	
-	
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -134,4 +129,7 @@ public class Usuario {
 			return false;
 		return true;
 	}
+	
+	//
+
 }
