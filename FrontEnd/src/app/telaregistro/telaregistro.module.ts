@@ -8,7 +8,7 @@ import { MsgErroComponent } from '../shared/forms/msg-erro/msg-erro.component';
 
 
 @NgModule({
-  declarations: [TelaRegistroComponent, MsgErroComponent],
+  declarations: [TelaRegistroComponent],
   imports: [
     CommonModule,
     SharedModule,

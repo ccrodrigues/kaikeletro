@@ -19,11 +19,8 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-<<<<<<< HEAD
     "bootstrap": "^4.4.1",
-=======
     "@brunoc/ngx-viacep": "^2.1.2",
->>>>>>> tela-registro
     "ngx-bootstrap": "^5.2.0",
     "ngx-toastr": "^11.2.1",
     "rxjs": "~6.4.0",

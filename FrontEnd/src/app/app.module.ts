@@ -11,8 +11,6 @@ import { HomeModule } from './home/home.module';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
-import { TelaRegistroComponent } from './telaregistro/telaregistro.component';
-import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -21,8 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     UsuarioLoginComponent,
     MsgErroComponent,
-    MenuComponent,
-    TelaRegistroComponent
+    MenuComponent
     
   ],
   imports: [
@@ -30,7 +27,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     HomeModule,
     CollapseModule.forRoot(),
     BrowserAnimationsModule,
