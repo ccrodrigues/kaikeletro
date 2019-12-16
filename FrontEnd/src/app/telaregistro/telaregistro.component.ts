@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 
 import { Validacoes } from '../shared/validacoes';
@@ -16,7 +16,7 @@ export class TelaRegistroComponent implements OnInit {
   cepMask = [/[0-9]/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
 
   regForm : FormGroup;
-  searchEndereco : Endereco;
+  @Input() oendereco : Endereco;
 
   constructor(private formBuilder : FormBuilder,
               private viaCep : TelaregistroService) { }
