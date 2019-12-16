@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-show-more',
@@ -7,10 +7,19 @@ import { Component, OnInit, Output } from '@angular/core';
 })
 export class ShowMoreComponent implements OnInit {
 
+  @Input() produto = [];
 
+  @Output() close = new EventEmitter();
+
+  
   constructor() { }
 
   ngOnInit() {
+  }
+
+  fechar() {
+    console.log("aqui");
+    this.close.emit(false)
   }
 
 }
