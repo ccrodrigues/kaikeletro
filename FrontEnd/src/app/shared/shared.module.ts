@@ -8,7 +8,11 @@ import { MsgErroComponent } from './forms/msg-erro/msg-erro.component';
   declarations: [MsgErroComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    MsgErroComponent
   ]
+
 })
 
 export class SharedModule { }

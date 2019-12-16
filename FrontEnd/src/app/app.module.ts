@@ -9,19 +9,19 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TelaRegistroComponent } from './telaregistro/telaregistro.component';
-import { MsgErroComponent } from './shared/forms/msg-erro/msg-erro.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TelaRegistroComponent,
-    MsgErroComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    SharedModule,
     ReactiveFormsModule
   ],
   providers: [],
