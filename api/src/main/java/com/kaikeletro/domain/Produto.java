@@ -1,5 +1,6 @@
 package com.kaikeletro.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,13 +16,18 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "produtos")
-public class Produto {
+@Table(name="produto")
+public class Produto implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUTO_NAME_SEQ")
     @SequenceGenerator(sequenceName = "produto_seq", allocationSize = 1, name = "PRODUTO_NAME_SEQ")
-	private String idProduto;
+	private int idProduto;
 	
 	@Column(name="nome")
 	private String nome;
@@ -32,7 +38,7 @@ public class Produto {
 	@Column(name="descricao")
 	private String descricao;
 	
-	@ManyToMany
+	@ManyToMany()
 	@JoinTable(name="produtos_categorias",
 		joinColumns = @JoinColumn(name = "produto_id"),
 		inverseJoinColumns = @JoinColumn(name = "categoria_id")
@@ -43,7 +49,7 @@ public class Produto {
 		
 	}
 
-	public Produto(String idProduto, String nome, double preco, String descricao) {
+	public Produto(int idProduto, String nome, double preco, String descricao) {
 		super();
 		this.idProduto = idProduto;
 		this.nome = nome;
@@ -51,11 +57,11 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public String getIdProduto() {
+	public int getIdProduto() {
 		return idProduto;
 	}
 
-	public void setIdProduto(String idProduto) {
+	public void setIdProduto(int idProduto) {
 		this.idProduto = idProduto;
 	}
 
@@ -91,12 +97,14 @@ public class Produto {
 		this.categorias = categorias;
 	}
 
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((categorias == null) ? 0 : categorias.hashCode());
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-		result = prime * result + ((idProduto == null) ? 0 : idProduto.hashCode());
+		result = prime * result + idProduto;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(preco);
@@ -113,15 +121,17 @@ public class Produto {
 		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
+		if (categorias == null) {
+			if (other.categorias != null)
+				return false;
+		} else if (!categorias.equals(other.categorias))
+			return false;
 		if (descricao == null) {
 			if (other.descricao != null)
 				return false;
 		} else if (!descricao.equals(other.descricao))
 			return false;
-		if (idProduto == null) {
-			if (other.idProduto != null)
-				return false;
-		} else if (!idProduto.equals(other.idProduto))
+		if (idProduto != other.idProduto)
 			return false;
 		if (nome == null) {
 			if (other.nome != null)
@@ -138,15 +148,5 @@ public class Produto {
 		return "Produto [idProduto=" + idProduto + ", nome=" + nome + ", preco=" + preco + ", descricao=" + descricao
 				+ "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
