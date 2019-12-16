@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
 import { UsuarioLoginComponent } from './usuario-login/usuario-login.component';
 import { MsgErroComponent } from './usuario-login/msg-erro/msg-erro.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -18,7 +17,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     UsuarioLoginComponent,
     MsgErroComponent,
-    DashboardAdmComponent,
     MenuComponent
     
   ],

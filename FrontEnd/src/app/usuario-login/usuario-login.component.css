@@ -1,20 +1,26 @@
 .container{
     align-content: center;
-    position: fixed;
+    width: 395px; 
+    left: 50%; 
+    margin: -25px 0 0 -250px; 
+    position: absolute; 
+    top: 50%;
+    margin-bottom: auto;
     
     }
     .card{
         margin-top: auto;
         margin-bottom: auto;
         width: 395px;
-        background-color:rgb(0, 0, 214);
-        -webkit-box-shadow: 12px 12px 8px rgba(34, 32, 32, 0.77);
+        background-image: linear-gradient(to bottom, rgb(0, 0, 214), rgb(0, 0, 214), rgb(119, 211, 214), #bcc5c6, #cfd5d5);
+        -webkit-box-shadow: 12px 12px 8px rgba(2, 1, 1, 0.77);
         -moz-box-shadow:    12px 12px 8px rgba(34, 32, 32, 0.77);
         box-shadow:         12px 12px 8px rgba(34, 32, 32, 0.77);
         filter:alpha(opacity=50); 
-        opacity:0.8;
+        opacity:0.9;
         }
         .card-header h4{
+            width: 357px;
             color: white;
             }
         
@@ -48,7 +54,7 @@
     width: 200px; 
     height: 100px; 
     left: 50%; 
-    margin: -210px 0 0 -300px; 
+    margin: -190px 0 0 -300px; 
     position: absolute; 
     top: 50%;
     
@@ -65,4 +71,38 @@
 .corNPossuiCadastro{
     color: white;
 }
+.brand_logo_container {
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    top: -75px;
+    border-radius: 50%;
+    background: #60a3bc;
+    padding: 10px;
+    text-align: center;
+}
+.brand_logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
 
+}
+.profile-img {
+    width: 150px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.img-logo{
+
+    height:70px;
+	width:300px;
+
+	display:block;
+	
+    color:transparent;
+}
