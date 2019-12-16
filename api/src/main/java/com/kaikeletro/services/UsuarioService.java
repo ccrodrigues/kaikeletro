@@ -1,4 +1,4 @@
-package com.kaikeletro.resources;
+package com.kaikeletro.services;
 
 import java.util.List;
 import java.util.Optional;
