@@ -8,12 +8,19 @@
 
 <!-- Div principal para centralizar o campo do login -->
 
+
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+         
         <span class="border">
         <div class="ol-sm-9 col-md-7 col-lg-5 mx-auto ">
+            
             <div class="container">
                 <div class="card">
                     <div class="card-header">
+                        <br>
+                        <span class="profile-img">
+                            <img class=" img-fluid img-logo" src="/assets/imagens/ecommerce-logo.png" align-content="center" >
+                        </span>
                         <h4 class="card-title text-center">Login</h4>
 
                         <!-- Mensagem de erro caso o usuario não seja autenticado -->

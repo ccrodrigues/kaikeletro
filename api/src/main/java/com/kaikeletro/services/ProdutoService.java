@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.Produto;
@@ -21,6 +24,12 @@ public class ProdutoService  {
 	
 	public List<Produto> listarProdutos(){
 		List<Produto> listaProduto = repoProduto.findAll();
+		return listaProduto;
+	}
+	
+	//Buscar produto pelo nome
+	public List<Produto> findByNome(String nomeBusca){
+		List<Produto> listaProduto = repoProduto.findByNomeLike(nomeBusca);
 		return listaProduto;
 	}
 	
@@ -45,5 +54,11 @@ public class ProdutoService  {
 	public boolean deleteProduto(int id) {
 		repoProduto.deleteById(id);
 		return true;
+	}
+	
+	//Paginação
+	public Page<Produto> findPage(int pagina, int qtdLinhas, String direcao, String campo){
+		PageRequest pageRequest = PageRequest.of(pagina, qtdLinhas, Direction.valueOf(direcao), campo);
+		return repoProduto.findAll(pageRequest);
 	}
 }
