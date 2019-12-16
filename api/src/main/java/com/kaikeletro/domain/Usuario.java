@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-
+// 	I walked across	
 import com.sun.istack.NotNull;
 
 @Entity
