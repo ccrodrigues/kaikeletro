@@ -9,6 +9,7 @@ const routes: Routes = [
   {path : 'teste', component: CarouselComponent},
   {path : 'detalhes', component: ProdutosDetalhesComponent},
   {path : 'home', component: HomeComponent},
+  
 ];
 
 @NgModule({
