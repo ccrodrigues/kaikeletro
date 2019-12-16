@@ -3,16 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeModule } from './home/home.module';
+import { CarouselComponent } from './home/carousel/carousel.component';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
+    AppComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
