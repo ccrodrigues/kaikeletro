@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.brq.mvc.exception.TratamentoDeErros;
 import com.kaikeletro.domain.Usuario;
-
-import javassist.tools.rmi.ObjectNotFoundException;
+import com.kaikeletro.services.UsuarioService;
 
 @RestController
 @RequestMapping(value = "/usuarios")
@@ -32,6 +32,10 @@ public class UsuarioController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Optional<Usuario>> findById(@PathVariable("id") int idUsuario) {
 		Optional<Usuario> obj = service.findById(idUsuario);
+		
+		if (obj.isPresent() == false) {
+			throw new TratamentoDeErros(idUsuario, new Usuario());
+		}
 
 		return ResponseEntity.ok().body(obj);
 	}
@@ -40,7 +44,6 @@ public class UsuarioController {
 	public ResponseEntity<Boolean> deleteById(@PathVariable("id") int id) {
 		return ResponseEntity.ok().body(service.deleteById(id));
 	}
-// Je suis neuveu
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public ResponseEntity<Usuario> save(@RequestBody @Valid Usuario usuario) {
 
@@ -50,7 +53,7 @@ public class UsuarioController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
 	public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable("id") int id) {
 
-		return ResponseEntity.ok().body(service.updatebyID(id, usuario));
+		return ResponseEntity.ok().body(service.updatebyID(usuario, id));
 	}
 
 }
