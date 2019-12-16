@@ -1,1 +1,11 @@
-<p>produtos works!</p>
+<div class="card  mb-3" style="width: 18%;">
+    <img class="card-img-top"
+        [src]="imgSRC"  alt="Card image cap">
+    <div class="card-body">
+        <span class="badge badge-pill badge-info">{{categoria}}</span>
+        <h5 class="card-title">{{nome}}</h5>
+        <p class="card-text">{{descricaoProduto}}</p>
+        <h5 class="card-title">Preço {{preco| currency:'BRL':true:'1.2-2'}}</h5>
+        <button (click)="adcionarCarrinho" class="btn btn-primary">Comprar</button>
+    </div>
+</div>
