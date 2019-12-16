@@ -1,5 +1,13 @@
 package com.kaikeletro.domain;
 
+<<<<<<< HEAD
+=======
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+>>>>>>> d1248f48c927a3e2733f71861140f2da1bce5a0d
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -63,7 +71,14 @@ public class Usuario {
 	}
 
 	public void setDataDeNascimento(String dataDeNascimento) {
-		this.dataDeNascimento = dataDeNascimento;
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            this.dataDeNascimento = formatter.format(formatter.parse(dataDeNascimento));
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }	
 	}
 
 	public long getCpf() {
