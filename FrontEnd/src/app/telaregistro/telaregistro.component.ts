@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 
-import { ViaCepService } from '../shared/services/via-cep.service';
-
 import { Validacoes } from '../shared/validacoes';
 import { Endereco } from '../shared/models/endereco.model';
+import { TelaregistroService } from './telaregistro.service';
 
 @Component({
   selector: 'app-telaregistro',
@@ -20,7 +19,7 @@ export class TelaRegistroComponent implements OnInit {
   searchEndereco : Endereco;
 
   constructor(private formBuilder : FormBuilder,
-              private viaCep : ViaCepService) { }
+              private viaCep : TelaregistroService) { }
 
 
   ngOnInit() {
@@ -39,7 +38,7 @@ export class TelaRegistroComponent implements OnInit {
         cep: ['', [Validators.required]],
         numero: ['', Validators.required],
         complemento: [''],
-        lougradouro: ['', Validators.required],
+        logradouro: ['', Validators.required],
         bairro: ['', Validators.required],
         cidade: ['', Validators.required],
         estado: ['', Validators.required]
@@ -48,10 +47,16 @@ export class TelaRegistroComponent implements OnInit {
     );
   }
 
+  logradouro;
+
   buscarCep(cep){
     console.log("Evento do botão funcionando");
     console.log(cep);
-    console.log(this.viaCep.getEnderecoPorCep(cep));
+    this.viaCep.getEnderecoPorCep(cep).subscribe( (data) => {
+      console.log(data);
+      this.logradouro = data.logradouro;
+    }
+    )
   }
 
   onSubmit(){

@@ -3,14 +3,16 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { Endereco } from '../models/endereco.model';
+import { Endereco } from '../shared/models/endereco.model';
 
-@Injectable()
-export class ViaCepService {
+@Injectable({
+  providedIn: 'root'
+})
+export class TelaregistroService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getEnderecoPorCep(endereco) {  // :Observable<Endereco> {
+  getEnderecoPorCep(endereco) :Observable<Endereco> {
     return this.httpClient.get<Endereco>(`https://viacep.com.br/ws/${endereco}/json/`);
   }
 
