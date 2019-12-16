@@ -31,6 +31,7 @@ public class ApiApplication implements CommandLineRunner{
 		
 	}
 	
+	//Teste de Produtos e Categorias
 	private void produtoCategoriaDemo() {
 	Categoria c1 = new Categoria();
 	c1.setNome("Eletrônico");
