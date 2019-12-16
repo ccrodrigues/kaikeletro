@@ -1,4 +1,4 @@
-package com.kaikeletro.resources;
+package com.kaikeletro.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,5 +26,21 @@ public class CategoriaService {
 	
 	public Optional<Categoria> findById(int id){
 		return repoCategoria.findById(id);
+	}
+	
+	public Categoria editCategoria(Categoria categoria, int id) {
+		Optional<Categoria> c = repoCategoria.findById(id);
+		
+		if(c.isPresent() == true) {
+			c.get().setNome(categoria.getNome());
+			return repoCategoria.save(categoria);
+		}else {
+			return repoCategoria.save(categoria);
+		}
+	}
+	
+	public boolean deleteCategoria(int id) {
+		repoCategoria.deleteById(id);
+		return true;
 	}
 }
