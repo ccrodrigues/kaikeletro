@@ -15,7 +15,11 @@ li{
     
 }
 
-.navbar-nav>li>a:hover{
+h6{
+    color: #ffffff;
+}
+
+.navbar-nav>li>a>h6:hover{
     color: orange;
     font: bold;
    
