@@ -30,7 +30,7 @@
   <div class="container-fluid">
   <div >
   <a class="navbar-brand" href="#">
-  <img class=" img-fluid img-logo" src="/assets/imagens/ecommerce-logo.png">
+  <img routerLink='home'  class=" img-fluid img-logo" src="/assets/imagens/ecommerce-logo.png">
 </a>
 </div>
 <button (click)="isCollapsed = !isCollapsed" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
@@ -39,24 +39,32 @@
   <div  [collapse]="isCollapsed" class="collapse navbar-collapse menu" id="navbarToggle">
     <ul id="btn-busca" class="nav navbar-nav navbar-right">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">
+          <h6 class="mb-0">Home</h6>
+          <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="celulares" routerLinkActive="active">Celulares</a>
+        <a class="nav-link" routerLink="celulares" routerLinkActive="active">
+          <h6 class="mb-0">Celulares</h6>
+        </a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" routerLink="audio_e_video" routerLinkActive="active">TV e Audio</a>
+        <a class="nav-link" routerLink="audio_e_video" routerLinkActive="active">
+          <h6 class="mb-0">TV e Áudio</h6>
+        </a>
       </li>
       <li class="nav-item">
-              <a class="nav-link" routerLink="informatica" routerLinkActive="active">Informática</a>
+              <a class="nav-link" routerLink="informatica" routerLinkActive="active">
+                <h6 class="mb-0">Informática</h6>
+              </a>
       </li>
        <li class="nav-item">
-          <a class="nav-link" routerLink="cameras" routerLinkActive="active">Câmeras</a>
+          <a class="nav-link" routerLink="cameras" routerLinkActive="active"><h6 class="mb-0" >Câmeras</h6></a>
        </li>
         
        <li class="nav-item">
-          <a class="nav-link" routerLink="eletro" routerLinkActive="active">Eletrodomésticos</a>
+          <a class="nav-link" routerLink="eletro" routerLinkActive="active"><h6 class="mb-0">Eletrodomésticos</h6></a>
         </li>          
     </ul > 
   </div>
