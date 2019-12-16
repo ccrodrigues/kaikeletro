@@ -37,7 +37,7 @@ public class UsuarioController {
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Boolean> deleteById(@PathVariable("id") int id) {
+	public ResponseEntity<Boolean> deleteById(@P 	athVariable("id") int id) {
 		return ResponseEntity.ok().body(service.deleteById(id));
 	}
 
