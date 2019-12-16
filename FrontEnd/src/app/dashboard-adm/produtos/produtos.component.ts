@@ -14,8 +14,8 @@ export class ProdutosComponent implements OnInit {
   ngOnInit() {
   }
 
-  esconder() {
+  esconder(boo) {
     console.log()
-    this.isLista = !this.isLista;
+    this.isLista = boo;
   }
 }

@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardAdmComponent } from './dashboard-adm.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { ListaComponent } from './produtos/lista/lista.component';
+import { AdicionarComponent } from './produtos/adicionar/adicionar.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 const routes: Routes = [
@@ -12,7 +14,12 @@ const routes: Routes = [
       path: '',
       component: ListaComponent,
       outlet: 'list'
-    }] }
+    },{
+      path: '',
+      component: AdicionarComponent,
+      outlet: 'add'
+    }] 
+  }
 ];
 
 @NgModule({

@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaComponent implements OnInit {
 
+  isShowMore : boolean = false;
+
   constructor() { }
 
   ngOnInit() {
   }
 
-}
+  showMore(prod) {
+    this.isShowMore = true;
+  }
+} 

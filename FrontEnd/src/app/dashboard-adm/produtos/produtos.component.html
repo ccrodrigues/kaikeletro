@@ -4,11 +4,12 @@
 
     <div class="row">
         <div class="col-3" >
-            <button (click)="esconder()" class="btn btn-cheio-sem-borda" [class.ativado]="isLista" >Lista de produtos</button>
-            <button (click)="esconder()" class="btn btn-cheio-sem-borda" [class.ativado]="!isLista">Adicionar um Produto</button>
+            <button (click)="esconder(true)" class="btn btn-cheio-sem-borda" [class.ativado]="isLista" >Lista de produtos</button>
+            <button (click)="esconder(false)" class="btn btn-cheio-sem-borda" [class.ativado]="!isLista">Adicionar um Produto</button>
         </div>
         <div class="col-9">
             <router-outlet name="list" *ngIf="isLista"></router-outlet>
+            <router-outlet name="add" *ngIf="!isLista"></router-outlet>
         </div>
     </div>
 </div>
