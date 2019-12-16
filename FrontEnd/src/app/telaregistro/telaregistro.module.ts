@@ -5,11 +5,10 @@ import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MsgErroComponent } from '../shared/forms/msg-erro/msg-erro.component';
-import { CepDetalhesComponent } from '../shared/cep-detalhes/cep-detalhes.component';
 
 
 @NgModule({
-  declarations: [TelaRegistroComponent, MsgErroComponent, CepDetalhesComponent],
+  declarations: [TelaRegistroComponent, MsgErroComponent],
   imports: [
     CommonModule,
     SharedModule,

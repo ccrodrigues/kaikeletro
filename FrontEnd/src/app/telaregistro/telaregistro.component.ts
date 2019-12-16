@@ -16,7 +16,8 @@ export class TelaRegistroComponent implements OnInit {
   cepMask = [/[0-9]/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
 
   regForm : FormGroup;
-  @Input() oendereco : Endereco;
+  objEnd : Endereco = null;
+
 
   constructor(private formBuilder : FormBuilder,
               private viaCep : TelaregistroService) { }
@@ -32,7 +33,7 @@ export class TelaRegistroComponent implements OnInit {
       celular: ['', Validators.required],
       email: ['', Validators.compose([Validators.email])],
       senha: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])],
-      confirmarSenha: ['', Validators.compose([Validators.required])],
+      confirmarSenha: ['', Validators.compose([Validators.required]), Validacoes.SenhasCombinam],
 
       endereco: this.formBuilder.group({
         cep: ['', [Validators.required]],
@@ -47,14 +48,40 @@ export class TelaRegistroComponent implements OnInit {
     );
   }
 
-  logradouro;
+  somenteNumerosCep(e: any) {
+    let charCode = e.charCode ? e.charCode : e.keyCode;
+    // charCode 8 = backspace   
+    // charCode 9 = tab
+  
+    if (charCode != 8 && charCode != 9) {
+      // charCode 48 equivale a 0   
+      // charCode 57 equivale a 9
+      let max = 8;    
+  
+      if ((charCode < 48 || charCode > 57)||(e.target.value.length >= max)) return false;
+    }
+  }
+
+  somenteNumerosCpf(e: any) {
+    let charCode = e.charCode ? e.charCode : e.keyCode;
+    // charCode 8 = backspace   
+    // charCode 9 = tab
+  
+    if (charCode != 8 && charCode != 9) {
+      // charCode 48 equivale a 0   
+      // charCode 57 equivale a 9
+      let max = 11;    
+  
+      if ((charCode < 48 || charCode > 57)||(e.target.value.length >= max)) return false;
+    }
+  }
 
   buscarCep(cep){
     console.log("Evento do botão funcionando");
     console.log(cep);
     this.viaCep.getEnderecoPorCep(cep).subscribe( (data) => {
       console.log(data);
-      this.logradouro = data.logradouro;
+      this.objEnd = data;
     }
     )
   }

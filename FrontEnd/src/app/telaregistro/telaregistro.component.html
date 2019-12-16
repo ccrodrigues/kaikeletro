@@ -9,12 +9,13 @@
 
   <div class="col-md-3">
     <label for="nascimento">Data de Nascimento: </label>
-    <input type="date" calss="form-control" formControlName="nascimento">
+    <input type="date" calss="form-control" formControlName="nascimento" []>
   </div><br>
 
   <div class="col-md-3">
     <label for="cpf">CPF: </label>
-    <input type="text" class="form-control" formControlName="cpf" placeholder="CPF">
+    <input type="number" (keypress)="somenteNumerosCpf($event)" required
+     class="form-control" formControlName="cpf" placeholder="CPF">
   </div>
 
   <div class="col-md-3">
@@ -52,7 +53,8 @@
 
       <div class="col-md-3">
         <label for="cep" class="control-label">CEP</label>
-        <input #cep type="text" class="form-control" id="cep" formControlName="cep">
+        <input #cep  type="number" (keypress)="somenteNumerosCep($event)" required 
+        class="form-control" id="cep" formControlName="cep">
         <button class="btn btn-primary" (click)="buscarCep(cep.value)">Buscar</button>
       </div><br>
 
@@ -61,7 +63,7 @@
    
       </div>
       <div class="col-sm-10">
-        <input #logradouro type="text" class="form-control" id="rua" formControlName="logradouro">
+        <input type="text" [value]="objEnd.logradouro" class="form-control" id="rua" formControlName="logradouro">
       </div>
 
       <div class="col-md-3">
@@ -77,17 +79,17 @@
       <div class="form-group">
         <div class="col-md-3">
           <label for="bairro" class="control-label">Bairro</label>
-          <input #bairro type="text" class="form-control" id="bairro" formControlName="bairro">
+          <input [value]="objEnd.bairro" type="text" class="form-control" id="bairro" formControlName="bairro">
         </div>
 
         <div class="col-md-3">
           <label for="cidade" class="control-label">Cidade</label>
-          <input #cidade type="text" class="form-control" id="cidade" formControlName="cidade">
+          <input [value]="objEnd.localidade" type="text" class="form-control" id="cidade" formControlName="cidade">
         </div>
 
         <div class="col-md-3">
           <label for="estado" class="control-label">Estado</label>
-          <input #estado type="text" class="form-control" id="estado" formControlName="estado">
+          <input [value]="objEnd.uf" type="text" class="form-control" id="estado" formControlName="estado">
         </div>
       </div>
 
@@ -95,6 +97,4 @@
   </div>
 
   <button style="margin: 0 15px;" type="submit" class="btn btn-primary">Enviar</button>
-  <button style="margin: 0 15px;" class="btn btn-default" (click)="resetar()">Cancelar</button>
-
 </form>
