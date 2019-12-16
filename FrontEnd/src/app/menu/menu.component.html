@@ -1,16 +1,42 @@
 
+  <div class="navbar navbar-expand-lg navbar-dark barra-topo">
+    <div class="container ">
 
+      <div id="left"></div>
+
+      <div id="center"></div>
+
+      <div id="right">
+        
+        <div *ngIf="!isAuth" class="box">
+          <img   class="img-fluid subscribe" title="Cadastre-se" src="https://img.icons8.com/dotty/80/000000/sign-up--v1.png">
+        </div>
+        <div *ngIf="!isAuth" class="box">
+          <img  routerLink = "login" title="Entrar" class="img-fluid logout" src="https://img.icons8.com/ios-glyphs/24/000000/enter-2.png">
+        </div>
+        <div *ngIf="isAuth" class="box">
+          <img class="img-fluid logout" src="https://img.icons8.com/metro/26/000000/exit.png" title="Sair"> 
+        </div>
+        <div *ngIf="isAuth" class="box">
+          <img class="img-fluid logout" src="/assets/imagens/shopping-cart.svg" title="Carrinho">
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 
 <nav  class="navbar navbar-expand-lg navbar-dark  navbar-mine">
+  <div class="container-fluid">
   <div >
-  <a class="navbar-brand" href="#"></a>
-  <span class="img-logo">KaiKe Eletro</span>
+  <a class="navbar-brand" href="#">
+  <img class=" img-fluid img-logo" src="/assets/imagens/ecommerce-logo.png">
+</a>
 </div>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
+<button (click)="isCollapsed = !isCollapsed" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
   <span class="navbar-toggler-icon"></span>
 </button>
-  <div class="collapse navbar-collapse menu" id="navbarToggle">
+  <div  [collapse]="isCollapsed" class="collapse navbar-collapse menu" id="navbarToggle">
     <ul id="btn-busca" class="nav navbar-nav navbar-right">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -30,25 +56,15 @@
        </li>
         
        <li class="nav-item">
-          <a class="nav-link disabled" routerLink="eletro" routerLinkActive="active">Eletrodomésticos</a>
-        </li>
-
-
-        <li class="divisor" role="separator"><a href=""></a></li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="cadastro" routerLinkActive="active">Inscrever</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="login" routerLinkActive="active">Entrar</a>
-        </li>
-               
+          <a class="nav-link" routerLink="eletro" routerLinkActive="active">Eletrodomésticos</a>
+        </li>          
     </ul > 
-    <form  class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-success" type="submit">Buscar Produto</button>
-    </form>
   </div>
+    <form  class="form-inline my-2 my-lg-0 search-form">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-dark" type="submit">Buscar Produto</button>
+    </form>
+ 
+</div>
 </nav>
 

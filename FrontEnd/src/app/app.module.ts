@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { MenuComponent } from './menu/menu.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CollapseModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -23,4 +27,4 @@ import { MenuComponent } from './menu/menu.component';
 export class AppModule { }
 
 
-jhhhhh
+

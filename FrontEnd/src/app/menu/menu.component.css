@@ -1,8 +1,6 @@
 nav.navbar-mine {
     background-color: blue;
-    color: blue;
-    height: 150px;
-    
+    color: rgb(0, 0, 255);  
 }
 
 
@@ -18,7 +16,7 @@ li{
 }
 
 .navbar-nav>li>a:hover{
-    color: darkmagenta;
+    color: orange;
     font: bold;
    
 }
@@ -36,24 +34,68 @@ a{
 }
 
 .img-logo{
-	height:150px;
+
+    height:100px;
 	width:200px;
+
 	display:block;
-	background: url('imagens/logo.png') no-repeat;
-	background-size: contain;
+	
     color:transparent;
-    margin-top: 100px;
-    size: 600px;
-    border: solid 2px;
-    background-size: 250px;
-    margin-bottom: 50px;
 }
 
 #btn-busca{
-    margin:auto;
+    margin-left: 5px;
 }
 
 .navbar-nav > li >a{
     color: white;
   }
+
+  
+
+  .barra-topo{
+    background-color: rgb(119, 211, 214);
+  }
+
+  .search-form{
+      margin-left: 90px;
+  }
+
+  .subscribe{
+  
+    height: 30px;
+    width: 26;
+    padding: 0;
+
+ }
+
+ #left{float:left;width:100px;}
+
+#right{float:right;width:100px;}
+
+#center{margin:0 auto;width:100px;}
+
+/*
+ #grupoImagem{
+     margin-right: 10px;
+ }
+
+  .box{
+      display: inline-block;
+      padding: 10px;
+  }
+*/
+
+.box{
+    float: right;
+    margin-right: 15px;
+}
+ 
+  
+
+
+
+
+  
+
 
