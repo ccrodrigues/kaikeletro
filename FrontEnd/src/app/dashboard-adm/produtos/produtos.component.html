@@ -8,7 +8,7 @@
             <button (click)="esconder(false)" class="btn btn-cheio-sem-borda" [class.ativado]="!isLista">Adicionar um Produto</button>
         </div>
         <div class="col-9">
-            <router-outlet name="list" *ngIf="isLista"></router-outlet>
+            <app-lista  [Produtos]="produtos" *ngIf="isLista"></app-lista>
             <router-outlet name="add" *ngIf="!isLista"></router-outlet>
         </div>
     </div>
