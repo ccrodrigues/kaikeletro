@@ -6,14 +6,16 @@ import { DashboardAdmComponent } from './dashboard-adm.component';
 import { RouterLinkActive } from '@angular/router';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { ProdutosModule } from './produtos/produtos.module';
-import { AdicionarComponent } from './adicionar/adicionar.component';
+import { AdicionarComponent } from './produtos/adicionar/adicionar.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 @NgModule({
   declarations: [
     DashboardAdmComponent,
     ProdutosComponent,
-    AdicionarComponent
+    AdicionarComponent,
+    UsuariosComponent
   ],
   imports: [
     CommonModule,
