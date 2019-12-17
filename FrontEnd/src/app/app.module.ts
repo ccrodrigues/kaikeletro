@@ -14,8 +14,8 @@ import { SharedModule } from './shared/shared.module';
 import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
 import { TelaRegistroComponent } from './telaregistro/telaregistro.component';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 
@@ -24,7 +24,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     UsuarioLoginComponent,
     MsgErroComponent,
-    DashboardAdmComponent,
     MenuComponent,
     TelaRegistroComponent
     
@@ -38,8 +37,9 @@ import { HttpClientModule } from '@angular/common/http';
     CollapseModule.forRoot(),
     BrowserAnimationsModule,
     SharedModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    PaginationModule.forRoot(),
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

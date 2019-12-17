@@ -1,0 +1,15 @@
+<div style="height: 20px;"></div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-3" >
+            <button (click)="esconder(true)" class="btn btn-cheio-sem-borda" [class.ativado]="isLista" >Lista de produtos</button>
+            <button (click)="esconder(false)" class="btn btn-cheio-sem-borda" [class.ativado]="!isLista">Adicionar um Produto</button>
+        </div>
+        <div class="col-9">
+            <app-lista  [Produtos]="produtos" *ngIf="isLista"></app-lista>
+            <router-outlet name="add" *ngIf="!isLista"></router-outlet>
+        </div>
+    </div>
+</div>
