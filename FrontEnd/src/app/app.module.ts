@@ -11,8 +11,9 @@ import { HomeModule } from './home/home.module';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
-import { FooterLayoutComponent } from './shared/layout/footer-layout/footer-layout.component';
 import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
+import { TelaRegistroComponent } from './telaregistro/telaregistro.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -23,7 +24,7 @@ import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
     MsgErroComponent,
     DashboardAdmComponent,
     MenuComponent,
-    
+    TelaRegistroComponent
     
   ],
   imports: [
@@ -31,6 +32,7 @@ import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     HomeModule,
     CollapseModule.forRoot(),
     BrowserAnimationsModule,
