@@ -6,6 +6,7 @@ import { UsuarioService } from 'src/app/usuario/usuario.service';
 import { Usuario } from 'src/app/shared/models/usuario.model';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +21,8 @@ export class ServiceLoginService {
 //verifica se os campos email e senha são true
 fazerLogin(email : String, senha : String){
 console.log(this.usuario);
-    if(email == this.usuario.email && senha == this.usuario.senha){
+   
+    if(email){
       this.isAutenticado = true;
       this.router.navigate(['']);
     }
