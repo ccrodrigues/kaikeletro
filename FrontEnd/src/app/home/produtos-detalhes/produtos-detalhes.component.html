@@ -1,7 +1,52 @@
-<div>
-    <div class="w-25">
-        <div class="container">
-            <app-carousel [slides]="slides"></app-carousel>
+<br/>
+<div class="row">
+    <div class="col-4 ">
+        <img [src]="imagemAtual" height="75%" width="100%" />
+        <div class="row">
+            <div class="col zeroPadding " *ngFor="let img of slides">
+                <!-- <app-carousel  [slides]="slides"></app-carousel> -->
+                <img width="100%" heigth="25%" [src]="img.image" (click)="trocarImagem(img.image)" />
+            </div>
         </div>
+    </div>
+    <div class="col">
+        <div class=" zeroPadding">
+            <span class=" font-weight-bold">
+                <p class="text-center">Smart TV LED 50" Samsung 50RU7100 Ultra HD 4K com Conversor Digital 3
+                    HDMI 2 USB Wi-Fi Visual Livre de Cabos Controle Remoto Único e Bluetooth</p>
+            </span>
+        </div>
+        <br>
+        <div class="col">
+            <span class="font-weight-light font-italic text-justify">
+                Agora assistir aos seus filmes favoritos, series, programas e muito mais vai tornar-se uma
+                experiência
+                ainda mais imersiva e completa, com a Smart TV LED 50" Samsung UN50RU7100GXZD Ultra HD 4K.
+                Desenvolvida
+                com o que a de melhor em
+            </span>
+            <br/><hr>
+              <p class="text-center text-justify font-weight-bold">Preco: {{Preco| currency:'BRL':true:'1.2-2'}} </p>
+             
+                <div class="btn-group" dropdown>
+                    <p >Parcelas: </p>
+                    <button id="button-basic" dropdownToggle type="button" class="btn  btn-outline-primary dropdown-toggle"
+                            aria-controls="dropdown-basic">
+                     {{numeroParcelaAtual}} <span class="caret"></span>
+                    </button>
+                    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                        role="menu" aria-labelledby="button-basic">
+                        <div *ngFor="let numero of numerosParcela">
+                            <li role="menuitem"><a class="dropdown-item" (click)="mudarParcela(numero)" >{{numero}}</a></li>
+                        </div>
+                    </ul>
+        </div>
+        <br> <br> <br><br><br>
+
+        <div>
+            <p>{{numeroParcelaAtual}}X{{Parcela| currency:'BRL':true:'1.2-2'}} </p>
+        </div>
+        <button  class="btn btn-primary">Comprar </button>
+        
     </div>
 </div>

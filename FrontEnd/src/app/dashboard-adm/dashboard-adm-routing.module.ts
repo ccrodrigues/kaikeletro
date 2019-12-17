@@ -1,15 +1,14 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardAdmComponent } from './dashboard-adm.component';
-import { ProdutosComponent } from './produtos/produtos.component';
+import { DSProdutosComponent } from './produtos/ds-produtos.component';
 import { ListaComponent } from './produtos/lista/lista.component';
 import { AdicionarComponent } from './produtos/adicionar/adicionar.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 const routes: Routes = [
   { path: '', component: DashboardAdmComponent },
-  { path: 'produtos', component: ProdutosComponent,  
+  { path: 'produtos', component: DSProdutosComponent,  
     children: [ {
       path: '',
       component: ListaComponent,
