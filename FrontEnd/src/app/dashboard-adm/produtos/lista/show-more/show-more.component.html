@@ -1,9 +1,60 @@
 <div class="dark-screen">
     <div class="screen">
-        <button class="btn btn-danger float-right" (click)="fechar()">x</button>
-        <form action="">
-            {{ produto | json }}
+        <button type="button" class="close  float-right btn-exc" (click)="fechar()" aria-label="Close">
+            <h1><span aria-hidden="true">&times;</span></h1>
+          </button>
+          <div class="container">
+            <form action="" >
+                <h5 class="id"><b>ID:</b> {{ produto.idProduto }}</h5>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col">
+                            Nome produto
+                            <input type="text" [value]="produto.nome" class="form-control">
+                        </div>
+                        <div class="col">
+                            Categoria
+                            <select name="categoria" *ngFor="let cat of produto.categorias" class="form-control">
+                                <option value="{{ cat.nome }}">{{ cat.nome }}</option>
+                            </select>
+                        </div>
+                    </div>
+                        
+                </div>
+                <div class="form-group">
+                    <div class="row">
 
-        </form>
+                        <div class="col-4">
+                                Preco
+                                <input type="number" [value]="produto.preco" class="form-control">   
+                        </div>
+                        <div class="col-8">
+                            <p>Descrição</p> 
+                            <textarea rows="3" class="form-control">{{ produto.descricao }}</textarea>
+                         </div>
+                    </div>
+                    
+                </div>
+                <label for='selecao-arquivo' class="btn btn-success btn-sm">Adicionar uma imagem</label><br><br>
+                <input id='selecao-arquivo' type='file'>
+                <div class="row">
+                    <div class="col-3 position-">
+                        <button class="btn btn-danger rounded-circle myBtnClose btn-sm" (click)="funcao()">x</button>
+                        <img class="img-thumbnail " src="https://www.assisnews.com.br/wp-content/uploads/2019/07/rog-phone-2-02.jpg" alt="Generic placeholder image">
+                    </div>
+                    <div class="col-3">
+                        <button class="btn btn-danger rounded-circle myBtnClose btn-sm" (click)="funcao()">x</button>
+                        <img class="img-thumbnail " src="https://s2.glbimg.com/-KlsJa56uVTJCrM7GFuzkPEXrhk=/0x0:695x469/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2018/d/3/0i4CI5QJm7qW4iBBNNrA/1.nubia-red-light-novo-smartphone-gamer-da-zte.jpg" alt="Generic placeholder image">
+                    </div>
+                    <div class="col-3">
+                        <button class="btn btn-danger rounded-circle myBtnClose btn-sm" (click)="funcao()">x</button>
+                        <img class="img-thumbnail " src="https://observatoriodegames.bol.uol.com.br/wp-content/uploads/2019/10/asus-rog-phone-II.jpg" alt="Generic placeholder image">
+                    </div>
+                </div>
+                <div class="container clearfix">
+                    <button type="button" class="btn btn-success float-right">Salvar</button>
+                  </div>
+            </form>
+    </div>
     </div>
 </div>
