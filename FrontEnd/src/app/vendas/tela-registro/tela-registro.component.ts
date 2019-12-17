@@ -1,14 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 
-import { Validacoes } from '../shared/validacoes';
-import { Endereco } from '../shared/models/endereco.model';
-import { TelaregistroService } from './telaregistro.service';
+import { Validacoes } from '../../shared/validacoes';
+import { Endereco } from '../../shared/models/endereco.model';
+import { TelaregistroService } from './tela-registro.service';
 
 @Component({
   selector: 'app-telaregistro',
-  templateUrl: './telaregistro.component.html',
-  styleUrls: ['./telaregistro.component.css']
+  templateUrl: './tela-registro.component.html',
+  styleUrls: ['./tela-registro.component.css']
 })
 export class TelaRegistroComponent implements OnInit {
 

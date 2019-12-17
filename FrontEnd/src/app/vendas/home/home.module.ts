@@ -8,7 +8,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { HomeComponent } from './home.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ProdutosDetalhesComponent } from './produtos-detalhes/produtos-detalhes.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { PaginacaoComponent } from './paginacao/paginacao.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';

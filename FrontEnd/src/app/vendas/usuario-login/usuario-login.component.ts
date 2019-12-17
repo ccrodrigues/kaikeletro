@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, EmailValidator } from '@angular/forms';
 import { ServiceLoginService } from './service-login/service-login.service';
-import { Usuario } from '../shared/models/usuario.model';
+import { Usuario } from '../../shared/models/usuario.model';
 
 
 @Component({

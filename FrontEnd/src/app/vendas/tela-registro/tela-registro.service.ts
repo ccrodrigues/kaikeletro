@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { Endereco } from '../shared/models/endereco.model';
+import { Endereco } from '../../shared/models/endereco.model';
 
 @Injectable({
   providedIn: 'root'
