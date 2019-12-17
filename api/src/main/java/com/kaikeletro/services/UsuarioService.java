@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.Usuario;
@@ -58,5 +61,33 @@ public class UsuarioService implements Serializable{
 	}
 
 	public UsuarioService() {
+	}	
+	
+	public Page<Usuario> findPage(int pagina, int quantidadeDeLinhas, 
+			String direcao, String campoOrdenacao) {
+		PageRequest pageRequest = PageRequest.of(pagina, quantidadeDeLinhas,
+				Direction.valueOf(direcao), campoOrdenacao);
+		return userRepo.findAll(pageRequest);
 	}
+
+	
+	// Método do UsuarioController - Busca por nome
+	public List<Usuario> findByNomeContains(String nomeBusca){
+		return userRepo.findByNomeContainsIgnoreCase(nomeBusca);
+	}
+	
+	// Método do UsuarioController - Busca por Email
+	public List<Usuario> findByEmail(String emailBusca){
+		return userRepo.findByEmailIgnoreCase(emailBusca);
+		
+		
+	}
+	// Método do UsuarioController - Busca por cpf
+	public List<Usuario> findBycpf(String cpf){
+		return userRepo.findBycpf(cpf);
+	}
+	
+	
+	
+	
 }
