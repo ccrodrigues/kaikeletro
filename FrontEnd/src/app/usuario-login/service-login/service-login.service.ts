@@ -1,9 +1,10 @@
 import { Injectable, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { EnvService } from 'src/app/env.service';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioService } from 'src/app/usuario/usuario.service';
 import { Usuario } from 'src/app/shared/models/usuario.model';
+import { EnvService } from 'src/app/env.service';
+
 
 
 
@@ -12,19 +13,18 @@ import { Usuario } from 'src/app/shared/models/usuario.model';
 })
 export class ServiceLoginService {
   @Input() isAutenticado: boolean;
-  usuario : Usuario;
+  
   
 
-  constructor(private router: Router, private usuarioService: UsuarioService) { 
+  constructor(private router: Router, private usuarioService: UsuarioService
+                                    , private http: HttpClient
+                                    , private envService: EnvService) { 
 
 }
 //verifica se os campos email e senha são true
-fazerLogin(email : String, senha : String){
-console.log(this.usuario);
+fazerLogin(usuario : {email : String, senha : String} ){
    
-    if(email){
-      this.isAutenticado = true;
-      this.router.navigate(['']);
+    return this.http.post<Usuario>(this.envService.urlAPI + `/usuarios`, usuario);
     }
 
 
@@ -38,19 +38,16 @@ console.log(this.usuario);
   //          this.isAutenticado = true;
   //          this.router.navigate(['dashboardAdm'])
   // }
-  else{
-    //redirecionar para o Login
-    this.isAutenticado = false;
-    this.router.navigate(['login']);
+  // else{
+  //   //redirecionar para o Login
+  //   this.isAutenticado = false;
+  //   this.router.navigate(['login']);
 
-  }
+  // }
 
-  }
-
+  // }
+  
 getIsAutenticado(){
   return this.isAutenticado;
 }
-
-
-
 }
