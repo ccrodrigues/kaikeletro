@@ -1,7 +1,7 @@
 import { Injectable, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { UsuarioService } from 'src/app/vendas/usuario/usuario.service';
+import { UsuarioService } from 'src/app/shared/services/usuario.service';
 import { Usuario } from 'src/app/shared/models/usuario.model';
 import { EnvService } from 'src/app/env.service';
 
