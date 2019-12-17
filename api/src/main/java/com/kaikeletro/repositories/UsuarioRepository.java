@@ -12,12 +12,12 @@ import com.kaikeletro.domain.Usuario;
 public interface UsuarioRepository extends JpaRepository <Usuario, Integer>{
 
 
-	List<Usuario> findByNomeContains(String nomeBusca);
+	List<Usuario> findByNomeContainsIgnoreCase(String nomeBusca);
 
-    List<Usuario> findByEmail(String email);
+    List<Usuario> findByEmailIgnoreCase(String email);
 
 
-	
+	List<Usuario> findBycpf(String cpf);
 	
 	
 }

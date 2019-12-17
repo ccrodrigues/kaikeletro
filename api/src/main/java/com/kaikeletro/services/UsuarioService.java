@@ -65,24 +65,29 @@ public class UsuarioService implements Serializable{
 	
 	public Page<Usuario> findPage(int pagina, int quantidadeDeLinhas, 
 			String direcao, String campoOrdenacao) {
-		
 		PageRequest pageRequest = PageRequest.of(pagina, quantidadeDeLinhas,
 				Direction.valueOf(direcao), campoOrdenacao);
-		
 		return userRepo.findAll(pageRequest);
 	}
 
+	
 	// Método do UsuarioController - Busca por nome
 	public List<Usuario> findByNomeContains(String nomeBusca){
-		
-		return userRepo.findByNomeContains(nomeBusca);
+		return userRepo.findByNomeContainsIgnoreCase(nomeBusca);
 	}
 	
 	// Método do UsuarioController - Busca por Email
 	public List<Usuario> findByEmail(String emailBusca){
+		return userRepo.findByEmailIgnoreCase(emailBusca);
 		
-		return userRepo.findByEmail(emailBusca);
+		
 	}
+	// Método do UsuarioController - Busca por cpf
+	public List<Usuario> findBycpf(String cpf){
+		return userRepo.findBycpf(cpf);
+	}
+	
+	
 	
 	
 }

@@ -7,7 +7,8 @@ public class UsuarioDto {
 	private int idUsuario;
 	private String nome;
 	private String email;
-	private long celular;
+	private String celular;
+	
 	public int getIdUsuario() {
 		return idUsuario;
 	}
@@ -27,10 +28,10 @@ public class UsuarioDto {
 		this.email = email;
 	}
 	
-	public long getCelular() {
+	public String getCelular() {
 		return celular;
 	}
-	public void setCelular(long celular) {
+	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 	

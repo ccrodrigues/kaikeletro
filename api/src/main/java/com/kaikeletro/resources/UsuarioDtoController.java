@@ -22,7 +22,7 @@ import com.kaikeletro.dto.UsuarioDto;
 import com.kaikeletro.services.UsuarioService;
 
 @RestController
-@RequestMapping(value = "/usuarioDto")
+@RequestMapping(value = "/usuariosDto")
 public class UsuarioDtoController {
 
 	@Autowired
@@ -60,8 +60,10 @@ public class UsuarioDtoController {
 	}
 	
 
+	//http://localhost:8080/usuariosDto/usuariosDto/page?pagina=1&quantidadeDeLinhas=1&direcao=ASC&campoOrdenacao=id
 	@RequestMapping(value = "/usuariosDto/page", method = RequestMethod.GET)
-	public ResponseEntity<Page<Usuario>> findPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
+	public ResponseEntity<Page<Usuario>> findPage
+		   (@RequestParam(value = "pagina", defaultValue = "0") int pagina,
 			@RequestParam(value = "quantidadeDeLinhas", defaultValue = "5") int quantidadeDeLinhas,
 			@RequestParam(value = "direcao", defaultValue = "ASC") String direcao,
 			@RequestParam(value = "campoOrdenacao", defaultValue = "id") String campoOrdenacao) {

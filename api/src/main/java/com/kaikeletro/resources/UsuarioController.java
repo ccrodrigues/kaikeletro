@@ -1,10 +1,8 @@
 package com.kaikeletro.resources;
 
+import java.io.Console;
 import java.util.List;
 import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -20,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.brq.mvc.exception.TratamentoDeErros;
 import com.kaikeletro.domain.Usuario;
-import com.kaikeletro.dto.UsuarioDto;
 import com.kaikeletro.services.UsuarioService;
 
 
@@ -73,6 +70,7 @@ public class UsuarioController {
 		return ResponseEntity.ok().body(service.updatebyID(usuario, id));
 	}
 
+	//http://localhost:8080/usuarios/usuarios/page?pagina=1&quantidadeDeLinhas=1&direcao=ASC&campoOrdenacao=id
 	@RequestMapping(value = "/usuarios/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<Usuario>> findPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
 			@RequestParam(value = "quantidadeDeLinhas", defaultValue = "5") int quantidadeDeLinhas,
@@ -83,7 +81,7 @@ public class UsuarioController {
 	}
 
 	// Busca por nome
-	@RequestMapping(value = "/{nomeBusca}", method = RequestMethod.GET)
+	@RequestMapping(value = "nome/{nomeBusca}", method = RequestMethod.GET)
 	public ResponseEntity<List<Usuario>> findByNome(@PathVariable("nomeBusca") String nomeBusca) {
 
 		List<Usuario> lista = service.findByNomeContains(nomeBusca);
@@ -92,11 +90,19 @@ public class UsuarioController {
 	}
 
 	// Busca por email
-	@RequestMapping(value = "/{emailBusca}", method = RequestMethod.GET)
+	@RequestMapping(value = "email/{emailBusca}", method = RequestMethod.GET)
 	public ResponseEntity<List<Usuario>> findByEmail(@PathVariable("emailBusca") String emailBusca) {
-		List<Usuario> lista = service.findByNomeContains(emailBusca);
+		List<Usuario> lista = service.findByEmail(emailBusca);
 		return ResponseEntity.ok().body(lista);
 	}
+	// Busca por cpf
+	@RequestMapping(value = "cpf/{cpfBusca}", method = RequestMethod.GET)
+	public ResponseEntity<List<Usuario>> findBycpf(@PathVariable("cpfBusca") String cpf) {
+		List<Usuario> lista = service.findBycpf(cpf);
+		return ResponseEntity.ok().body(lista);
+	}
+	
+	//@RequestMapping(value = "", method = RequestMethod.)
 
 	
 }
