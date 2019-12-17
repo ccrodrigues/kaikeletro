@@ -28,7 +28,7 @@ export class TelaRegistroComponent implements OnInit {
       cpf: ['', [Validators.compose([Validators.required, Validacoes.validaCpf])]],
       telefone: ['', [Validators.required]],
       celular: ['', [Validators.required]],
-      email: ['', [Validators.compose([Validators.email])]],
+      email: ['', [Validators.required]],
       senha: ['', [Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])]],
       confirmarSenha: ['', [Validators.compose([Validators.required])]],
 
@@ -42,7 +42,6 @@ export class TelaRegistroComponent implements OnInit {
         estado: ['', [Validators.required]]
       })
     },
-    
       {
         validator: Validacoes.SenhasCombinam
       }
