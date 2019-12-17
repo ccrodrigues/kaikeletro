@@ -13,7 +13,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
 import { TelaRegistroComponent } from './telaregistro/telaregistro.component';
-import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -32,11 +31,11 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     HomeModule,
     CollapseModule.forRoot(),
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

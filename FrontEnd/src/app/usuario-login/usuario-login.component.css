@@ -2,11 +2,13 @@
     align-content: center;
     width: 395px; 
     left: 50%; 
-    margin: -25px 0 0 -250px; 
+    margin: 25px 0 0 -250px; 
     position: absolute; 
     top: 50%;
     margin-bottom: auto;
-    
+    display: flex;
+    flex-direction: row;        
+    align-items: center;
     }
     .card{
         margin-top: auto;
@@ -106,3 +108,5 @@
 	
     color:transparent;
 }
+
+

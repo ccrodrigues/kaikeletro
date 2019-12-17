@@ -1,4 +1,5 @@
-<app-menu></app-menu>
+
+<app-menu *ngIf="isAuth"></app-menu>
 
 <div class="container">
 
@@ -6,7 +7,7 @@
 
 </div>
 
-<app-footer-layout></app-footer-layout>
+<app-footer-layout *ngIf="isAuth"></app-footer-layout>
 
 
 
