@@ -2,6 +2,8 @@ package com.kaikeletro.resources;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.validation.Valid;
 
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.brq.mvc.exception.TratamentoDeErros;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.services.UsuarioService;
+
 
 @RestController
 @RequestMapping(value = "/usuarios")
@@ -79,4 +82,5 @@ public class UsuarioController {
 	}
 
 
+	
 }

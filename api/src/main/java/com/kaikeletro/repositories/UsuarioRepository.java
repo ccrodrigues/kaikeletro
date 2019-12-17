@@ -9,7 +9,7 @@ import com.kaikeletro.domain.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository <Usuario, Integer>{
 
-	
+
 	
 	
 }

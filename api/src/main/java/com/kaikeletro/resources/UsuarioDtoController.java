@@ -59,8 +59,6 @@ public class UsuarioDtoController {
 		}
 		return ResponseEntity.ok().body(userService.deleteById(id));
 	}
-
-
 	
 
 	@RequestMapping(value = "/usuariosDto/page", method = RequestMethod.GET)
@@ -72,6 +70,7 @@ public class UsuarioDtoController {
 		return ResponseEntity.ok().body(usuarios);
 	}
 
+	
 	
 	
 }
