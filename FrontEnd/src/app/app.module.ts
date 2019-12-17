@@ -12,8 +12,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { TelaRegistroComponent } from './telaregistro/telaregistro.component';
-
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +32,7 @@ import { TelaRegistroComponent } from './telaregistro/telaregistro.component';
     CollapseModule.forRoot(),
     BrowserAnimationsModule,
     SharedModule,
+    HttpClientModule
     
   ],
   providers: [],
