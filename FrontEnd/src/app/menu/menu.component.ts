@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class MenuComponent implements OnInit {
 
    isCollapsed = false;
-   isAuth : boolean = true;
+   isAuth : boolean = false;
 
   constructor() { }
 

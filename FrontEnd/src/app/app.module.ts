@@ -11,15 +11,16 @@ import { HomeModule } from './home/home.module';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
 import { TelaRegistroComponent } from './telaregistro/telaregistro.component';
-
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuarioLoginComponent,
     MsgErroComponent,
+    DashboardAdmComponent,
     MenuComponent,
     TelaRegistroComponent
     
@@ -33,6 +34,7 @@ import { TelaRegistroComponent } from './telaregistro/telaregistro.component';
     CollapseModule.forRoot(),
     BrowserAnimationsModule,
     SharedModule,
+    HttpClientModule
     
   ],
   providers: [],

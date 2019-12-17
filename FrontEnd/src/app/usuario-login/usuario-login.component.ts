@@ -32,15 +32,13 @@ export class UsuarioLoginComponent implements OnInit {
     //Verifica ao enviar se os dados informados são validos
     this.serviceLogin
     .fazerLogin(this.loginForm.value.email, this.loginForm.value.senha)
-
-    
-   
-  
   }
+
   //campo para validar se os campos forem devidamente preenchidos 
  isErrorCampo(nomeCampo){
     return (!this.loginForm.get(nomeCampo).valid && this.loginForm.get(nomeCampo).touched ); 
   }
+  
   verificarUsuario(){
 
   }

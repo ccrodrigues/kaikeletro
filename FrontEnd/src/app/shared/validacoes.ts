@@ -47,16 +47,6 @@ export class Validacoes {
     return { cpfInvalido: true };
   }
 
-  static cepValidator(control: FormControl) {
-
-    const cep = control.value;
-    if (cep && cep !== '') {
-      const validacep = /^[0-9]{8}$/;
-      return validacep.test(cep) ? null : { cepInvalido : true };
-    }
-    return null;
-  }
-
   static MaiorQue18Anos(controle: AbstractControl) {
     const nascimento = controle.value;
     const [ano, mes, dia] = nascimento.split('-');
@@ -71,6 +61,7 @@ export class Validacoes {
   }
 
   static SenhasCombinam(controle: AbstractControl) {
+    console.log(controle);
     let senha = controle.get('senha').value;
     let confirmarSenha = controle.get('confirmarSenha').value;
 

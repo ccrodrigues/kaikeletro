@@ -1,15 +1,13 @@
-<div style="height: 20px;"></div>
 
-<div class="container">
 
-    <div class="row">
-        <div class="col-3" >
-            <button (click)="esconder(true)" class="btn btn-cheio-sem-borda" [class.ativado]="isLista" >Lista de produtos</button>
-            <button (click)="esconder(false)" class="btn btn-cheio-sem-borda" [class.ativado]="!isLista">Adicionar um Produto</button>
-        </div>
-        <div class="col-9">
-            <app-lista  [Produtos]="produtos" *ngIf="isLista"></app-lista>
-            <router-outlet name="add" *ngIf="!isLista"></router-outlet>
-        </div>
-    </div>
-</div>
++<div class="card  mb-3" style="width: 18%;">
+    +    <img class="card-img-top"
+    +        [src]="imgSRC"  alt="Card image cap">
+    +    <div class="card-body">
+    +        <span class="badge badge-pill badge-info">{{categoria}}</span>
+    +        <h5 class="card-title">{{nome}}</h5>
+    +        <p class="card-text">{{descricaoProduto}}</p>
+    +        <h5 class="card-title">Preço {{preco| currency:'BRL':true:'1.2-2'}}</h5>
+    +        <button (click)="adcionarCarrinho" class="btn btn-primary">Comprar</button>
+    +    </div>
+    +</div>

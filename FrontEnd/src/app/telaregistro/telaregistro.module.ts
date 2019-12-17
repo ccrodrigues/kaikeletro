@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TelaRegistroComponent } from './telaregistro.component';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {  ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [TelaRegistroComponent],
@@ -12,7 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SharedModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule
   ]
 })

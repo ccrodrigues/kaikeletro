@@ -12,11 +12,8 @@ import { TelaregistroService } from './telaregistro.service';
 })
 export class TelaRegistroComponent implements OnInit {
 
-  cepModel = '';
-  cepMask = [/[0-9]/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
-
   regForm : FormGroup;
-  objEnd : Endereco = null;
+  objEnd : Endereco;
 
 
   constructor(private formBuilder : FormBuilder,
@@ -27,24 +24,27 @@ export class TelaRegistroComponent implements OnInit {
     this.regForm = this.formBuilder.group( 
     { 
       nome : ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)] ],
-      nascimento: ['', Validators.compose([Validators.required, Validacoes.MaiorQue18Anos])],
-      cpf: ['', Validators.compose([Validators.required, Validacoes.validaCpf])],
-      telefone: ['', Validators.required],
-      celular: ['', Validators.required],
-      email: ['', Validators.compose([Validators.email])],
-      senha: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])],
-      confirmarSenha: ['', Validators.compose([Validators.required]), Validacoes.SenhasCombinam],
+      nascimento: ['', [Validators.compose([Validators.required, Validacoes.MaiorQue18Anos])]],
+      cpf: ['', [Validators.compose([Validators.required, Validacoes.validaCpf])]],
+      telefone: ['', [Validators.required]],
+      celular: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      senha: ['', [Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])]],
+      confirmarSenha: ['', [Validators.compose([Validators.required])]],
 
       endereco: this.formBuilder.group({
         cep: ['', [Validators.required]],
-        numero: ['', Validators.required],
-        complemento: [''],
-        logradouro: ['', Validators.required],
-        bairro: ['', Validators.required],
-        cidade: ['', Validators.required],
-        estado: ['', Validators.required]
-      }),
-    }
+        numero: ['', [Validators.required]],
+        complemento: ['',[] ],
+        logradouro: ['', [Validators.required]],
+        bairro: ['', [Validators.required]],
+        cidade: ['', [Validators.required]],
+        estado: ['', [Validators.required]]
+      })
+    },
+      {
+        validator: Validacoes.SenhasCombinam
+      }
     );
   }
 
@@ -80,7 +80,7 @@ export class TelaRegistroComponent implements OnInit {
     console.log("Evento do botão funcionando");
     console.log(cep);
     this.viaCep.getEnderecoPorCep(cep).subscribe( (data) => {
-      console.log(data);
+      console.log('res cep ' + data);
       this.objEnd = data;
     }
     )
@@ -90,7 +90,8 @@ export class TelaRegistroComponent implements OnInit {
     console.log(this.regForm);
   }
 
-  isErrorCampo(campo){
-    return (campo.valid == false && campo.touched == true);
+  //validar se os campos forem devidamente preenchidos 
+  isErrorCampo(nomeCampo){
+    return (!this.regForm.get(nomeCampo).valid && this.regForm.get(nomeCampo).touched ); 
   }
 }

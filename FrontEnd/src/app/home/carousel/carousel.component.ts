@@ -17,9 +17,9 @@ export class CarouselComponent implements OnInit {
   ngOnInit() {
     if(this.slides == null || this.slides == undefined || this.slides == ""){
      this.slides= [
-        {image: 'assets/images/promo1.jpg'},
-        {image: 'assets/images/promo1.jpg'},
-        {image: 'assets/images/promo1.jpg'},
+        {image: 'assets/images/peomo.png'},
+        {image: 'assets/images/pic2.jpg'},
+        {image: 'assets/images/pic3.png'},
       ];
     }
   }
