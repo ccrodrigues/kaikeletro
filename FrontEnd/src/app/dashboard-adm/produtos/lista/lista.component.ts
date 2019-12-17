@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ProdutosService } from 'src/app/shared/Services/produtos.service';
 
 @Component({
   selector: 'app-lista',
@@ -7,14 +8,25 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ListaComponent implements OnInit {
 
-  isShowMore : boolean = false;
-  @Input() Produtos = [];
+
+  isShowMore  : boolean   = false;
+  isDelete    : boolean   = false;
+  
+  @Input() Produtos;
   pesquisado;
   selecionado;
-
-  constructor() { }
+  listProducts;
+  id;
 
   ngOnInit() {
+    
+//    Pegando todos os registros de produtos
+    this.ps.getAll().subscribe(
+      a => {
+        this.listProducts = a;
+        console.log(a)
+      }
+    );
   }
 
   showMore(prod) {
@@ -22,12 +34,19 @@ export class ListaComponent implements OnInit {
     this.selecionado = prod;
   }
 
-  showless(event) {
-    console.log("to aqui");
-    console.log(event)
+  lessMore() {
     this.isShowMore = false;
   }
 
+  showDelete(id) {
+    this.isDelete = true;
+    this.id = id;
+  }
 
+  lessDelete() {
+    this.isDelete = false;
+  }
+
+  constructor(private ps : ProdutosService) { }
 
 } 
