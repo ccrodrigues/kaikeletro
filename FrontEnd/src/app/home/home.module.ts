@@ -12,6 +12,9 @@ import { SharedModule } from '../shared/shared.module';
 import { PaginacaoComponent } from './paginacao/paginacao.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { RouterModule } from '@angular/router';
+
 
 
 @NgModule({
@@ -23,7 +26,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     HomeRoutingModule, 
     FormsModule,
     CarouselModule.forRoot(),
-    SharedModule
+    SharedModule,
+    NgxPaginationModule
   ],
   exports:[
     HomeComponent
