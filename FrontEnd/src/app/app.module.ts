@@ -21,7 +21,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     UsuarioLoginComponent,
     MsgErroComponent,
-    DashboardAdmComponent,
     MenuComponent,
     TelaRegistroComponent
     
