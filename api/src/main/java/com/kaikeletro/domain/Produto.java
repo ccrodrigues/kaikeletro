@@ -1,7 +1,6 @@
 package com.kaikeletro.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,8 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="produto")
@@ -44,13 +46,16 @@ public class Produto implements Serializable {
 		inverseJoinColumns = @JoinColumn(name = "categoria_id")
 	)
 	private List<Categoria> categorias;
+	
+	@OneToMany(mappedBy="produto")
+	@JsonIgnore
+	private List <ImagemProd> imagens;
 
 	public Produto() {
 		
 	}
 
 	public Produto(int idProduto, String nome, double preco, String descricao) {
-		super();
 		this.idProduto = idProduto;
 		this.nome = nome;
 		this.preco = preco;
@@ -96,8 +101,15 @@ public class Produto implements Serializable {
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
 	}
-
 	
+	public List<ImagemProd> getImagens() {
+		return imagens;
+	}
+
+	public void setImagens(List<ImagemProd> imagens) {
+		this.imagens = imagens;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -105,6 +117,7 @@ public class Produto implements Serializable {
 		result = prime * result + ((categorias == null) ? 0 : categorias.hashCode());
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + idProduto;
+		result = prime * result + ((imagens == null) ? 0 : imagens.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(preco);
@@ -133,6 +146,11 @@ public class Produto implements Serializable {
 			return false;
 		if (idProduto != other.idProduto)
 			return false;
+		if (imagens == null) {
+			if (other.imagens != null)
+				return false;
+		} else if (!imagens.equals(other.imagens))
+			return false;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
@@ -146,7 +164,8 @@ public class Produto implements Serializable {
 	@Override
 	public String toString() {
 		return "Produto [idProduto=" + idProduto + ", nome=" + nome + ", preco=" + preco + ", descricao=" + descricao
-				+ "]";
+				+ ", categorias=" + categorias + ", imagens=" + imagens + "]";
 	}
 
+	
 }
