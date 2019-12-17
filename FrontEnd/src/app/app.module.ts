@@ -14,6 +14,7 @@ import { SharedModule } from './shared/shared.module';
 import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
 import { TelaRegistroComponent } from './telaregistro/telaregistro.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardAdmModule } from './dashboard-adm/dashboard-adm.module';
 
 
 
@@ -24,7 +25,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     UsuarioLoginComponent,
     MsgErroComponent,
-    DashboardAdmComponent,
     MenuComponent,
     TelaRegistroComponent
     
@@ -38,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     CollapseModule.forRoot(),
     BrowserAnimationsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    DashboardAdmModule
     
   ],
   providers: [],
