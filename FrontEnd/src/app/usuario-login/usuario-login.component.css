@@ -1,4 +1,4 @@
-.container{
+/* .container{
     align-content: center;
     width: 395px; 
     left: 50%; 
@@ -6,10 +6,15 @@
     position: absolute; 
     top: 50%;
     margin-bottom: auto;
+<<<<<<< HEAD
     display: flex;
     flex-direction: row;        
     align-items: center;
     }
+=======
+    
+    } */
+>>>>>>> caina
     .card{
         margin-top: auto;
         margin-bottom: auto;
