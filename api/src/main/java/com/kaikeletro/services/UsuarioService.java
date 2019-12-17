@@ -71,4 +71,18 @@ public class UsuarioService implements Serializable{
 		
 		return userRepo.findAll(pageRequest);
 	}
+
+	// Método do UsuarioController - Busca por nome
+	public List<Usuario> findByNomeContains(String nomeBusca){
+		
+		return userRepo.findByNomeContains(nomeBusca);
+	}
+	
+	// Método do UsuarioController - Busca por Email
+	public List<Usuario> findByEmail(String emailBusca){
+		
+		return userRepo.findByEmail(emailBusca);
+	}
+	
+	
 }

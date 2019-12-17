@@ -31,7 +31,7 @@ public class CategoriaService {
 	
 	//Buscar Categoria pelo nome
 	public List<Categoria> findByNome(String nomeBusca){
-		List <Categoria > listaCategoria = repoCategoria.findByNomeLike(nomeBusca);
+		List <Categoria > listaCategoria = repoCategoria.findByNomeContains(nomeBusca);
 		return listaCategoria;
 	}
 	

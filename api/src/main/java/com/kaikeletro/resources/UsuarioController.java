@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.brq.mvc.exception.TratamentoDeErros;
 import com.kaikeletro.domain.Usuario;
+import com.kaikeletro.dto.UsuarioDto;
 import com.kaikeletro.services.UsuarioService;
 
 
@@ -31,7 +33,7 @@ public class UsuarioController {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<List<Usuario>> getAll() {
-		
+
 		return ResponseEntity.ok().body(service.getAll());
 	}
 
@@ -67,10 +69,9 @@ public class UsuarioController {
 		if (obj.isPresent() == false) {
 			throw new TratamentoDeErros(id, new Usuario());
 		}
-		
+
 		return ResponseEntity.ok().body(service.updatebyID(usuario, id));
 	}
-
 
 	@RequestMapping(value = "/usuarios/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<Usuario>> findPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
@@ -81,6 +82,21 @@ public class UsuarioController {
 		return ResponseEntity.ok().body(usuarios);
 	}
 
+	// Busca por nome
+	@RequestMapping(value = "/{nomeBusca}", method = RequestMethod.GET)
+	public ResponseEntity<List<Usuario>> findByNome(@PathVariable("nomeBusca") String nomeBusca) {
+
+		List<Usuario> lista = service.findByNomeContains(nomeBusca);
+
+		return ResponseEntity.ok().body(lista);
+	}
+
+	// Busca por email
+	@RequestMapping(value = "/{emailBusca}", method = RequestMethod.GET)
+	public ResponseEntity<List<Usuario>> findByEmail(@PathVariable("emailBusca") String emailBusca) {
+		List<Usuario> lista = service.findByNomeContains(emailBusca);
+		return ResponseEntity.ok().body(lista);
+	}
 
 	
 }

@@ -27,18 +27,16 @@ public class UsuarioDtoController {
 
 	@Autowired
 	private UsuarioService userService;
-	
+
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<List<UsuarioDto>> getAll() {
-		
+
 		List<Usuario> lista = userService.getAll();
-		List<UsuarioDto> userDto = lista
-									.stream() //pegando cada elemento
-									.map(obj -> new UsuarioDto(obj)) //aplica a regra
-									.collect((Collectors.toList())); //coloca em uma outra lista e salva em listaDTO
-		
-		
-		return  ResponseEntity.ok().body(userDto);
+		List<UsuarioDto> userDto = lista.stream() // pegando cada elemento
+				.map(obj -> new UsuarioDto(obj)) // aplica a regra
+				.collect((Collectors.toList())); // coloca em uma outra lista e salva em listaDTO
+
+		return ResponseEntity.ok().body(userDto);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -51,6 +49,7 @@ public class UsuarioDtoController {
 		return ResponseEntity.ok().body( new UsuarioDto(obj.get()));
 	}
 	
+
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteById(@PathVariable("id") int id) {
 		Optional<Usuario> obj = userService.findById(id);
@@ -74,3 +73,4 @@ public class UsuarioDtoController {
 	
 	
 }
+
