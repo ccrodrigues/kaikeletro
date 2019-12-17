@@ -9,7 +9,7 @@
       <div id="right">
         
         <div *ngIf="!isAuth" class="box">
-          <img   class="img-fluid subscribe" title="Cadastre-se" src="https://img.icons8.com/dotty/80/000000/sign-up--v1.png">
+          <img routerLink = "registro"  class="img-fluid subscribe" title="Cadastre-se" src="https://img.icons8.com/dotty/80/000000/sign-up--v1.png">
         </div>
         <div *ngIf="!isAuth" class="box">
           <img  routerLink = "login" title="Entrar" class="img-fluid logout" src="https://img.icons8.com/ios-glyphs/24/000000/enter-2.png">

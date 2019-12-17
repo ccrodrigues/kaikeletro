@@ -10,8 +10,9 @@ const routes: Routes = [
   { path: 'dashboardAdm', loadChildren: './dashboard-adm/dashboard-adm.module#DashboardAdmModule'
   // , canActivate:[ GuardService]  <=== CANATIVATE para bloquear a entrada do usuario na tela do adm 
   },
-  { path : 'login', component : UsuarioLoginComponent },
-  { path : 'registro', component: TelaRegistroComponent }
+  { path : 'login', component : UsuarioLoginComponent},
+  { path : 'registro', component: TelaRegistroComponent },
+  { path: 'usuarios', loadChildren:'./usuario/usuario.module#UsuarioModule'}
 ];
 
 @NgModule({

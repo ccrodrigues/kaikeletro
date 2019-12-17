@@ -1,5 +1,5 @@
 
-<app-menu ></app-menu>
+<app-menu *ngIf="headerFooter"></app-menu>
 
 <div class="container">
 
@@ -7,4 +7,7 @@
 
 </div>
 
-<app-footer-layout></app-footer-layout>
+<app-footer-layout *ngIf="headerFooter"></app-footer-layout>
+
+
+
