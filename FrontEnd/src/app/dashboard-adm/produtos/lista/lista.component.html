@@ -24,21 +24,21 @@
             <th>ID</th>
             <th>Nome</th>
             <th>R$</th>
-            <th>Categoria</th>
-            <th>Ver mais</th>
+            <th>Ver mais / Excluir</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let p of Produtos">
-            <td>{{ p.ID }}</td>
-            <td>{{ p.Nome }}</td>
-            <td>{{ p.Preco }}</td>
-            <td>{{ p.Categoria.Nome }}</td>
+        <tr *ngFor="let p of listProducts">
+            <td>{{ p.idProduto }}</td>
+            <td>{{ p.nome }}</td>
+            <td>{{ p.preco }}</td>
             <td>
-                <button class="btn btn-info btn-sm" (click)="showMore(p)">+</button>
-                <button class="btn btn-danger btn-sm">x</button>
+                <button class="btn btn-info btn-sm margin-right-5" (click)="showMore(p)">+</button>
+                <button class="btn btn-danger btn-sm" (click)="showDelete(p.idProduto)">x</button>
             </td>
         </tr>
     </tbody>    
 </table>
-<app-show-more *ngIf="isShowMore" [produto]="selecionado" (close)="showless($event)"></app-show-more>
+
+<app-deletar-produto *ngIf="isDelete" [idProduto]="id" (close)="lessDelete()"></app-deletar-produto>
+<app-show-more *ngIf="isShowMore" [produto]="selecionado" (close)="lessMore()"></app-show-more>

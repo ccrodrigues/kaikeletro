@@ -15,6 +15,7 @@ import { DashboardAdmComponent } from './dashboard-adm/dashboard-adm.component';
 import { TelaRegistroComponent } from './telaregistro/telaregistro.component';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent,
