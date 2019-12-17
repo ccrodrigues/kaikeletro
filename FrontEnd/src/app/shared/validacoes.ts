@@ -71,6 +71,7 @@ export class Validacoes {
   }
 
   static SenhasCombinam(controle: AbstractControl) {
+    console.log(controle);
     let senha = controle.get('senha').value;
     let confirmarSenha = controle.get('confirmarSenha').value;
 

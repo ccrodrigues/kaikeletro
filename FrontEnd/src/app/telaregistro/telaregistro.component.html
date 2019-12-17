@@ -4,18 +4,20 @@
   <div class="col-md-6">
     <label for="nome">Nome: </label>
     <input type="nome" class="form-control" formControlName="nome" placeholder="Nome Completo">
-    <app-msg-erro [isError]="isErrorCampo(regForm.controls.nome)" mensagem="Campo Obrigatório"></app-msg-erro>
+    <app-msg-erro [isError]="isErrorCampo('nome')" mensagem="Campo obrigatorio"></app-msg-erro>
   </div><br>
 
   <div class="col-md-3">
     <label for="nascimento">Data de Nascimento: </label>
-    <input type="date" calss="form-control" formControlName="nascimento" []>
+    <input type="date" calss="form-control" formControlName="nascimento" >
+    <app-msg-erro [isError]="isErrorCampo('nascimento')" mensagem="Campo obrigatorio"></app-msg-erro>
   </div><br>
 
   <div class="col-md-3">
     <label for="cpf">CPF: </label>
     <input type="number" (keypress)="somenteNumerosCpf($event)" required
      class="form-control" formControlName="cpf" placeholder="CPF">
+     <app-msg-erro [isError]="isErrorCampo('cpf')" mensagem="Campo obrigatorio"></app-msg-erro>
   </div>
 
   <div class="col-md-3">
@@ -30,17 +32,20 @@
 
   <div class="col-md-3">
     <label for="exampleInputEmail1">E-mail</label>
-    <input type="email" class="form-control" formControlName="email" id="email" placeholder="Insira Seu E-mail">
+    <input type="email" class="form-control" formControlName="email" placeholder="Insira Seu E-mail">
+    <app-msg-erro [isError]="isErrorCampo('email')" mensagem="Campo obrigatorio"></app-msg-erro>
   </div>
 
   <div class="col-md-3">
     <label for="senha">Senha</label>
     <input type="password" class="form-control" formControlName="senha" placeholder="Digite a Senha">
+    <app-msg-erro [isError]="isErrorCampo('senha')" mensagem="Campo obrigatorio"></app-msg-erro>
   </div>
 
   <div class="col-md-3">
     <label for="confirmarSenha">Digite a Senha Novamente</label>
     <input type="password" class="form-control" formControlName="confirmarSenha" placeholder="Digite Novamente a Senha">
+    <app-msg-erro [isError]="isErrorCampo('confirmarSenha')" mensagem="Campo obrigatorio"></app-msg-erro>
   </div>
 
   <br><br>
@@ -56,6 +61,7 @@
         <input #cep  type="number" (keypress)="somenteNumerosCep($event)" required 
         class="form-control" id="cep" formControlName="cep">
         <button class="btn btn-primary" (click)="buscarCep(cep.value)">Buscar</button>
+        <app-msg-erro [isError]="isErrorCampo('endereco.cep')" mensagem="Campo obrigatorio"></app-msg-erro>
       </div><br>
 
       <div class="col-sm-10">
@@ -63,12 +69,14 @@
    
       </div>
       <div class="col-sm-10">
-        <input type="text" [value]="objEnd.logradouro" class="form-control" id="rua" formControlName="logradouro">
+        <input type="text" [value]="objEnd?.logradouro" class="form-control" id="logradouro" formControlName="logradouro">
+        <app-msg-erro [isError]="isErrorCampo('endereco.logradouro')" mensagem="Campo obrigatorio"></app-msg-erro>
       </div>
 
       <div class="col-md-3">
         <label for="numero" class="control-label">Número</label>
         <input type="text" class="form-control" id="numero" formControlName="numero">
+        <app-msg-erro [isError]="isErrorCampo('endereco.numero')" mensagem="Campo obrigatorio"></app-msg-erro>
       </div>
 
       <div class="col-md-5">
@@ -79,17 +87,20 @@
       <div class="form-group">
         <div class="col-md-3">
           <label for="bairro" class="control-label">Bairro</label>
-          <input [value]="objEnd.bairro" type="text" class="form-control" id="bairro" formControlName="bairro">
+          <input [value]="objEnd?.bairro" type="text" class="form-control" id="bairro" formControlName="bairro">
+          <app-msg-erro [isError]="isErrorCampo('endereco.bairro')" mensagem="Campo obrigatorio"></app-msg-erro>
         </div>
 
         <div class="col-md-3">
           <label for="cidade" class="control-label">Cidade</label>
-          <input [value]="objEnd.localidade" type="text" class="form-control" id="cidade" formControlName="cidade">
+          <input [value]="objEnd?.localidade" type="text" class="form-control" id="cidade" formControlName="cidade">
+          <app-msg-erro [isError]="isErrorCampo('endereco.cidade')" mensagem="Campo obrigatorio"></app-msg-erro>
         </div>
 
         <div class="col-md-3">
           <label for="estado" class="control-label">Estado</label>
-          <input [value]="objEnd.uf" type="text" class="form-control" id="estado" formControlName="estado">
+          <input [value]="objEnd?.uf" type="text" class="form-control" id="estado" formControlName="estado">
+          <app-msg-erro [isError]="isErrorCampo('endereco.estado')" mensagem="Campo obrigatorio"></app-msg-erro>
         </div>
       </div>
 
