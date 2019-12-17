@@ -102,7 +102,6 @@ public class UsuarioController {
 		return ResponseEntity.ok().body(lista);
 	}
 	
-	//@RequestMapping(value = "", method = RequestMethod.)
 
 	
 }
