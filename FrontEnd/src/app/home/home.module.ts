@@ -9,10 +9,11 @@ import { HomeComponent } from './home.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ProdutosDetalhesComponent } from './produtos-detalhes/produtos-detalhes.component';
 import { SharedModule } from '../shared/shared.module';
+import { PaginacaoComponent } from './paginacao/paginacao.component';
 
 
 @NgModule({
-  declarations: [ProdutosComponent, CarouselComponent, HomeComponent, ProdutosDetalhesComponent],
+  declarations: [ProdutosComponent, CarouselComponent, HomeComponent, ProdutosDetalhesComponent, PaginacaoComponent],
   imports: [
     CommonModule,
     HomeRoutingModule, 

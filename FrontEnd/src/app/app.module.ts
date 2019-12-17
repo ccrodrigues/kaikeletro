@@ -12,6 +12,7 @@ import { HomeModule } from './home/home.module';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 
 
@@ -32,7 +33,8 @@ import { SharedModule } from './shared/shared.module';
     HomeModule,
     CollapseModule.forRoot(),
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    PaginationModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
