@@ -26,6 +26,7 @@ public class UsuarioDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	public long getCelular() {
 		return celular;
 	}
@@ -43,4 +44,6 @@ public class UsuarioDto {
 		this.celular= user.getCelular();
 		
 	}
+	
+	
 }

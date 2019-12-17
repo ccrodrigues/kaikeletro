@@ -42,41 +42,24 @@ public class UsuarioDtoController {
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Optional<Usuario>> findById(@PathVariable("id") int idUsuario) {
+	public ResponseEntity<UsuarioDto> findById(@PathVariable("id") int idUsuario) {
 		Optional<Usuario> obj = userService.findById(idUsuario);
-
 		if (obj.isPresent() == false) {
 			throw new TratamentoDeErros(idUsuario, new Usuario());
 		}
-
-		return ResponseEntity.ok().body(new CategoriaDTO(obj.get()));
+	
+		return ResponseEntity.ok().body( new UsuarioDto(obj.get()));
 	}
-
+	
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteById(@PathVariable("id") int id) {
-
 		Optional<Usuario> obj = userService.findById(id);
 		if (obj.isPresent() == false) {
 			throw new TratamentoDeErros(id, new Usuario());
 		}
 		return ResponseEntity.ok().body(userService.deleteById(id));
 	}
-
-	@RequestMapping(value = "", method = RequestMethod.POST)
-	public ResponseEntity<Usuario> save(@RequestBody @Valid Usuario usuario) {
-		return ResponseEntity.ok().body(userService.save(usuario));
-	}
-
-	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
-	public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable("id") int id) {
-		Optional<Usuario> obj = userService.findById(id);
-		if (obj.isPresent() == false) {
-			throw new TratamentoDeErros(id, new Usuario());
-		}
-		
-		return ResponseEntity.ok().body(userService.updatebyID(usuario, id));
-	}
-
+	
 
 	@RequestMapping(value = "/usuariosDto/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<Usuario>> findPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
@@ -87,6 +70,7 @@ public class UsuarioDtoController {
 		return ResponseEntity.ok().body(usuarios);
 	}
 
+	
 	
 	
 }
