@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-mais-desejados',
-  templateUrl: './mais-desejados.component.html',
-  styleUrls: ['./mais-desejados.component.css']
+  selector: 'app-mais-vendidos',
+  templateUrl: './mais-vendidos.component.html',
+  styleUrls: ['./mais-vendidos.component.css']
 })
-export class MaisDesejadosComponent implements OnInit {
-
+export class MaisVendidosComponent implements OnInit {
   produtos = [
     {"nome" : "produto", "descricao" : "testetestetestetestetestetesteteste", "preco" : 1000.00, "categoria" : "Eletronico", "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
     {"nome" : "produto", "descricao" : "testetestetestetestetestetesteteste", "preco" : 1000.00, "categoria" : "Eletronico", "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
@@ -51,6 +50,6 @@ export class MaisDesejadosComponent implements OnInit {
    constructor() { }
  
    ngOnInit() {
-     
+    
    }
 }

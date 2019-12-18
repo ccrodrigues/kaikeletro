@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-mais-desejados',
-  templateUrl: './mais-desejados.component.html',
-  styleUrls: ['./mais-desejados.component.css']
+  selector: 'app-melhores-ofertas',
+  templateUrl: './melhores-ofertas.component.html',
+  styleUrls: ['./melhores-ofertas.component.css']
 })
-export class MaisDesejadosComponent implements OnInit {
-
+export class MelhoresOfertasComponent implements OnInit {
   produtos = [
     {"nome" : "produto", "descricao" : "testetestetestetestetestetesteteste", "preco" : 1000.00, "categoria" : "Eletronico", "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
     {"nome" : "produto", "descricao" : "testetestetestetestetestetesteteste", "preco" : 1000.00, "categoria" : "Eletronico", "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
@@ -46,11 +45,11 @@ export class MaisDesejadosComponent implements OnInit {
     {"nome" : "produto", "descricao" : "testetestetestetestetestetesteteste", "preco" : 1000.00, "categoria" : "Eletronico", "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
     {"nome" : "produto", "descricao" : "testetestetestetestetestetesteteste", "preco" : 1000.00, "categoria" : "Eletronico", "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
     {"nome" : "produto", "descricao" : "testetestetestetestetestetesteteste", "preco" : 1000.00, "categoria" : "Eletronico", "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
-    {"nome" : "produto", "descricao" : "testetestetestetestetestetesteteste", "preco" : 1000.00, "categoria" : "Eletronico", "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
+    {"nome" : "produto", "descricao" : "testetestetestetestetestetesteteste", "preco" : 1000.00, "categoria" : "Eletronico", "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},  
   ]
-   constructor() { }
+   constructor() { } 
  
    ngOnInit() {
-     
-   }
+    
+   } 
 }
