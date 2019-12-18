@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MsgErroComponent } from './erro/msg-erro/msg-erro.component';
 
-
-
 @NgModule({
   declarations: [MsgErroComponent],
   imports: [
@@ -12,7 +10,6 @@ import { MsgErroComponent } from './erro/msg-erro/msg-erro.component';
   exports: [
     MsgErroComponent
   ]
-
 })
 
 export class SharedModule { }

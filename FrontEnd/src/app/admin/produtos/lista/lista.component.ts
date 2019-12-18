@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { CategoriasService } from 'src/app/shared/Services/categorias.service';
 
 @Component({
   selector: 'app-lista',
@@ -9,9 +10,9 @@ import { ProdutosService } from 'src/app/shared/Services/produtos.service';
 export class ListaComponent implements OnInit {
 
 
-  isShowMore  : boolean   = false;
-  isDelete    : boolean   = false;
-  
+  isShowMore: boolean = false;
+  isDelete: boolean = false;
+
   @Input() Produtos;
   pesquisado;
   selecionado;
@@ -19,12 +20,21 @@ export class ListaComponent implements OnInit {
   id;
 
   ngOnInit() {
-    
-//    Pegando todos os registros de produtos
-    this.ps.getAll().subscribe(
+    this.showAll();
+
+  }
+
+  showMsgApagou() {
+    console.log("Apagou!")
+    this.showAll();
+  }
+
+  showAll() {
+    //    Pegando todos os registros de produtos
+    this.cs.getAll().subscribe(
       a => {
-        this.listProducts = a;
         console.log(a)
+        this.listProducts = a;
       }
     );
   }
@@ -47,6 +57,7 @@ export class ListaComponent implements OnInit {
     this.isDelete = false;
   }
 
-  constructor(private ps : ProdutosService) { }
+
+  constructor(private cs: CategoriasService) { }
 
 } 

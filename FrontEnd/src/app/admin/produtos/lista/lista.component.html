@@ -19,7 +19,7 @@
             </div>
     </div>
 
-    <table class="table text-center" *ngIf="pesquisado == undefined">
+    <table class="table text-center" *ngIf="pesquisado == undefined" [hidden]="isDelete == true || isShowMore">
         <thead>
             <tr>
                 <th>ID</th>
@@ -29,18 +29,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let p of listProducts">
-                <td>{{ p.idProduto }}</td>
-                <td>{{ p.nome }}</td>
-                <td>{{ p.preco }}</td>
-                <td>
-                    <button class="btn btn-info btn-sm margin-right-5" (click)="showMore(p)">+</button>
-                    <button class="btn btn-danger btn-sm" (click)="showDelete(p.idProduto)">x</button>
-                </td>
-            </tr>
+            <ng-container *ngFor="let p of listProducts" >
+                <tr *ngIf="p.produtos != ''">
+                    <ng-container *ngFor="let prod of p.produtos">
+                        <td>{{ prod.idProduto }}</td>
+                        <td>{{ prod.nome }}</td>
+                        <td>{{ prod.preco }}</td>
+                        <td>
+                            <button class="btn btn-info btn-sm margin-right-5" (click)="showMore(p)">+</button>
+                            <button class="btn btn-danger btn-sm" (click)="showDelete(p.idProduto)">x</button>
+                        </td>
+                    </ng-container>
+                </tr>
+        </ng-container>
         </tbody>    
     </table>
 
-    <app-deletar-produto *ngIf="isDelete" [idProduto]="id" (close)="lessDelete()"></app-deletar-produto>
+    <app-deletar-produto [hidden]="isDelete == false" [idProduto]="id" (close)="lessDelete()" (deletado)="showMsgApagou($event)"></app-deletar-produto>
     <app-show-more *ngIf="isShowMore" [produto]="selecionado" (close)="lessMore()"></app-show-more>
 </div>
