@@ -1,0 +1,257 @@
+[33mcommit d4d599c5b6a3780b1f1d89f777c73b81ffe21750[m[33m ([m[1;36mHEAD -> [m[1;32mapiVendas[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 06680c6 fc09e9c
+Author: Bianca <biancaqueiroz.s@hotmail.com>
+Date:   Wed Dec 18 11:46:11 2019 -0300
+
+    Merge branch 'divisoesHome'
+
+[33mcommit 06680c6a45ea9bf8fae0f9dea841edc98b03c317[m
+Merge: 4879f1a a72ac38
+Author: Bianca <biancaqueiroz.s@hotmail.com>
+Date:   Wed Dec 18 11:45:37 2019 -0300
+
+    Merge branch 'master' of https://bitbucket.org/brqprojeto/kaikeletro
+
+[33mcommit a72ac3872f44d7bb307331e36bb84515ac06f75f[m
+Merge: 233e9d5 4722bcb
+Author: Romulo Zumele Martins Moraes <romulozumele@brq.com>
+Date:   Wed Dec 18 11:42:43 2019 -0300
+
+    Merge branch 'produtoCrud'
+
+[33mcommit 4722bcb9271bbc62fc118feb19abbac57f4180ae[m[33m ([m[1;31morigin/produtoCrud[m[33m)[m
+Author: Romulo Zumele Martins Moraes <romulozumele@brq.com>
+Date:   Wed Dec 18 11:41:32 2019 -0300
+
+    Relação entre imagens e produtos, lsita de produtos em cada Categoria
+
+[33mcommit fc09e9c6f512a837f2579407a1770ac4c3edbe4d[m[33m ([m[1;32mdivisoesHome[m[33m)[m
+Author: Bianca <biancaqueiroz.s@hotmail.com>
+Date:   Wed Dec 18 11:11:47 2019 -0300
+
+    Atualizando erro tela-registro
+
+[33mcommit a00d1b03eaded6dcc185837ec5807a0e15c411ac[m
+Merge: 87b4307 4879f1a
+Author: Bianca <biancaqueiroz.s@hotmail.com>
+Date:   Wed Dec 18 11:02:48 2019 -0300
+
+    Atualizando mais desejados
+
+[33mcommit 233e9d5d045f4e1bd3f25edb02904f6c97b378b8[m
+Merge: f203ebe e3285f9
+Author: Wagner Sanches <wagnersanches5@hotmail.com>
+Date:   Wed Dec 18 11:02:41 2019 -0300
+
+    Merge branch 'DashboardAdm'
+
+[33mcommit e3285f915f64d31f935a3c53ef9729624126cdf2[m
+Author: Wagner Sanches <wagnersanches5@hotmail.com>
+Date:   Wed Dec 18 11:02:01 2019 -0300
+
+    Salvando a patria
+
+[33mcommit 87b430764aebdcf6cd28800360345ffa6d2b97d1[m
+Author: Bianca <biancaqueiroz.s@hotmail.com>
+Date:   Wed Dec 18 11:00:13 2019 -0300
+
+    Alterações home componente
+
+[33mcommit f203ebe2204804222dc1461b47c76f0462156d4b[m
+Author: ccrodrigues1989 <ccrodrigues1989@gmail.com>
+Date:   Wed Dec 18 10:54:16 2019 -0300
+
+    Arrumando Conflitos
+
+[33mcommit 4879f1a98b62adc590230c48cd1b968fd76e8afb[m
+Author: Bianca <biancaqueiroz.s@hotmail.com>
+Date:   Wed Dec 18 10:40:05 2019 -0300
+
+    Incluindo componentes dos tópicos home
+
+[33mcommit c6d09bb975d1ca30690097189b9e12e526ca729d[m
+Merge: f836f68 88f30fa
+Author: Wagner Sanches <wagnersanches5@hotmail.com>
+Date:   Wed Dec 18 09:42:30 2019 -0300
+
+    Merge branch 'DashboardAdm'
+
+[33mcommit 88f30fabf8581a6ba95b4b731480f6a9002f2a84[m
+Author: Wagner Sanches <wagnersanches5@hotmail.com>
+Date:   Wed Dec 18 09:40:20 2019 -0300
+
+    Rotas Arrumadas
+
+[33mcommit f836f68e13dc885d90025a8e4e2b36c5bef054d3[m
+Merge: 9e7dfcb 73bbd0c
+Author: Romulo Zumele Martins Moraes <romulozumele@brq.com>
+Date:   Wed Dec 18 09:28:48 2019 -0300
+
+    Merge branch 'crudProduto'
+
+[33mcommit 73bbd0cb245d4b387d3f3e600596828c8c061a27[m
+Author: Romulo Zumele Martins Moraes <romulozumele@brq.com>
+Date:   Wed Dec 18 09:24:05 2019 -0300
+
+    Tratamento de Erro na busca por ID
+
+[33mcommit 9e7dfcba999ec9097c0a74d10c02552b40d60537[m
+Merge: 61c2e24 23b9d6f
+Author: Fabrizio Borelli <ffborelli@gmail.com>
+Date:   Wed Dec 18 09:23:47 2019 -0300
+
+    Merge branch 'master' of https://bitbucket.org/brqprojeto/kaikeletro
+
+[33mcommit 61c2e24de55f4e43458d73c12c90ebc131cf26cb[m
+Author: Fabrizio Borelli <ffborelli@gmail.com>
+Date:   Wed Dec 18 09:23:29 2019 -0300
+
+    arrumando pasta layout
+
+[33mcommit 23b9d6f20e11f44fd60cfe3bc59a319b039a0e6a[m
+Merge: 9ebff83 5acf57e
+Author: ccrodrigues1989 <ccrodrigues1989@gmail.com>
+Date:   Wed Dec 18 09:10:45 2019 -0300
+
+    Merge branch 'master' of https://bitbucket.org/brqprojeto/kaikeletro
+
+[33mcommit 9ebff8312b1cbd69bbfe28268430da395b07df53[m
+Author: ccrodrigues1989 <ccrodrigues1989@gmail.com>
+Date:   Wed Dec 18 09:10:29 2019 -0300
+
+    Rota Tela Registro
+
+[33mcommit 5acf57ec43009da97ff0f16c5c1711daf710fce9[m
+Author: Fabrizio Borelli <ffborelli@gmail.com>
+Date:   Wed Dec 18 09:04:17 2019 -0300
+
+    deletando pastas desnecessárias
+
+[33mcommit 6c7f86210f0cdf9ea55ebab4080f19cd4c4431cd[m
+Author: Fabrizio Borelli <ffborelli@gmail.com>
+Date:   Wed Dec 18 09:03:42 2019 -0300
+
+    deletando pastas desnecessárias
+
+[33mcommit 1b9d020c6aa2df9f31a44de24ee8489bad72c115[m
+Author: Marcos Alves <marcosfernandesalves99@hotmail.com>
+Date:   Wed Dec 18 08:14:02 2019 -0300
+
+    Arrumando o carousel
+
+[33mcommit 2ad069b835b2ff58bcdda392858d4c4f6e8cc6ad[m
+Author: Bianca <biancaqueiroz.s@hotmail.com>
+Date:   Tue Dec 17 17:52:07 2019 -0300
+
+    Projeto Refatorado sem erros
+
+[33mcommit 5b019fd8f0316927351e7fb13ee394c10615305c[m
+Author: Bianca <biancaqueiroz.s@hotmail.com>
+Date:   Tue Dec 17 16:15:32 2019 -0300
+
+    Refatorando
+
+[33mcommit 2f960686687992681bfb39383495ea0b3e2dd85e[m
+Author: Bianca <biancaqueiroz.s@hotmail.com>
+Date:   Tue Dec 17 15:48:19 2019 -0300
+
+    Resolvendo conflitos
+
+[33mcommit 0448e159561322f8df68bb46f43d46e6b2e00179[m
+Author: Bianca <biancaqueiroz.s@hotmail.com>
+Date:   Tue Dec 17 15:47:03 2019 -0300
+
+    Corrigindo gitignore
+
+[33mcommit 9783b71cfb68c77e4568e3d3221549fe66b46317[m
+Merge: 2a6b499 cffeed1
+Author: Bianca <biancaqueiroz.s@hotmail.com>
+Date:   Tue Dec 17 15:40:43 2019 -0300
+
+    Merge branch 'master' of https://bitbucket.org/brqprojeto/kaikeletro
+
+[33mcommit 2a6b499c3fe583cd5708b9c94d5197f7e92c1a12[m
+Author: Bianca <biancaqueiroz.s@hotmail.com>
+Date:   Tue Dec 17 15:40:33 2019 -0300
+
+    Resolvendo conflitos
+
+[33mcommit cffeed1298c2c1f88de720606c81d888c97b606d[m
+Author: Wagner Sanches <wagnersanches5@hotmail.com>
+Date:   Tue Dec 17 15:29:58 2019 -0300
+
+    Concertando Erro
+
+[33mcommit bf26e7bdef525c9f6ea9511c1fe68124a8df67aa[m
+Merge: 5c1fd80 943053c
+Author: Wagner Sanches <wagnersanches5@hotmail.com>
+Date:   Tue Dec 17 15:24:21 2019 -0300
+
+    Merge branch 'master' of https://bitbucket.org/brqprojeto/kaikeletro/src/master
+
+[33mcommit 943053cd5948406b87e2f2cbbfa420caa4c00f74[m
+Merge: 4f62bdf 964b18c
+Author: Romulo Zumele Martins Moraes <romulozumele@brq.com>
+Date:   Tue Dec 17 15:23:57 2019 -0300
+
+    Merge branch 'master' of https://bitbucket.org/brqprojeto/kaikeletro
+
+[33mcommit 5c1fd8068ddae324166b21192632d606053872f7[m
+Merge: 5342291 964b18c
+Author: Wagner Sanches <wagnersanches5@hotmail.com>
+Date:   Tue Dec 17 15:20:54 2019 -0300
+
+    Merge branch 'master' of https://bitbucket.org/brqprojeto/kaikeletro/src/master
+
+[33mcommit 4f62bdfa17c14f965cae0cd3e596c5d8a10565e0[m
+Merge: f626259 3af3965
+Author: Romulo Zumele Martins Moraes <romulozumele@brq.com>
+Date:   Tue Dec 17 15:20:20 2019 -0300
+
+    Resolvendo Conflitos packge.json
+
+[33mcommit 964b18c960c891894db086226c565c33b7201698[m
+Merge: 3af3965 7aa0343
+Author: Juliana <julucacalcanti@gmail.com>
+Date:   Tue Dec 17 15:19:47 2019 -0300
+
+    Arrumando conflitos
+
+[33mcommit 5342291bd5ce7775a1628ae7b63ceb212029501b[m
+Merge: c1144f1 57dd099
+Author: Wagner Sanches <wagnersanches5@hotmail.com>
+Date:   Tue Dec 17 15:17:24 2019 -0300
+
+    Fecho
+
+[33mcommit 7aa0343cb603ffb64dcb10cf2cea4325cfcb9a51[m[33m ([m[1;31morigin/AutenticacaoUsuario[m[33m)[m
+Author: Juliana <julucacalcanti@gmail.com>
+Date:   Tue Dec 17 15:16:48 2019 -0300
+
+    Autenticação de Usuario
+
+[33mcommit f6262592dcad3c108fbe70e0aaa51b53dd231668[m
+Author: Romulo Zumele Martins Moraes <romulozumele@brq.com>
+Date:   Tue Dec 17 15:13:58 2019 -0300
+
+    Banco de Imagens
+
+[33mcommit c1144f1dd353817a870ca2b85378f87d517f9ab8[m
+Merge: f0e26eb 3af3965
+Author: Wagner Sanches <wagnersanches5@hotmail.com>
+Date:   Tue Dec 17 15:12:44 2019 -0300
+
+    Merge branch 'master' of https://bitbucket.org/brqprojeto/kaikeletro/src/master
+
+[33mcommit 57dd099e05bdf760d05968172b3604f88868d89c[m
+Author: Wagner Sanches <wagnersanches5@hotmail.com>
+Date:   Tue Dec 17 15:12:30 2019 -0300
+
+    Salavando para teste
+
+[33mcommit 3af396596a513eefd39fa879498991b40e594a66[m
+Merge: e25c863 7416157
+Author: Marcos Alves <marcosfernandesalves99@hotmail.com>
+Date:   Tue Dec 17 15:10:22 2019 -0300
+
+    Adcionando pagina detalhes e arrumando c
