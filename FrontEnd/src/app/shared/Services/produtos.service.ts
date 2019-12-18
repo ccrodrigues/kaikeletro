@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { EnvService } from 'src/app/env.service';
 import { HttpClient } from '@angular/common/http';
+import { ProdutoModel } from '../models/produto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +9,13 @@ import { HttpClient } from '@angular/common/http';
 export class ProdutosService {
 
   
-  // Chamando o HttpCliente 
-  constructor(private http : HttpClient) { }
+  // Chamando o HttpCliente e injetando o envService que é responsavel por pegar a url Da Api
+  constructor(private http : HttpClient,private envService:EnvService) { }
 
   // Url da API
   url : string = "http://localhost:8080/produtos/"
 
-  // Pegando todos os usuarios
+  // Pegando todos os produto
   getAll() {
     //fazendo a requisição
     return this.http.get(this.url);
@@ -22,5 +23,27 @@ export class ProdutosService {
 
   delete(id) {
     return this.http.delete(this.url + id);
+    return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "produtos");
+  }
+  //pegando o produto filtrando por id
+  getById(id){
+    return this.http.get<ProdutoModel>(this.envService.urlAPI+ "produtos"+"/"+id);
+  }
+  //adcionando o produto ao banco
+  saveProduto(produto){
+    return this.http.post<ProdutoModel>(this.envService.urlAPI+ "produtos",produto);
+  }
+  //deletando o produto
+  deleteProduto(id){
+    return this.http.delete(this.envService.urlAPI+ "produtos"+"/"+id);
+  }
+  //editando um produto ja existente
+  updateProduto(produto,id){
+    return this.http.patch<ProdutoModel>(this.envService.urlAPI+ "produtos"+"/"+id,produto);
+  }
+  //recebendo os produtos por paginacao
+  getProdutoPage(pagina,qtdLinhas,direcao,campo){
+    return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "produtos"
+    +`pagina=${pagina}&qtdLinhas=${qtdLinhas}&direcao=${direcao}&campo=${campo}`)
   }
 }
