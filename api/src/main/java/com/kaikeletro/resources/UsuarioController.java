@@ -1,6 +1,5 @@
 package com.kaikeletro.resources;
 
-import java.io.Console;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +26,7 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioService service;
+
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<List<Usuario>> getAll() {
@@ -102,6 +102,10 @@ public class UsuarioController {
 		return ResponseEntity.ok().body(lista);
 	}
 	
-
+	@RequestMapping (value="login", method = RequestMethod.POST)
+	public ResponseEntity<Boolean> autenticacao(@RequestBody Usuario user) {	
+		return ResponseEntity.ok().body(service.findOneByEmailAndSenha(user.getEmail(), user.getSenha()));
+	}
 	
+
 }
