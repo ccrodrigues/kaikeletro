@@ -45,10 +45,21 @@ public class Vendas implements Serializable {
 	
 	//Construtor
 	public Vendas() {
-		super();
+
 	}
 	
-		
+	public Vendas(int id, double valor, List<Produto> totalProdutos, Usuario usuario, Date dataVenda, String status,
+			int totalItens, int totalVendas) {
+		this.id = id;
+		this.valor = valor;
+		this.totalProdutos = totalProdutos;
+		this.usuario = usuario;
+		this.dataVenda = dataVenda;
+		this.status = status;
+		this.totalItens = totalItens;
+		this.totalVendas = totalVendas;
+	}
+
 	//Getters & Setters
 	public int getId() {
 		return id;
