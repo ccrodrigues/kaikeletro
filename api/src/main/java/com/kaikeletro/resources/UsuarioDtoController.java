@@ -56,7 +56,7 @@ public class UsuarioDtoController {
 		return ResponseEntity.ok().body(userService.deleteById(id));
 	}
 	
-	
+
 
 	//http://localhost:8080/usuariosDto/usuariosDto/page?pagina=1&quantidadeDeLinhas=1&direcao=ASC&campoOrdenacao=id
 	@RequestMapping(value = "/usuariosDto/page", method = RequestMethod.GET)
@@ -69,6 +69,31 @@ public class UsuarioDtoController {
 		return ResponseEntity.ok().body(usuarios);
 	}
 
+	
+	
+	// Busca por nome
+		@RequestMapping(value = "nomeDto/{nomeBusca}", method = RequestMethod.GET)
+		public ResponseEntity<List<UsuarioDto>> findByNome(@PathVariable("nomeBusca") String nomeBusca) {
+
+			List<Usuario> lista = userService.findByNomeContains(nomeBusca);
+			List<UsuarioDto> listaDto = lista.stream() 
+					.map(obj -> new UsuarioDto(obj)) 
+					.collect((Collectors.toList())); 
+			return ResponseEntity.ok().body(listaDto);
+		}
+
+		// Busca por email
+		@RequestMapping(value = "email/{emailBusca}", method = RequestMethod.GET)
+		public ResponseEntity<List<UsuarioDto>> findByEmail(@PathVariable("emailBusca") String emailBusca) {
+			List<Usuario> lista = userService.findByEmail(emailBusca);
+			
+			List<UsuarioDto> listaDto = lista.stream() 
+					.map(obj -> new UsuarioDto(obj)) 
+					.collect((Collectors.toList())); 
+	
+			return ResponseEntity.ok().body(listaDto);
+	
+		}
 	
 	
 }
