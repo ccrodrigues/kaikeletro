@@ -31,7 +31,7 @@ import { CarrinhoComponent } from './home/carrinho/carrinho.component';
     BsDropdownModule.forRoot(),
     FormsModule,
     NgxPaginationModule,
-    CarouselModule
+    CarouselModule,
   ],
   exports:[
     PaginacaoComponent,
