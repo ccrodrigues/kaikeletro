@@ -15,7 +15,7 @@ export class ProdutosDetalhesComponent implements OnInit {
 
   numerosParcela= [1,2,3,4,5,6,7,8,9,10,11,12];
   numeroParcelaAtual=1; 
-  imagemAtual ="";
+  imagemAtual ;
   Preco:number;
   Parcela;
 
@@ -25,14 +25,14 @@ export class ProdutosDetalhesComponent implements OnInit {
   }
 
    ngOnInit() {
-    this.produtoService.getById("81").subscribe(  data =>{
+    this.produtoService.getById("147").subscribe(  data =>{
       this.produto=data;
-      console.log(this.produto)
       this.Preco=data.preco; 
       this.Parcela=data.preco
-      this.imagemAtual=data.imagens[0].imagemProduto;
-      console.log(this.imagemAtual)
+      this.imagemAtual=this.produto.imagens[0].imagemProduto;
     });
+    console.log(this.produto)
+   
   }
   trocarImagem(img) {
     this.imagemAtual = img;
