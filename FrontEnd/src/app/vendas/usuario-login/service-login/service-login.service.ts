@@ -23,8 +23,18 @@ export class ServiceLoginService {
 }
 //verifica se os campos email e senha são true
 fazerLogin(usuario : {email : String, senha : String} ){
+
+    if(usuario){
+
+      this.isAutenticado = true;
+      return this.http.post(this.envService.urlAPI + `/usuarios`, usuario);
+    }else{
+      this.isAutenticado = false;
+      this.router.navigate[('login')];
+    }
    
-    return this.http.post<Usuario>(this.envService.urlAPI + `/usuarios`, usuario);
+   
+        
     }
 
 
