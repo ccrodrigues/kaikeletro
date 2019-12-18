@@ -39,23 +39,7 @@ fazerLogin(usuario : {email : String, senha : String} ){
 
 
 
-  // if (email == 'a' && senha == 'a'){
-  //   //login aprovado
-  //   this.isAutenticado = true;
-  //   this.router.navigate(['']);
-
-  // } else if (email == 'b' && senha =='b'){
-  //          this.isAutenticado = true;
-  //          this.router.navigate(['dashboardAdm'])
-  // }
-  // else{
-  //   //redirecionar para o Login
-  //   this.isAutenticado = false;
-  //   this.router.navigate(['login']);
-
-  // }
-
-  // }
+ 
   
 getIsAutenticado(){
   return this.isAutenticado;
