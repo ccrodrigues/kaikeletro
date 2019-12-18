@@ -12,14 +12,13 @@
                             Nome produto
                             <input type="text" [value]="produto.nome" class="form-control">
                         </div>
-                        <div class="col">
+                        <div class="col" *ngFor="let cat of produto.categorias">
                             Categoria
                             <select name="categoria" *ngFor="let cat of produto.categorias" class="form-control">
                                 <option value="{{ cat.nome }}">{{ cat.nome }}</option>
                             </select>
                         </div>
                     </div>
-                        
                 </div>
                 <div class="form-group">
                     <div class="row">

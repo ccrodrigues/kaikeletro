@@ -1,4 +1,4 @@
-<p class="display-4 text-title">Dashboard / Produtos</p>
+<p class="display-4 my-text-title">Dashboard / Produtos</p>
 <div class="container dashboard">
     <div class="row"> 
         <div class="col-3" >
@@ -7,7 +7,7 @@
         </div>
         <div class="col-9">
             <app-lista  [Produtos]="produtos" *ngIf="isLista"></app-lista>
-            <router-outlet name="add" *ngIf="!isLista"></router-outlet>
+            <app-adicionar name="add" *ngIf="!isLista"></app-adicionar>
         </div>
     </div>
 </div>

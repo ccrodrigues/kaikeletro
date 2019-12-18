@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { CategoriasService } from 'src/app/shared/Services/categorias.service';
 
 @Component({
   selector: 'app-lista',
@@ -30,8 +31,9 @@ export class ListaComponent implements OnInit {
 
   showAll() {
     //    Pegando todos os registros de produtos
-    this.ps.getAll().subscribe(
+    this.cs.getAll().subscribe(
       a => {
+        console.log(a)
         this.listProducts = a;
       }
     );
@@ -56,6 +58,6 @@ export class ListaComponent implements OnInit {
   }
 
 
-  constructor(private ps: ProdutosService) { }
+  constructor(private cs: CategoriasService) { }
 
 } 
