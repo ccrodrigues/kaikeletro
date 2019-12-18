@@ -36,8 +36,6 @@ updateUsuario(id, usuario){
 return this.http.patch<Usuario>(this.envService.urlAPI + `/usuarios/${id}`, usuario);
 
 }
-UsuarioUser(senha, email, usuario){
-  return this.http.post<Usuario[]>(this.envService.urlAPI + `/usuarios/${email}/${senha}`, usuario);
-}
+
 
 }

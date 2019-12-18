@@ -30,10 +30,13 @@ export class UsuarioLoginComponent implements OnInit {
     });
   }
   onSubmit(){
-    console.log(this.loginForm);
+
+    this.serviceLogin.fazerLogin(this.loginForm.value).subscribe(
+      (data) => console.log(data)
+    );
     //Verifica ao enviar se os dados informados são validos
-    this.serviceLogin
-    .fazerLogin(this.loginForm.value.email, this.loginForm.value.senha)
+    // this.serviceLogin
+    // .fazerLogin(this.loginForm.value.email, this.loginForm.value.senha)
   }
 
   //campo para validar se os campos forem devidamente preenchidos 
