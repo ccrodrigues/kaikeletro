@@ -10,6 +10,7 @@ const routes: Routes = [
   // , canActivate:[ GuardService]  <=== CANATIVATE para bloquear a entrada do usuario na tela do adm 
   },
   { path: '', loadChildren:'./vendas/vendas.module#VendasModule'}
+
 ];
 
 @NgModule({

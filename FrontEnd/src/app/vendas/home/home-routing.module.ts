@@ -3,12 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ProdutosDetalhesComponent } from './produtos-detalhes/produtos-detalhes.component';
 import { PaginacaoComponent } from './paginacao/paginacao.component';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
 
 
 const routes: Routes = [
   {path : 'teste', component: CarouselComponent},
   {path : 'detalhes', component: ProdutosDetalhesComponent},
-  {path : 'pagi',  component : PaginacaoComponent}
+  {path : 'pagi',  component : PaginacaoComponent},
+  {path : 'carrinho', component: CarrinhoComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,46 @@
+<h2 style="margin-top: 20px;">Meu Carrinho</h2>
+
+<div class="container-fluid">
+<div class="row basket_columns">
+        <h6 class="col-3">Produto</h6>
+        <h6 class="col-3">Quantidade</h6>
+        <h6 class="col-3">Preço</h6>
+</div>
+
+<div class="row">
+    <div  class="col-sm-8">
+        <ul  class="lista">
+            <li *ngFor = "let p of produtos" style="border-top: 1px solid #086575; width: 700px;">
+               <div style="display: inline-flex;">
+                    <img src="{{p.img}}">
+                    <p style="margin-top: 20px; margin-left: 20px;">{{p.nome}}</p>
+                    <select>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">4</option>
+                        <option value="6">6</option>
+                      </select>
+                      <p style="margin-top: 20px; margin-left: 230px;">{{p.preco}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem; margin-left: 100px; height: 300px; margin-bottom: 20px;">
+            <div class="card-body">
+              <h5 class="card-title">Resumo do pedido</h5>
+              <p class="card-text">4 produtos &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                   R$40,00</p>
+              <p class="card-text">Frete &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;   R$10,00</p>
+                <p style="border-top: solid 1px black;">TOTAL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; R$50,00</p>
+              <a href="#" class="btn btn-primary">Continuar</a>
+            </div>
+          </div>
+    </div>
+</div>
+</div>
