@@ -13,21 +13,24 @@ export class ProdutosDetalhesComponent implements OnInit {
 
   produto:ProdutoModel;
 
- 
   numerosParcela= [1,2,3,4,5,6,7,8,9,10,11,12];
   numeroParcelaAtual=1; 
-  imagemAtual = this.produto.imagens[0].imagemProduto;
+  imagemAtual ="";
   Preco:number;
   Parcela=""+this.Preco;
 
 
-  constructor(private produtoService:ProdutosService) { }
+  constructor(private produtoService:ProdutosService) { 
+    
+  }
 
   ngOnInit() {
-    this.produtoService.getById("1").subscribe(data =>{
+    this.produtoService.getById("81").subscribe(data =>{
+      console.log(this.produto);
       this.produto=data;
       this.Preco=data.preco; 
-      console.log(this.produto)
+      this.produto.imagens=data.imagens;
+      this.imagemAtual=data.imagens[0].imagemProduto;
     });
   }
   trocarImagem(img) {

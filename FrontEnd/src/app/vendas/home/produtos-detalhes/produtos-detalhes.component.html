@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col zeroPadding " *ngFor="let img of produto.imagens">
                 <!-- <app-carousel  [slides]="slides"></app-carousel> -->
-                <img width="100%" heigth="25%" [src]="img.image" (click)="trocarImagem(img.image)" />
+                <img width="100%" heigth="25%" [src]="img.imagemProduto" (click)="trocarImagem(img.imagemProduto)" />
             </div>
         </div>
     </div>
