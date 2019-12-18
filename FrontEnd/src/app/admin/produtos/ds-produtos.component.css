@@ -8,3 +8,7 @@
 .dashboard {
     margin: 30px 0px;
 }
+
+.dashboard {
+    min-height: 500px;
+}

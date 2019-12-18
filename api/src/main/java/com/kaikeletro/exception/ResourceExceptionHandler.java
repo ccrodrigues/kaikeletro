@@ -1,4 +1,4 @@
-package com.brq.mvc.exception;
+package com.kaikeletro.exception;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class ResourceExceptionHandler {
 	
 	
-	
 	@ExceptionHandler(RouteNotFoundException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ResponseEntity<StandardError>	processException(Exception ex,
@@ -21,8 +20,7 @@ public class ResourceExceptionHandler {
 			System.currentTimeMillis(),
 			HttpStatus.NOT_FOUND.value(),
 			"Não encontrado", ex.getMessage(),
-			request.getRequestURI()
-			
+			request.getRequestURI()		
 	);
 	
 	return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);

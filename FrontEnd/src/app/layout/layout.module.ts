@@ -5,22 +5,23 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FooterLayoutComponent } from './footer-layout/footer-layout.component';
+import { FooterLayoutComponent } from './vendas/footer-layout/footer-layout.component';
 import { RouterModule } from '@angular/router';
-
 @NgModule({
   declarations: [MenuComponent, FooterLayoutComponent],
   imports: [
-    CommonModule, 
+    CommonModule,
     FormsModule,
-    BrowserModule, 
+    BrowserModule,
     CollapseModule,
     BrowserAnimationsModule,
     RouterModule
   ],
-  exports : [
+  exports: [
     MenuComponent,
     FooterLayoutComponent
   ]
 })
-export class LayoutModule { }
+export class LayoutModule {
+}
+
