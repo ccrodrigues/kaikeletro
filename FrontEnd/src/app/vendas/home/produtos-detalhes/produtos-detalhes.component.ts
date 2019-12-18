@@ -11,18 +11,13 @@ import { ProdutoModel } from 'src/app/shared/models/produto.model';
 })
 export class ProdutosDetalhesComponent implements OnInit {
 
-  produto:ProdutoModel
+  produto:ProdutoModel;
 
-  slides = [
-    { image: 'https://images-submarino.b2w.io/produtos/01/00/image/134241/7/134241731_7GG.jpg' },
-    { image: 'https://images-submarino.b2w.io/produtos/01/00/image/134241/7/134241731_8GG.jpg' },
-    { image: 'https://images-submarino.b2w.io/produtos/01/00/image/134241/7/134241731_9GG.jpg' },
-    { image: 'https://images-submarino.b2w.io/produtos/01/00/image/134241/7/134241731_7GG.jpg' },
-  ];
+ 
   numerosParcela= [1,2,3,4,5,6,7,8,9,10,11,12];
   numeroParcelaAtual=1; 
-  imagemAtual = this.slides[0].image;
-  Preco:number=4000;
+  imagemAtual = this.produto.imagens[0].imagemProduto;
+  Preco:number;
   Parcela=""+this.Preco;
 
 
@@ -31,6 +26,7 @@ export class ProdutosDetalhesComponent implements OnInit {
   ngOnInit() {
     this.produtoService.getById("1").subscribe(data =>{
       this.produto=data;
+      this.Preco=data.preco; 
       console.log(this.produto)
     });
   }
