@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-show-more',
@@ -7,12 +8,15 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 })
 export class ShowMoreComponent implements OnInit {
 
-  @Input() produto = [];
+  @Input() produto  = [];
 
-  @Output() close = new EventEmitter();
+  @Output() close   = new EventEmitter();
 
+  imagens           = [];
+
+  ler = new FileReader();
   
-  constructor() { }
+  constructor(private sanitizer : DomSanitizer) { }
 
   ngOnInit() {
   }
@@ -20,6 +24,15 @@ export class ShowMoreComponent implements OnInit {
   fechar() {
     console.log("aqui");
     this.close.emit(false)
+  }
+
+  getImageAndPut(img) {
+    let a = this.ler.readAsDataURL(img.value);
+    console.log(a);
+  }
+
+  putImage(url) {
+    this.imagens.push(url);
   }
 
 }

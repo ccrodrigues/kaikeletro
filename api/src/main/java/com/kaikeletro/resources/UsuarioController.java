@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.brq.mvc.exception.TratamentoDeErros;
 import com.kaikeletro.domain.Usuario;
+import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.UsuarioService;
 
 
