@@ -40,12 +40,12 @@ public class ApiApplication implements CommandLineRunner{
 	//Teste de Produtos e Categorias
 	private void produtoCategoriaDemo() {
 	Categoria c1 = new Categoria();
-	c1.setNome("Eletrônico");
+	c1.setNome("Microcomputador");
 	
 	ImagemProd a1 = new ImagemProd();
-	a1.setImagemProduto("Teste");
-	a1.setDescricaoImagem("Note");
-	a1.setNomeImagem("123");
+	a1.setImagemProduto("https://www.saldaodainformatica.com.br/5712-thickbox_default/notebook-lenovo-ideapad-320-80yh0006br-prata-intel-core-i5-7200u-ram-8gb-hd-1tb-tela-156-windows-10.jpg");
+	a1.setDescricaoImagem("NoteBook Lenovo");
+	a1.setNomeImagem("note");
 	
 	Produto p1 = new Produto();
 	p1.setNome("Notebook");
