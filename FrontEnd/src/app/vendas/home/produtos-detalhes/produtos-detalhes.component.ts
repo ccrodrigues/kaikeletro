@@ -11,26 +11,27 @@ import { ProdutoModel } from 'src/app/shared/models/produto.model';
 })
 export class ProdutosDetalhesComponent implements OnInit {
 
-  produto:ProdutoModel;
+  produto:ProdutoModel = new ProdutoModel();
 
   numerosParcela= [1,2,3,4,5,6,7,8,9,10,11,12];
   numeroParcelaAtual=1; 
   imagemAtual ="";
   Preco:number;
-  Parcela=""+this.Preco;
+  Parcela;
 
 
-  constructor(private produtoService:ProdutosService) { 
-    
+   constructor(private produtoService:ProdutosService) { 
+     
   }
 
-  ngOnInit() {
-    this.produtoService.getById("81").subscribe(data =>{
-      console.log(this.produto);
+   ngOnInit() {
+    this.produtoService.getById("81").subscribe(  data =>{
       this.produto=data;
+      console.log(this.produto)
       this.Preco=data.preco; 
-      this.produto.imagens=data.imagens;
+      this.Parcela=data.preco
       this.imagemAtual=data.imagens[0].imagemProduto;
+      console.log(this.imagemAtual)
     });
   }
   trocarImagem(img) {
