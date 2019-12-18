@@ -9,6 +9,7 @@ import { ListaComponent } from './produtos/lista/lista.component';
 import { AdicionarComponent } from './produtos/adicionar/adicionar.component';
 import { DeletarProdutoComponent } from './produtos/lista/deletar-produto/deletar-produto.component';
 import { ShowMoreComponent } from './produtos/lista/show-more/show-more.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ShowMoreComponent } from './produtos/lista/show-more/show-more.componen
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    HttpClientModule
   ]
 })
 export class AdminModule { }

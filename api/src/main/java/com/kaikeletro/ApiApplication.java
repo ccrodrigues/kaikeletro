@@ -34,6 +34,10 @@ public class ApiApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		this.produtoCategoriaDemo();
+		this.produtoCategoriaDemo();
+		this.produtoCategoriaDemo();
+		this.produtoCategoriaDemo();
+		this.produtoCategoriaDemo();
 		
 	}
 	

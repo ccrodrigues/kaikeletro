@@ -37,13 +37,13 @@
                 </div>
                 
                 <label for='selecao-arquivo' class="btn btn-success btn-sm">Adicionar uma imagem</label><br><br>
-                <input id='selecao-arquivo' type='file' #imagem (change)="getImageAndPut(imagem)">
+                <input id='selecao-arquivo' type='file' (change)="getImageAndPut($event)">
 
-                <div class="row" *ngFor="let imgs of imagens">
+                <div class="row">
                    
-                    <div class="col-3 position-">
-                        <button class="btn btn-danger rounded-circle myBtnClose btn-sm" (click)="funcao()">x</button>
-                        <img class="img-thumbnail " src="{{ imgs }} " alt="Generic placeholder image">
+                    <div class="col-3" *ngFor="let imgs of imagens">
+                        <input type="button" class="btn btn-danger rounded-circle myBtnClose btn-sm" value="x" (click)="lessImage(imgs)">
+                        <img class="img-thumbnail " [src]="imgs" alt="Generic placeholder image">
                     </div>
                 
                 </div>
