@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.Categoria;
-import com.kaikeletro.domain.Produto;
 import com.kaikeletro.repositories.CategoriaRepository;
 
 @Service
@@ -31,7 +30,7 @@ public class CategoriaService {
 	
 	//Buscar Categoria pelo nome, lista os produtos da categoria buscada
 	public List<Categoria> findByNome(String nomeBusca){
-		List <Categoria > listaCategoria = repoCategoria.findByNomeLike(nomeBusca);
+		List <Categoria > listaCategoria = repoCategoria.findByNomeContains(nomeBusca);
 		return listaCategoria;
 	}
 	
