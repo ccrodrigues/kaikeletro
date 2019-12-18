@@ -29,7 +29,7 @@ public class Vendas implements Serializable {
 	@Column(name= "valor")
 	private double valor;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "vendas")
 	private List<Produto> totalProdutos;
 	
 	@ManyToOne

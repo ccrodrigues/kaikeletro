@@ -52,6 +52,9 @@ public class Produto implements Serializable {
 			joinColumns = @JoinColumn(name = "produto_id"),
 			inverseJoinColumns = @JoinColumn(name = "imagem_id"))
 	private List <ImagemProd> imagens;
+	
+	@ManyToMany
+	private List<Vendas> vendas;
 
 	public Produto() {
 		
@@ -110,6 +113,14 @@ public class Produto implements Serializable {
 
 	public void setImagens(List<ImagemProd> imagens) {
 		this.imagens = imagens;
+	}
+
+	public List<Vendas> getVendas() {
+		return vendas;
+	}
+
+	public void setVendas(List<Vendas> vendas) {
+		this.vendas = vendas;
 	}
 
 	@Override
