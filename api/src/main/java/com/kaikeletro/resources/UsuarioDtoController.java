@@ -56,6 +56,11 @@ public class UsuarioDtoController {
 		return ResponseEntity.ok().body(userService.deleteById(id));
 	}
 	
+	//Método que estou criando
+	public List<Usuario> findByNomeContains(String nomeBusca){
+		return userService.findByNomeContainsIgnoreCase(nomeBusca);
+	}
+	
 	
 
 	//http://localhost:8080/usuariosDto/usuariosDto/page?pagina=1&quantidadeDeLinhas=1&direcao=ASC&campoOrdenacao=id
