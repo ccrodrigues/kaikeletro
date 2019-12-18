@@ -12,11 +12,15 @@ export class ProdutosService {
   constructor(private http : HttpClient) { }
 
   // Url da API
-  url : string = "http://localhost:8080/"
+  url : string = "http://localhost:8080/produtos/"
 
   // Pegando todos os usuarios
   getAll() {
     //fazendo a requisição
-    return this.http.get(this.url + "produtos");
+    return this.http.get(this.url);
+  }
+
+  delete(id) {
+    return this.http.delete(this.url + id);
   }
 }

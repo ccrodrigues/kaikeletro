@@ -41,6 +41,6 @@
         </tbody>    
     </table>
 
-    <app-deletar-produto *ngIf="isDelete" [idProduto]="id" (close)="lessDelete()"></app-deletar-produto>
+    <app-deletar-produto [hidden]="isDelete == false" [idProduto]="id" (close)="lessDelete()" (deletado)="showMsgApagou($event)"></app-deletar-produto>
     <app-show-more *ngIf="isShowMore" [produto]="selecionado" (close)="lessMore()"></app-show-more>
 </div>

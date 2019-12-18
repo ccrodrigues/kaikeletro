@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { ProdutosService } from 'src/app/shared/Services/produtos.service';
 
 @Component({
@@ -9,9 +9,9 @@ import { ProdutosService } from 'src/app/shared/Services/produtos.service';
 export class ListaComponent implements OnInit {
 
 
-  isShowMore  : boolean   = false;
-  isDelete    : boolean   = false;
-  
+  isShowMore: boolean = false;
+  isDelete: boolean = false;
+
   @Input() Produtos;
   pesquisado;
   selecionado;
@@ -19,12 +19,20 @@ export class ListaComponent implements OnInit {
   id;
 
   ngOnInit() {
-    
-//    Pegando todos os registros de produtos
+    this.showAll();
+
+  }
+
+  showMsgApagou() {
+    console.log("Apagou!")
+    this.showAll();
+  }
+
+  showAll() {
+    //    Pegando todos os registros de produtos
     this.ps.getAll().subscribe(
       a => {
         this.listProducts = a;
-        console.log(a)
       }
     );
   }
@@ -47,6 +55,7 @@ export class ListaComponent implements OnInit {
     this.isDelete = false;
   }
 
-  constructor(private ps : ProdutosService) { }
+
+  constructor(private ps: ProdutosService) { }
 
 } 
