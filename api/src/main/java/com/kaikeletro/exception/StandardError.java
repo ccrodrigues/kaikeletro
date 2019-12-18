@@ -1,4 +1,4 @@
-package com.brq.mvc.exception;
+package com.kaikeletro.exception;
 
 public class StandardError {
 

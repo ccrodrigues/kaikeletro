@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaikeletro.domain.Produto;
+import com.kaikeletro.domain.Usuario;
+import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.ProdutoService;
 
 @RestController
@@ -32,7 +34,13 @@ public class ProdutoController {
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Optional <Produto> > findById(@PathVariable("id")int id){
-		return ResponseEntity.ok().body(produtoService.findById(id));
+		Optional <Produto> obj = produtoService.findById(id);
+		
+		if (obj.isPresent() == false) {
+			throw new TratamentoDeErros(id, new Produto());
+		}
+		
+		return ResponseEntity.ok().body(obj);
 	}
 	
 	//Buscar Produto pelo Nome

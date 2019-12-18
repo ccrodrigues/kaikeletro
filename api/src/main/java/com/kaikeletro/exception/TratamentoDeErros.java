@@ -1,4 +1,4 @@
-package com.brq.mvc.exception;
+package com.kaikeletro.exception;
 
 
 public class TratamentoDeErros extends RuntimeException {
@@ -7,6 +7,7 @@ public class TratamentoDeErros extends RuntimeException {
 	public TratamentoDeErros(int id, Object obj) {
 		super ("O " + obj.getClass().getSimpleName() +
 				" com id " + id  + " não foi localizado!" );
+
 	}
 	
 }
