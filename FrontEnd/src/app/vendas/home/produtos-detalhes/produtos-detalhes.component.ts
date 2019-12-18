@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { ProdutoModel } from 'src/app/shared/models/produto.model';
 
 @Component({
   selector: 'app-produtos-detalhes',
@@ -9,7 +11,7 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 })
 export class ProdutosDetalhesComponent implements OnInit {
 
-
+  produto:ProdutoModel
 
   slides = [
     { image: 'https://images-submarino.b2w.io/produtos/01/00/image/134241/7/134241731_7GG.jpg' },
@@ -24,9 +26,13 @@ export class ProdutosDetalhesComponent implements OnInit {
   Parcela=""+this.Preco;
 
 
-  constructor() { }
+  constructor(private produtoService:ProdutosService) { }
 
   ngOnInit() {
+    this.produtoService.getById("1").subscribe(data =>{
+      this.produto=data;
+      console.log(this.produto)
+    });
   }
   trocarImagem(img) {
     this.imagemAtual = img;
