@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FooterLayoutComponent } from './footer-layout/footer-layout.component';
+import { FooterLayoutComponent } from './vendas/footer-layout/footer-layout.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
