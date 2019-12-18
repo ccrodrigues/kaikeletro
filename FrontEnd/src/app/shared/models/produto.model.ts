@@ -7,6 +7,5 @@ export class ProdutoModel{
     nome:string;
     preco:number;
     descricao:string;
-    categorias:Array<CategoriaModel>;
     imagens:Array<ImagenModel>;
 }
