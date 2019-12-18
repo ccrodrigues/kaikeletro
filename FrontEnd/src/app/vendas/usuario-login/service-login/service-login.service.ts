@@ -37,10 +37,6 @@ fazerLogin(usuario : {email : String, senha : String} ){
         
     }
 
-
-
- 
-  
 getIsAutenticado(){
   return this.isAutenticado;
 }
