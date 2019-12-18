@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.Categoria;
-import com.kaikeletro.domain.Produto;
 import com.kaikeletro.repositories.CategoriaRepository;
 
 @Service

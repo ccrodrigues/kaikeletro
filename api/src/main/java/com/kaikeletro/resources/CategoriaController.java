@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaikeletro.domain.Categoria;
-import com.kaikeletro.domain.Produto;
 import com.kaikeletro.services.CategoriaService;
 
 @RestController

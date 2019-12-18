@@ -4,13 +4,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,15 +28,14 @@ public class UsuarioDtoController {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<List<UsuarioDto>> getAll() {
-
 		List<Usuario> lista = userService.getAll();
 		List<UsuarioDto> userDto = lista.stream() // pegando cada elemento
 				.map(obj -> new UsuarioDto(obj)) // aplica a regra
 				.collect((Collectors.toList())); // coloca em uma outra lista e salva em listaDTO
-
 		return ResponseEntity.ok().body(userDto);
 	}
 
+	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<UsuarioDto> findById(@PathVariable("id") int idUsuario) {
 		Optional<Usuario> obj = userService.findById(idUsuario);
@@ -59,6 +56,7 @@ public class UsuarioDtoController {
 		return ResponseEntity.ok().body(userService.deleteById(id));
 	}
 	
+	
 
 	//http://localhost:8080/usuariosDto/usuariosDto/page?pagina=1&quantidadeDeLinhas=1&direcao=ASC&campoOrdenacao=id
 	@RequestMapping(value = "/usuariosDto/page", method = RequestMethod.GET)
@@ -71,7 +69,6 @@ public class UsuarioDtoController {
 		return ResponseEntity.ok().body(usuarios);
 	}
 
-	
 	
 	
 }
