@@ -53,9 +53,6 @@ public class UsuarioDtoController {
 		return ResponseEntity.ok().body(userService.deleteById(id));
 	}
 
-	public List<Usuario> findByNomeContains(String nomeBusca) {
-		return userService.findByNomeContainsIgnoreCase(nomeBusca);
-	}
 
 	@RequestMapping(value = "/usuariosDto/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<Usuario>> findPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
@@ -66,6 +63,7 @@ public class UsuarioDtoController {
 		return ResponseEntity.ok().body(usuarios);
 	}
 
+
 	// Busca por nome
 	@RequestMapping(value = "nomeDto/{nomeBusca}", method = RequestMethod.GET)
 	public ResponseEntity<List<UsuarioDto>> findByNome(@PathVariable("nomeBusca") String nomeBusca) {
@@ -74,6 +72,7 @@ public class UsuarioDtoController {
 		List<UsuarioDto> listaDto = lista.stream().map(obj -> new UsuarioDto(obj)).collect((Collectors.toList()));
 		return ResponseEntity.ok().body(listaDto);
 	}
+
 
 	// Busca por email
 	@RequestMapping(value = "email/{emailBusca}", method = RequestMethod.GET)
