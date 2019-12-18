@@ -8,18 +8,17 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TelaRegistroComponent } from './tela-registro/tela-registro.component';
 import { UsuarioLoginComponent } from './usuario-login/usuario-login.component';
 import { HomeComponent } from './home/home.component';
-import { CarouselComponent, CarouselModule } from 'ngx-bootstrap/carousel';
 import { PaginacaoComponent } from './home/paginacao/paginacao.component';
 import { ProdutosComponent } from './home/produtos/produtos.component';
 import { ProdutosDetalhesComponent } from './home/produtos-detalhes/produtos-detalhes.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { BrowserModule } from '@angular/platform-browser';
+import { CarouselModule } from 'ngx-bootstrap/carousel'
+import { CarouselComponent } from './home/carousel/carousel.component';
 
 @NgModule({
   declarations: [TelaRegistroComponent, UsuarioLoginComponent, HomeComponent, TelaRegistroComponent,
-     UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent],
+     UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent],
   imports: [
     CommonModule,
     VendasRoutingModule,
@@ -30,7 +29,8 @@ import { BrowserModule } from '@angular/platform-browser';
     //BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    CarouselModule
   ],
   exports:[
     PaginacaoComponent,
