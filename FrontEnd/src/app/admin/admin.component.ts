@@ -12,4 +12,8 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
   }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f39370d0757065366f0d6978ba37ee6630f5a4c4
