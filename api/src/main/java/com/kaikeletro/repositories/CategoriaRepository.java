@@ -11,4 +11,6 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
 
 	//SELECT * FROM categoria WHERE nome LIKE
 	List<Categoria> findByNomeLike(String nome);
+	
+	
 }
