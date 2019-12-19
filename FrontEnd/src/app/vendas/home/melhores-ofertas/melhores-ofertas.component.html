@@ -1,10 +1,9 @@
 <br />
 <p>Melhores Ofertas</p>
-<div>
-    <div class="row">
+    <div class="row" #topo>
         <div class="col-sm" *ngFor="let p of produtos">
             <app-produtos categoria={{p.categoria}} nome={{p.nome}} descricaoProduto={{p.descricao}} preco={{p.preco}}
                 imgSRC={{p.img}}></app-produtos>
         </div>
-    </div>
+        <pagination-controls (pageChange)="p = $event" (click)="scroll(topo)"></pagination-controls>
 </div>
