@@ -1,32 +1,26 @@
 <br/>
-<div class="row">
+<div class="row" >
     <div class="col-4 ">
-        <img [src]="imagemAtual" height="75%" width="100%" />
+        <img [src]="produto?.imagens?.imagemProduto" height="75%" width="100%" />
         <div class="row">
-            <div class="col zeroPadding " *ngFor="let img of slides">
-                <!-- <app-carousel  [slides]="slides"></app-carousel> -->
-                <img width="100%" heigth="25%" [src]="img.image" (click)="trocarImagem(img.image)" />
+            <div class="col zeroPadding " *ngFor="let img of produto?.imagens">
+                <img width="100%"   heigth="25%" [src]="img?.imagemProduto" (click)="trocarImagem(img.imagemProduto)" />
             </div>
         </div>
     </div>
     <div class="col">
         <div class=" zeroPadding">
             <span class=" font-weight-bold">
-                <p class="text-center">Smart TV LED 50" Samsung 50RU7100 Ultra HD 4K com Conversor Digital 3
-                    HDMI 2 USB Wi-Fi Visual Livre de Cabos Controle Remoto Único e Bluetooth</p>
+                <p class="text-center">{{produto?.nome}}</p>
             </span>
         </div>
         <br>
         <div class="col">
             <span class="font-weight-light font-italic text-justify">
-                Agora assistir aos seus filmes favoritos, series, programas e muito mais vai tornar-se uma
-                experiência
-                ainda mais imersiva e completa, com a Smart TV LED 50" Samsung UN50RU7100GXZD Ultra HD 4K.
-                Desenvolvida
-                com o que a de melhor em
+                {{produto?.nome}}
             </span>
             <br/><hr>
-              <p class="text-center text-justify font-weight-bold">Preco: {{Preco| currency:'BRL':true:'1.2-2'}} </p>
+              <p class="text-center text-justify font-weight-bold">Preco: {{produto?.preco| currency:'BRL':true:'1.2-2'}} </p>
              
                 <div class="btn-group" dropdown>
                     <p >Parcelas: </p>

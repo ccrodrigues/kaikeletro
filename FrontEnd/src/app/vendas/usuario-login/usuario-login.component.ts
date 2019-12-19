@@ -31,12 +31,13 @@ export class UsuarioLoginComponent implements OnInit {
   }
   onSubmit(){
     console.log(this.loginForm);
+
     //Verifica ao enviar se os dados informados são validos
-    // this.serviceLogin
-    // .fazerLogin(this.loginForm.value.email, this.loginForm.value.senha)
+    let login = {email : this.loginForm.value.email, senha : this.loginForm.value.senha};
+    return this.serviceLogin.fazerLogin(login);
   }
 
-  //campo para validar se os campos forem devidamente preenchidos 
+  //campo para validar se os campos forem devidamente preenchidos para habilitação do botão
  isErrorCampo(nomeCampo){
     return (!this.loginForm.get(nomeCampo).valid && this.loginForm.get(nomeCampo).touched ); 
   }

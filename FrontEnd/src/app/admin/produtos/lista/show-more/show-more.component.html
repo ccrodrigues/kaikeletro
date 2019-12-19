@@ -12,14 +12,13 @@
                             Nome produto
                             <input type="text" [value]="produto.nome" class="form-control">
                         </div>
-                        <div class="col">
+                        <div class="col" *ngFor="let cat of produto.categorias">
                             Categoria
                             <select name="categoria" *ngFor="let cat of produto.categorias" class="form-control">
                                 <option value="{{ cat.nome }}">{{ cat.nome }}</option>
                             </select>
                         </div>
                     </div>
-                        
                 </div>
                 <div class="form-group">
                     <div class="row">
@@ -36,6 +35,7 @@
                     
                 </div>
                 <label for='selecao-arquivo' class="btn btn-success btn-sm">Adicionar uma imagem</label><br><br>
+<<<<<<< Updated upstream
                 <input id='selecao-arquivo' type='file'>
                 <div class="row">
                     <div class="col-3 position-">
@@ -49,6 +49,15 @@
                     <div class="col-3">
                         <button class="btn btn-danger rounded-circle myBtnClose btn-sm" (click)="funcao()">x</button>
                         <img class="img-thumbnail " src="https://observatoriodegames.bol.uol.com.br/wp-content/uploads/2019/10/asus-rog-phone-II.jpg" alt="Generic placeholder image">
+=======
+                <input id='selecao-arquivo' type='file' (change)="getImageAndPut($event)">
+
+                <div class="row">
+                   
+                    <div class="col-3" *ngFor="let imgs of imagens">
+                        <input type="button" class="btn btn-danger rounded-circle myBtnClose btn-sm" value="x" (click)="lessImage(imgs)">
+                        <img class="img-thumbnail " [src]="imgs" alt="Generic placeholder image">
+>>>>>>> Stashed changes
                     </div>
                 </div>
                 <div class="container clearfix">
