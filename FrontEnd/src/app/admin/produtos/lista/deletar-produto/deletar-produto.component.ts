@@ -25,7 +25,7 @@ export class DeletarProdutoComponent implements OnInit {
 
     console.log(id)
     
-    this.ps.delete(id).subscribe(
+    this.ps.deleteProduto(id).subscribe(
       a => {
         console.log("Etstou aqui");
         this.deletado.emit(true)
