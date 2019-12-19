@@ -29,19 +29,15 @@
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let p of listProducts" >
-                <tr *ngIf="p.produtos != ''">
-                    <ng-container *ngFor="let prod of p.produtos">
-                        <td>{{ prod.idProduto }}</td>
-                        <td>{{ prod.nome }}</td>
-                        <td>{{ prod.preco }}</td>
-                        <td>
-                            <button class="btn btn-info btn-sm margin-right-5" (click)="showMore(p)">+</button>
-                            <button class="btn btn-danger btn-sm" (click)="showDelete(p.idProduto)">x</button>
-                        </td>
-                    </ng-container>
+                <tr *ngFor="let produtos of listProducts">
+                    <td>{{ produtos.idProduto }}</td>
+                    <td>{{ produtos.nome }}</td>
+                    <td>{{ produtos.preco }}</td>
+                    <td>
+                        <button class="btn btn-info btn-sm margin-right-5" (click)="showMore(produtos)">+</button>
+                        <button class="btn btn-danger btn-sm" (click)="showDelete(produtos.idProduto)">x</button>
+                    </td>
                 </tr>
-        </ng-container>
         </tbody>    
     </table>
 

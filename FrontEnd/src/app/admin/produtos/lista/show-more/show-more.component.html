@@ -5,16 +5,16 @@
           </button>
           <div class="container">
             <form action="" >
-                <h5 class="id"><b>ID:</b> {{ produto.idProduto }}</h5>
+                <h5 class="id"><b>ID:</b> </h5>
                 <div class="form-group">
                     <div class="row">
                         <div class="col">
                             Nome produto
                             <input type="text" [value]="produto.nome" class="form-control">
                         </div>
-                        <div class="col" *ngFor="let cat of produto.categorias">
+                        <div class="col">
                             Categoria
-                            <select name="categoria" *ngFor="let cat of produto.categorias" class="form-control">
+                            <select name="categoria" class="form-control" *ngFor="let cat of produto.categorias">
                                 <option value="{{ cat.nome }}">{{ cat.nome }}</option>
                             </select>
                         </div>
@@ -42,7 +42,7 @@
                    
                     <div class="col-3" *ngFor="let imgs of imagens">
                         <input type="button" class="btn btn-danger rounded-circle myBtnClose btn-sm" value="x" (click)="lessImage(imgs)">
-                        <img class="img-thumbnail " [src]="imgs" alt="Generic placeholder image">
+                        <img class="img-thumbnail " [src]=" verificarImagem( imgs )  ? imgs : imgs.imagemProduto " alt="Generic placeholder image">
                     </div>
                 
                 </div>
