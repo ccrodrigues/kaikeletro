@@ -39,11 +39,11 @@ public class ApiApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
-
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
+		this.produtoCategoriaDemos();
 		this.produtoCategoriaDemo();
 
 	}
@@ -98,7 +98,7 @@ public class ApiApplication implements CommandLineRunner {
 	}
 
 	// Teste de Produtos e Categorias
-	private void produtoCategoriaDemo() {
+	private void produtoCategoriaDemos() {
 		Categoria c1 = new Categoria();
 		c1.setNome("Microcomputador");
 
@@ -133,5 +133,29 @@ public class ApiApplication implements CommandLineRunner {
 		produtoRepository.saveAll(Arrays.asList(p1));
 
 	}
+
+	
+	//Teste de Produtos e Categorias
+	private void produtoCategoriaDemo() {
+	Categoria c1 = new Categoria();
+	c1.setNome("Microcomputador");
+	
+	ImagemProd a1 = new ImagemProd();
+	a1.setImagemProduto("https://www.saldaodainformatica.com.br/5712-thickbox_default/notebook-lenovo-ideapad-320-80yh0006br-prata-intel-core-i5-7200u-ram-8gb-hd-1tb-tela-156-windows-10.jpg");
+	a1.setDescricaoImagem("NoteBook Lenovo");
+	a1.setNomeImagem("note");
+		
+	for (int i =3 ; i < 18 ; i++) {
+		Produto prod = new Produto();
+		prod.setNome("Notebook " + i);
+		prod.setDescricao("Notebook Kaik i171");
+		prod.setImagens(Arrays.asList(a1));
+		imagemRepository.saveAll(Arrays.asList(a1));
+		produtoRepository.saveAll(Arrays.asList(prod));
+		produtoRepository.save(prod);
+	}
+	
+	}	
+
 
 }
