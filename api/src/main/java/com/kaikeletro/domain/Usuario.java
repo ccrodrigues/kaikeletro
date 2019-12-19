@@ -70,6 +70,14 @@ public class Usuario {
 		this.senha = senha;
 	}
 
+	public List<EnderecoUsuario> getIdEndereco() {
+		return idEndereco;
+	}
+
+	public void setIdEndereco(List<EnderecoUsuario> idEndereco) {
+		this.idEndereco = idEndereco;
+	}
+
 	public String getDataDeNascimento() {
 		return dataDeNascimento;
 	}
