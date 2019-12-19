@@ -32,6 +32,7 @@ export class ProdutosDetalhesComponent implements OnInit {
       this.Preco=data.preco; 
       this.Parcela=data.preco
       this.imagemAtual=data.imagens[0].imagemProduto;
+      console.log(this.imagemAtual)
 
     });
   }
