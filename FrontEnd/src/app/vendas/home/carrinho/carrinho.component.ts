@@ -37,10 +37,7 @@ export class CarrinhoComponent implements OnInit {
 
 
   ngOnInit() {
-    this.selectForm = this.formBuilder.group(
-      {select:['',[ ] ]
-      }
-      );
+  
     this.calculoCarrinho()
     }
 
@@ -60,10 +57,7 @@ export class CarrinhoComponent implements OnInit {
       this.totalProdutos = this.itensCarrinhos.length;
       this.valorProdutos =this.itensCarrinhos.reduce((valorProdutos, valor) => valorProdutos + (valor.preco*valor.quantidade), 0)
       this.valorTotal = this.valorProdutos + this.frete
-    }
 
-    addQntidade(value){
-      console.log(value)
     }
 
     changeSuit(idProduto,quantidade,selectedOption) {
@@ -74,8 +68,7 @@ export class CarrinhoComponent implements OnInit {
           this.calculoCarrinho()
         }
       }
-      
-      console.log(this.selectedOption);
+      console.log(this.selectedOption ) ;
     }
   
   }
