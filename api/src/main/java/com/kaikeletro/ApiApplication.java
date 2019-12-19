@@ -45,14 +45,14 @@ public class ApiApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		this.produtoCategoriaDemo();
-<<<<<<< HEAD
+
 		this.produtoCategoriaDemo();
 		this.produtoCategoriaDemo();
 		this.produtoCategoriaDemo();
 		this.produtoCategoriaDemo();
-=======
+
 		this.vendasProdutoUsuario();
->>>>>>> origin/apiVendas
+
 		
 	}
 	
@@ -92,7 +92,6 @@ public class ApiApplication implements CommandLineRunner{
 		v1.setValor(5000.0);
 		v1.setStatus("Ativo");
 		v1.setTotalItens(10);
-		v1.setTotalProdutos(Arrays.asList(p1));
 		v1.setUsuario(u1);
 		v1.setDataVenda(new Date());
 		v1.setTotalVendas(5);

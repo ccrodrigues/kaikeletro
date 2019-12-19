@@ -11,8 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -53,8 +55,8 @@ public class Produto implements Serializable {
 			inverseJoinColumns = @JoinColumn(name = "imagem_id"))
 	private List <ImagemProd> imagens;
 	
-	@ManyToMany
-	private List<Vendas> vendas ;
+	@OneToMany(mappedBy = "produto")
+	List<Item_Venda> item;
 
 	public Produto() {
 		
@@ -115,13 +117,6 @@ public class Produto implements Serializable {
 		this.imagens = imagens;
 	}
 
-	public List<Vendas> getVendas() {
-		return vendas;
-	}
-
-	public void setVendas(List<Vendas> vendas) {
-		this.vendas = vendas;
-	}
 
 	@Override
 	public int hashCode() {
