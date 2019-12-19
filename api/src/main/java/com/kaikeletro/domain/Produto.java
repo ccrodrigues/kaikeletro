@@ -54,7 +54,7 @@ public class Produto implements Serializable {
 	private List <ImagemProd> imagens;
 	
 	@ManyToMany
-	private List<Vendas> vendas;
+	private List<Vendas> vendas ;
 
 	public Produto() {
 		
