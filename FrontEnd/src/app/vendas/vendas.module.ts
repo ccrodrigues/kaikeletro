@@ -15,10 +15,13 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CarouselModule } from 'ngx-bootstrap/carousel'
 import { CarouselComponent } from './home/carousel/carousel.component';
+import { MelhoresOfertasComponent } from './home/melhores-ofertas/melhores-ofertas.component';
+import { MaisVendidosComponent } from './home/mais-vendidos/mais-vendidos.component';
+import { MaisDesejadosComponent } from './home/mais-desejados/mais-desejados.component';
 
 @NgModule({
   declarations: [TelaRegistroComponent, UsuarioLoginComponent, HomeComponent, TelaRegistroComponent,
-     UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent],
+     UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent, MelhoresOfertasComponent, MaisVendidosComponent, MaisDesejadosComponent],
   imports: [
     CommonModule,
     VendasRoutingModule,

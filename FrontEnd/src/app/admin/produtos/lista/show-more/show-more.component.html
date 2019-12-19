@@ -12,14 +12,13 @@
                             Nome produto
                             <input type="text" [value]="produto.nome" class="form-control">
                         </div>
-                        <div class="col">
+                        <div class="col" *ngFor="let cat of produto.categorias">
                             Categoria
                             <select name="categoria" *ngFor="let cat of produto.categorias" class="form-control">
                                 <option value="{{ cat.nome }}">{{ cat.nome }}</option>
                             </select>
                         </div>
                     </div>
-                        
                 </div>
                 <div class="form-group">
                     <div class="row">
@@ -35,21 +34,17 @@
                     </div>
                     
                 </div>
+                
                 <label for='selecao-arquivo' class="btn btn-success btn-sm">Adicionar uma imagem</label><br><br>
-                <input id='selecao-arquivo' type='file'>
+                <input id='selecao-arquivo' type='file' (change)="getImageAndPut($event)">
+
                 <div class="row">
-                    <div class="col-3 position-">
-                        <button class="btn btn-danger rounded-circle myBtnClose btn-sm" (click)="funcao()">x</button>
-                        <img class="img-thumbnail " src="https://www.assisnews.com.br/wp-content/uploads/2019/07/rog-phone-2-02.jpg" alt="Generic placeholder image">
+                   
+                    <div class="col-3" *ngFor="let imgs of imagens">
+                        <input type="button" class="btn btn-danger rounded-circle myBtnClose btn-sm" value="x" (click)="lessImage(imgs)">
+                        <img class="img-thumbnail " [src]="imgs" alt="Generic placeholder image">
                     </div>
-                    <div class="col-3">
-                        <button class="btn btn-danger rounded-circle myBtnClose btn-sm" (click)="funcao()">x</button>
-                        <img class="img-thumbnail " src="https://s2.glbimg.com/-KlsJa56uVTJCrM7GFuzkPEXrhk=/0x0:695x469/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2018/d/3/0i4CI5QJm7qW4iBBNNrA/1.nubia-red-light-novo-smartphone-gamer-da-zte.jpg" alt="Generic placeholder image">
-                    </div>
-                    <div class="col-3">
-                        <button class="btn btn-danger rounded-circle myBtnClose btn-sm" (click)="funcao()">x</button>
-                        <img class="img-thumbnail " src="https://observatoriodegames.bol.uol.com.br/wp-content/uploads/2019/10/asus-rog-phone-II.jpg" alt="Generic placeholder image">
-                    </div>
+                
                 </div>
                 <div class="container clearfix">
                     <button type="button" class="btn btn-success float-right">Salvar</button>
