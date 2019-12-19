@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ProdutosService } from 'src/app/shared/Services/produtos.service';
 
 @Component({
   selector: 'app-deletar-produto',
@@ -7,14 +8,32 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class DeletarProdutoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ps : ProdutosService) { }
+  
   @Output() close  = new EventEmitter();
+  @Output() deletado = new EventEmitter();
   @Input() idProduto;
 
   ngOnInit() {
   }
 
   fechar() {
-    this.close.emit(false);
+    this.close.emit();
+  }
+
+  excluir(id) {
+
+    console.log(id)
+    
+    this.ps.delete(id).subscribe(
+      a => {
+        console.log("Etstou aqui");
+        this.deletado.emit(true)
+      },
+      erro => {
+        console.log(erro)
+      }
+    );
+    this.fechar();
   }
 }

@@ -29,7 +29,7 @@ public class CategoriaService {
 		return repoCategoria.findById(id);
 	}
 	
-	//Buscar Categoria pelo nome
+	//Buscar Categoria pelo nome, lista os produtos da categoria buscada
 	public List<Categoria> findByNome(String nomeBusca){
 		List <Categoria > listaCategoria = repoCategoria.findByNomeLike(nomeBusca);
 		return listaCategoria;

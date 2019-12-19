@@ -10,6 +10,10 @@
     height: 100%;
 }
 
+.my-text-title {
+    padding: 20px;
+}
+
 .icon {
     width: 80%;
 }

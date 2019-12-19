@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.Produto;
+import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.CategoriaService;
 
 @RestController
@@ -28,15 +29,21 @@ public class CategoriaController {
 	public ResponseEntity <List <Categoria> > listarCategorias(){
 		return ResponseEntity.ok().body(categoriaService.listarCategorias());
 	}
-	
+		
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Optional <Categoria> > findbyId(@PathVariable("id")int id){
-		return ResponseEntity.ok().body(categoriaService.findById(id));
+		Optional < Categoria > obj = categoriaService.findById(id);
+		
+		if (obj.isPresent() == false) {
+			throw new TratamentoDeErros(id, new Categoria());
+		}
+		
+		return ResponseEntity.ok().body(obj);
 	}
 	
-	//Buscar Produto pelo Nome
+	//Buscar Categoria pelo Nome, lista os produtos da categoria buscada
 	@RequestMapping(value="/nome/{nomeBusca}", method=RequestMethod.GET)
-	public ResponseEntity<List <Categoria> > findProdutosByName(@PathVariable("nomeBusca")String nomeBusca){
+	public ResponseEntity<List <Categoria> > findCategoriasByName(@PathVariable("nomeBusca")String nomeBusca){
 		return ResponseEntity.ok().body(categoriaService.findByNome(nomeBusca));
 	}
 	

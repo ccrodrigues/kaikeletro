@@ -45,10 +45,13 @@ public class Produto implements Serializable {
 		joinColumns = @JoinColumn(name = "produto_id"),
 		inverseJoinColumns = @JoinColumn(name = "categoria_id")
 	)
+	@JsonIgnore
 	private List<Categoria> categorias;
 	
-	@OneToMany(mappedBy="produto")
-	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name="produtos_imagens",
+			joinColumns = @JoinColumn(name = "produto_id"),
+			inverseJoinColumns = @JoinColumn(name = "imagem_id"))
 	private List <ImagemProd> imagens;
 
 	public Produto() {
