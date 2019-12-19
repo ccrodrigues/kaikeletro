@@ -18,10 +18,18 @@ import { CarouselComponent } from './home/carousel/carousel.component';
 import { MelhoresOfertasComponent } from './home/melhores-ofertas/melhores-ofertas.component';
 import { MaisVendidosComponent } from './home/mais-vendidos/mais-vendidos.component';
 import { MaisDesejadosComponent } from './home/mais-desejados/mais-desejados.component';
+<<<<<<< Updated upstream
 
 @NgModule({
   declarations: [TelaRegistroComponent, UsuarioLoginComponent, HomeComponent, TelaRegistroComponent,
      UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent, MelhoresOfertasComponent, MaisVendidosComponent, MaisDesejadosComponent],
+=======
+import { CarrinhoComponent } from './home/carrinho/carrinho.component';
+
+@NgModule({
+  declarations: [TelaRegistroComponent, UsuarioLoginComponent, HomeComponent, TelaRegistroComponent,
+     UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent, MelhoresOfertasComponent, MaisVendidosComponent, MaisDesejadosComponent,CarrinhoComponent],
+>>>>>>> Stashed changes
   imports: [
     CommonModule,
     VendasRoutingModule,
@@ -33,7 +41,7 @@ import { MaisDesejadosComponent } from './home/mais-desejados/mais-desejados.com
     BsDropdownModule.forRoot(),
     FormsModule,
     NgxPaginationModule,
-    CarouselModule
+    CarouselModule,
   ],
   exports:[
     PaginacaoComponent,
@@ -42,6 +50,7 @@ import { MaisDesejadosComponent } from './home/mais-desejados/mais-desejados.com
     UsuarioLoginComponent,
     HomeComponent,
     ProdutosDetalhesComponent,
+    CarrinhoComponent
     //CarouselComponent
   ]
 })

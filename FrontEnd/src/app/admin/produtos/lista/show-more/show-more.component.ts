@@ -8,6 +8,7 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 export class ShowMoreComponent implements OnInit {
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   @Input() produto = [];
 
   @Output() close = new EventEmitter();
@@ -15,6 +16,8 @@ export class ShowMoreComponent implements OnInit {
   
   constructor() { }
 =======
+=======
+>>>>>>> Stashed changes
   @Input() produto  = [];
   @Output() close   = new EventEmitter();
   imagens           = [];
@@ -35,7 +38,10 @@ export class ShowMoreComponent implements OnInit {
   }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
   getImageAndPut(img : any) {
     this.imagem = <File>img.target.files[0];
     this.putImage(img.value);
@@ -62,5 +68,8 @@ export class ShowMoreComponent implements OnInit {
       }
     }
   }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }

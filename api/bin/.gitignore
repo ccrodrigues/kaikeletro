@@ -14,6 +14,8 @@ target/
 .sts4-cache
 .metadata
 
+.mvn
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -30,3 +32,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+## bin folder
+bin/
