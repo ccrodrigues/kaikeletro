@@ -20,7 +20,7 @@ import com.sun.istack.NotNull;
 @Entity
 @Table(name = "usuario")
 
-public class Usuario {
+public class Usuario  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_NAME_SEQ")
