@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriasService } from 'src/app/shared/Services/categorias.service';
 
 @Component({
   selector: 'app-adicionar',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdicionarComponent implements OnInit {
 
-  constructor() { }
+  categorias = [];
+
+  constructor(private cs : CategoriasService) { }
 
   ngOnInit() {
+    this.cs.getAll()
   }
 
 }

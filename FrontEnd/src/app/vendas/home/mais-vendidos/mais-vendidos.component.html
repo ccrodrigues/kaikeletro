@@ -1,9 +1,10 @@
 <p>Os mais vendidos</p>
 <div class="container">
-    <div class="row">
-        <div class="col-sm" *ngFor="let p of produtos">
+    <div class="row" #topo>
+        <div class="col-4" *ngFor="let p of produtos">
             <app-produtos categoria={{p.categoria}} nome={{p.nome}} descricaoProduto={{p.descricao}} preco={{p.preco}}
-                imgSRC={{p.img}}></app-produtos>
+                imgSRC={{p.imagens[0].imagemProduto}}></app-produtos>
         </div>
     </div>
+    <pagination-controls (pageChange)="p = $event" (click)="scroll(topo)"></pagination-controls>
 </div>

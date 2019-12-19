@@ -18,26 +18,11 @@ import { CarouselComponent } from './home/carousel/carousel.component';
 import { MelhoresOfertasComponent } from './home/melhores-ofertas/melhores-ofertas.component';
 import { MaisVendidosComponent } from './home/mais-vendidos/mais-vendidos.component';
 import { MaisDesejadosComponent } from './home/mais-desejados/mais-desejados.component';
-<<<<<<< HEAD
 import { CarrinhoComponent } from './home/carrinho/carrinho.component';
 
 @NgModule({
   declarations: [TelaRegistroComponent, UsuarioLoginComponent, HomeComponent, TelaRegistroComponent,
      UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent, MelhoresOfertasComponent, MaisVendidosComponent, MaisDesejadosComponent,CarrinhoComponent],
-=======
-<<<<<<< Updated upstream
-
-@NgModule({
-  declarations: [TelaRegistroComponent, UsuarioLoginComponent, HomeComponent, TelaRegistroComponent,
-     UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent, MelhoresOfertasComponent, MaisVendidosComponent, MaisDesejadosComponent],
-=======
-import { CarrinhoComponent } from './home/carrinho/carrinho.component';
-
-@NgModule({
-  declarations: [TelaRegistroComponent, UsuarioLoginComponent, HomeComponent, TelaRegistroComponent,
-     UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent, MelhoresOfertasComponent, MaisVendidosComponent, MaisDesejadosComponent,CarrinhoComponent],
->>>>>>> Stashed changes
->>>>>>> AtualizacaoUsuarios
   imports: [
     CommonModule,
     VendasRoutingModule,

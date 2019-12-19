@@ -8,39 +8,18 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ShowMoreComponent implements OnInit {
 
-<<<<<<< HEAD
-  @Input() produto  = [];
+  @Input() produto : any  = [];
   @Output() close   = new EventEmitter();
   imagens           = [];
+  imagem : File     = null;
   ler = new FileReader();
-  imagem : File = null;
   valor;
 
   constructor(private sanitizer : DomSanitizer) { }
-=======
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  @Input() produto = [];
-
-  @Output() close = new EventEmitter();
-
-  
-  constructor() { }
-=======
-=======
->>>>>>> Stashed changes
-  @Input() produto  = [];
-  @Output() close   = new EventEmitter();
-  imagens           = [];
-  ler = new FileReader();
-  imagem : File = null;
-  valor;
-
-  constructor(private sanitizer : DomSanitizer) { }
->>>>>>> Stashed changes
->>>>>>> AtualizacaoUsuarios
 
   ngOnInit() {
+    this.imagens = this.produto.imagens;
+    console.log(this.imagens)
   }
 
   fechar() {
@@ -49,14 +28,6 @@ export class ShowMoreComponent implements OnInit {
     this.close.emit(false)
   }
 
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
->>>>>>> AtualizacaoUsuarios
   getImageAndPut(img : any) {
     this.imagem = <File>img.target.files[0];
     this.putImage(img.value);
@@ -67,27 +38,25 @@ export class ShowMoreComponent implements OnInit {
     if(mimetype.match(/image\/*/) == null) {
       return;
     }
-
     let reader = new FileReader();
     reader.readAsDataURL(this.imagem);
     reader.onload = (_event) => {
       this.imagens.push(reader.result);
+      console.log("=========>>>" + this.imagens)
     }
   }
 
   lessImage(img) {
 
+
     for(let i = 0; 0 < this.imagens.length; i++) {
-      if(this.imagens[i] == img) {
+      if(this.imagens[i].imagemProduto == img || this.imagens[i] == img) {
         return this.imagens.splice(i, 1)
       }
     }
   }
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
->>>>>>> AtualizacaoUsuarios
+
+  verificarImagem( imgs )  {
+    return typeof imgs === 'string'
+  }
 }
