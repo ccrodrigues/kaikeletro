@@ -25,15 +25,18 @@ export class ProdutosDetalhesComponent implements OnInit {
   }
 
    ngOnInit() {
-    this.produtoService.getById("81").subscribe(  data =>{
+    this.produtoService.getById("110").subscribe(  data =>{
+
       this.produto=data;
-      console.log(this.produto)
+
       this.Preco=data.preco; 
       this.Parcela=data.preco
       this.imagemAtual=data.imagens[0].imagemProduto;
-      console.log(this.imagemAtual)
+
     });
   }
+
+
   trocarImagem(img) {
     this.imagemAtual = img;
   }

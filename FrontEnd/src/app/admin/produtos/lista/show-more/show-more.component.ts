@@ -8,7 +8,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ShowMoreComponent implements OnInit {
 
-<<<<<<< HEAD
   @Input() produto  = [];
   @Output() close   = new EventEmitter();
   imagens           = [];
@@ -17,28 +16,6 @@ export class ShowMoreComponent implements OnInit {
   valor;
 
   constructor(private sanitizer : DomSanitizer) { }
-=======
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  @Input() produto = [];
-
-  @Output() close = new EventEmitter();
-
-  
-  constructor() { }
-=======
-=======
->>>>>>> Stashed changes
-  @Input() produto  = [];
-  @Output() close   = new EventEmitter();
-  imagens           = [];
-  ler = new FileReader();
-  imagem : File = null;
-  valor;
-
-  constructor(private sanitizer : DomSanitizer) { }
->>>>>>> Stashed changes
->>>>>>> AtualizacaoUsuarios
 
   ngOnInit() {
   }
@@ -49,14 +26,6 @@ export class ShowMoreComponent implements OnInit {
     this.close.emit(false)
   }
 
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
->>>>>>> AtualizacaoUsuarios
   getImageAndPut(img : any) {
     this.imagem = <File>img.target.files[0];
     this.putImage(img.value);
@@ -83,11 +52,4 @@ export class ShowMoreComponent implements OnInit {
       }
     }
   }
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
->>>>>>> AtualizacaoUsuarios
 }
