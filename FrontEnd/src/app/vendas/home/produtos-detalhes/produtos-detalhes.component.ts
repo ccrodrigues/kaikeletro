@@ -25,7 +25,7 @@ export class ProdutosDetalhesComponent implements OnInit {
   }
 
    ngOnInit() {
-    this.produtoService.getById("147").subscribe(  data =>{
+    this.produtoService.getById("162").subscribe(  data =>{
       this.produto=data;
       this.Preco=data.preco; 
       this.Parcela=data.preco
