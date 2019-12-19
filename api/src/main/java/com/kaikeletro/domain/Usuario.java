@@ -20,7 +20,7 @@ import com.sun.istack.NotNull;
 @Entity
 @Table(name = "usuario")
 
-public class Usuario {
+public class Usuario  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_NAME_SEQ")
@@ -48,11 +48,11 @@ public class Usuario {
 
 	@Column(unique = true)
 	@NotNull
-	public long cpf;
+	public String cpf;
 
-	public long telefone;
+	public String telefone;
 
-	public long celular;
+	public String celular;
 
 	public String getNome() {
 		return nome;
@@ -70,6 +70,14 @@ public class Usuario {
 		this.senha = senha;
 	}
 
+	public List<EnderecoUsuario> getIdEndereco() {
+		return idEndereco;
+	}
+
+	public void setIdEndereco(List<EnderecoUsuario> idEndereco) {
+		this.idEndereco = idEndereco;
+	}
+
 	public String getDataDeNascimento() {
 		return dataDeNascimento;
 	}
@@ -85,28 +93,28 @@ public class Usuario {
         }	
 	}
 
-	public long getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(long cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
-	public long getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(long l) {
-		this.telefone = l;
+	public void setTelefone(String tel) {
+		this.telefone = tel;
 	}
 
-	public long getCelular() {
+	public String getCelular() {
 		return celular;
 	}
 
-	public void setCelular(long l) {
-		this.celular = l;
+	public void setCelular(String cel) {
+		this.celular = cel;
 	}
 
 	public void setId(int id) {
@@ -148,7 +156,4 @@ public class Usuario {
 			return false;
 		return true;
 	}
-	
-	
-
 }
