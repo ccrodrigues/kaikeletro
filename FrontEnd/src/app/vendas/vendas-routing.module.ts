@@ -5,14 +5,16 @@ import { HomeComponent } from './home/home.component';
 import { TelaRegistroComponent } from './tela-registro/tela-registro.component';
 import { ProdutosDetalhesComponent } from './home/produtos-detalhes/produtos-detalhes.component';
 import { PaginacaoComponent } from './home/paginacao/paginacao.component';
+import { CarrinhoComponent } from './home/carrinho/carrinho.component';
 
 
 const routes: Routes = [
-  {path:'login', component: UsuarioLoginComponent},
   {path:'', component: HomeComponent},
+  {path:'login', component: UsuarioLoginComponent},
   {path:'registro', component: TelaRegistroComponent},
   {path: 'detalhes', component: ProdutosDetalhesComponent},
-  {path: 'paginacao', component: PaginacaoComponent}
+  {path: 'paginacao', component: PaginacaoComponent},
+  {path: 'carrinho', component: CarrinhoComponent}
 
 ];
 

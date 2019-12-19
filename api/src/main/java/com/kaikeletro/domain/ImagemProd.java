@@ -1,17 +1,19 @@
 package com.kaikeletro.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="imagem_prod")
@@ -37,9 +39,9 @@ public class ImagemProd implements Serializable{
 	@Column(name="nome")
 	private String nomeImagem;
 	
-	@ManyToOne
-	@JoinColumn(name = "produto_id")
-	private Produto produto;
+	@ManyToMany(mappedBy= "imagens")
+	@JsonIgnore
+	private List <Produto> produto;
 
 	public ImagemProd() {
 	}
@@ -49,6 +51,15 @@ public class ImagemProd implements Serializable{
 		this.imagemProduto = imagemProduto;
 		this.descricaoImagem = descricaoImagem;
 		this.nomeImagem = nomeImagem;
+	}
+	
+
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
 	}
 
 	public int getIdImagem() {

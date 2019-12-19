@@ -26,3 +26,10 @@ p {
 .div-opcoes > button {
     margin: 0px 10px;
 }
+
+
+.myButtonLink {
+    background: none;
+    border: 0px;
+    color: blue;
+}
