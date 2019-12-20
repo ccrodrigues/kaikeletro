@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -36,7 +35,8 @@ public class Vendas implements Serializable {
 	@Column(name= "valor")
 	private double valor;
 	
-	 @OneToMany(mappedBy = "venda")
+
+	@OneToMany(mappedBy = "venda")
 	 List<Item_Venda> item;
 	
 	@ManyToOne
@@ -57,9 +57,10 @@ public class Vendas implements Serializable {
 	public Vendas() {
 
 	}
-	
-	public Vendas(int id, double valor, List<Produto> totalProdutos, Usuario usuario, Date dataVenda, String status,
-			int totalItens, int totalVendas) {
+
+	public Vendas(int id, double valor, Usuario usuario, Date dataVenda, String status, int totalItens,
+			int totalVendas) {
+		super();
 		this.id = id;
 		this.valor = valor;
 		this.usuario = usuario;
@@ -84,6 +85,14 @@ public class Vendas implements Serializable {
 
 	public void setValor(double valor) {
 		this.valor = valor;
+	}
+
+	public List<Item_Venda> getItem() {
+		return item;
+	}
+
+	public void setItem(List<Item_Venda> item) {
+		this.item = item;
 	}
 
 
@@ -130,10 +139,14 @@ public class Vendas implements Serializable {
 	//ToString
 	@Override
 	public String toString() {
+
 		return "Vendas [id=" + id + ", valor=" + valor + ", totalProdutos=" +  ", usuario=" + usuario
 				+ ", dataVenda=" + dataVenda + ", status=" + status + ", totalItens=" + totalItens + ", totalVendas="
 				+ totalVendas + "]";
 	}
+
+
+	//HashCode e Equals
 
 	@Override
 	public int hashCode() {
@@ -155,8 +168,10 @@ public class Vendas implements Serializable {
 		if (id != other.id)
 			return false;
 		return true;
+
 	}
 	
-	
-	
-}
+
+	}		
+
+

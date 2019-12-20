@@ -22,9 +22,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name="produto")
 public class Produto implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -62,11 +59,16 @@ public class Produto implements Serializable {
 		
 	}
 
-	public Produto(int idProduto, String nome, double preco, String descricao) {
+	public Produto(int idProduto, String nome, double preco, String descricao, List<Categoria> categorias,
+			List<ImagemProd> imagens, List<Item_Venda> item) {
+		super();
 		this.idProduto = idProduto;
 		this.nome = nome;
 		this.preco = preco;
 		this.descricao = descricao;
+		this.categorias = categorias;
+		this.imagens = imagens;
+		this.item = item;
 	}
 
 	public int getIdProduto() {
@@ -117,19 +119,26 @@ public class Produto implements Serializable {
 		this.imagens = imagens;
 	}
 
+	public List<Item_Venda> getItem() {
+		return item;
+	}
+
+	public void setItem(List<Item_Venda> item) {
+		this.item = item;
+	}
+
+	@Override
+	public String toString() {
+		return "Produto [idProduto=" + idProduto + ", nome=" + nome + ", preco=" + preco + ", descricao=" + descricao
+				+ ", categorias=" + categorias + ", imagens=" + imagens + "]";
+	}
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((categorias == null) ? 0 : categorias.hashCode());
-		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + idProduto;
-		result = prime * result + ((imagens == null) ? 0 : imagens.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(preco);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -142,38 +151,8 @@ public class Produto implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
-		if (categorias == null) {
-			if (other.categorias != null)
-				return false;
-		} else if (!categorias.equals(other.categorias))
-			return false;
-		if (descricao == null) {
-			if (other.descricao != null)
-				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
 		if (idProduto != other.idProduto)
 			return false;
-		if (imagens == null) {
-			if (other.imagens != null)
-				return false;
-		} else if (!imagens.equals(other.imagens))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (Double.doubleToLongBits(preco) != Double.doubleToLongBits(other.preco))
-			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Produto [idProduto=" + idProduto + ", nome=" + nome + ", preco=" + preco + ", descricao=" + descricao
-				+ ", categorias=" + categorias + ", imagens=" + imagens + "]";
-	}
-
-	
+	}	
 }
