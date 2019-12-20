@@ -43,7 +43,7 @@ export class ProdutosService {
   }
   //deletando o produto
   deleteProduto(id){
-    return this.http.delete(this.envService.urlAPI+ "produtos"+"/"+id);
+    return this.http.delete(this.envService.urlAPI+ "/produtos"+"/"+id);
   }
   //editando um produto ja existente
   updateProduto(produto,id){
