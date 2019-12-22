@@ -100,9 +100,14 @@ public ResponseEntity< Optional<ProdutoDto> > findByIdDto(@PathVariable("id") in
 						@RequestParam(value="pagina", defaultValue="0")int pagina,
 						@RequestParam(value="qtdLinhas", defaultValue="10") int qtdLinhas,
 						@RequestParam(value="direcao", defaultValue="ASC") String direcao,
-						@RequestParam(value="campo", defaultValue="idProduto") String campo) {
+						@RequestParam(value="campo", defaultValue="idProduto") String campo,
+						@RequestParam(value="nomeCategoria", defaultValue="") String nomeCategoria)
+	
+	{
 		
-		Page<Produto> pageProdutos = produtoService.findPage(pagina, qtdLinhas, direcao, campo);
+		//Page<Produto> pageProdutos = produtoService.findPage(pagina, qtdLinhas, direcao, campo);
+		
+		Page<Produto> pageProdutos = produtoService.findDistinctByCategoriasNomeContaining(nomeCategoria,pagina, qtdLinhas, direcao, campo);
 		
 		return ResponseEntity.ok().body(pageProdutos);
 	}

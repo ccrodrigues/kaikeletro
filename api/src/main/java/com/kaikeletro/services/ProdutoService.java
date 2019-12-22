@@ -55,10 +55,16 @@ public class ProdutoService  {
 		repoProduto.deleteById(id);
 		return true;
 	}
-	
-	//Paginação
-	public Page<Produto> findPage(int pagina, int qtdLinhas, String direcao, String campo){
+
+	// Paginação
+	public Page<Produto> findPage(int pagina, int qtdLinhas, String direcao, String campo) {
 		PageRequest pageRequest = PageRequest.of(pagina, qtdLinhas, Direction.valueOf(direcao), campo);
 		return repoProduto.findAll(pageRequest);
+	}
+
+	// Paginação
+	public Page<Produto> findDistinctByCategoriasNomeContaining(String nomeCategoria, int pagina, int qtdLinhas, String direcao, String campo) {
+		PageRequest pageRequest = PageRequest.of(pagina, qtdLinhas, Direction.valueOf(direcao), campo);
+		return repoProduto.findDistinctByCategoriasNomeContaining(nomeCategoria, pageRequest);
 	}
 }
