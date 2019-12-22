@@ -19,6 +19,7 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="vendas")
@@ -88,7 +89,7 @@ public class Vendas implements Serializable {
 	}
 
 	public List<Item_Venda> getItem() {
-		return item;
+		return this.item;
 	}
 
 	public void setItem(List<Item_Venda> item) {

@@ -1,7 +1,9 @@
 package com.kaikeletro;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,11 +12,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.ImagemProd;
+import com.kaikeletro.domain.Item_Venda;
 import com.kaikeletro.domain.Produto;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.domain.Vendas;
 import com.kaikeletro.repositories.CategoriaRepository;
 import com.kaikeletro.repositories.ImagemProdutoRepository;
+import com.kaikeletro.repositories.ItemVendaRepository;
 import com.kaikeletro.repositories.ProdutoRepository;
 import com.kaikeletro.repositories.UsuarioRepository;
 import com.kaikeletro.repositories.VendasRepository;
@@ -36,6 +40,9 @@ public class ApiApplication implements CommandLineRunner{
 	
 	@Autowired
 	UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	ItemVendaRepository itemRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
@@ -44,20 +51,15 @@ public class ApiApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		this.produtoCategoriaDemo();
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
-		this.produtoCategoriaDemo();
-		this.produtoCategoriaDemo();
-		this.produtoCategoriaDemo();
-		this.produtoCategoriaDemo();
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
+		
 		this.vendasProdutoUsuario();
+		this.produtoCategoriaDemo();
+		
+		//this.produtoCategoriaDemo();
+		//this.produtoCategoriaDemo();
+		//this.produtoCategoriaDemo();
+		//this.produtoCategoriaDemo();
+		//this.vendasProdutoUsuario();
 
 		
 	}
@@ -67,8 +69,15 @@ public class ApiApplication implements CommandLineRunner{
 		Vendas v1 = new Vendas();
 		Usuario u1 = new Usuario();
 		Produto p1 = new Produto();
+		Produto p2 = new Produto();
+		Produto p3 = new Produto();
 		Categoria c1 = new Categoria();
 		ImagemProd a1 = new ImagemProd();
+		Item_Venda item = new Item_Venda();
+		Item_Venda item2 = new Item_Venda();
+		Item_Venda item3 = new Item_Venda();
+		ArrayList<Item_Venda>itemArray = new ArrayList();
+		
 		
 		//Atributos categoria
 		c1.setNome("Eletronicos");
@@ -94,6 +103,13 @@ public class ApiApplication implements CommandLineRunner{
 		p1.setCategorias(Arrays.asList(c1));
 		p1.setImagens(Arrays.asList(a1));
 		
+		
+		p2.setNome("Celular");
+		p2.setDescricao("Iphone x");
+		p2.setPreco(6000);
+		p2.setCategorias(Arrays.asList(c1));
+		p2.setImagens(Arrays.asList(a1));
+		
 		//Atributos vendas
 		v1.setValor(5000.0);
 		v1.setStatus("Ativo");
@@ -105,11 +121,29 @@ public class ApiApplication implements CommandLineRunner{
 		v1.setDataVenda(new Date());
 		v1.setTotalVendas(5);
 		
+		item.setProduto(p1);
+		item.setQuantidade(2);
+		item.setVenda(v1);
+		
+		item2.setProduto(p2);
+		item2.setQuantidade(1);
+		item2.setVenda(v1);
+		
+		
+		itemArray.add(item);
+		itemArray.add(item2);
+		
+		v1.setItem(itemArray);
+		
 		categoriaRepository.save(c1);
 		imagemRepository.saveAll(Arrays.asList(a1));
 		usuarioRepository.save(u1);
 		produtoRepository.save(p1);
+		produtoRepository.save(p2);
 		vendasRepository.save(v1);
+		itemRepository.save(item);
+		itemRepository.save(item2);
+		
 	}
 	
 	//Teste de Produtos e Categorias
