@@ -2,7 +2,7 @@ import { Injectable, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
-import { EnvService } from 'src/app/env.service';
+import { EnvService } from 'src/app/shared/services/env.service';
 
 
 

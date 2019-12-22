@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { EnvService } from 'src/app/env.service';
+import { EnvService } from 'src/app/shared/services/env.service';
 import { HttpClient } from '@angular/common/http';
 import { ProdutoModel } from '../models/produto.model';
-import { ProdutoDtoModel } from '../models/produto-dto.model';
+import { ProdutoDto } from '../models/produto.dto';
 
 
 @Injectable({
@@ -30,7 +30,7 @@ export class ProdutosService {
 
   //Busca de ProdutoDTO por id
   getProdutoDtoId(id){
-    return this.http.get<ProdutoDtoModel>(`${this.envService.urlAPI}produtos/carrinho/${id}`)
+    return this.http.get<ProdutoDto>(`${this.envService.urlAPI}produtos/carrinho/${id}`)
   }
 
   //pegando o produto filtrando por id

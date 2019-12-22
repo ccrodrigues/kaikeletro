@@ -17,6 +17,11 @@ import { LayoutModule } from './layout/layout.module';
 import { CommonModule } from '@angular/common';
 
 import { ToastrModule } from 'ngx-toastr';
+import { JwtModule } from "@auth0/angular-jwt";
+
+export function tokenGetter() {
+  return localStorage.getItem("localUser");
+}
 
 @NgModule({
   declarations: [
@@ -35,12 +40,21 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot(),
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
-    
+
     SharedModule,
     
 
     VendasModule,
-    LayoutModule
+    LayoutModule,
+
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["localhost:8080", "cursos.grandeporte.com;br"],
+        blacklistedRoutes: ["exemplo.com.br/examplobadroute/"]
+      }
+    })
+    //fim JWT Module
   ],
   providers: [],
   bootstrap: [AppComponent]
