@@ -27,4 +27,9 @@ public class ImagemProdutoService {
 	public Optional<ImagemProd> findById(int id) {
 		return repoImagem.findById(id);
 	}
+	
+	public boolean deleteImagem(int id) {
+		repoImagem.deleteById(id);
+		return true;
+	}
 }
