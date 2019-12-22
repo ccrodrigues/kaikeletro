@@ -96,7 +96,9 @@ a{
     margin-right: 15px;
 }
  
-  
+.cursor{
+    cursor: pointer;
+}  
 
 
 

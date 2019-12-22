@@ -1,5 +1,5 @@
 
-import { ImagemModel } from './imagen.model';
+import { ImagemModel } from './imagem.model';
 
 export class ProdutoDto{
     idProduto:number;
