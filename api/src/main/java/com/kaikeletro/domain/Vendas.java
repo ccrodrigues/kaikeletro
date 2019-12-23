@@ -21,6 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.brq.mvc.enumeration.StatusPagamento;
 import com.brq.mvc.enumeration.StatusVendas;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "vendas")
@@ -37,8 +38,11 @@ public class Vendas implements Serializable {
 	@Column(name = "valor")
 	private double valor;
 
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "venda")
 	List<Item_Venda> item;
+
 
 	@ManyToOne
 	private Usuario usuario;
@@ -50,7 +54,7 @@ public class Vendas implements Serializable {
 
 	//private String status;
 
-	private StatusVendas status;
+	private StatusVendas statusVenda;
 	
 	private int totalItens;
 
@@ -70,7 +74,7 @@ public class Vendas implements Serializable {
 		this.valor = valor;
 		this.usuario = usuario;
 		this.dataVenda = dataVenda;
-		this.status = status;
+		this.statusVenda = status;
 		this.totalItens = totalItens;
 		this.totalVendas = totalVendas;
 	}
@@ -93,12 +97,13 @@ public class Vendas implements Serializable {
 	}
 
 	public List<Item_Venda> getItem() {
-		return item;
+		return this.item;
 	}
 
 	public void setItem(List<Item_Venda> item) {
 		this.item = item;
 	}
+
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -117,11 +122,11 @@ public class Vendas implements Serializable {
 	}
 
 	public StatusVendas getStatus() {
-		return status;
+		return statusVenda;
 	}
 
 	public void setStatus(StatusVendas status) {
-		this.status = status;
+		this.statusVenda = status;
 	}
 
 	public int getTotalItens() {
@@ -144,6 +149,10 @@ public class Vendas implements Serializable {
 		return pagamento;
 	}
 
+
+	//HashCode e Equals
+
+
 	public void setPagamento(StatusPagamento pagamento) {
 		this.pagamento = pagamento;
 	}
@@ -152,12 +161,13 @@ public class Vendas implements Serializable {
 	@Override
 	public String toString() {
 		return "Vendas [id=" + id + ", valor=" + valor + ", item=" + item + ", usuario=" + usuario + ", dataVenda="
-				+ dataVenda + ", status=" + status + ", totalItens=" + totalItens + ", totalVendas=" + totalVendas
+				+ dataVenda + ", status=" + statusVenda + ", totalItens=" + totalItens + ", totalVendas=" + totalVendas
 				+ ", pagamento=" + pagamento + "]";
 	}
 	
 
 	// HashCode e Equals
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -178,6 +188,9 @@ public class Vendas implements Serializable {
 		if (id != other.id)
 			return false;
 		return true;
-	}
 
-}
+	}
+	
+
+	}		
+

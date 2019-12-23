@@ -134,6 +134,7 @@ public class Produto implements Serializable {
 				+ ", categorias=" + categorias + ", imagens=" + imagens + "]";
 	}
 
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

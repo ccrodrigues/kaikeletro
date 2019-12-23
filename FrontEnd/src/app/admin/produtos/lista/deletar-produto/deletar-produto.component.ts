@@ -21,11 +21,11 @@ export class DeletarProdutoComponent implements OnInit {
     this.close.emit();
   }
 
-  excluir(id) {
+  excluir() {
 
-    console.log(id)
+    console.log(this.idProduto)
     
-    this.ps.delete(id).subscribe(
+    this.ps.deleteProduto(this.idProduto).subscribe(
       a => {
         console.log("Etstou aqui");
         this.deletado.emit(true)

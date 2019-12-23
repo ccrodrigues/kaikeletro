@@ -14,6 +14,7 @@ import { VendasModule } from './vendas/vendas.module';
 import { LayoutModule } from './layout/layout.module';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CommonModule } from '@angular/common';
+import { CarrinhoService } from './shared/Services/carrinho.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { CommonModule } from '@angular/common';
     VendasModule,
     LayoutModule
   ],
-  providers: [],
+  providers: [CarrinhoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

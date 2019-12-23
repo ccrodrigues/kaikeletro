@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,12 +28,12 @@ public class Item_Venda implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "produto_id")
-	@JsonIgnore
+	//@JsonIgnore
 	Produto produto;
 
 	@ManyToOne
 	@JoinColumn(name = "venda_id")
-	@JsonIgnore
+	//@JsonIgnore
 	Vendas venda;
 
 	@Column(name = "quantidade")

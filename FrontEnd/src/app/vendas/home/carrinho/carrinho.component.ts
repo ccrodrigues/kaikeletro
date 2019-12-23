@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouteReuseStrategy, Router } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { CarrinhoService } from 'src/app/shared/Services/carrinho.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -29,11 +31,14 @@ export class CarrinhoComponent implements OnInit {
     {"idProduto": 4,"nome" : "produto",  "preco"  : 1000, "quantidade" : 1, "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
   ]
 
+  itemCarrinho = []
+
   itens = [
     {"idProduto": 1, "quantidade": 1 }
   ]
 
-  constructor(private router : Router, private formBuilder : FormBuilder) { }
+  constructor(private router : Router, private formBuilder : FormBuilder,
+    private ps: ProdutosService, carrinhoService : CarrinhoService) { }
 
 
   ngOnInit() {
@@ -49,8 +54,6 @@ export class CarrinhoComponent implements OnInit {
         alert("Seu carrinho está vazio");
         this.router.navigate(['']);
       }
-
-    
     }
 
     calculoCarrinho(){

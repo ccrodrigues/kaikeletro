@@ -39,5 +39,10 @@ public class ImagemProdutoController {
 		return ResponseEntity.ok().body(imgService.createImagem(img));
 	}
 	
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<Boolean> deleteImagem(@PathVariable("id") int id){
+		return ResponseEntity.ok().body(imgService.deleteImagem(id));
+	}
+	
 	
 }
