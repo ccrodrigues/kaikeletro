@@ -59,9 +59,7 @@ public class ApiApplication implements CommandLineRunner{
 		this.produtoCategoriaDemo();
 		this.produtoCategoriaDemo();
 
-		this.vendasProdutoUsuario();
-
-		
+		this.vendasProdutoUsuario();	
 	}
 	
 	//Teste de incluir Vendas com produtos e usuários
@@ -88,7 +86,7 @@ public class ApiApplication implements CommandLineRunner{
 		//Atributos usuario
 		u1.setCelular("1148748-8743");
 		u1.setCpf("123456786");
-		u1.setDataDeNascimento("30/01/1998");
+		//u1.setDataDeNascimento("30/01/1998");
 		u1.setEmail("usuario@email.com");
 		u1.setNome("Usuario 01");
 		u1.setSenha("123");

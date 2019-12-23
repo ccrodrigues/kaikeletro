@@ -46,7 +46,7 @@ public class Vendas implements Serializable {
 	@DateTimeFormat(pattern = "dd/MM/yy")
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yy")
-	private Date dataVenda;
+	private Date dataVenda = new Date(System.currentTimeMillis());
 
 	//private String status;
 
