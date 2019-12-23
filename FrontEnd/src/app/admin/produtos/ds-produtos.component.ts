@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService } from 'src/app/shared/toaster/dialog.service';
 
 @Component({
   selector: 'app-produtos',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DSProdutosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialogService : DialogService) { }
 
   isLista : boolean = true;
  
   ngOnInit() {
+    this.dialogService.showSuccess("Olá");
   }
 
 

@@ -38,7 +38,7 @@ export function tokenGetter() {
     CollapseModule.forRoot(),
     BrowserAnimationsModule,    
     ToastrModule.forRoot(),
-    PaginationModule.forRoot(),
+    //PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
 
     SharedModule,

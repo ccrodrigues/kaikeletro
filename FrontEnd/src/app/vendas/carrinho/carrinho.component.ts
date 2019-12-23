@@ -81,6 +81,12 @@ export class CarrinhoComponent implements OnInit {
   //   console.log(this.selectedOption);
   // }
 
+  private getImagemPrincipal(carrinho : Carrinho){
+
+    
+
+  }
+
 }
 
 
