@@ -19,8 +19,9 @@ public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CATEGORIA_NAME_SEQ")
-    @SequenceGenerator(sequenceName = "categoria_seq", allocationSize = 1, name = "CATEGORIA_NAME_SEQ")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO, generator = "CATEGORIA_NAME_SEQ")
+    //@SequenceGenerator(sequenceName = "categoria_seq", allocationSize = 1, name = "CATEGORIA_NAME_SEQ")
 	private int idCategoria;
 	
 	@Column(name= "nome")
