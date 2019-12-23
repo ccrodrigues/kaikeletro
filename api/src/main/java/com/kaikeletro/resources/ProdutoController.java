@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaikeletro.domain.Produto;
-import com.kaikeletro.domain.Usuario;
+import com.kaikeletro.dto.ProdutoDto;
 import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.ProdutoService;
 
@@ -38,7 +38,7 @@ public class ProdutoController {
 		
 		if (obj.isPresent() == false) {
 			throw new TratamentoDeErros(id, new Produto());
-		}
+		} 
 		
 		return ResponseEntity.ok().body(obj);
 	}
@@ -60,8 +60,8 @@ public class ProdutoController {
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-	public ResponseEntity<Boolean> deleteProduto(@PathVariable("id") int id){
-		return ResponseEntity.ok().body(produtoService.deleteProduto(id));
+	public void  deleteProduto(@PathVariable("id") int id){
+		produtoService.deleteProduto(id);
 	}
 	
 	//Paginação
@@ -76,5 +76,11 @@ public class ProdutoController {
 		
 		return ResponseEntity.ok().body(pageProdutos);
 	}
-
+	
+	//Pegando uma lista de ProdutosDto
+	//Criada para retornar dados objetivos
+//	@RequestMapping(value="/produtosDto" , method=RequestMethod.GET)
+//	public ResponseEntity< List<ProdutoDto>> getAllProdutoDto() {
+//		return ResponseEntity.ok().body( produtoService.getAllProdutoDto() );
+//	}
 }

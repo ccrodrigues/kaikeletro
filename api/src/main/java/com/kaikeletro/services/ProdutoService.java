@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.Produto;
+import com.kaikeletro.dto.ProdutoDto;
 import com.kaikeletro.repositories.ProdutoRepository;
 
 @Service
@@ -51,9 +52,8 @@ public class ProdutoService  {
 		}
 	}
 	
-	public boolean deleteProduto(int id) {
+	public void deleteProduto(int id) {
 		repoProduto.deleteById(id);
-		return true;
 	}
 	
 	//Paginação
@@ -61,4 +61,6 @@ public class ProdutoService  {
 		PageRequest pageRequest = PageRequest.of(pagina, qtdLinhas, Direction.valueOf(direcao), campo);
 		return repoProduto.findAll(pageRequest);
 	}
+	
+	
 }

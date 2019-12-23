@@ -7,3 +7,14 @@
 textarea {
     resize: none;
 }
+
+.margin-top {
+    margin-top: 5px;
+}
+
+.linkCategoria {
+    cursor: pointer;
+}
+.linkCategoria:hover {
+    color: black;
+}

@@ -22,8 +22,9 @@ export class ProdutosService {
   }
 
   delete(id) {
+    console.log(this.url + id)
     return this.http.delete(this.url + id);
-    return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "produtos");
+    // return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "produtos");
   }
   //pegando o produto filtrando por id
   getById(id){

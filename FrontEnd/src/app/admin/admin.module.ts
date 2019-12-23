@@ -19,7 +19,6 @@ import { AdicionarComponent } from './produtos/adicionar/adicionar.component';
     ListaComponent,
     DeletarProdutoComponent,
     AdicionarComponent
-
   ],
   imports: [
     CommonModule,

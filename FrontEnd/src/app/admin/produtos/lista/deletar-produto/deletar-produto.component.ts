@@ -23,8 +23,6 @@ export class DeletarProdutoComponent implements OnInit {
 
   excluir(id) {
 
-    console.log(id)
-    
     this.ps.delete(id).subscribe(
       a => {
         console.log("Etstou aqui");

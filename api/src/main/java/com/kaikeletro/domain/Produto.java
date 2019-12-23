@@ -3,8 +3,10 @@ package com.kaikeletro.domain;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,12 +42,12 @@ public class Produto implements Serializable {
 	@Column(name="descricao")
 	private String descricao;
 	
-	@ManyToMany()
+	@ManyToMany(fetch = FetchType.LAZY
+            )
 	@JoinTable(name="produtos_categorias",
 		joinColumns = @JoinColumn(name = "produto_id"),
 		inverseJoinColumns = @JoinColumn(name = "categoria_id")
 	)
-	@JsonIgnore
 	private List<Categoria> categorias;
 	
 	@ManyToMany

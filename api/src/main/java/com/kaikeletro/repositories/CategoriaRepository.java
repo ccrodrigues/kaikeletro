@@ -10,6 +10,8 @@ import com.kaikeletro.domain.Categoria;
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Integer>{
 
-	//SELECT * FROM categoria WHERE nome LIKE
-	List<Categoria> findByNomeContains(String nome);
+	
+	List<Categoria> findByNomeLike(String nome);
+	
+
 }

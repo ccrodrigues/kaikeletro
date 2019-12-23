@@ -8,12 +8,24 @@ import { CategoriasService } from 'src/app/shared/Services/categorias.service';
 })
 export class AdicionarComponent implements OnInit {
 
-  categorias = [];
+  categorias: any = [];
+  showInput: boolean = true;
 
-  constructor(private cs : CategoriasService) { }
+  constructor(private cs: CategoriasService) { }
 
   ngOnInit() {
-    this.cs.getAll()
+    this.cs.getAll().subscribe(
+      a => {
+        this.categorias = a;
+        console.log(a)
+      }
+    )
   }
 
-}
+
+  adicionarCategoria($event) {
+    // bloqueia a requição do botão
+    $event.preventDefault();
+    this.showInput = !this.showInput;
+  }
+} 
