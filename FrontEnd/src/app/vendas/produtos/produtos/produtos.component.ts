@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { ProdutoService } from 'src/app/shared/services/produto.service';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
 import { ProdutoDto } from 'src/app/shared/models/produto.dto';
 import { ProdutoPaginacao } from 'src/app/shared/models/paginacao/produto.paginacao';
@@ -13,7 +13,7 @@ export class ProdutosComponent implements OnInit {
 
   produtosPaginacao : ProdutoPaginacao ;
 
-  constructor(private produtoService : ProdutosService) { }
+  constructor(private produtoService : ProdutoService) { }
 
   ngOnInit() {
     this.produtoService.getProdutosPaginacao(0,6).subscribe(
@@ -26,6 +26,10 @@ export class ProdutosComponent implements OnInit {
 
   }
   adicionarCarrinho(){
+    alert("por enquanto não está funcionando");
+  }
+
+  mostrarProdutoDetalhes(produto){
     alert("por enquanto não está funcionando");
   }
 

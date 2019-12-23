@@ -5,6 +5,6 @@
         <h5 class="card-title">{{ prod?.nome }}</h5>
         <p class="card-text">{{  prod?.descricaoProduto }}</p>
         <h5 class="card-title">Preço {{ prod?.preco | currency:'BRL':true:'1.2-2' }}</h5>
-        <button (click)="adicionarCarrinho()" class="btn btn-primary">Comprar</button>
+        <button (click)="adicionarCarrinho(prod)" class="btn btn-primary">Comprar</button>
     </div>
 </div>

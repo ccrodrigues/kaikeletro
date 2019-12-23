@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { ProdutoService } from 'src/app/shared/services/produto.service';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
 
 @Component({
@@ -20,7 +20,7 @@ export class ProdutosDetalhesComponent implements OnInit {
   Parcela;
 
 
-   constructor(private produtoService:ProdutosService) { 
+   constructor(private produtoService:ProdutoService) { 
      
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { ProdutoService } from 'src/app/shared/services/produto.service';
 
 @Component({
   selector: 'app-mais-vendidos',
@@ -11,7 +11,7 @@ export class MaisVendidosComponent implements OnInit {
 
   produtos: ProdutoModel[] = [];
 
-  constructor(private produtoService: ProdutosService) { }
+  constructor(private produtoService: ProdutoService) { }
 
   scroll(el: HTMLElement) {
     el.scrollIntoView();

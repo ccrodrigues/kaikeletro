@@ -9,7 +9,7 @@ import { ProdutoPaginacao } from '../models/paginacao/produto.paginacao';
 @Injectable({
   providedIn: 'root'
 })
-export class ProdutosService {
+export class ProdutoService {
 
 
   // Chamando o HttpCliente e injetando o envService que é responsavel por pegar a url Da Api

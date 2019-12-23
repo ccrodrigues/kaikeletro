@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouteReuseStrategy, Router } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { ProdutoService } from 'src/app/shared/services/produto.service';
 import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 
 @Component({
@@ -38,7 +38,7 @@ export class CarrinhoComponent implements OnInit {
 
   constructor(private router: Router, 
     private formBuilder: FormBuilder,
-    private ps: ProdutosService,
+    private ps: ProdutoService,
     private carrinhoService: CarrinhoService) { }
 
 
