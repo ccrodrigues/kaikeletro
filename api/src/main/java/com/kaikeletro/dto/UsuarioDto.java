@@ -5,21 +5,27 @@ import com.kaikeletro.domain.Usuario;
 public class UsuarioDto {
 
 	private int idUsuario;
-	private String nome;
 	private String email;
-	private String celular;
+	private String senha;
+	
+
+	public UsuarioDto() {
+	}
+
+	public UsuarioDto(Usuario user) {
+		this.idUsuario = user.getId();
+		this.email= user.getEmail();
+		this.senha= user.getSenha();
+		
+	}
+	
+	//getters and setters
 	
 	public int getIdUsuario() {
 		return idUsuario;
 	}
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 	public String getEmail() {
 		return email;
@@ -28,22 +34,11 @@ public class UsuarioDto {
 		this.email = email;
 	}
 	
-	public String getCelular() {
-		return celular;
+	public String getSenha() {
+		return senha;
 	}
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
-	
-	public UsuarioDto() {
-	}
-
-	public UsuarioDto(Usuario user) {
-		this.idUsuario = user.getId();
-		this.nome = user.getNome();
-		this.email= user.getEmail();
-		this.celular= user.getCelular();
-		
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	
 	

@@ -8,16 +8,18 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ShowMoreComponent implements OnInit {
 
-  @Input() produto  = [];
+  @Input() produto : any  = [];
   @Output() close   = new EventEmitter();
   imagens           = [];
+  imagem : File     = null;
   ler = new FileReader();
-  imagem : File = null;
   valor;
 
   constructor(private sanitizer : DomSanitizer) { }
 
   ngOnInit() {
+    this.imagens = this.produto.imagens;
+    console.log(this.imagens)
   }
 
   fechar() {
@@ -36,20 +38,25 @@ export class ShowMoreComponent implements OnInit {
     if(mimetype.match(/image\/*/) == null) {
       return;
     }
-
     let reader = new FileReader();
     reader.readAsDataURL(this.imagem);
     reader.onload = (_event) => {
       this.imagens.push(reader.result);
+      console.log("=========>>>" + this.imagens)
     }
   }
 
   lessImage(img) {
 
+
     for(let i = 0; 0 < this.imagens.length; i++) {
-      if(this.imagens[i] == img) {
+      if(this.imagens[i].imagemProduto == img || this.imagens[i] == img) {
         return this.imagens.splice(i, 1)
       }
     }
+  }
+
+  verificarImagem( imgs )  {
+    return typeof imgs === 'string'
   }
 }

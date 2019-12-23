@@ -20,7 +20,7 @@ import com.sun.istack.NotNull;
 @Entity
 @Table(name = "usuario")
 
-public class Usuario {
+public class Usuario  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_NAME_SEQ")
@@ -68,6 +68,14 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public List<EnderecoUsuario> getIdEndereco() {
+		return idEndereco;
+	}
+
+	public void setIdEndereco(List<EnderecoUsuario> idEndereco) {
+		this.idEndereco = idEndereco;
 	}
 
 	public String getDataDeNascimento() {
@@ -148,7 +156,4 @@ public class Usuario {
 			return false;
 		return true;
 	}
-	
-	
-
 }

@@ -2,6 +2,7 @@ package com.kaikeletro.resources;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaikeletro.domain.Produto;
-import com.kaikeletro.domain.Usuario;
+import com.kaikeletro.dto.ProdutoDto;
 import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.ProdutoService;
 
@@ -41,6 +42,35 @@ public class ProdutoController {
 		}
 		
 		return ResponseEntity.ok().body(obj);
+	}
+	
+	//Get Produto by id DTO para o usar no Carrinho no Front
+@RequestMapping(value="/carrinho/{id}", method=RequestMethod.GET)
+public ResponseEntity< Optional<ProdutoDto> > findByIdDto(@PathVariable("id") int id){
+		Optional<Produto> prod =  produtoService.findById(id);
+		
+		Optional <ProdutoDto> prodDto = prod
+				.map(obj -> new ProdutoDto(obj));
+
+	if (prod.isPresent() == false) {
+			throw new TratamentoDeErros(id, new Produto());
+		}
+		
+		return ResponseEntity.ok().body(prodDto);
+	}
+	
+	//Get all Produto DTO para o front 
+	@RequestMapping(value="/carrinho", method=RequestMethod.GET)
+	public ResponseEntity< List<ProdutoDto> > getAllCategoriasDto() {
+		
+		List<Produto> listaProd = produtoService.listarProdutos();
+		
+		List<ProdutoDto> listaDto = listaProd
+				.stream()
+				.map(obj -> new ProdutoDto( obj ))
+				.collect(Collectors.toList());
+		
+		return ResponseEntity.ok().body( listaDto );
 	}
 	
 	//Buscar Produto pelo Nome
