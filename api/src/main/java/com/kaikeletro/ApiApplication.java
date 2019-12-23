@@ -45,17 +45,11 @@ public class ApiApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		this.produtoCategoriaDemo();
-		this.produtoCategoriaDemo();
-		this.produtoCategoriaDemo();
-		this.produtoCategoriaDemo();
-		this.produtoCategoriaDemo();
-		this.vendasProdutoUsuario();
-
-		
+		//this.vendasProdutoUsuario();
 	}
 	
 	//Teste de incluir Vendas com produtos e usuários
-	private void vendasProdutoUsuario() {
+	/*private void vendasProdutoUsuario() {
 		Vendas v1 = new Vendas();
 		Usuario u1 = new Usuario();
 		Produto p1 = new Produto();
@@ -100,7 +94,7 @@ public class ApiApplication implements CommandLineRunner{
 		usuarioRepository.save(u1);
 		produtoRepository.save(p1);
 		vendasRepository.save(v1);
-	}
+	}*/
 	
 	//Teste de Produtos e Categorias
 	private void produtoCategoriaDemo() {
@@ -112,22 +106,24 @@ public class ApiApplication implements CommandLineRunner{
 	a1.setDescricaoImagem("NoteBook Lenovo");
 	a1.setNomeImagem("note");
 	
-//	Produto p1 = new Produto();
-//	p1.setNome("Notebook");
-//	p1.setDescricao("Notebook Lenovo E490 - Core I7");
-//	p1.setPreco(6000);
-//	p1.setCategorias(Arrays.asList(c1));
-//	p1.setImagens(Arrays.asList(a1));
+	Produto p1 = new Produto();
+	p1.setNome("Notebook");
+	p1.setDescricao("Notebook Lenovo E490 - Core I7");
+	p1.setPreco(6000);
+	p1.setCategorias(Arrays.asList(c1));
+	p1.setImagens(Arrays.asList(a1));
 	
-//	categoriaRepository.saveAll(Arrays.asList(c1));
-//	imagemRepository.saveAll(Arrays.asList(a1));
-//	produtoRepository.saveAll(Arrays.asList(p1));
+	categoriaRepository.saveAll(Arrays.asList(c1));
+	imagemRepository.saveAll(Arrays.asList(a1));
+	produtoRepository.saveAll(Arrays.asList(p1));
 	
-	for (int i =3 ; i < 18 ; i++) {
+	for (int i =3 ; i < 40 ; i++) {
 		Produto prod = new Produto();
 		prod.setNome("Notebook " + i);
 		prod.setDescricao("Notebook Kaik i171");
+		prod.setCategorias(Arrays.asList(c1));
 		prod.setImagens(Arrays.asList(a1));
+		prod.setPreco(5000);
 		imagemRepository.saveAll(Arrays.asList(a1));
 		produtoRepository.saveAll(Arrays.asList(prod));
 		produtoRepository.save(prod);
