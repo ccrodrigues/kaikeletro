@@ -117,9 +117,7 @@ public class ApiApplication implements CommandLineRunner{
 		//v1.setTotalProdutos(Arrays.asList(p1));
 
 		v1.setUsuario(u1);
-		//v1.setDataVenda(new Date());
-		v1.setTotalVendas(5);
-		
+				
 		item.setProduto(p1);
 		item.setQuantidade(2);
 		item.setVenda(v1);

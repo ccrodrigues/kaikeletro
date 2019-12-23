@@ -57,8 +57,6 @@ public class Vendas implements Serializable {
 	private StatusVendas statusVenda;
 	
 	private int totalItens;
-
-	private int totalVendas;
 	
 	private StatusPagamento pagamento;
 
@@ -76,7 +74,6 @@ public class Vendas implements Serializable {
 		this.dataVenda = dataVenda;
 		this.statusVenda = status;
 		this.totalItens = totalItens;
-		this.totalVendas = totalVendas;
 	}
 
 	// Getters & Setters
@@ -137,13 +134,6 @@ public class Vendas implements Serializable {
 		this.totalItens = totalItens;
 	}
 
-	public int getTotalVendas() {
-		return totalVendas;
-	}
-
-	public void setTotalVendas(int totalVendas) {
-		this.totalVendas = totalVendas;
-	}
 	
 	public StatusPagamento getPagamento() {
 		return pagamento;
@@ -161,8 +151,7 @@ public class Vendas implements Serializable {
 	@Override
 	public String toString() {
 		return "Vendas [id=" + id + ", valor=" + valor + ", item=" + item + ", usuario=" + usuario + ", dataVenda="
-				+ dataVenda + ", status=" + statusVenda + ", totalItens=" + totalItens + ", totalVendas=" + totalVendas
-				+ ", pagamento=" + pagamento + "]";
+				+ dataVenda + ", status=" + statusVenda + ", totalItens=" + totalItens + ", pagamento=" + pagamento + "]";
 	}
 	
 
