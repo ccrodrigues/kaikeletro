@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { ProdutosService } from 'src/app/shared/services/produto.service';
+import { ProdutoService } from 'src/app/shared/services/produto.service';
 import { CategoriasService } from 'src/app/shared/Services/categorias.service';
 
 @Component({
@@ -58,6 +58,6 @@ export class ListaComponent implements OnInit {
   }
 
 
-  constructor(private ps: ProdutosService) { }
+  constructor(private ps: ProdutoService) { }
 
 } 
