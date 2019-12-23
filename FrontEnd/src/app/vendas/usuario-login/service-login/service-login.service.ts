@@ -2,7 +2,6 @@ import { Injectable, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
-import { Usuario } from 'src/app/shared/models/usuario.model';
 import { EnvService } from 'src/app/env.service';
 
 
@@ -21,33 +20,30 @@ export class ServiceLoginService {
                                     , private envService: EnvService) { 
 
 }
-//verifica se os campos email e senha são true
-fazerLogin(usuario : {email : String, senha : String} ){
+//verifica os campos email e senha na API e retorna se true ou false
+fazerLogin(login : {email : String, senha : String} ){
    
-    return this.http.post<Usuario>(this.envService.urlAPI + `/usuarios`, usuario);
+      console.log(login);
+
+     this.http.post(this.envService.urlAPI + `/usuarios/login`, login).subscribe(
+       (data) => {
+        console.log(data);
+        if(data == true){
+          this.isAutenticado = true;
+          this.router.navigate(['']);
+          
+        }else{
+          this.isAutenticado = false;
+          this.router.navigate(['login']);
+        }
+       }
+     );
+     
+
     }
-
-
-
-  // if (email == 'a' && senha == 'a'){
-  //   //login aprovado
-  //   this.isAutenticado = true;
-  //   this.router.navigate(['']);
-
-  // } else if (email == 'b' && senha =='b'){
-  //          this.isAutenticado = true;
-  //          this.router.navigate(['dashboardAdm'])
-  // }
-  // else{
-  //   //redirecionar para o Login
-  //   this.isAutenticado = false;
-  //   this.router.navigate(['login']);
-
-  // }
-
-  // }
-  
+    
 getIsAutenticado(){
+  
   return this.isAutenticado;
 }
 }

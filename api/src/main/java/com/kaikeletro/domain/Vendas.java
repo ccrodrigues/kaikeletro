@@ -21,38 +21,38 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name="vendas")
+@Table(name = "vendas")
 public class Vendas implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	//Atributos
+
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VENDAS_NAME_SEQ")
-    @SequenceGenerator(sequenceName = "vendas_seq", allocationSize = 1, name = "VENDAS_NAME_SEQ")
+	@SequenceGenerator(sequenceName = "vendas_seq", allocationSize = 1, name = "VENDAS_NAME_SEQ")
 	private int id;
-	
-	@Column(name= "valor")
+
+	@Column(name = "valor")
 	private double valor;
-	
+
 	@OneToMany(mappedBy = "venda")
-	 List<Item_Venda> item;
-	
+	List<Item_Venda> item;
+
 	@ManyToOne
 	private Usuario usuario;
-	
+
 	@DateTimeFormat(pattern = "dd/MM/yy")
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yy")
 	private Date dataVenda;
-	
+
 	private String status;
-	
+
 	private int totalItens;
-	
+
 	private int totalVendas;
-	
-	//Construtor
+
+	// Construtor
 	public Vendas() {
 
 	}
@@ -69,7 +69,7 @@ public class Vendas implements Serializable {
 		this.totalVendas = totalVendas;
 	}
 
-	//Getters & Setters
+	// Getters & Setters
 	public int getId() {
 		return id;
 	}
@@ -134,14 +134,15 @@ public class Vendas implements Serializable {
 		this.totalVendas = totalVendas;
 	}
 
-	//ToString
+	// ToString
 	@Override
 	public String toString() {
-		return "Vendas [id=" + id + ", valor=" + valor + ", usuario=" + usuario + ", dataVenda=" + dataVenda
-				+ ", status=" + status + ", totalItens=" + totalItens + ", totalVendas=" + totalVendas + "]";
+		return "Vendas [id=" + id + ", valor=" + valor + ", item=" + item + ", usuario=" + usuario + ", dataVenda="
+				+ dataVenda + ", status=" + status + ", totalItens=" + totalItens + ", totalVendas=" + totalVendas
+				+ "]";
 	}
 
-	//HashCode e Equals
+	// HashCode e Equals
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -162,5 +163,6 @@ public class Vendas implements Serializable {
 		if (id != other.id)
 			return false;
 		return true;
-	}		
+	}
+
 }
