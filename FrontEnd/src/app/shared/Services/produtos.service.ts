@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { EnvService } from 'src/app/env.service';
 import { HttpClient } from '@angular/common/http';
 import { ProdutoModel } from '../models/produto.model';
+import { ProdutoDtoModel } from '../models/produto-dto.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +27,18 @@ export class ProdutosService {
     console.log(this.url + id)
     return this.http.delete(this.url + id);
     // return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "produtos");
+  //Pegando a lista de produtosDto
   }
+  
+  getProdutoDto(){
+    return this.http.get(`${this.envService.urlAPI}produtos/carrinho`)
+  }
+
+  //Busca de ProdutoDTO por id
+  getProdutoDtoId(id){
+    return this.http.get<ProdutoDtoModel>(`${this.envService.urlAPI}produtos/carrinho/${id}`)
+  }
+
   //pegando o produto filtrando por id
   getById(id){
     return this.http.get<ProdutoModel>(this.envService.urlAPI+ "produtos"+"/"+id);
@@ -36,7 +49,7 @@ export class ProdutosService {
   }
   //deletando o produto
   deleteProduto(id){
-    return this.http.delete(this.envService.urlAPI+ "produtos"+"/"+id);
+    return this.http.delete(this.envService.urlAPI+ "/produtos"+"/"+id);
   }
   //editando um produto ja existente
   updateProduto(produto,id){
