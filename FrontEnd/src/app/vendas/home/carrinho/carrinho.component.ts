@@ -38,7 +38,7 @@ export class CarrinhoComponent implements OnInit {
   ]
 
   constructor(private router : Router, private formBuilder : FormBuilder,
-    private ps: ProdutosService, carrinhoService : CarrinhoService) { }
+    private ps: ProdutosService, private carrinhoService : CarrinhoService) { }
 
 
   ngOnInit() {
@@ -73,7 +73,15 @@ export class CarrinhoComponent implements OnInit {
       }
       console.log(this.selectedOption ) ;
     }
-  
+
+    fecha(){
+      this.carrinhoService.fecharVenda().subscribe(
+        (data)=>{
+        data = data
+        }
+      );
+    }
   }
+
 
 

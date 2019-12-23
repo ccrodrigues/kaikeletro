@@ -49,7 +49,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp; {{frete | currency:'BRL':true:'1.2-2'}}</p>
                 <p style="border-top: solid 1px black;">TOTAL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  {{valorTotal | currency:'BRL':true:'1.2-2'}}</p>
-              <a (click)="carrinhoService.fecharVenda()" href="#" class="btn btn-primary">Continuar</a>
+              <button (click)="fecha()"  class="btn btn-primary">Continuar</button>
             </div>
           </div>
     </div>

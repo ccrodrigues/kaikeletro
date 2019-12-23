@@ -33,20 +33,6 @@ public class VendasService {
 	
 	public Vendas createVenda(Vendas vendas) {
 		
-		Vendas v = vendasRepo.save(vendas);
-		
-		
-		List<Item_Venda> listaItemVenda = vendas.getItem();
-		
-		for (Item_Venda obj_item_Venda : listaItemVenda) {
-			itemRepo.save(obj_item_Venda);
-		}
-		
-		 return v;
-		
+		return vendasRepo.save(vendas);		
 	}
-	
-	
-
-
 }

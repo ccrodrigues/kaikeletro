@@ -57,8 +57,6 @@ public class Vendas implements Serializable {
 	private StatusVendas statusVenda;
 	
 	private int totalItens;
-
-	private int totalVendas;
 	
 	private StatusPagamento pagamento;
 
