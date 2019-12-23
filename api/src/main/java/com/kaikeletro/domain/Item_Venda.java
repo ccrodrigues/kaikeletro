@@ -12,11 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="item_venda")
+@Table(name = "item_venda")
 public class Item_Venda implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -27,12 +26,12 @@ public class Item_Venda implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "produto_id")
 	Produto produto;
-	 
+
 	@ManyToOne
 	@JoinColumn(name = "venda_id")
 	Vendas venda;
-	 
-	@Column(name="quantidade")
+
+	@Column(name = "quantidade")
 	int quantidade;
 
 	public Item_Venda(int id, Produto produto, Vendas venda, int quantidade) {
@@ -106,4 +105,3 @@ public class Item_Venda implements Serializable {
 				+ "]";
 	}
 }
-

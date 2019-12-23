@@ -20,7 +20,7 @@ public class VendasService {
 		return vendas;
 	}
 	
-	public Vendas save(Vendas vendas) {
+	public Vendas createVenda(Vendas vendas) {
 		return vendasRepo.save(vendas);
 	}
 

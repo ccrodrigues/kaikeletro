@@ -18,6 +18,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.brq.mvc.enumeration.StatusPagamento;
+import com.brq.mvc.enumeration.StatusVendas;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -46,18 +48,22 @@ public class Vendas implements Serializable {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yy")
 	private Date dataVenda;
 
-	private String status;
+	//private String status;
 
+	private StatusVendas status;
+	
 	private int totalItens;
 
 	private int totalVendas;
+	
+	private StatusPagamento pagamento;
 
 	// Construtor
 	public Vendas() {
 
 	}
 
-	public Vendas(int id, double valor, Usuario usuario, Date dataVenda, String status, int totalItens,
+	public Vendas(int id, double valor, Usuario usuario, Date dataVenda, StatusVendas status, int totalItens,
 			int totalVendas) {
 		super();
 		this.id = id;
@@ -110,11 +116,11 @@ public class Vendas implements Serializable {
 		this.dataVenda = dataVenda;
 	}
 
-	public String getStatus() {
+	public StatusVendas getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(StatusVendas status) {
 		this.status = status;
 	}
 
@@ -133,14 +139,23 @@ public class Vendas implements Serializable {
 	public void setTotalVendas(int totalVendas) {
 		this.totalVendas = totalVendas;
 	}
+	
+	public StatusPagamento getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(StatusPagamento pagamento) {
+		this.pagamento = pagamento;
+	}
 
 	// ToString
 	@Override
 	public String toString() {
 		return "Vendas [id=" + id + ", valor=" + valor + ", item=" + item + ", usuario=" + usuario + ", dataVenda="
 				+ dataVenda + ", status=" + status + ", totalItens=" + totalItens + ", totalVendas=" + totalVendas
-				+ "]";
+				+ ", pagamento=" + pagamento + "]";
 	}
+	
 
 	// HashCode e Equals
 	@Override
