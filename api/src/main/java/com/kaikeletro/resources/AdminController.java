@@ -3,7 +3,6 @@ package com.kaikeletro.resources;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.Id;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,31 +15,32 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kaikeletro.domain.Admin;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.exception.TratamentoDeErros;
-import com.kaikeletro.services.UsuarioService;
-
+import com.kaikeletro.services.AdminService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
-@RequestMapping(value = "/usuarios")
-public class UsuarioController {
-
+@RequestMapping(value = "/administrador")
+public class AdminController {
+	
 	@Autowired
-	private UsuarioService service;
+	private AdminService service;
 
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public ResponseEntity<List<Usuario>> getAll() {
+	public ResponseEntity<List<Admin>> getAll() {
 
 		return ResponseEntity.ok().body(service.getAll());
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Optional<Usuario>> findById(@PathVariable("id") int idUsuario) {
-		Optional<Usuario> obj = service.findById(idUsuario);
+	public ResponseEntity<Optional<Admin>> findById(@PathVariable("id") int idAdmin) {
+		Optional<Admin> obj = service.findById(idAdmin);
 
 		if (obj.isPresent() == false) {
-			throw new TratamentoDeErros(idUsuario, new Usuario());
+			throw new TratamentoDeErros(idAdmin, new Admin());
 		}
 
 		return ResponseEntity.ok().body(obj);
@@ -49,65 +49,63 @@ public class UsuarioController {
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteById(@PathVariable("id") int id) {
 
-		Optional<Usuario> obj = service.findById(id);
+		Optional<Admin> obj = service.findById(id);
 		if (obj.isPresent() == false) {
-			throw new TratamentoDeErros(id, new Usuario());
+			throw new TratamentoDeErros(id, new Admin());
 		}
 		return ResponseEntity.ok().body(service.deleteById(id));
 	}
 
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public ResponseEntity<Usuario> save(@RequestBody @Valid Usuario usuario) {
-		return ResponseEntity.ok().body(service.save(usuario));
+	public ResponseEntity<Admin> save(@RequestBody @Valid Admin admin) {
+		return ResponseEntity.ok().body(service.save(admin));
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
-	public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable("id") int id) {
-		Optional<Usuario> obj = service.findById(id);
+	public ResponseEntity<Admin> update(@RequestBody Admin admin, @PathVariable("id") int id) {
+		Optional<Admin> obj = service.findById(id);
 		if (obj.isPresent() == false) {
-			throw new TratamentoDeErros(id, new Usuario());
+			throw new TratamentoDeErros(id, new Admin());
 		}
 
-		return ResponseEntity.ok().body(service.updatebyID(usuario, id));
+		return ResponseEntity.ok().body(service.updatebyID(admin, id));
 	}
 
-	//http://localhost:8080/usuarios/usuarios/page?pagina=1&quantidadeDeLinhas=1&direcao=ASC&campoOrdenacao=id
-	@RequestMapping(value = "/usuarios/page", method = RequestMethod.GET)
-	public ResponseEntity<Page<Usuario>> findPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
+	
+	@RequestMapping(value = "/administrador/page", method = RequestMethod.GET)
+	public ResponseEntity<Page<Admin>> findPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
 			@RequestParam(value = "quantidadeDeLinhas", defaultValue = "5") int quantidadeDeLinhas,
 			@RequestParam(value = "direcao", defaultValue = "ASC") String direcao,
 			@RequestParam(value = "campoOrdenacao", defaultValue = "id") String campoOrdenacao) {
-		Page<Usuario> usuarios = service.findPage(pagina, quantidadeDeLinhas, direcao, campoOrdenacao);
-		return ResponseEntity.ok().body(usuarios);
+		Page<Admin> administrador = service.findPage(pagina, quantidadeDeLinhas, direcao, campoOrdenacao);
+		return ResponseEntity.ok().body(administrador);
 	}
 
 	// Busca por nome
 	@RequestMapping(value = "nome/{nomeBusca}", method = RequestMethod.GET)
-	public ResponseEntity<List<Usuario>> findByNome(@PathVariable("nomeBusca") String nomeBusca) {
+	public ResponseEntity<List<Admin>> findByNome(@PathVariable("nomeBusca") String nomeBusca) {
 
-		List<Usuario> lista = service.findByNomeContains(nomeBusca);
+		List<Admin> lista = service.findByNomeContains(nomeBusca);
 
 		return ResponseEntity.ok().body(lista);
 	}
 
 	// Busca por email
 	@RequestMapping(value = "email/{emailBusca}", method = RequestMethod.GET)
-	public ResponseEntity<List<Usuario>> findByEmail(@PathVariable("emailBusca") String emailBusca) {
-		List<Usuario> lista = service.findByEmail(emailBusca);
+	public ResponseEntity<List<Admin>> findByEmail(@PathVariable("emailBusca") String emailBusca) {
+		List<Admin> lista = service.findByEmail(emailBusca);
 		return ResponseEntity.ok().body(lista);
 	}
 	// Busca por cpf
 	@RequestMapping(value = "cpf/{cpfBusca}", method = RequestMethod.GET)
-	public ResponseEntity<List<Usuario>> findBycpf(@PathVariable("cpfBusca") String cpf) {
-		List<Usuario> lista = service.findBycpf(cpf);
+	public ResponseEntity<List<Admin>> findBycpf(@PathVariable("cpfBusca") String cpf) {
+		List<Admin> lista = service.findBycpf(cpf);
 		return ResponseEntity.ok().body(lista);
 	}
 	
 	@RequestMapping (value="login", method = RequestMethod.POST)
-	public ResponseEntity<Boolean> autenticacao(@RequestBody Usuario user) {	
-		return ResponseEntity.ok().body(service.findOneByEmailAndSenha(user.getEmail(), user.getSenha()));
+	public ResponseEntity<Boolean> admin(@RequestBody Admin admin) {	
+		return ResponseEntity.ok().body(service.findOneByEmailAndSenha(admin.getEmail(), admin.getSenha()));
 	}
-	
-	
 
 }
