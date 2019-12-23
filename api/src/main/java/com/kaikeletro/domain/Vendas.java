@@ -38,7 +38,7 @@ public class Vendas implements Serializable {
 	
 
 	@OneToMany(mappedBy = "venda")
-	 List<Item_Venda> item;
+	List<Item_Venda> item;
 	
 	@ManyToOne
 	private Usuario usuario;

@@ -67,6 +67,7 @@ public class ApiApplication implements CommandLineRunner{
 	//Teste de incluir Vendas com produtos e usuários
 	private void vendasProdutoUsuario() {
 		Vendas v1 = new Vendas();
+		Vendas v2 = new Vendas();
 		Usuario u1 = new Usuario();
 		Produto p1 = new Produto();
 		Produto p2 = new Produto();
@@ -76,7 +77,9 @@ public class ApiApplication implements CommandLineRunner{
 		Item_Venda item = new Item_Venda();
 		Item_Venda item2 = new Item_Venda();
 		Item_Venda item3 = new Item_Venda();
+		Item_Venda item4 = new Item_Venda();
 		ArrayList<Item_Venda>itemArray = new ArrayList();
+		ArrayList<Item_Venda>itemArray2 = new ArrayList();
 		
 		
 		//Atributos categoria
@@ -129,11 +132,22 @@ public class ApiApplication implements CommandLineRunner{
 		item2.setQuantidade(1);
 		item2.setVenda(v1);
 		
+		item3.setProduto(p1);
+		item3.setQuantidade(2);
+		item3.setVenda(v2);
+		
+		item4.setProduto(p2);
+		item4.setQuantidade(5);
+		item4.setVenda(v2);
+		
 		
 		itemArray.add(item);
 		itemArray.add(item2);
+		itemArray2.add(item3);
+		itemArray2.add(item4);
 		
 		v1.setItem(itemArray);
+		v2.setItem(itemArray2);
 		
 		categoriaRepository.save(c1);
 		imagemRepository.saveAll(Arrays.asList(a1));
@@ -141,8 +155,11 @@ public class ApiApplication implements CommandLineRunner{
 		produtoRepository.save(p1);
 		produtoRepository.save(p2);
 		vendasRepository.save(v1);
+		vendasRepository.save(v2);
 		itemRepository.save(item);
 		itemRepository.save(item2);
+		itemRepository.save(item3);
+		itemRepository.save(item4);
 		
 	}
 	
