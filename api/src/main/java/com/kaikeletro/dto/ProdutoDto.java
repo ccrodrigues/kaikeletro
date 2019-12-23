@@ -3,21 +3,20 @@ package com.kaikeletro.dto;
 import java.util.List;
 
 import com.kaikeletro.domain.ImagemProd;
-<<<<<<< HEAD
-=======
 import com.kaikeletro.domain.Produto;
->>>>>>> ea13284c870e63d274230599c79bca4be07081d3
 
 public class ProdutoDto {
 	
 	private int idProduto;
-<<<<<<< HEAD
 	private String nome;
 	private double preco;
 	private String descricao;
 	private List <ImagemProd> imagens;
 	
 	
+	public ProdutoDto(Produto obj) {
+		// TODO Auto-generated constructor stub
+	}
 	public int getIdProduto() {
 		return idProduto;
 	}
@@ -95,57 +94,3 @@ public class ProdutoDto {
 	
 	
 }
-=======
-	
-	private String nome;
-	
-	private double preco;
-	
-	private List <ImagemProd> imagens;
-	
-	public ProdutoDto() {
-		
-	}
-	
-	public ProdutoDto(Produto obj) {
-		this.idProduto = obj.getIdProduto();
-		this.nome = obj.getNome();
-		this.preco = obj.getPreco();
-		this.imagens = obj.getImagens();
-}
-
-	public int getIdProduto() {
-		return idProduto;
-	}
-
-	public void setIdProduto(int idProduto) {
-		this.idProduto = idProduto;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(double preco) {
-		this.preco = preco;
-	}
-
-	public List<ImagemProd> getImagens() {
-		return imagens;
-	}
-
-	public void setImagens(List<ImagemProd> imagens) {
-		this.imagens = imagens;
-	}
-		
-
-}
->>>>>>> ea13284c870e63d274230599c79bca4be07081d3

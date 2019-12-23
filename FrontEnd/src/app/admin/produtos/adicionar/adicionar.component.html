@@ -28,29 +28,39 @@
             <div class="col">
                 <h3><small>Categoria *</small></h3>
                 <div class="col-5">
-                    <input type="text" class="form-control col-form-label-sm"
-                        placeholder="Pesquise por uma categoria...">
+                    <input type="search" class="form-control col-form-label-sm"
+                        placeholder="Pesquise por uma categoria..." #pesquisa (keydown)="search(pesquisa)">
                 </div>
                 <div class="row container margin-top">
                     <div class="col-6">
                         <div class="form-group">
-                            <select multiple class="form-control" id="exampleFormControlSelect1">
-                                <option value="" *ngFor="let c of categorias">{{ c.nome  }}</option>
+                            <select multiple class="form-control" id="exampleFormControlSelect1" *ngIf="!userPesquisando;else respostas">
+                                <option value="{{c.nome}}" *ngFor="let c of categorias" #categoria (click)="selecionada(categoria)">{{ c.nome  }}</option>
                             </select>
+
+                            <ng-template #respostas>
+                                <select   multiple class="form-control" id="exampleFormControlSelect1">
+                                    <option value="{{p.nome}}" *ngFor="let p of pesquisado"  #categoria (click)="selecionada(categoria)">{{ p.nome }}</option>
+                                </select>
+                            </ng-template>
+                            
                         </div>
                     </div>
                     <div class="col-1">
                         <div>
-                            <button class="btn btn-success" (click)="showAddCategoria($event)" [disabled]="true"> >
+                            <button class="btn btn-success" (click)="showAddCategoria($event, selects)" [disabled]="!add"> >
                             </button>
                         </div>
                         <div>
-                            <button class="btn btn-danger" (click)="showAddCategoria($event)" [disabled]="true">
-                                < </button> </div> </div> <div class="col-5">
-                                    <div class="form-group">
-                                        <select multiple class="form-control" id="exampleFormControlSelect1">
-                                        </select>
-                                    </div>
+                            <button class="btn btn-danger" (click)="removeWhat($event, removeThis)" [disabled]="!remove">
+                                < </button> </div> </div>
+
+                        <div class="col-5">
+                            <div class="form-group">
+                                <select multiple class="form-control" >
+                                    <option value="" *ngFor="let slc of selecionadas" #removeThis (click)="selectForRemove()"> {{ slc }}</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="container">

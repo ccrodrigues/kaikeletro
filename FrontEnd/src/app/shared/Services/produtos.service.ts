@@ -27,9 +27,8 @@ export class ProdutosService {
     console.log(this.url + id)
     return this.http.delete(this.url + id);
     // return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "produtos");
-  //Pegando a lista de produtosDto
   }
-  
+
   getProdutoDto(){
     return this.http.get(`${this.envService.urlAPI}produtos/carrinho`)
   }
