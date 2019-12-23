@@ -101,7 +101,7 @@ public ResponseEntity< Optional<ProdutoDto> > findByIdDto(@PathVariable("id") in
 						@RequestParam(value="qtdLinhas", defaultValue="10") int qtdLinhas,
 						@RequestParam(value="direcao", defaultValue="ASC") String direcao,
 						@RequestParam(value="campo", defaultValue="idProduto") String campo,
-						@RequestParam(value="nomeCategoria", defaultValue="") String nomeCategoria)
+						@RequestParam(value="categoria", defaultValue="") String nomeCategoria)
 	
 	{
 		
