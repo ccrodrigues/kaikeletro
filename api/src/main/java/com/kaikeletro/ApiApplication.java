@@ -8,14 +8,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.brq.mvc.enumeration.StatusPagamento;
-import com.brq.mvc.enumeration.StatusVendas;
 import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.ImagemProd;
 import com.kaikeletro.domain.Item_Venda;
 import com.kaikeletro.domain.Produto;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.domain.Vendas;
+import com.kaikeletro.enumeration.StatusPagamento;
+import com.kaikeletro.enumeration.StatusVendas;
 import com.kaikeletro.repositories.CategoriaRepository;
 import com.kaikeletro.repositories.ImagemProdutoRepository;
 import com.kaikeletro.repositories.ItemVendaRepository;
