@@ -1,0 +1,39 @@
+.basket_columns{
+    display: flex;
+    padding: 1rem;
+  
+    
+    margin-bottom: 20px;
+    color: #4a4a4a;
+    font-size: 14px;
+    line-height: 16px;
+    height: 40px;
+}
+
+.lista>li{
+    display: inline-block;
+    line-height: 16px;
+}
+
+img{
+    height: 85px;
+    width: 85px;
+    margin-left: -50px;
+    margin-top: 10px;
+    
+}
+
+select{
+    border-radius: 3px;
+    width: 50px;
+    height: 50px;
+    margin-left: 80px;
+    margin-top: 20px;
+}
+
+.remove>a:hover{
+    color: orange;
+    size: 100px;
+}
+
+

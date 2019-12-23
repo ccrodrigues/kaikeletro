@@ -6,11 +6,13 @@ import { HomeComponent } from './vendas/home/home.component';
 import { VendasModule } from './vendas/vendas.module';
 
 const routes: Routes = [
-  { path: 'dashboardAdm', loadChildren: './admin/admin.module#AdminModule'
+  { path: '', loadChildren:'./vendas/vendas.module#VendasModule'},
+  
+  { path: 'admin', loadChildren: './admin/admin.module#AdminModule'
   // , canActivate:[ GuardService]  <=== CANATIVATE para bloquear a entrada do usuario na tela do adm 
   },
-  { path: '', loadChildren:'./vendas/vendas.module#VendasModule'}
-
+  
+  
 ];
 
 @NgModule({

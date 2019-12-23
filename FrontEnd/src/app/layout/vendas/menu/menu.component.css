@@ -3,16 +3,12 @@ nav.navbar-mine {
     color: rgb(0, 0, 255);  
 }
 
-
-
 li{
     color: white;
-
 }
 
 .menu{
-    color: white;
-    
+    color: white;    
 }
 
 h6{
@@ -39,11 +35,9 @@ a{
 
 .img-logo{
 
-    height:100px;
-	width:200px;
-
-	display:block;
-	
+    height:50px;
+	width:96px;
+	display:block;	
     color:transparent;
 }
 
@@ -54,31 +48,36 @@ a{
 .navbar-nav > li >a{
     color: white;
   }
+.barra-topo {
+  background-color: rgb(119, 211, 214);
 
-  
+}
+.search-form {
+  margin-left: 90px;
+}
 
-  .barra-topo{
-    background-color: rgb(119, 211, 214);
-   
-  }
+.subscribe {
 
-  .search-form{
-      margin-left: 90px;
-  }
+  height: 30px;
+  width: 26;
+  padding: 0;
 
-  .subscribe{
-  
-    height: 30px;
-    width: 26;
-    padding: 0;
+}
 
- }
+#left {
+  float: left;
+  width: 100px;
+}
 
- #left{float:left;width:100px;}
+#right {
+  float: right;
+  width: 100px;
+}
 
-#right{float:right;width:100px;}
-
-#center{margin:0 auto;width:100px;}
+#center {
+  margin: 0 auto;
+  width: 100px;
+}
 
 /*
  #grupoImagem{
@@ -91,14 +90,14 @@ a{
   }
 */
 
-.box{
-    float: right;
-    margin-right: 15px;
+.box {
+  float: right;
+  margin-right: 15px;
 }
- 
-.cursor{
-    cursor: pointer;
-}  
+
+.cursor {
+  cursor: pointer;
+}
 
 
 
