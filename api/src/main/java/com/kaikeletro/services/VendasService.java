@@ -27,18 +27,26 @@ public class VendasService {
 	//Buscar todas as vendas
 	public List<Vendas> getAll() {
 		List<Vendas> vendas = vendasRepo.findAll();
+		
 		return vendas;
 	}
 	
-	public Vendas save(Vendas vendas) {
-		return vendasRepo.save(vendas);
+	public Vendas createVenda(Vendas vendas) {
+		
+		Vendas v = vendasRepo.save(vendas);
+		
+		
+		List<Item_Venda> listaItemVenda = vendas.getItem();
+		
+		for (Item_Venda obj_item_Venda : listaItemVenda) {
+			itemRepo.save(obj_item_Venda);
+		}
+		
+		 return v;
+		
 	}
 	
 	
-	
-	public Vendas createVenda(Vendas venda ) {
-		return vendasRepo.save(venda);
-	}
 
 
 }

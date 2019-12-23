@@ -10,6 +10,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.brq.mvc.enumeration.StatusPagamento;
+import com.brq.mvc.enumeration.StatusVendas;
 import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.ImagemProd;
 import com.kaikeletro.domain.Item_Venda;
@@ -115,8 +117,10 @@ public class ApiApplication implements CommandLineRunner{
 		
 		//Atributos vendas
 		v1.setValor(5000.0);
-		v1.setStatus("Ativo");
+		v1.setStatus(StatusVendas.Concluida);
 		v1.setTotalItens(10);
+		v1.setPagamento(StatusPagamento.Aguardando);
+
 
 		//v1.setTotalProdutos(Arrays.asList(p1));
 
@@ -160,7 +164,6 @@ public class ApiApplication implements CommandLineRunner{
 		itemRepository.save(item2);
 		itemRepository.save(item3);
 		itemRepository.save(item4);
-		
 	}
 	
 	//Teste de Produtos e Categorias

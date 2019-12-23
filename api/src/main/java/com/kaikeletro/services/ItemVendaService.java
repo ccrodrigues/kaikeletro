@@ -10,11 +10,17 @@ import com.kaikeletro.domain.Vendas;
 import com.kaikeletro.repositories.ItemVendaRepository;
 import com.kaikeletro.repositories.VendasRepository;
 
+import com.kaikeletro.repositories.ItemVendaRepository;
+
+
 @Service
 public class ItemVendaService {
 	
 	@Autowired
 	private ItemVendaRepository itemRepo;
+	
+	@Autowired
+	private VendasRepository vendasRepo;
 	
 	//Buscar todas as vendas
 	public List<Item_Venda> getAll() {
@@ -29,7 +35,18 @@ public class ItemVendaService {
 	
 	
 	public Item_Venda saveItens(List<Item_Venda> itens) {
+		Vendas venda = new Vendas();
+		venda.setItem(itens);
+		vendasRepo.save(venda);
+		
+		//for (Item_Venda obj_item_Venda : itens) {
+		//	itemRepo.save(obj_item_Venda);
+	//	}
+		
 		return (Item_Venda) itemRepo.saveAll(itens);
 	}
 
+
 }
+
+

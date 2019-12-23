@@ -38,6 +38,6 @@ public class VendasController {
 	public ResponseEntity<Vendas> createVenda(@RequestBody @Valid Vendas venda){
 		return ResponseEntity.ok().body(service.createVenda(venda));
 	}
-	
+
 
 }

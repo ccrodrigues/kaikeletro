@@ -18,48 +18,56 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.brq.mvc.enumeration.StatusPagamento;
+import com.brq.mvc.enumeration.StatusVendas;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="vendas")
+@Table(name = "vendas")
 public class Vendas implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	//Atributos
+
+	// Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VENDAS_NAME_SEQ")
-    @SequenceGenerator(sequenceName = "vendas_seq", allocationSize = 1, name = "VENDAS_NAME_SEQ")
+	@SequenceGenerator(sequenceName = "vendas_seq", allocationSize = 1, name = "VENDAS_NAME_SEQ")
 	private int id;
-	
-	@Column(name= "valor")
+
+	@Column(name = "valor")
 	private double valor;
+
 	
 
 	@OneToMany(mappedBy = "venda")
 	List<Item_Venda> item;
-	
+
+
 	@ManyToOne
 	private Usuario usuario;
-	
+
 	@DateTimeFormat(pattern = "dd/MM/yy")
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yy")
 	private Date dataVenda;
-	
-	private String status;
+
+	//private String status;
+
+	private StatusVendas status;
 	
 	private int totalItens;
-	
+
 	private int totalVendas;
 	
-	//Construtor
+	private StatusPagamento pagamento;
+
+	// Construtor
 	public Vendas() {
 
 	}
 
-	public Vendas(int id, double valor, Usuario usuario, Date dataVenda, String status, int totalItens,
+	public Vendas(int id, double valor, Usuario usuario, Date dataVenda, StatusVendas status, int totalItens,
 			int totalVendas) {
 		super();
 		this.id = id;
@@ -71,7 +79,7 @@ public class Vendas implements Serializable {
 		this.totalVendas = totalVendas;
 	}
 
-	//Getters & Setters
+	// Getters & Setters
 	public int getId() {
 		return id;
 	}
@@ -113,11 +121,11 @@ public class Vendas implements Serializable {
 		this.dataVenda = dataVenda;
 	}
 
-	public String getStatus() {
+	public StatusVendas getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(StatusVendas status) {
 		this.status = status;
 	}
 
@@ -136,18 +144,29 @@ public class Vendas implements Serializable {
 	public void setTotalVendas(int totalVendas) {
 		this.totalVendas = totalVendas;
 	}
-
-	//ToString
-	@Override
-	public String toString() {
-
-		return "Vendas [id=" + id + ", valor=" + valor + ", totalProdutos=" +  ", usuario=" + usuario
-				+ ", dataVenda=" + dataVenda + ", status=" + status + ", totalItens=" + totalItens + ", totalVendas="
-				+ totalVendas + "]";
+	
+	public StatusPagamento getPagamento() {
+		return pagamento;
 	}
 
 
 	//HashCode e Equals
+
+
+	public void setPagamento(StatusPagamento pagamento) {
+		this.pagamento = pagamento;
+	}
+
+	// ToString
+	@Override
+	public String toString() {
+		return "Vendas [id=" + id + ", valor=" + valor + ", item=" + item + ", usuario=" + usuario + ", dataVenda="
+				+ dataVenda + ", status=" + status + ", totalItens=" + totalItens + ", totalVendas=" + totalVendas
+				+ ", pagamento=" + pagamento + "]";
+	}
+	
+
+	// HashCode e Equals
 
 	@Override
 	public int hashCode() {
@@ -174,5 +193,4 @@ public class Vendas implements Serializable {
 	
 
 	}		
-
 
