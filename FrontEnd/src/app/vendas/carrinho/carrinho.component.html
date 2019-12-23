@@ -10,16 +10,16 @@
 <div class="row">
     <div  class="col-sm-8">
         <ul  class="lista">
-            <li *ngFor = "let p of itensCarrinhos" style=" margin-top: 10px ;border-top: 1px solid #086575; width: 700px;">
+            <li *ngFor = "let it of carrinho.items" style=" margin-top: 10px ;border-top: 1px solid #086575; width: 700px;">
                <div style="display: inline-flex;">
                     
                 <div  style="display: inline-flex; margin: 0;" class="col-sm-4"> 
-                 <img src="{{p.img}}">
-                    <p style=" white-space: normal;display: block; margin-top: 20px; margin-left: 20px;">{{p.nome}}</p>
+                 <img src="{{p.imagemPrincipal}}">
+                    <p style=" white-space: normal;display: block; margin-top: 20px; margin-left: 20px;">{{it.produto.nome}}</p>
                 </div>
 
                 <div class=" remove col-sm-2"> 
-                    <select (change)="changeSuit(p.idProduto,p.quantidade,$event.target.value)">
+                    <select (change)="changeSuit(it.produto.idProduto , it.quantidade ,$event.target.value)">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -27,11 +27,11 @@
                         <option value="5">5</option>
                         <option value="6">6</option>
                       </select>
-                      <a style=" font-size: 12px; margin-left: 80px ; cursor: pointer;" (click)="removeItem(p.idProduto)">Remover</a>
+                      <a style=" font-size: 12px; margin-left: 80px ; cursor: pointer;" (click)="removeItem(p.produto.idProduto)">Remover</a>
                 </div>
 
                 <div class="col-sm-2"> 
-                    <p style="margin-top: 20px; margin-left: 230px;">{{p.preco * p.quantidade | currency:'BRL':true:'2.2-2'}}</p>
+                    <p style="margin-top: 20px; margin-left: 230px;">{{it.produto.preco * it.quantidade | currency:'BRL':true:'2.2-2'}}</p>
                 </div>
 
                 </div>

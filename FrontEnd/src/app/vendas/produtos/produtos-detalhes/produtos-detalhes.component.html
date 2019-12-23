@@ -1,45 +1,45 @@
-<div class="row " >
-    <div class="col-4 ">
-        <img [src]="imagemAtual" height="65%" width="100%" />
-        <div class="row">
-            <div class="col zeroPadding " *ngFor="let img of produto?.imagens">
-                <img width="100%"   heigth="15%" [src]="img?.imagemProduto" (click)="trocarImagem(img?.imagemProduto)" />
-            </div>
-        </div>
+<div class="row ">
+  <div class="col-4 ">
+    <img [src]="imagemAtual" height="65%" width="100%" />
+    <!-- <div class="row">
+      <div class="col zeroPadding " *ngFor="let img of produto?.imagens">
+        <img width="100%" heigth="15%" [src]="img?.imagemProduto" (click)="trocarImagem(img?.imagemProduto)" />
+      </div>
+    </div> -->
+  </div>
+  <div class="col">
+    <div class=" zeroPadding">
+      <span class=" font-weight-bold">
+        <p class="text-center">{{produto?.nome}}</p>
+      </span>
     </div>
+    <br>
     <div class="col">
-        <div class=" zeroPadding">
-            <span class=" font-weight-bold">
-                <p class="text-center">{{produto?.nome}}</p>
-            </span>
-        </div>
-        <br>
-        <div class="col">
-            <span class="font-weight-light font-italic text-justify">
-                {{produto?.nome}}
-            </span>
-            <br/><hr>
-              <p class="text-center text-justify font-weight-bold">Preco: {{produto?.preco| currency:'BRL':true:'1.2-2'}} </p>
-             
-                <div class="btn-group" dropdown>
-                    <p >Parcelas: </p>
-                    <button id="button-basic" dropdownToggle type="button" class="btn  btn-outline-primary dropdown-toggle"
-                            aria-controls="dropdown-basic">
-                     {{numeroParcelaAtual}} <span class="caret"></span>
-                    </button>
-                    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-                        role="menu" aria-labelledby="button-basic">
-                        <div *ngFor="let numero of numerosParcela">
-                            <li role="menuitem"><a class="dropdown-item" (click)="mudarParcela(numero)" >{{numero}}</a></li>
-                        </div>
-                    </ul>
-        </div>
-        <br> <br> <br><br><br>
+      <span class="font-weight-light font-italic text-justify">
+        {{produto?.nome}}
+      </span>
+      <br />
+      <hr>
+      <p class="text-center text-justify font-weight-bold">Preco: {{produto?.preco| currency:'BRL':true:'1.2-2'}} </p>
 
-        <div>
-            <p>{{numeroParcelaAtual}}X{{Parcela| currency:'BRL':true:'1.2-2'}} </p>
-        </div>
-        <button  class="btn btn-primary">Comprar </button>
-        
+      <div class="btn-group" dropdown>
+        <p>Parcelas: </p>
+        <button id="button-basic" dropdownToggle type="button" class="btn  btn-outline-primary dropdown-toggle"
+          aria-controls="dropdown-basic">
+          {{numeroParcelaAtual}} <span class="caret"></span>
+        </button>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+          <div *ngFor="let numero of numerosParcela">
+            <li role="menuitem"><a class="dropdown-item" (click)="mudarParcela(numero)">{{numero}}</a></li>
+          </div>
+        </ul>
+      </div>
+      <br> 
+
+      <div>
+        <p>{{numeroParcelaAtual}}X{{Parcela| currency:'BRL':true:'1.2-2'}} </p>
+      </div>
+      <button class="btn btn-primary" (click)="adicionarCarrinho(produto)">Comprar </button>
+
     </div>
-</div>
+  </div>

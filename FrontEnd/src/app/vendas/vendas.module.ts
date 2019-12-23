@@ -8,7 +8,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TelaRegistroComponent } from './tela-registro/tela-registro.component';
 import { UsuarioLoginComponent } from './usuario-login/usuario-login.component';
 import { HomeComponent } from './home/home.component';
-import { PaginacaoComponent } from './produtos/paginacao/paginacao.component';
 import { ProdutosComponent } from './produtos/produtos/produtos.component';
 import { ProdutosDetalhesComponent } from './produtos/produtos-detalhes/produtos-detalhes.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -27,7 +26,6 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
     HomeComponent,
     TelaRegistroComponent,
     UsuarioLoginComponent,
-    PaginacaoComponent,
     ProdutosComponent,
     ProdutosDetalhesComponent,
     CarouselComponent,

@@ -3,6 +3,7 @@ import { RouteReuseStrategy, Router } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProdutoService } from 'src/app/shared/services/produto.service';
 import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
+import { Carrinho } from 'src/app/shared/models/carrinho.model';
 
 @Component({
   selector: 'app-carrinho',
@@ -11,30 +12,25 @@ import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 })
 export class CarrinhoComponent implements OnInit {
 
-
-  selectForm = new FormGroup({
-    select: new FormControl()
-  });
+  selectForm : FormGroup;
+  // selectForm = new FormGroup({
+  //   select: new FormControl()
+  // });
 
   totalProdutos;
   valorTotal;
-  valorProdutos;
+  valorProdutos = 0;
   frete = 10.99;
   selectedOption;
 
-  itensCarrinhos = [
-    { "idProduto": 1, "nome": "produto", "preco": 1000, "quantidade": 1, "img": "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg" },
-    { "idProduto": 2, "nome": "produto", "preco": 1000, "quantidade": 1, "img": "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg" },
-    { "idProduto": 3, "nome": "produto", "preco": 1000, "quantidade": 1, "img": "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg" },
-    { "idProduto": 4, "nome": "produto", "preco": 1000, "quantidade": 1, "img": "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg" },
-    { "idProduto": 4, "nome": "produto", "preco": 1000, "quantidade": 1, "img": "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg" },
-  ]
+  // itensCarrinhos = [
+  //   // { "idProduto": 1, "nome": "produto", "preco": 1000, "quantidade": 1, "img": "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg" },
+  //   // { "idProduto": 2, "nome": "produto", "preco": 1000, "quantidade": 1, "img": "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg" }
+  // ]
 
-  itemCarrinho = [];
+  // itemCarrinho = [];
 
-  itens = [
-    { "idProduto": 1, "quantidade": 1 }
-  ]
+  carrinho : Carrinho ;
 
   constructor(private router: Router, 
     private formBuilder: FormBuilder,
@@ -49,42 +45,41 @@ export class CarrinhoComponent implements OnInit {
       }
     );
 
-    let cart = this.carrinhoService.getCarrinho();
+    this.carrinho = this.carrinhoService.getCarrinho();
 
     this.calculoCarrinho();
   }
-
+  
   removeItem(idProduto) {
-    this.itensCarrinhos.splice(this.itensCarrinhos.findIndex(p => p.idProduto == idProduto), 1);
+    this.carrinho.items.splice(this.carrinho.items.findIndex(p => p.produto.idProduto == idProduto), 1);
     this.calculoCarrinho();
 
-    if (this.itensCarrinhos.length <= 0) {
-      alert("Seu carrinho está vazio");
-      this.router.navigate(['']);
+    if (this.carrinho.items.length <= 0) {
+      alert("Seu carrinho está vazio");      
     }
   }
 
   calculoCarrinho() {
-    this.totalProdutos = this.itensCarrinhos.length;
-    this.valorProdutos = this.itensCarrinhos.reduce((valorProdutos, valor) => valorProdutos + (valor.preco * valor.quantidade), 0)
+    this.totalProdutos = this.carrinho.items.length;
+    //this.valorProdutos = this.carrinho.items.reduce((valorProdutos, valor) => valorProdutos + (valor.preco * valor.quantidade), 0)
     this.valorTotal = this.valorProdutos + this.frete
   }
 
-  addQntidade(value) {
+  addQuantidade(value) {
     console.log(value)
   }
 
-  changeSuit(idProduto, quantidade, selectedOption) {
+  // changeSuit(idProduto, quantidade, selectedOption) {
 
-    for (let i = 0; i <= this.itensCarrinhos.length; i++) {
-      if (this.itensCarrinhos[i].idProduto == idProduto) {
-        this.itensCarrinhos[i].quantidade = selectedOption
-        this.calculoCarrinho()
-      }
-    }
+  //   for (let i = 0; i <= this.itens.length; i++) {
+  //     if (this.itens[i].idProduto == idProduto) {
+  //       this.itens[i].quantidade = selectedOption
+  //       this.calculoCarrinho()
+  //     }
+  //   }
 
-    console.log(this.selectedOption);
-  }
+  //   console.log(this.selectedOption);
+  // }
 
 }
 

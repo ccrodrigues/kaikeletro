@@ -34,24 +34,24 @@ export class ProdutoService {
 
   //Busca de ProdutoDTO por id
   getProdutoDtoId(id) {
-    return this.http.get<ProdutoDto>(`${this.envService.urlAPI}/produtos/carrinho/${id}`)
+    return this.http.get<ProdutoDto>(`${this.envService.urlAPI}/produtos/${id}`)
   }
 
   //pegando o produto filtrando por id
   getById(id) {
-    return this.http.get<ProdutoModel>(this.envService.urlAPI + "produtos" + "/" + id);
+    return this.http.get<ProdutoDto>(`${this.envService.urlAPI}/produtos/${id}`);
   }
   //adcionando o produto ao banco
   saveProduto(produto) {
-    return this.http.post<ProdutoModel>(this.envService.urlAPI + "/produtos", produto);
+    return this.http.post<ProdutoDto>(`${this.envService.urlAPI}/produtos`, produto);
   }
   //deletando o produto
   deleteProduto(id) {
-    return this.http.delete(this.envService.urlAPI + "/produtos" + "/" + id);
+    return this.http.delete(`${this.envService.urlAPI}/produtos/carrinho/${id}`);
   }
   //editando um produto ja existente
   updateProduto(produto, id) {
-    return this.http.patch<ProdutoModel>(this.envService.urlAPI + "produtos" + "/" + id, produto);
+    return this.http.patch<ProdutoModel>(`${this.envService.urlAPI}/produtos/carrinho/${id}`, produto);
   }
   //recebendo os produtos por paginacao
   getProdutoPage(pagina, qtdLinhas, direcao, campo) {
