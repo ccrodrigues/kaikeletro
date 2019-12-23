@@ -1,14 +1,244 @@
-.body{
-    background-color: rgb(220, 220, 220);
+/*
+* --- LEGENDA --- 
+* Ext- Div Externa
+* Int- Div Interna
+*
+*/
+
+#spanNomeDoProduto {
+  font-family: sans-serif;
+  font-size: 30px;
 }
-.hrMod{
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-.zeroPadding{
-    padding-left: 0px;
-    padding-right: 0px;
+
+#exFrete {
+  float: left;
+  margin-top: 10%;
+  margin-left: 10%;
+  width: 45%;
+  height: 25%;
+}
+
+#intFrete {
+  border: solid 0.2px;
+  border-top: solid 1px;
+  border-color: #bdbebd;
+  font-family: sans-serif;
+}
+
+#inputCalcFrete {
+  width: 100px;
+}
+
+#btnCalcFrete {
+  margin-left: 5px;
+}
+
+#headCalcFrete {
+  font-family: sans-serif;
+}
+
+#bodyDefaultFrete {
+  font-family: sans-serif;
+  padding-left: 25;
+}
+
+#bodyWithDetailsFrete {
+  font-family: sans-serif;
+}
+
+#exCompra {
+  max-width: 15em;
+  float: right;
+}
+
+#intCompra {
+  font-family: sans-serif;
+}
+
+#inputCompra {
+  background-color: transparent;
+}
+
+#divMostrarPreco {
+  border-top: solid 1px;
+  border-color: #bdbebd;
+}
+
+#btnComprarAgora {
+  margin-bottom: 10px;
+}
+
+#parcelamento {
+  float: right;
+  padding-top: 10%;
+  padding-left: 80%;
+}
+
+#btnFormaDePagamento {
+  width: auto;
+}
+
+#precoFinal {
+  clear: both;
+  color: black;
+  font-size: 30px;
+  line-height: 38px;
+  font-weight: 700;
+  font-family: italic;
+  text-align: justify;
+  padding-left: 21%;
+}
+
+.body {
+  background-color: rgb(220, 220, 220);
+}
+
+.hrMod {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.zeroPadding {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.qty .count {
+  color: #000;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  padding: 0 2px;
+  min-width: 35px;
+  text-align: center;
+}
+
+/* Button plus quantity*/
+.qty .plus {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Arial, sans-serif;
+  text-align: center;
+  border-radius: 50%;
+}
+
+/* Button minus quantity*/
+.qty .minus {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Arial, sans-serif;
+  text-align: center;
+  border-radius: 50%;
+  background-clip: padding-box;
+}
+
+div {
+  text-align: center;
+}
+
+/* Button minus quantity (HOVER)*/
+.minus:hover {
+  background-color: #717fe0 !important;
+}
+
+/* Button plus quantity (HOVER)*/
+.plus:hover {
+  background-color: #717fe0 !important;
+}
+
+/*Prevent text selection*/
+span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+input {
+  border: 0;
+  width: 2%;
+}
+
+/*nput::-webkit-outer-spin-button,*/
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input:disabled {
+  background-color: white;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+.container {
+  padding: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+/* The Close Button (x) (HOVER) */
+.close:hover, .close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
 }

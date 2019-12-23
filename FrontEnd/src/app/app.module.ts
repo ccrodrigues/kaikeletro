@@ -12,8 +12,9 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { VendasModule } from './vendas/vendas.module';
 import { LayoutModule } from './layout/layout.module';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CommonModule } from '@angular/common';
+
+
 
 @NgModule({
   declarations: [
@@ -29,7 +30,6 @@ import { CommonModule } from '@angular/common';
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
-    //CarouselModule.forRoot(),
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     VendasModule,

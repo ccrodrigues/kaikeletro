@@ -1,7 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { ProdutosService } from 'src/app/shared/Services/produtos.service';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
+import { NgxMaskModule } from 'ngx-mask'
+import { ProdutosDetalhesService } from './produtos-detalhes.service';
+
+class Parcelamento {
+  parcela: number
+  valorPorParcela: number
+  juros: string
+  valorTotal: number
+}
 
 @Component({
   selector: 'app-produtos-detalhes',
@@ -11,40 +20,85 @@ import { ProdutoModel } from 'src/app/shared/models/produto.model';
 })
 export class ProdutosDetalhesComponent implements OnInit {
 
-  produto:ProdutoModel = new ProdutoModel();
+  @ViewChild("modal", { static: false }) modal;
 
-  numerosParcela= [1,2,3,4,5,6,7,8,9,10,11,12];
-  numeroParcelaAtual=1; 
-  imagemAtual ="";
-  Preco:number;
+  produto: ProdutoModel = new ProdutoModel();
+
+  imagemAtual = "";
+
   Parcela;
+  precoAPI;
+  @ViewChild("cep", { static: false }) cep;
 
+  parcelamentos: Parcelamento[] = [];
 
-   constructor(private produtoService:ProdutosService) { 
-     
+  constructor(private produtoService: ProdutosService,
+              private prodDetailsCEP: ProdutosDetalhesService) {   
   }
 
-   ngOnInit() {
-    this.produtoService.getById("110").subscribe(  data =>{
 
-      this.produto=data;
+  ngOnInit() {
+    this.produtoService.getById("9").subscribe
+      (data => {
+        this.produto = data;
+        this.precoAPI = data.preco;
+        this.imagemAtual = this.produto.imagens[1].imagemProduto;
+      }
+      );
 
-      this.Preco=data.preco; 
-      this.Parcela=data.preco
-      this.imagemAtual=data.imagens[0].imagemProduto;
-      console.log(this.imagemAtual)
-
-    });
   }
-
 
   trocarImagem(img) {
     this.imagemAtual = img;
   }
 
-  mudarParcela(numero){
-    this.numeroParcelaAtual=numero;
-    this.Parcela=((this.Preco)/this.numeroParcelaAtual).toFixed(2);
+  valorPorParcela() {
+    this.parcelamentos = []
+    for (let index = 1; index < 13; index++) {
+
+      let parcelaCalc = index;
+      let valorPorParcelaCalc = this.precoAPI / index;
+
+      let jurosCalc = (index < 11)
+        ? "Sem Juros"
+        : "Com juros de 2,29 % a.m.";
+
+      let valorTotalCalc = (index < 11)
+        ? this.precoAPI
+        : this.calcJuros(valorPorParcelaCalc, index);
+
+      let tmp = {
+        parcela: parcelaCalc,
+        valorPorParcela: valorPorParcelaCalc,
+        juros: jurosCalc,
+        valorTotal: valorTotalCalc
+      };
+
+      this.parcelamentos.push(tmp)
+
+    }
+    this.modal.nativeElement.style.display = 'block';
   }
 
+  closeModal() {
+    this.modal.nativeElement.style.display = 'none';
+  }
+
+  private calcJuros(vlPorParcelas, mesesJuros) {
+    let taxa = 2.29;
+    let capital = vlPorParcelas;
+    let meses = mesesJuros;
+    let valorSemParcelas = this.precoAPI;
+
+    let montante = capital * Math.pow((1 + taxa / 100), meses);
+
+    return montante + valorSemParcelas;
+  }
+ 
+// calcularCEP(){
+//   this.prodDetailsCEP.getCEP("04547000", 3000).subscribe(data => console.log(data));
+// }
+ 
+
+ 
 }

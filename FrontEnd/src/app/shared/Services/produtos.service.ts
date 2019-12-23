@@ -11,12 +11,17 @@ export class ProdutosService {
   
   // Chamando o HttpCliente e injetando o envService que é responsavel por pegar a url Da Api
   constructor(private http : HttpClient,private envService:EnvService) { }
-
-
+  
   // Pegando todos os produto
   getAll() {
     //fazendo a requisição
-    return this.http.get(this.envService.urlAPI+"/produtos");
+
+    return this.http.get(this.envService.urlAPI+"produtos");
+  }
+
+  //Pegando a lista de produtosDto
+  getProdutoDto(){
+    return this.http.get(`${this.envService.urlAPI}produtos/carrinho`)
   }
 
   delete(id) {
