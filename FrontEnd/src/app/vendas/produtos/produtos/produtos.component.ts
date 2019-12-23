@@ -18,7 +18,7 @@ export class ProdutosComponent implements OnInit {
   ngOnInit() {
 
   }
-  adcionarCarrinho(){
+  adicionarCarrinho(){
     alert("por enquanto não está funcionando");
   }
 
