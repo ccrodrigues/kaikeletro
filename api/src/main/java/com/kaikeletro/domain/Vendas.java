@@ -39,7 +39,7 @@ public class Vendas implements Serializable {
 	private double valor;
 
 	
-
+	@JsonIgnore
 	@OneToMany(mappedBy = "venda")
 	List<Item_Venda> item;
 
@@ -50,11 +50,11 @@ public class Vendas implements Serializable {
 	@DateTimeFormat(pattern = "dd/MM/yy")
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yy")
-	private Date dataVenda;
+	private Date dataVenda = new Date(System.currentTimeMillis());
 
 	//private String status;
 
-	private StatusVendas status;
+	private StatusVendas statusVenda;
 	
 	private int totalItens;
 
@@ -74,7 +74,7 @@ public class Vendas implements Serializable {
 		this.valor = valor;
 		this.usuario = usuario;
 		this.dataVenda = dataVenda;
-		this.status = status;
+		this.statusVenda = status;
 		this.totalItens = totalItens;
 		this.totalVendas = totalVendas;
 	}
@@ -122,11 +122,11 @@ public class Vendas implements Serializable {
 	}
 
 	public StatusVendas getStatus() {
-		return status;
+		return statusVenda;
 	}
 
 	public void setStatus(StatusVendas status) {
-		this.status = status;
+		this.statusVenda = status;
 	}
 
 	public int getTotalItens() {
@@ -161,7 +161,7 @@ public class Vendas implements Serializable {
 	@Override
 	public String toString() {
 		return "Vendas [id=" + id + ", valor=" + valor + ", item=" + item + ", usuario=" + usuario + ", dataVenda="
-				+ dataVenda + ", status=" + status + ", totalItens=" + totalItens + ", totalVendas=" + totalVendas
+				+ dataVenda + ", status=" + statusVenda + ", totalItens=" + totalItens + ", totalVendas=" + totalVendas
 				+ ", pagamento=" + pagamento + "]";
 	}
 	

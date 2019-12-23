@@ -28,8 +28,8 @@ public class ItemVendaController {
 	}
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public ResponseEntity<Item_Venda> saveItem(@RequestBody @Valid Item_Venda item){
-		return ResponseEntity.ok().body(service.save(item));
+	public ResponseEntity<List<Item_Venda>> saveItem(@RequestBody @Valid List<Item_Venda> item){
+		return ResponseEntity.ok().body(service.saveItem(item));
 	}
 
 }

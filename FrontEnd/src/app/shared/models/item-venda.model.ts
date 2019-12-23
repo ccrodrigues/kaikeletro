@@ -1,10 +1,10 @@
 import { ProdutoModel } from './produto.model';
-import { VendaModel } from './venda.model';
+import { VendasModel } from './vendas.model';
 
 export class ItemVendaModel{
 
     id : number;
     produto : ProdutoModel;
-    venda : VendaModel;
+    venda : VendasModel;
     quantidade : number;
 }

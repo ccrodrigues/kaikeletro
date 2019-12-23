@@ -26,12 +26,12 @@ public class Item_Venda implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "produto_id")
-	@JsonIgnore
+	//@JsonIgnore
 	Produto produto;
 
 	@ManyToOne
 	@JoinColumn(name = "venda_id")
-	@JsonIgnore
+	//@JsonIgnore
 	Vendas venda;
 
 	@Column(name = "quantidade")

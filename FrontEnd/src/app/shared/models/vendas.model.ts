@@ -5,12 +5,12 @@ import { ItemVendaModel } from './item-venda.model';
 
 
 
-export class VendaModel{
+export class VendasModel{
     id:number;
     valor:number;
     usuario: Usuario;
-    dataVenda : Date;
-    status : string;
+    statusVenda : string;
+    statusPagamento : string;
     totalItens: number;
     totalVendas : number;
     itens:Array<ItemVendaModel>;

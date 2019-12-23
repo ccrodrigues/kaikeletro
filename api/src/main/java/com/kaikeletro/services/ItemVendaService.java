@@ -34,16 +34,28 @@ public class ItemVendaService {
 	
 	
 	
-	public Item_Venda saveItens(List<Item_Venda> itens) {
-		Vendas venda = new Vendas();
-		venda.setItem(itens);
-		vendasRepo.save(venda);
+	public List<Item_Venda> saveItem(List<Item_Venda> itens) {
 		
-		//for (Item_Venda obj_item_Venda : itens) {
-		//	itemRepo.save(obj_item_Venda);
-	//	}
+		List<Item_Venda>itensVenda = null;
 		
-		return (Item_Venda) itemRepo.saveAll(itens);
+		try {
+			
+			Vendas venda = new Vendas();
+		
+			venda = itens.get(0).getVenda();
+		
+			vendasRepo.save(venda);
+		
+			itensVenda = itemRepo.saveAll(itens);
+			
+		
+		}
+		
+		catch(Exception e) {
+			System.err.println(e);
+		}	
+		
+		return   itensVenda;
 	}
 
 
