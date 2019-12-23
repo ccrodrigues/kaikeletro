@@ -9,6 +9,8 @@ import { PaginacaoComponent } from './home/paginacao/paginacao.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
+  {path: 'logado', component : HomeComponent},
+  {path: 'logado/admin', component : HomeComponent},
   {path:'login', component: UsuarioLoginComponent},
   {path:'registro', component: TelaRegistroComponent},
   {path: 'detalhes', component: ProdutosDetalhesComponent},
