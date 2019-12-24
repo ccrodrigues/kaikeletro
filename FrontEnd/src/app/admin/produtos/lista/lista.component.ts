@@ -31,7 +31,7 @@ export class ListaComponent implements OnInit {
 
   showAll() {
     //    Pegando todos os registros de produtos
-    this.cs.getAll().subscribe(
+    this.ps.getAll().subscribe(
       a => {
         console.log(a)
         this.listProducts = a;
@@ -58,6 +58,6 @@ export class ListaComponent implements OnInit {
   }
 
 
-  constructor(private cs: CategoriasService) { }
+  constructor(private ps: ProdutosService) { }
 
 } 

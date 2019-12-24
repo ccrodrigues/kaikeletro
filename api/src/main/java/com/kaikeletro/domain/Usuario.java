@@ -1,6 +1,7 @@
 package com.kaikeletro.domain;
 
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -14,13 +15,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "usuario")
 
-public class Usuario {
+
+public class Usuario implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_NAME_SEQ")
@@ -53,6 +61,7 @@ public class Usuario {
 	public String telefone;
 
 	public String celular;
+	
 
 	public String getNome() {
 		return nome;
@@ -68,6 +77,14 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public List<EnderecoUsuario> getIdEndereco() {
+		return idEndereco;
+	}
+
+	public void setIdEndereco(List<EnderecoUsuario> idEndereco) {
+		this.idEndereco = idEndereco;
 	}
 
 	public String getDataDeNascimento() {
@@ -148,7 +165,13 @@ public class Usuario {
 			return false;
 		return true;
 	}
-	
-	
 
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", idEndereco=" + idEndereco + ", nome=" + nome + ", email=" + email + ", senha="
+				+ senha + ", dataDeNascimento=" + dataDeNascimento + ", cpf=" + cpf + ", telefone=" + telefone
+				+ ", celular=" + celular + "]";
+	}
+	
 }
+

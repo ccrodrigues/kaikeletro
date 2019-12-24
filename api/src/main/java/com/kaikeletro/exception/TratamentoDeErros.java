@@ -4,4 +4,7 @@ public class TratamentoDeErros extends RuntimeException {
 	public TratamentoDeErros(int id, Object obj) {
 		super ("O " + obj.getClass().getSimpleName() +" com id " + id  + " não foi localizado!" );
 	}	
-}
+
+	}
+	
+

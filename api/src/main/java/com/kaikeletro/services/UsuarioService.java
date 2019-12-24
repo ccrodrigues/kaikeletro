@@ -33,6 +33,7 @@ public class UsuarioService implements Serializable{
 	}
 
 	public Usuario save(Usuario user) {
+		user.senha=CriptografiaService.criptografarSenha(user.senha);
 		return userRepo.save(user);
 	}
 
@@ -88,15 +89,15 @@ public class UsuarioService implements Serializable{
 	
 	
 	public boolean findOneByEmailAndSenha(String email, String senha) {
-		
-		if(userRepo.findOneByEmailAndSenha(email, senha) != null) {
+		if(userRepo.findOneByEmailAndSenha(email, CriptografiaService.criptografarSenha(senha)) != null) {
 			return true;
 		}else {
 			return false;
 		}
-		
+	}
+	
 	}
 	
 	
 	
-}
+

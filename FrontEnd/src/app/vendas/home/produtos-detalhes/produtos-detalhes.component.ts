@@ -37,6 +37,7 @@ export class ProdutosDetalhesComponent implements OnInit {
   }
 
 
+
   ngOnInit() {
     this.produtoService.getById("9").subscribe
       (data => {
@@ -45,6 +46,7 @@ export class ProdutosDetalhesComponent implements OnInit {
         this.imagemAtual = this.produto.imagens[1].imagemProduto;
       }
       );
+
 
   }
 

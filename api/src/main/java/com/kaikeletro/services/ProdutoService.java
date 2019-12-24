@@ -61,4 +61,12 @@ public class ProdutoService  {
 		PageRequest pageRequest = PageRequest.of(pagina, qtdLinhas, Direction.valueOf(direcao), campo);
 		return repoProduto.findAll(pageRequest);
 	}
+	
+	//Paginação para listar os produtos passando categoria como parametro na URL
+	public Page<Produto> findDistinctByCategoriasNomeContaining(String nomeCategoria, int pagina, int qtdLinhas,
+																String direcao, String campo) {
+		
+		PageRequest pageRequest = PageRequest.of(pagina, qtdLinhas, Direction.valueOf(direcao), campo);
+		return repoProduto.findDistinctByCategoriasNomeContaining(nomeCategoria, pageRequest);
+	}
 }

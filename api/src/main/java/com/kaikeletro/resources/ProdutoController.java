@@ -2,6 +2,7 @@ package com.kaikeletro.resources;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaikeletro.domain.Produto;
-import com.kaikeletro.domain.Usuario;
+import com.kaikeletro.dto.ProdutoDto;
 import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.ProdutoService;
 
@@ -43,6 +44,35 @@ public class ProdutoController {
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	//Get Produto by id DTO para o usar no Carrinho do Front
+	@RequestMapping(value="/carrinho/{id}", method=RequestMethod.GET)
+	public ResponseEntity< Optional<ProdutoDto> > findByIdDto(@PathVariable("id") int id){
+		Optional<Produto> prod =  produtoService.findById(id);
+		
+		Optional <ProdutoDto> prodDto = prod
+				.map(obj -> new ProdutoDto(obj));
+
+	if (prod.isPresent() == false) {
+			throw new TratamentoDeErros(id, new Produto());
+		}
+		
+		return ResponseEntity.ok().body(prodDto);
+	}
+	
+	//Get all Produto DTO para o front 
+	@RequestMapping(value="/carrinho", method=RequestMethod.GET)
+	public ResponseEntity< List<ProdutoDto> > getAllCategoriasDto() {
+		
+		List<Produto> listaProd = produtoService.listarProdutos();
+		
+		List<ProdutoDto> listaDto = listaProd
+				.stream()
+				.map(obj -> new ProdutoDto( obj ))
+				.collect(Collectors.toList());
+		
+		return ResponseEntity.ok().body( listaDto );
+	}
+	
 	//Buscar Produto pelo Nome
 	@RequestMapping(value="/nome/{nomeBusca}", method=RequestMethod.GET)
 	public ResponseEntity<List <Produto> > findProdutosByName(@PathVariable("nomeBusca")String nomeBusca){
@@ -64,17 +94,25 @@ public class ProdutoController {
 		return ResponseEntity.ok().body(produtoService.deleteProduto(id));
 	}
 	
-	//Paginação
+	//Paginação, podendo passar a categoria como parametro p/ listar os produtos que pertencem a ela
 	@RequestMapping(value="/page", method=RequestMethod.GET)
-	public ResponseEntity< Page <Produto> > findPage(
+	public ResponseEntity< List <ProdutoDto> > findPage(
 						@RequestParam(value="pagina", defaultValue="0")int pagina,
 						@RequestParam(value="qtdLinhas", defaultValue="10") int qtdLinhas,
 						@RequestParam(value="direcao", defaultValue="ASC") String direcao,
-						@RequestParam(value="campo", defaultValue="idProduto") String campo) {
+						@RequestParam(value="campo", defaultValue="idProduto") String campo,
+						@RequestParam(value="nomeCategoria", defaultValue="") String nomeCategoria){
 		
-		Page<Produto> pageProdutos = produtoService.findPage(pagina, qtdLinhas, direcao, campo);
+		//Page<Produto> pageProdutos = produtoService.findPage(pagina, qtdLinhas, direcao, campo);
+		Page<Produto> pageProdutos = produtoService.findDistinctByCategoriasNomeContaining(nomeCategoria, pagina, qtdLinhas, direcao, campo);
 		
-		return ResponseEntity.ok().body(pageProdutos);
+		List<ProdutoDto> pageDto = pageProdutos
+				.stream()
+				.map(obj -> new ProdutoDto( obj ))
+				.collect(Collectors.toList());
+		
+		return ResponseEntity.ok().body(pageDto);
 	}
 
 }
+ 
