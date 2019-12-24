@@ -13,6 +13,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "item_venda")
 public class Item_Venda implements Serializable {
@@ -31,7 +33,7 @@ public class Item_Venda implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "venda_id")
-	//@JsonIgnore
+	@JsonIgnore
 	Vendas venda;
 
 	@Column(name = "quantidade")

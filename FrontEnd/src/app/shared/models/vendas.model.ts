@@ -8,10 +8,10 @@ import { ItemVendaModel } from './item-venda.model';
 export class VendasModel{
     id:number;
     usuario: Usuario;
-    statusVenda : string;
-    statusPagamento : string;
+    status : string;
+    pagamento : string;
     totalItens: number;
     valor : number;
-    itens:Array<ItemVendaModel>;
+    item:Array<ItemVendaModel>;
 
 }

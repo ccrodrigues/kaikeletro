@@ -10,14 +10,14 @@ import { EnvService } from 'src/app/env.service';
   
     constructor(private http : HttpClient, private envService:EnvService) { }
   
-    private url : string = "http://localhost:8080/vendas/";
+    private url : string = "http://localhost:8080/";
   
     getAll() {
       return this.http.get(this.url);
     }
 
     fecharVenda(vendas){
-        return this.http.post<VendasModel>(this.envService.urlAPI+ "vendas",vendas);
+        return this.http.post<VendasModel>(this.envService.urlAPI+ "/vendas",vendas);
     }
   
   }

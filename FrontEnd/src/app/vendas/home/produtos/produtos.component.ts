@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CarrinhoService } from 'src/app/shared/Services/carrinho.service';
+import { ProdutoModel } from 'src/app/shared/models/produto.model';
 
 @Component({
   selector: 'app-produtos',
@@ -12,14 +14,28 @@ export class ProdutosComponent implements OnInit {
     @Input() imgSRC;
     @Input() descricaoProduto;
     @Input() preco;
+    @Input() id;
 
-  constructor() { }
+  constructor(private carrinhoService : CarrinhoService) {
+    
+   }
 
+   
+
+  
   ngOnInit() {
-
+  
   }
   adcionarCarrinho(){
-    alert("por enquanto não está funcionando");
+    let produto : ProdutoModel = new ProdutoModel()
+    produto.categorias = this.categoria
+    produto.descricao = this.descricaoProduto
+    produto.idProduto = this.id
+    //produto.imagens = this.imgSRC
+    produto.nome = this.nome
+    produto.preco = this.preco
+    this.carrinhoService.addProduto(produto)
+    console.log("Adicionando " + produto)
   }
 
 }

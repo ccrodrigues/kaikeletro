@@ -18,10 +18,10 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.brq.mvc.enumeration.StatusPagamento;
-import com.brq.mvc.enumeration.StatusVendas;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.kaikeletro.enumeration.StatusPagamento;
+import com.kaikeletro.enumeration.StatusVendas;
 
 @Entity
 @Table(name = "vendas")
@@ -39,7 +39,7 @@ public class Vendas implements Serializable {
 	private double valor;
 
 	
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToMany(mappedBy = "venda")
 	List<Item_Venda> item;
 
@@ -74,7 +74,6 @@ public class Vendas implements Serializable {
 		this.dataVenda = dataVenda;
 		this.statusVenda = status;
 		this.totalItens = totalItens;
-		this.totalVendas = totalVendas;
 	}
 
 	// Getters & Setters
@@ -135,13 +134,6 @@ public class Vendas implements Serializable {
 		this.totalItens = totalItens;
 	}
 
-	public int getTotalVendas() {
-		return totalVendas;
-	}
-
-	public void setTotalVendas(int totalVendas) {
-		this.totalVendas = totalVendas;
-	}
 	
 	public StatusPagamento getPagamento() {
 		return pagamento;
@@ -159,8 +151,7 @@ public class Vendas implements Serializable {
 	@Override
 	public String toString() {
 		return "Vendas [id=" + id + ", valor=" + valor + ", item=" + item + ", usuario=" + usuario + ", dataVenda="
-				+ dataVenda + ", status=" + statusVenda + ", totalItens=" + totalItens + ", totalVendas=" + totalVendas
-				+ ", pagamento=" + pagamento + "]";
+				+ dataVenda + ", status=" + statusVenda + ", totalItens=" + totalItens + ", pagamento=" + pagamento + "]";
 	}
 	
 

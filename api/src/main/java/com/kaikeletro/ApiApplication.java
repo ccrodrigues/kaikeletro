@@ -2,22 +2,20 @@ package com.kaikeletro;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.brq.mvc.enumeration.StatusPagamento;
-import com.brq.mvc.enumeration.StatusVendas;
 import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.ImagemProd;
 import com.kaikeletro.domain.Item_Venda;
 import com.kaikeletro.domain.Produto;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.domain.Vendas;
+import com.kaikeletro.enumeration.StatusPagamento;
+import com.kaikeletro.enumeration.StatusVendas;
 import com.kaikeletro.repositories.CategoriaRepository;
 import com.kaikeletro.repositories.ImagemProdutoRepository;
 import com.kaikeletro.repositories.ItemVendaRepository;
@@ -53,17 +51,11 @@ public class ApiApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		
-		this.vendasProdutoUsuario();
+		//this.produtoCategoriaDemo();
+		//this.produtoCategoriaDemo();
+		//this.produtoCategoriaDemo();
 		this.produtoCategoriaDemo();
-		
-		//this.produtoCategoriaDemo();
-		//this.produtoCategoriaDemo();
-		//this.produtoCategoriaDemo();
-		//this.produtoCategoriaDemo();
-		//this.vendasProdutoUsuario();
-
-		
+		this.vendasProdutoUsuario();
 	}
 	
 	//Teste de incluir Vendas com produtos e usuários
@@ -90,7 +82,7 @@ public class ApiApplication implements CommandLineRunner{
 		//Atributos usuario
 		u1.setCelular("1148748-8743");
 		u1.setCpf("123456786");
-		u1.setDataDeNascimento("30/01/1998");
+		//u1.setDataDeNascimento("30/01/1998");
 		u1.setEmail("usuario@email.com");
 		u1.setNome("Usuario 01");
 		u1.setSenha("123");
@@ -125,9 +117,7 @@ public class ApiApplication implements CommandLineRunner{
 		//v1.setTotalProdutos(Arrays.asList(p1));
 
 		v1.setUsuario(u1);
-		//v1.setDataVenda(new Date());
-		v1.setTotalVendas(5);
-		
+				
 		item.setProduto(p1);
 		item.setQuantidade(2);
 		item.setVenda(v1);

@@ -15,32 +15,24 @@ import { EnvService } from 'src/app/env.service';
 
     private url : string = "http://localhost:8080/";
 
-   public itensCarrinho : ItemVendaModel[];
+   public itensCarrinho : ItemVendaModel[] = new Array();
 
-   public venda : VendasModel;
+   public venda : VendasModel = new VendasModel();
 
    public produto : ProdutoModel = new ProdutoModel();
 
-   public item : ItemVendaModel;
+   public item : ItemVendaModel = new ItemVendaModel();
 
-
-   
-   
+ 
 
    valorTotal:number;
    frete:number;
 
-   addProd(){
-      // this.produto.idProduto = 1;
-      // this.produto.preco = 10.99;
-      // this.item.produto = this.produto;
-       this.item.quantidade = 2;
-       this.itensCarrinho.push(this.item);
-   }
 
-   addProduto(item : ItemVendaModel){
-       this.itensCarrinho.push(item)
-       
+   addProduto(produ : ProdutoModel = new ProdutoModel() ){
+       this.item.produto = produ
+       this.item.quantidade = 1
+       this.itensCarrinho.push(this.item)  
    }
   
    removeItem(idProduto){
@@ -80,21 +72,19 @@ import { EnvService } from 'src/app/env.service';
 
     totalizarVenda(){
         //this.venda.itens = this.itensCarrinho
-        this.venda.statusPagamento = "Aguardando"
-        this.venda.statusVenda = "Aberta"
+        this.venda.pagamento = "Aguardando"
+        this.venda.status = "Aberta"
         this.venda.totalItens = this.totalCarrinho()
         this.venda.valor = this.valorTotal  
     }
 
 
     fecharVenda(){
-        this.addProd();
         this.totalizarVenda();
-        for(let i; i<=this.itensCarrinho.length; i++){
-            this.itensCarrinho[i].venda = this.venda
-        }
+        this.venda.item = this.itensCarrinho
+        this.venda.totalItens = 4
+        this.venda.valor = 10
         console.log("Venda: " + this.itensCarrinho)
-        return this.http.post<any>(this.url + "itens", this.itensCarrinho);
     }
        
   }

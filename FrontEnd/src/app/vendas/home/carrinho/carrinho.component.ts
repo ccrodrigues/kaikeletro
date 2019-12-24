@@ -3,6 +3,7 @@ import { RouteReuseStrategy, Router } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProdutosService } from 'src/app/shared/Services/produtos.service';
 import { CarrinhoService } from 'src/app/shared/Services/carrinho.service';
+import { VendaService } from 'src/app/shared/Services/venda.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -23,6 +24,8 @@ export class CarrinhoComponent implements OnInit {
   frete = 10.99; 
   selectedOption;
 
+  
+
   itensCarrinhos = [
     {"idProduto": 1, "nome" : "produto",  "preco" : 1000, "quantidade" : 1, "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
     {"idProduto": 2,"nome" : "produto",  "preco"  : 1000, "quantidade" : 1, "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
@@ -38,48 +41,35 @@ export class CarrinhoComponent implements OnInit {
   ]
 
   constructor(private router : Router, private formBuilder : FormBuilder,
-    private ps: ProdutosService, private carrinhoService : CarrinhoService) { }
+    private ps: ProdutosService, private carrinhoService : CarrinhoService, private vendasService : VendaService) { }
 
 
   ngOnInit() {
   
-    this.calculoCarrinho()
     }
 
-    removeItem(idProduto){
-      this.itensCarrinhos.splice(this.itensCarrinhos.findIndex(p=>p.idProduto==idProduto),1);
-      this.calculoCarrinho();
-
-      if(this.itensCarrinhos.length<=0){
-        alert("Seu carrinho está vazio");
-        this.router.navigate(['']);
-      }
-    }
-
-    calculoCarrinho(){
-      this.totalProdutos = this.itensCarrinhos.length;
-      this.valorProdutos =this.itensCarrinhos.reduce((valorProdutos, valor) => valorProdutos + (valor.preco*valor.quantidade), 0)
-      this.valorTotal = this.valorProdutos + this.frete
-
-    }
 
     changeSuit(idProduto,quantidade,selectedOption) {
 
-      for(let i=0; i<=this.itensCarrinhos.length;i++){
-        if (this.itensCarrinhos[i].idProduto == idProduto){
-          this.itensCarrinhos[i].quantidade = selectedOption
-          this.calculoCarrinho()
+      for(let i=0; i<=this.carrinhoService.itensCarrinho.length;i++){
+        if (this.carrinhoService.itensCarrinho[i].produto.idProduto == idProduto){
+          this.carrinhoService.itensCarrinho[i].quantidade = selectedOption
+          this.carrinhoService.calculoCarrinho()
+        
         }
       }
       console.log(this.selectedOption ) ;
     }
 
     fecha(){
-      this.carrinhoService.fecharVenda().subscribe(
+      this.carrinhoService.fecharVenda();
+      this.vendasService.fecharVenda(this.carrinhoService.venda).subscribe(
         (data)=>{
-        data = data
-        }
-      );
+          data = data
+          console.log(data)
+          console.log(this.carrinhoService.itensCarrinho)
+          }
+      )
     }
   }
 

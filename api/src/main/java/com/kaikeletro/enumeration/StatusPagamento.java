@@ -1,4 +1,4 @@
-package com.brq.mvc.enumeration;
+package com.kaikeletro.enumeration;
 
 public enum StatusPagamento {
 	Pago,
