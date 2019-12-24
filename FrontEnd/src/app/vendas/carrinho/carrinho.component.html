@@ -16,15 +16,18 @@
         <p> {{ it.produto.nome }} </p>
       </td>
       <td>
-        <button class="btn-primary nolinebreak"  (click)="decreaseQuantity(item.produto)" >  <i class="fas fa-plus-circle"></i> </button>
+        <button class="btn-primary nolinebreak"  (click)="aumentarQuantidade(it.produto)" >  <i class="fas fa-plus-circle"></i> </button>
 
         <p class="nolinebreak"> {{ it.quantidade }}</p>
 
-        <button class="btn-danger nolinebreak"   (click)="decreaseQuantity(item.produto)"> <i class="fas fa-trash-alt"></i>   </button>
+        <button class="btn-danger nolinebreak"   (click)="diminuirQuantidade(it.produto)"> <i class="fas fa-minus"></i> </button>
+
+        <button class="btn-danger nolinebreak"   (click)="removeItem(it.produto.idProduto)"> <i class="fas fa-trash"></i> </button>
       </td>
       <td>
         <p>
-          {{it.produto.preco * it.quantidade | currency:'BRL':true:'2.2-2'}}
+          {{it.produto.preco * it.quantidade | currency:'BRL': 'symbol' :'2.2-2'}}
+          
         </p>
       </td>
     </tr>
@@ -37,13 +40,20 @@
   <div class="card" style="width: 18rem; margin-left: 100px; height: 300px; margin-bottom: 20px;">
     <div class="card-body">
       <h5 class="card-title">Resumo do pedido</h5>
-      <p class="card-text">{{totalProdutos}} produtos &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        {{valorProdutos | currency:'BRL':true:'2.2-2'}}</p>
-      <p class="card-text">Frete &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp; {{frete | currency:'BRL':true:'1.2-2'}}</p>
+
+      <p class="card-text">{{ totalProdutos }} produtos &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        {{valorProdutos | currency:'BRL': 'symbol' : '2.2-2'}}
+      </p>
+
+      <p *ngIf="totalProdutos > 0" class="card-text">Frete &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp; {{frete | currency:'BRL':'symbol':'1.2-2'}}
+      </p>
+
       <p style="border-top: solid 1px black;">TOTAL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-        {{valorTotal | currency:'BRL':true:'1.2-2'}}</p>
+        {{ valorTotal | currency:'BRL': 'symbol' :'1.2-2' }}
+      </p>
+
       <a href="#" class="btn btn-primary">Continuar</a>
     </div>
   </div>

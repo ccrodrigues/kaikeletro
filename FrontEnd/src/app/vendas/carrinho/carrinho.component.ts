@@ -5,6 +5,8 @@ import { ProdutoService } from 'src/app/shared/services/produto.service';
 import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 import { Carrinho } from 'src/app/shared/models/carrinho.model';
 import { StorageService } from 'src/app/shared/services/storage.service';
+import { ProdutoDto } from 'src/app/shared/models/produto.dto';
+import { DialogService } from 'src/app/shared/toaster/dialog.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -14,22 +16,11 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 export class CarrinhoComponent implements OnInit {
 
   selectForm : FormGroup;
-  // selectForm = new FormGroup({
-  //   select: new FormControl()
-  // });
 
   totalProdutos;
   valorTotal;
   valorProdutos = 0;
   frete = 10.99;
-  selectedOption;
-
-  // itensCarrinhos = [
-  //   // { "idProduto": 1, "nome": "produto", "preco": 1000, "quantidade": 1, "img": "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg" },
-  //   // { "idProduto": 2, "nome": "produto", "preco": 1000, "quantidade": 1, "img": "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg" }
-  // ]
-
-  // itemCarrinho = [];
 
   carrinho : Carrinho ;
 
@@ -37,13 +28,14 @@ export class CarrinhoComponent implements OnInit {
     private formBuilder: FormBuilder,
     private ps: ProdutoService,
     private carrinhoService: CarrinhoService,
-    private storageService : StorageService) { }
+    private storageService : StorageService,
+    private dialogService : DialogService) { }
 
 
   ngOnInit() {
     this.selectForm = this.formBuilder.group(
       {
-        select: ['', []]
+        select: ['', [  ] ]
       }
     );
 
@@ -60,33 +52,52 @@ export class CarrinhoComponent implements OnInit {
     this.carrinho.items.splice(this.carrinho.items.findIndex(p => p.produto.idProduto == idProduto), 1);
     this.calculoCarrinho();
 
-    if (this.carrinho.items.length <= 0) {
-      alert("Seu carrinho está vazio");      
+    this.storageService.setCarrinho(this.carrinho);
+
+    if (this.carrinho.items.length <= 0) {      
+      this.dialogService.showError("Seu carrinho está vazio");
     }
   }
 
   calculoCarrinho() {
     this.totalProdutos = this.carrinho.items.length;
-    this.valorProdutos = this.carrinho.items.reduce(  (valorProdutos, item) => valorProdutos + (item.produto.preco * item.quantidade), 0)
-    this.valorTotal = this.valorProdutos + this.frete;
+    this.valorProdutos = this.carrinho.items.reduce(  (valorProdutos, item) => valorProdutos + (item.produto.preco * item.quantidade), 0);
+
+    if(this.totalProdutos > 0){
+      this.valorTotal = this.valorProdutos + this.frete;
+    }
+    else{
+      this.valorTotal = 0;
+    }
+    
+    this.carrinho.valorTotal = this.valorTotal;
   }
 
-  addQuantidade(value) {
-    console.log(value)
-  }
+  aumentarQuantidade(produtoDto : ProdutoDto) {
+        
+    let index = this.carrinho.items.findIndex(p => p.produto.idProduto == produtoDto.idProduto);
 
-  changeSuit(idProduto, quantidade, selectedOption) {
-
-    for (let i = 0; i < this.carrinho.items.length; i++) {
-      if (this.carrinho.items[i].produto.idProduto == idProduto) {
-        this.carrinho.items[i].quantidade = selectedOption
-        this.calculoCarrinho();
-        this.storageService.setCarrinho(this.carrinho);
-        console.log(this.carrinho);
-      }
+    if (index > -1){
+      this.carrinho.items[index].quantidade++;
+      this.storageService.setCarrinho(this.carrinho);
     }
 
-    console.log(selectedOption);
+    this.calculoCarrinho();
+    
+  }
+
+  diminuirQuantidade(produtoDto : ProdutoDto){
+    let index = this.carrinho.items.findIndex(p => p.produto.idProduto == produtoDto.idProduto);
+
+    if (index > -1){
+      this.carrinho.items[index].quantidade--;
+
+      if (this.carrinho.items[index].quantidade < 0){
+        this.removeItem(produtoDto.idProduto);
+      }
+      this.storageService.setCarrinho(this.carrinho);
+      this.calculoCarrinho();
+    }
   }
 
   private getImagemPrincipal(carrinho: Carrinho) {
