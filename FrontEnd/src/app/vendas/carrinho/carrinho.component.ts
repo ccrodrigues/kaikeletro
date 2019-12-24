@@ -4,6 +4,7 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ProdutoService } from 'src/app/shared/services/produto.service';
 import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 import { Carrinho } from 'src/app/shared/models/carrinho.model';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -35,7 +36,8 @@ export class CarrinhoComponent implements OnInit {
   constructor(private router: Router, 
     private formBuilder: FormBuilder,
     private ps: ProdutoService,
-    private carrinhoService: CarrinhoService) { }
+    private carrinhoService: CarrinhoService,
+    private storageService : StorageService) { }
 
 
   ngOnInit() {
@@ -46,6 +48,10 @@ export class CarrinhoComponent implements OnInit {
     );
 
     this.carrinho = this.carrinhoService.getCarrinho();
+
+    this.carrinho = this.getImagemPrincipal(this.carrinho);
+
+    console.log(this.carrinho);
 
     this.calculoCarrinho();
   }
@@ -61,29 +67,37 @@ export class CarrinhoComponent implements OnInit {
 
   calculoCarrinho() {
     this.totalProdutos = this.carrinho.items.length;
-    //this.valorProdutos = this.carrinho.items.reduce((valorProdutos, valor) => valorProdutos + (valor.preco * valor.quantidade), 0)
-    this.valorTotal = this.valorProdutos + this.frete
+    this.valorProdutos = this.carrinho.items.reduce(  (valorProdutos, item) => valorProdutos + (item.produto.preco * item.quantidade), 0)
+    this.valorTotal = this.valorProdutos + this.frete;
   }
 
   addQuantidade(value) {
     console.log(value)
   }
 
-  // changeSuit(idProduto, quantidade, selectedOption) {
+  changeSuit(idProduto, quantidade, selectedOption) {
 
-  //   for (let i = 0; i <= this.itens.length; i++) {
-  //     if (this.itens[i].idProduto == idProduto) {
-  //       this.itens[i].quantidade = selectedOption
-  //       this.calculoCarrinho()
-  //     }
-  //   }
+    for (let i = 0; i < this.carrinho.items.length; i++) {
+      if (this.carrinho.items[i].produto.idProduto == idProduto) {
+        this.carrinho.items[i].quantidade = selectedOption
+        this.calculoCarrinho();
+        this.storageService.setCarrinho(this.carrinho);
+        console.log(this.carrinho);
+      }
+    }
 
-  //   console.log(this.selectedOption);
-  // }
+    console.log(selectedOption);
+  }
 
-  private getImagemPrincipal(carrinho : Carrinho){
+  private getImagemPrincipal(carrinho: Carrinho) {
 
-    
+    carrinho.items.forEach((element, index) => {
+
+      //a primeira imagem é a imagem principal do produto
+      element.produto.imagemPrincipal = element.produto.imagens[0];
+    });
+
+    return carrinho;
 
   }
 

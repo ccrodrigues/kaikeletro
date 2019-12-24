@@ -24,7 +24,7 @@ export class CarrinhoService {
       }
       return cart;
   }
-
+  
   adicionarProduto(produto: ProdutoDto) : Carrinho {
       let carrinho = this.getCarrinho();
       let posicao = carrinho.items.findIndex(x => x.produto.idProduto == produto.idProduto);

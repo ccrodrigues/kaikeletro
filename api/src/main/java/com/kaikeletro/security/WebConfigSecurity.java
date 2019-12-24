@@ -40,7 +40,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter  {
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable().
+        /*http.cors().and().csrf().disable().
                 authorizeRequests()
                 .antMatchers("/token/*", "/login")                
                 .permitAll()
@@ -50,7 +50,9 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter  {
                 .authenticationEntryPoint(unauthorizedHandler)
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);*/
+        
+        http.csrf().disable().authorizeRequests().anyRequest().permitAll();
 
         http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
      
