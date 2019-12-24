@@ -10,3 +10,17 @@ body{
 .padding-0 {
     padding: 0px;
 }
+
+.box-produtos {
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 20px; 
+}
+
+.col-md-4 .col-sm-4 {
+    /* -ms-flex: 0 0 50%;
+    flex: 0 0 50%; 
+    position: relative;  */      
+    margin-right: 10px;
+    margin-left: 10px;    
+}

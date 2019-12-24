@@ -23,7 +23,7 @@ public class ProdutoDto {
 		this.id = obj.getId();
 		this.nome = obj.getNome();
 		this.preco = obj.getPreco();
-		//this.imagens = obj.getImagens();
+		this.imagens = obj.getImagens();
 }
 
 	public int getId() {

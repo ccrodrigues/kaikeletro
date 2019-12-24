@@ -1,10 +1,15 @@
-<div *ngFor="let prod of produtosPaginacao?.content" class="card  mb-3" >
-    <img class="card-img-top" [src]="prod?.imagemPrincipal?.imagemProduto"  alt="Card image cap">
-    <div class="card-body">
-        <!-- <span class="badge badge-pill badge-info">{{ categoria }}</span> -->
-        <h5 class="card-title">{{ prod?.nome }}</h5>
-        <p class="card-text">{{  prod?.descricaoProduto }}</p>
-        <h5 class="card-title">Preço {{ prod?.preco | currency:'BRL': 'symbol' :'1.2-2' }}</h5>
-        <button (click)="mostrarProdutoDetalhes(prod)" class="btn btn-primary">Comprar</button>
+<div class="row">
+    <div *ngFor="let prod of produtosPaginacao?.content" class="card  col-sm-4" >
+        <div class="box-produtos">
+            <img class="card-img-top" [src]="prod?.imagemPrincipal?.imagemProduto"  alt="Card image cap">
+            <div class="card-body">
+                <!-- <span class="badge badge-pill badge-info">{{ categoria }}</span> -->
+                <h5 class="card-title">{{ prod?.nome }}</h5>
+                <p class="card-text">{{  prod?.descricaoProduto }}</p>
+                <h5 class="card-title">Preço {{ prod?.preco | currency:'BRL': 'symbol' :'1.2-2' }}</h5>
+                <button (click)="mostrarProdutoDetalhes(prod)" class="btn btn-primary">Comprar</button>
+            </div>
+        </div>
+        
     </div>
 </div>
