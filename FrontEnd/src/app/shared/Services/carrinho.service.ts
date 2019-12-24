@@ -12,7 +12,7 @@ export class CarrinhoService {
   }
 
   criarOuLimparCarrinho() : Carrinho {
-      let carrinho: Carrinho = { items: [] };
+      let carrinho: Carrinho = { items: [], valorTotal : 0 };
       this.storage.setCarrinho(carrinho);
       return carrinho;
   }
@@ -24,7 +24,7 @@ export class CarrinhoService {
       }
       return cart;
   }
-  
+
   adicionarProduto(produto: ProdutoDto) : Carrinho {
       let carrinho = this.getCarrinho();
       let posicao = carrinho.items.findIndex(x => x.produto.idProduto == produto.idProduto);

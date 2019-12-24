@@ -41,8 +41,7 @@ public class ProdutoService  {
 		Optional<Produto> p = repoProduto.findById(id);
 		
 		if(p.isPresent() == true) {
-			p.get().setNome(prod.getNome());
-			p.get().setDescricao(prod.getDescricao());
+			p.get().setNome(prod.getNome());			
 			p.get().setPreco(prod.getPreco());
 			p.get().setCategorias(prod.getCategorias());
 			return repoProduto.save(p.get());

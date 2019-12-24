@@ -14,28 +14,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kaikeletro.domain.ImagemProd;
+import com.kaikeletro.domain.ImagemProduto;
 import com.kaikeletro.services.ImagemProdutoService;
 
 @RestController
 @RequestMapping(value="/imagens")
-public class ImagemProdutoController {
+public class ImagemProdutoResource {
 	
 	@Autowired
 	ImagemProdutoService imgService;
 	
 	@GetMapping
-	public ResponseEntity<List <ImagemProd> > getAllProdutos(){
+	public ResponseEntity<List <ImagemProduto> > getAllProdutos(){
 		return ResponseEntity.ok().body(imgService.getAllImagens());
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity< Optional<ImagemProd> > findById(@PathVariable("id") int id){
+	public ResponseEntity< Optional<ImagemProduto> > findById(@PathVariable("id") int id){
 		return ResponseEntity.ok().body(imgService.findById(id));
 	}
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public ResponseEntity<ImagemProd> createImagem(@RequestBody @Valid ImagemProd img) {
+	public ResponseEntity<ImagemProduto> createImagem(@RequestBody @Valid ImagemProduto img) {
 		return ResponseEntity.ok().body(imgService.createImagem(img));
 	}
 	

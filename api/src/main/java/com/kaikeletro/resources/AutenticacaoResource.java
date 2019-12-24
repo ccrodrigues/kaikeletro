@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kaikeletro.domain.Usuario;
+import com.kaikeletro.domain.Cliente;
 import com.kaikeletro.security.AuthToken;
 import com.kaikeletro.security.GeradorToken;
 
 @RestController
 @RequestMapping(value = "/token")
-public class AutenticacaoController {
+public class AutenticacaoResource {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -28,7 +28,7 @@ public class AutenticacaoController {
 	
 
 	@RequestMapping(value = "autenticacao", method = { RequestMethod.POST })
-	public ResponseEntity<AuthToken> getJwt(@RequestBody Usuario professor) {
+	public ResponseEntity<AuthToken> getJwt(@RequestBody Cliente professor) {
 
 		final Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(professor.getEmail(), professor.getSenha()));

@@ -16,19 +16,16 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="imagem_prod")
-public class ImagemProd implements Serializable{
+@Table(name="imagem_produto")
+public class ImagemProduto implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "IMAGEMPROD_NAME_SEQ")
 //    @SequenceGenerator(sequenceName = "imagemprod_seq", allocationSize = 1, name = "IMAGEMPROD_NAME_SEQ")
-	private int idImagem;
+	private int id;
 	
 	@Lob
 	@Column(name="imagem")
@@ -40,15 +37,15 @@ public class ImagemProd implements Serializable{
 	@Column(name="nome")
 	private String nomeImagem;
 	
-	@ManyToMany(mappedBy= "imagens")
 	@JsonIgnore
+	@ManyToMany(mappedBy= "imagens")	
 	private List <Produto> produto;
 
-	public ImagemProd() {
+	public ImagemProduto() {
 	}
 
-	public ImagemProd(int idImagem, String imagemProduto, String descricaoImagem, String nomeImagem) {
-		this.idImagem = idImagem;
+	public ImagemProduto(int idImagem, String imagemProduto, String descricaoImagem, String nomeImagem) {
+		this.id = idImagem;
 		this.imagemProduto = imagemProduto;
 		this.descricaoImagem = descricaoImagem;
 		this.nomeImagem = nomeImagem;
@@ -63,12 +60,12 @@ public class ImagemProd implements Serializable{
 		this.produto = produto;
 	}
 
-	public int getIdImagem() {
-		return idImagem;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdImagem(int idImagem) {
-		this.idImagem = idImagem;
+	public void setId(int idImagem) {
+		this.id = idImagem;
 	}
 
 	public String getImagemProduto() {
@@ -100,7 +97,7 @@ public class ImagemProd implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((descricaoImagem == null) ? 0 : descricaoImagem.hashCode());
-		result = prime * result + idImagem;
+		result = prime * result + id;
 		result = prime * result + ((imagemProduto == null) ? 0 : imagemProduto.hashCode());
 		result = prime * result + ((nomeImagem == null) ? 0 : nomeImagem.hashCode());
 		return result;
@@ -114,13 +111,13 @@ public class ImagemProd implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ImagemProd other = (ImagemProd) obj;
+		ImagemProduto other = (ImagemProduto) obj;
 		if (descricaoImagem == null) {
 			if (other.descricaoImagem != null)
 				return false;
 		} else if (!descricaoImagem.equals(other.descricaoImagem))
 			return false;
-		if (idImagem != other.idImagem)
+		if (id != other.id)
 			return false;
 		if (imagemProduto == null) {
 			if (other.imagemProduto != null)
@@ -137,11 +134,8 @@ public class ImagemProd implements Serializable{
 
 	@Override
 	public String toString() {
-		return "ImagemProduto [idImagem=" + idImagem + ", imagemProduto=" + imagemProduto + ", descricaoImagem="
+		return "ImagemProduto [idImagem=" + id + ", imagemProduto=" + imagemProduto + ", descricaoImagem="
 				+ descricaoImagem + ", nomeImagem=" + nomeImagem + "]";
 	}
-	
-	
-	
-	
+		
 }

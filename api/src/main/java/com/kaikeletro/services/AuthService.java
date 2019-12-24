@@ -11,28 +11,29 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.kaikeletro.domain.Usuario;
-import com.kaikeletro.repositories.UsuarioRepository;
+import com.kaikeletro.domain.Cliente;
+import com.kaikeletro.repositories.ClienteRepository;
+
 
 @Service
 public class AuthService implements UserDetailsService  {
 
 
 	@Autowired
-	UsuarioRepository professorRepository;
+	private ClienteRepository clienteRepository;
 	
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder; 
 	
 	public UserDetails loadUserByUsername(String usuario) throws UsernameNotFoundException {
 		
-		Usuario professor = professorRepository.findByEmail(usuario);
+		Cliente loginCredenciais = clienteRepository.findByEmail(usuario);
 		
-		if(professor == null){
+		if(loginCredenciais == null){
 			throw new UsernameNotFoundException("Invalid username or password.");
 		}
 		
-		return new org.springframework.security.core.userdetails.User(professor.getEmail(), professor.getSenha(), getAuthority());
+		return new org.springframework.security.core.userdetails.User(loginCredenciais.getEmail(), loginCredenciais.getSenha(), getAuthority());
 	}
 
 	private List<SimpleGrantedAuthority> getAuthority() {

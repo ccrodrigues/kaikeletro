@@ -12,7 +12,7 @@ public class CategoriaDto {
 	}
 	
 	public CategoriaDto(Categoria obj) {
-		this.idCategoria = obj.getIdCategoria();
+		this.idCategoria = obj.getId();
 		this.nome = obj.getNome();
 	}
 	

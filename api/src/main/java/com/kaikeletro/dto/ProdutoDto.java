@@ -2,36 +2,36 @@ package com.kaikeletro.dto;
 
 import java.util.List;
 
-import com.kaikeletro.domain.ImagemProd;
+import com.kaikeletro.domain.ImagemProduto;
 import com.kaikeletro.domain.Produto;
 
 public class ProdutoDto {
 	
-	private int idProduto;
+	private int id;
 	
 	private String nome;
 	
 	private double preco;
 	
-	private List <ImagemProd> imagens;
+	private List <ImagemProduto> imagens;
 	
 	public ProdutoDto() {
 		
 	}
 	
 	public ProdutoDto(Produto obj) {
-		this.idProduto = obj.getIdProduto();
+		this.id = obj.getId();
 		this.nome = obj.getNome();
 		this.preco = obj.getPreco();
-		this.imagens = obj.getImagens();
+		//this.imagens = obj.getImagens();
 }
 
-	public int getIdProduto() {
-		return idProduto;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdProduto(int idProduto) {
-		this.idProduto = idProduto;
+	public void setId(int idProduto) {
+		this.id = idProduto;
 	}
 
 	public String getNome() {
@@ -50,11 +50,11 @@ public class ProdutoDto {
 		this.preco = preco;
 	}
 
-	public List<ImagemProd> getImagens() {
+	public List<ImagemProduto> getImagens() {
 		return imagens;
 	}
 
-	public void setImagens(List<ImagemProd> imagens) {
+	public void setImagens(List<ImagemProduto> imagens) {
 		this.imagens = imagens;
 	}
 		

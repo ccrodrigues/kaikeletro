@@ -1,9 +1,10 @@
 package com.kaikeletro.domain;
-
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,69 +12,66 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="produto")
-public class Produto implements Serializable {
-
-	/**
-	 * 
-	 */
+public class Produto  implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUTO_NAME_SEQ")
-//    @SequenceGenerator(sequenceName = "produto_seq", allocationSize = 1, name = "PRODUTO_NAME_SEQ")
-	private int idProduto;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	
-	@Column(name="nome")
 	private String nome;
+	private Double preco;
 	
-	@Column(name="preco")
-	private double preco;
-	
-	@Column(name="descricao")
-	private String descricao;
-	
-	@ManyToMany()
-	@JoinTable(name="produtos_categorias",
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "produto_categoria",
 		joinColumns = @JoinColumn(name = "produto_id"),
 		inverseJoinColumns = @JoinColumn(name = "categoria_id")
 	)
+	private List<Categoria> categorias = new ArrayList<>();
+	
 	@JsonIgnore
-	private List<Categoria> categorias;
+	@OneToMany(mappedBy="id.produto")
+	private Set<ItemPedido> itens = new HashSet<>();
+	
 	
 	@ManyToMany
 	@JoinTable(name="produtos_imagens",
 			joinColumns = @JoinColumn(name = "produto_id"),
 			inverseJoinColumns = @JoinColumn(name = "imagem_id"))
-	private List <ImagemProd> imagens;
+	private List <ImagemProduto> imagens;
 	
-	@ManyToMany
-	private List<Vendas> vendas ;
-
 	public Produto() {
-		
 	}
 
-	public Produto(int idProduto, String nome, double preco, String descricao) {
-		this.idProduto = idProduto;
+	public Produto( String nome, Double preco) {
+		super();
+		//this.id = id;
 		this.nome = nome;
 		this.preco = preco;
-		this.descricao = descricao;
 	}
 
-	public int getIdProduto() {
-		return idProduto;
+	@JsonIgnore
+	public List<Pedido> getPedidos() {
+		List<Pedido> lista = new ArrayList<>();
+		for (ItemPedido x : itens) {
+			lista.add(x.getPedido());
+		}
+		return lista;
+	}
+	
+	
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdProduto(int idProduto) {
-		this.idProduto = idProduto;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -84,20 +82,12 @@ public class Produto implements Serializable {
 		this.nome = nome;
 	}
 
-	public double getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(double preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
 	}
 
 	public List<Categoria> getCategorias() {
@@ -107,35 +97,20 @@ public class Produto implements Serializable {
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
 	}
+
+	public Set<ItemPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(Set<ItemPedido> itens) {
+		this.itens = itens;
+	}
 	
-	public List<ImagemProd> getImagens() {
-		return imagens;
-	}
-
-	public void setImagens(List<ImagemProd> imagens) {
-		this.imagens = imagens;
-	}
-
-	public List<Vendas> getVendas() {
-		return vendas;
-	}
-
-	public void setVendas(List<Vendas> vendas) {
-		this.vendas = vendas;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((categorias == null) ? 0 : categorias.hashCode());
-		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-		result = prime * result + idProduto;
-		result = prime * result + ((imagens == null) ? 0 : imagens.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(preco);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -148,38 +123,13 @@ public class Produto implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
-		if (categorias == null) {
-			if (other.categorias != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!categorias.equals(other.categorias))
-			return false;
-		if (descricao == null) {
-			if (other.descricao != null)
-				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
-		if (idProduto != other.idProduto)
-			return false;
-		if (imagens == null) {
-			if (other.imagens != null)
-				return false;
-		} else if (!imagens.equals(other.imagens))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (Double.doubleToLongBits(preco) != Double.doubleToLongBits(other.preco))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "Produto [idProduto=" + idProduto + ", nome=" + nome + ", preco=" + preco + ", descricao=" + descricao
-				+ ", categorias=" + categorias + ", imagens=" + imagens + "]";
-	}
-
 	
+
 }
