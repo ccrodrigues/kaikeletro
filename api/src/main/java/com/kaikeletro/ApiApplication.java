@@ -45,6 +45,7 @@ public class ApiApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		this.produtoCategoriaDemos();
 		this.produtoCategoriaDemo();
+<<<<<<< HEAD
 
 	}
 
@@ -99,6 +100,16 @@ public class ApiApplication implements CommandLineRunner {
 
 	// Teste de Produtos e Categorias
 	private void produtoCategoriaDemos() {
+=======
+		//this.vendasProdutoUsuario();
+	}
+	
+	//Teste de incluir Vendas com produtos e usuários
+	/*private void vendasProdutoUsuario() {
+		Vendas v1 = new Vendas();
+		Usuario u1 = new Usuario();
+		Produto p1 = new Produto();
+>>>>>>> 38a45ebc96ea29f4f853123ed03701efc8f579f0
 		Categoria c1 = new Categoria();
 		c1.setNome("Microcomputador");
 
@@ -127,6 +138,7 @@ public class ApiApplication implements CommandLineRunner {
 		p1.setDescricao("Notebook Lenovo E490 - Core I7");
 		p1.setPreco(6000);
 		p1.setCategorias(Arrays.asList(c1));
+<<<<<<< HEAD
 		p1.setImagens(Arrays.asList(a1, a2, a3));
 
 		categoriaRepository.saveAll(Arrays.asList(c1));
@@ -134,6 +146,25 @@ public class ApiApplication implements CommandLineRunner {
 
 	}
 
+=======
+		p1.setImagens(Arrays.asList(a1));
+		
+		//Atributos vendas
+		v1.setValor(5000.0);
+		v1.setStatus("Ativo");
+		v1.setTotalItens(10);
+		v1.setTotalProdutos(Arrays.asList(p1));
+		v1.setUsuario(u1);
+		v1.setDataVenda(new Date());
+		v1.setTotalVendas(5);
+		
+		categoriaRepository.save(c1);
+		imagemRepository.saveAll(Arrays.asList(a1));
+		usuarioRepository.save(u1);
+		produtoRepository.save(p1);
+		vendasRepository.save(v1);
+	}*/
+>>>>>>> 38a45ebc96ea29f4f853123ed03701efc8f579f0
 	
 	//Teste de Produtos e Categorias
 	private void produtoCategoriaDemo() {
@@ -144,12 +175,30 @@ public class ApiApplication implements CommandLineRunner {
 	a1.setImagemProduto("https://www.saldaodainformatica.com.br/5712-thickbox_default/notebook-lenovo-ideapad-320-80yh0006br-prata-intel-core-i5-7200u-ram-8gb-hd-1tb-tela-156-windows-10.jpg");
 	a1.setDescricaoImagem("NoteBook Lenovo");
 	a1.setNomeImagem("note");
+<<<<<<< HEAD
 		
 	for (int i =3 ; i < 18 ; i++) {
+=======
+	
+	Produto p1 = new Produto();
+	p1.setNome("Notebook");
+	p1.setDescricao("Notebook Lenovo E490 - Core I7");
+	p1.setPreco(6000);
+	p1.setCategorias(Arrays.asList(c1));
+	p1.setImagens(Arrays.asList(a1));
+	
+	categoriaRepository.saveAll(Arrays.asList(c1));
+	imagemRepository.saveAll(Arrays.asList(a1));
+	produtoRepository.saveAll(Arrays.asList(p1));
+	
+	for (int i =3 ; i < 40 ; i++) {
+>>>>>>> 38a45ebc96ea29f4f853123ed03701efc8f579f0
 		Produto prod = new Produto();
 		prod.setNome("Notebook " + i);
 		prod.setDescricao("Notebook Kaik i171");
+		prod.setCategorias(Arrays.asList(c1));
 		prod.setImagens(Arrays.asList(a1));
+		prod.setPreco(5000);
 		imagemRepository.saveAll(Arrays.asList(a1));
 		produtoRepository.saveAll(Arrays.asList(prod));
 		produtoRepository.save(prod);

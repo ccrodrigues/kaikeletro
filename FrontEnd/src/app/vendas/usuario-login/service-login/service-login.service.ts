@@ -24,20 +24,33 @@ export class ServiceLoginService {
 fazerLogin(login : {email : String, senha : String} ){
    
       console.log(login);
-
+    
      this.http.post(this.envService.urlAPI + `/usuarios/login`, login).subscribe(
        (data) => {
         console.log(data);
         if(data == true){
           this.isAutenticado = true;
-          this.router.navigate(['']);
+          this.router.navigate(['logado']);
           
-        }else{
-          this.isAutenticado = false;
-          this.router.navigate(['login']);
+        }else if(data == false){
+          this.http.post(this.envService.urlAPI + `/administrador/login`, login).subscribe(
+            (admin) => {
+              console.log(admin);
+              if(admin == true){
+                this.isAutenticado = true;
+                this.router.navigate(['dashboardAdm']);
+              }
+            }
+          )
         }
-       }
-     );
+        else{
+          this.router.navigate(['login']),
+          this.isAutenticado = false;
+        }
+    
+       
+      });
+
      
 
     }
@@ -46,4 +59,7 @@ getIsAutenticado(){
   
   return this.isAutenticado;
 }
+
+
+
 }
