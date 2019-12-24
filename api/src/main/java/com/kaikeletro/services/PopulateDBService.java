@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.Categoria;
+import com.kaikeletro.domain.ImagemProduto;
 import com.kaikeletro.domain.Produto;
 import com.kaikeletro.repositories.CategoriaRepository;
 import com.kaikeletro.repositories.ImagemProdutoRepository;
@@ -87,9 +88,26 @@ public class PopulateDBService {
 		p6.getCategorias().addAll(Arrays.asList(cat4));
 					
 		p7.getCategorias().addAll(Arrays.asList(cat7));
+		
+		ImagemProduto a1 = new ImagemProduto(); a1.setImagemProduto(
+		"https://www.saldaodainformatica.com.br/5712-thickbox_default/notebook-lenovo-ideapad-320-80yh0006br-prata-intel-core-i5-7200u-ram-8gb-hd-1tb-tela-156-windows-10.jpg"
+		); 
+		a1.setDescricaoImagem("Notebook Lenovo");
+		a1.setNomeImagem("imagem 1");
+		
+		p1.setImagens(Arrays.asList(a1));
+		p2.setImagens(Arrays.asList(a1));
+		p3.setImagens(Arrays.asList(a1));
+		p4.setImagens(Arrays.asList(a1));
+		p5.setImagens(Arrays.asList(a1));
+		p6.setImagens(Arrays.asList(a1));
+		p7.setImagens(Arrays.asList(a1));
 
+		imagemRepository.saveAll(Arrays.asList(a1));
+		
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7));
+		
 
 	}
 }

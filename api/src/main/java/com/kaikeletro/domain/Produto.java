@@ -46,6 +46,7 @@ public class Produto  implements Serializable {
 			inverseJoinColumns = @JoinColumn(name = "imagem_id"))
 	private List <ImagemProduto> imagens;
 	
+		
 	public Produto() {
 	}
 
@@ -104,6 +105,14 @@ public class Produto  implements Serializable {
 
 	public void setItens(Set<ItemPedido> itens) {
 		this.itens = itens;
+	}
+	
+	public List<ImagemProduto> getImagens() {
+		return imagens;
+	}
+
+	public void setImagens(List<ImagemProduto> imagens) {
+		this.imagens = imagens;
 	}
 	
 	@Override
