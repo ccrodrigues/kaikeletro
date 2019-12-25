@@ -13,45 +13,63 @@ import { EnvService } from 'src/app/env.service';
   
     constructor(private router : Router,private http : HttpClient, private envService:EnvService) { }
 
-    private url : string = "http://localhost:8080/";
+   private url : string = "http://localhost:8080/";
 
-   public itensCarrinho : ItemVendaModel[] = new Array();
+   public itensCarrinho : ItemVendaModel[] = []
 
    public venda : VendasModel = new VendasModel();
 
    public produto : ProdutoModel = new ProdutoModel();
 
-   public item : ItemVendaModel = new ItemVendaModel();
-
- 
-
    valorTotal:number;
-   frete:number;
+   frete:number = 20;
 
-
-   addProduto(produ : ProdutoModel = new ProdutoModel() ){
-       this.item.produto = produ
-       this.item.quantidade = 1
-       this.itensCarrinho.push(this.item)  
+   public exibirItens(): ItemVendaModel[]{
+     return this.itensCarrinho
    }
+
+
+  public addProduto(produ : ProdutoModel = new ProdutoModel() ){
+    let item : ItemVendaModel = new ItemVendaModel() 
+       item.produto = produ
+       item.quantidade = 1
+       this.itensCarrinho.push(item)  
+       console.log(item)
+   }
+
+
+  public alterarQuantidade( selectedOption, id):void{
+    
+    let num = parseInt(selectedOption)
+    
+    let find = this.itensCarrinho.find((item : ItemVendaModel) => item.produto.idProduto === id)
+       
+    if(find){  
+      find.quantidade = num
+       } 
+        console.log(this.itensCarrinho)
+        console.log(selectedOption)
+        console.log(id)
+      
+      }
+
   
    removeItem(idProduto){
     this.itensCarrinho.splice(this.itensCarrinho.findIndex(p=>p.produto.idProduto==idProduto),1);
-    this.calculoCarrinho();
-
-    if(this.itensCarrinho.length<=0){
-      alert("Seu carrinho está vazio");
-      this.router.navigate(['']);
-    }
   }
 
   calculoCarrinho(){
-    this.venda.totalItens = this.itensCarrinho.length;
-    this.venda.valor =this.itensCarrinho.reduce((valorProdutos, valor) => valorProdutos + (valor.produto.preco*valor.quantidade), 0)
-    this.valorTotal =  this.venda.valor + this.frete
+    let totalValor = 0
+    totalValor =this.itensCarrinho.reduce((valorProdutos, valor) => valorProdutos + (valor.produto.preco*valor.quantidade), 0)
+    return  totalValor
   }
 
-  totalCarrinho(){
+  valorTotalFrete(){
+    let totalFrete = 0;
+    return totalFrete = this.calculoCarrinho() + this.frete;
+  }
+
+  totalItensCarrinho(){
       let total = 0
       this.itensCarrinho.map(function(item){
           total = total + (item.quantidade);
@@ -59,14 +77,13 @@ import { EnvService } from 'src/app/env.service';
       return total;
   }
 
-  verifyItemExists(itemCarrinho:ItemVendaModel){
-    let find = this.itensCarrinho.find(function(item){
-        item.produto.idProduto=== itemCarrinho.produto.idProduto
-    })
+  verifyItemExists(produ : ProdutoModel = new ProdutoModel()){
+    let find = this.itensCarrinho.find((item : ItemVendaModel) => item.produto.idProduto === produ.idProduto)
+       
     if(find){
         find.quantidade += 1;
     }else{
-        this.itensCarrinho.push(itemCarrinho)
+      this.addProduto(produ)
     } 
     }
 
@@ -74,7 +91,7 @@ import { EnvService } from 'src/app/env.service';
         //this.venda.itens = this.itensCarrinho
         this.venda.pagamento = "Aguardando"
         this.venda.status = "Aberta"
-        this.venda.totalItens = this.totalCarrinho()
+        this.venda.totalItens = this.totalItensCarrinho()
         this.venda.valor = this.valorTotal  
     }
 
@@ -82,8 +99,8 @@ import { EnvService } from 'src/app/env.service';
     fecharVenda(){
         this.totalizarVenda();
         this.venda.item = this.itensCarrinho
-        this.venda.totalItens = 4
-        this.venda.valor = 10
+        this.venda.totalItens = this.totalItensCarrinho()
+        this.venda.valor = this.valorTotalFrete()
         console.log("Venda: " + this.itensCarrinho)
     }
        

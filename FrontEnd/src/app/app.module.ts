@@ -15,10 +15,12 @@ import { LayoutModule } from './layout/layout.module';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CommonModule } from '@angular/common';
 import { CarrinhoService } from './shared/Services/carrinho.service';
+import { ProdutosComponent } from './vendas/home/produtos/produtos.component';
+import { HomeComponent } from './vendas/home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent    
+    AppComponent  
   ],
   imports: [
     BrowserModule,

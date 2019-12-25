@@ -4,6 +4,7 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ProdutosService } from 'src/app/shared/Services/produtos.service';
 import { CarrinhoService } from 'src/app/shared/Services/carrinho.service';
 import { VendaService } from 'src/app/shared/Services/venda.service';
+import { ProdutoModel } from 'src/app/shared/models/produto.model';
 
 @Component({
   selector: 'app-carrinho',
@@ -45,22 +46,17 @@ export class CarrinhoComponent implements OnInit {
 
 
   ngOnInit() {
-  
+    console.log("Itens: " + this.carrinhoService.exibirItens())
     }
 
 
-    changeSuit(idProduto,quantidade,selectedOption) {
+    changeSuit(selectedOption : number, id) : void {
 
-      for(let i=0; i<=this.carrinhoService.itensCarrinho.length;i++){
-        if (this.carrinhoService.itensCarrinho[i].produto.idProduto == idProduto){
-          this.carrinhoService.itensCarrinho[i].quantidade = selectedOption
-          this.carrinhoService.calculoCarrinho()
-        
-        }
-      }
-      console.log(this.selectedOption ) ;
+      this.carrinhoService.alterarQuantidade(selectedOption,id)
+      //console.log(typeof(selectedOption)) 
     }
 
+    
     fecha(){
       this.carrinhoService.fecharVenda();
       this.vendasService.fecharVenda(this.carrinhoService.venda).subscribe(

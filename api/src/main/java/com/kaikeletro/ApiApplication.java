@@ -180,7 +180,8 @@ public class ApiApplication implements CommandLineRunner{
 	for (int i =3 ; i < 18 ; i++) {
 		Produto prod = new Produto();
 		prod.setNome("Notebook " + i);
-		prod.setDescricao("Notebook Kaik i171");
+		prod.setDescricao("Notebook Kaik i17i");
+		prod.setPreco(1000);
 		prod.setImagens(Arrays.asList(a1));
 		imagemRepository.saveAll(Arrays.asList(a1));
 		produtoRepository.saveAll(Arrays.asList(prod));

@@ -1,5 +1,7 @@
 <h2 style="margin-top: 20px;">Meu Carrinho</h2>
 
+<div *ngIf="carrinhoService.exibirItens().length; else carrinhoVazio">
+
 <div class="container-fluid">
 <div class="row basket_columns">
         <h6 class="col-3">Produto</h6>
@@ -14,20 +16,20 @@
                <div style="display: inline-flex;">
                     
                 <div  style="display: inline-flex; margin: 0;" class="col-sm-4"> 
-                 <img src="{{p.img}}">
+                 <img src="{{p.produto.img}}">
                     <p style=" white-space: normal;display: block; margin-top: 20px; margin-left: 20px;">{{p.produto.nome}}</p>
                 </div>
 
                 <div class=" remove col-sm-2"> 
-                    <select (change)="changeSuit(p.idProduto,p.quantidade,$event.target.value)">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
+                    <select value="{{p.quantidade}}" (change)="changeSuit($event.target.value,p.produto.idProduto)">
+                        <option value=1>1</option>
+                        <option value=2>2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
                         <option value="6">6</option>
                       </select>
-                      <a style=" font-size: 12px; margin-left: 80px ; cursor: pointer;" (click)="removeItem(p.idProduto)">Remover</a>
+                      <a style=" font-size: 12px; margin-left: 80px ; cursor: pointer;" (click)="carrinhoService.removeItem(p.produto.idProduto)">Remover</a>
                 </div>
 
                 <div class="col-sm-2"> 
@@ -43,16 +45,28 @@
         <div class="card" style="width: 18rem; margin-left: 100px; height: 300px; margin-bottom: 20px;">
             <div class="card-body">
               <h5 class="card-title">Resumo do pedido</h5>
-              <p class="card-text">{{ carrinhoService.totalCarrinho()}} produtos &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                   {{valorProdutos | currency:'BRL':true:'2.2-2'}}</p>
+              <p class="card-text">{{ carrinhoService.totalItensCarrinho() }} produtos &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                   {{ carrinhoService.calculoCarrinho() | currency:'BRL':true:'2.2-2' }}</p>
               <p class="card-text">Frete &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp; {{frete | currency:'BRL':true:'1.2-2'}}</p>
+                &nbsp;&nbsp;&nbsp;&nbsp; {{carrinhoService.frete | currency:'BRL':true:'1.2-2'}}</p>
                 <p style="border-top: solid 1px black;">TOTAL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  {{valorTotal | currency:'BRL':true:'1.2-2'}}</p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  {{carrinhoService.valorTotalFrete() | currency:'BRL':true:'1.2-2'}}</p>
               <button (click)="fecha()"  class="btn btn-primary">Continuar</button>
             </div>
           </div>
     </div>
 </div>
 </div>
+
+</div>
+
+
+
+<ng-template #carrinhoVazio>
+    <div 
+        class="form-row d-flex justify-content-center" 
+        style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #086575; margin: 20px" >
+        Seu Carrinho está vazio
+    </div>
+</ng-template>
 

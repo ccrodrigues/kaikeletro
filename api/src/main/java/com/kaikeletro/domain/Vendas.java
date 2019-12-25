@@ -39,7 +39,7 @@ public class Vendas implements Serializable {
 	private double valor;
 
 	
-	//@JsonIgnore
+	
 	@OneToMany(mappedBy = "venda")
 	List<Item_Venda> item;
 

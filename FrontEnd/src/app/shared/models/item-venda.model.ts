@@ -3,8 +3,12 @@ import { VendasModel } from './vendas.model';
 
 export class ItemVendaModel{
 
-    id : number;
-    produto : ProdutoModel;
-    venda : VendasModel;
-    quantidade : number;
+constructor(
+    
+    ){}
+
+    public  id : number
+    public produto : ProdutoModel
+    public venda : VendasModel
+    public  quantidade : number
 }

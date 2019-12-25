@@ -30,13 +30,13 @@ public class VendasService {
 	}
 
 	public Vendas createVenda(Vendas vendas) {
-		Vendas a = vendasRepo.save(vendas);	
+		Vendas sell = vendasRepo.save(vendas);	
 		
 	   for(Item_Venda item : vendas.getItem()) {
 		   item.setVenda(vendas);
 		   itemRepo.save(item);
 	   }
 	   
-	   return a;
+	   return sell;
 	}
 }

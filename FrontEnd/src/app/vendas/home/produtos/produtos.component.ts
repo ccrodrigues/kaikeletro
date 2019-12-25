@@ -24,7 +24,7 @@ export class ProdutosComponent implements OnInit {
 
   
   ngOnInit() {
-  
+    console.log("itens : " + this.carrinhoService.exibirItens())
   }
   adcionarCarrinho(){
     let produto : ProdutoModel = new ProdutoModel()
@@ -34,8 +34,9 @@ export class ProdutosComponent implements OnInit {
     //produto.imagens = this.imgSRC
     produto.nome = this.nome
     produto.preco = this.preco
-    this.carrinhoService.addProduto(produto)
-    console.log("Adicionando " + produto)
+    this.carrinhoService.verifyItemExists(produto)
+    //this.carrinhoService.addProduto(produto)
+    console.log("Adicionando " + this.carrinhoService.exibirItens())
   }
 
 }
