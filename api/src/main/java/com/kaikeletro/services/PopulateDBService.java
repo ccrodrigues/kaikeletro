@@ -8,12 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.Categoria;
+import com.kaikeletro.domain.Cliente;
 import com.kaikeletro.domain.ImagemProduto;
 import com.kaikeletro.domain.Produto;
+import com.kaikeletro.domain.enums.TipoCliente;
 import com.kaikeletro.repositories.CategoriaRepository;
+import com.kaikeletro.repositories.ClienteRepository;
 import com.kaikeletro.repositories.ImagemProdutoRepository;
 import com.kaikeletro.repositories.ProdutoRepository;
 
@@ -28,6 +32,12 @@ public class PopulateDBService {
 
 	@Autowired
 	ImagemProdutoRepository imagemRepository;
+	
+	@Autowired
+	ClienteRepository clienteRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	// Teste de Produtos e Categorias
 	public void produtoCategoriaDemo() {
@@ -63,6 +73,10 @@ public class PopulateDBService {
 		Categoria cat5 = new Categoria(null, "Jardinagem");
 		Categoria cat6 = new Categoria(null, "Decoração");
 		Categoria cat7 = new Categoria(null, "Perfumaria");
+		Categoria cat8 = new Categoria(null, "Celular");
+		Categoria cat9 = new Categoria(null, "Eletrodoméstico");
+		
+		Categoria cat10 = new Categoria(null, "melhores-ofertas");
 
 		Produto p1 = new Produto( "Notebook Lenovo", 6000.00);
 		Produto p2 = new Produto( "Impressora HP Colorida", 800.00);
@@ -71,6 +85,8 @@ public class PopulateDBService {
 		Produto p5 = new Produto( "Colcha Francesa", 200.00);
 		Produto p6 = new Produto( "TV 55 Polegadas Kaik Eletro", 9200.00);					
 		Produto p7 = new Produto( "Light and Blue", 500.00);
+		Produto p8 = new Produto( "Xiaomi 11 PRO", 3000.00);
+		Produto p9 = new Produto( "Geladeira Frost Free", 9000.00);
 
 		cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
 		cat2.getProdutos().addAll(Arrays.asList(p2));
@@ -78,6 +94,9 @@ public class PopulateDBService {
 		cat4.getProdutos().addAll(Arrays.asList(p1, p2, p3, p6));
 				
 		cat7.getProdutos().addAll(Arrays.asList(p7));
+		cat8.getProdutos().addAll(Arrays.asList(p8));
+		cat9.getProdutos().addAll(Arrays.asList(p9));
+		cat10.getProdutos().addAll(Arrays.asList(p7,p8,p9));
 
 		p1.getCategorias().addAll(Arrays.asList(cat1, cat4));
 		p2.getCategorias().addAll(Arrays.asList(cat1, cat2, cat4));
@@ -87,7 +106,9 @@ public class PopulateDBService {
 		p5.getCategorias().addAll(Arrays.asList(cat3));
 		p6.getCategorias().addAll(Arrays.asList(cat4));
 					
-		p7.getCategorias().addAll(Arrays.asList(cat7));
+		p7.getCategorias().addAll(Arrays.asList(cat7,cat10));
+		p8.getCategorias().addAll(Arrays.asList(cat8,cat10));
+		p9.getCategorias().addAll(Arrays.asList(cat9,cat10));
 		
 		ImagemProduto a1 = new ImagemProduto(); a1.setImagemProduto(
 		"https://www.saldaodainformatica.com.br/5712-thickbox_default/notebook-lenovo-ideapad-320-80yh0006br-prata-intel-core-i5-7200u-ram-8gb-hd-1tb-tela-156-windows-10.jpg"
@@ -102,12 +123,20 @@ public class PopulateDBService {
 		p5.setImagens(Arrays.asList(a1));
 		p6.setImagens(Arrays.asList(a1));
 		p7.setImagens(Arrays.asList(a1));
+		p8.setImagens(Arrays.asList(a1));
+		p9.setImagens(Arrays.asList(a1));
 
 		imagemRepository.saveAll(Arrays.asList(a1));
 		
-		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));
-		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7));
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8, cat9,cat10));
+		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7,p8,p9));
 		
 
+	}
+	
+	public void clienteDemo() {
+		Cliente cli1 = new Cliente(null, "Fabrizio", "admin@brq.com", "11111111111", TipoCliente.PESSOAFISICA, bCryptPasswordEncoder.encode("admin"));
+		
+		clienteRepository.save(cli1);
 	}
 }

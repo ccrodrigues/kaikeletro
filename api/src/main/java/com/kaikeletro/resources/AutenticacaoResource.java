@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaikeletro.domain.Cliente;
+import com.kaikeletro.dto.CredenciaisDto;
 import com.kaikeletro.security.AuthToken;
 import com.kaikeletro.security.GeradorToken;
 
@@ -27,11 +28,13 @@ public class AutenticacaoResource {
 	private GeradorToken jwtTokenUtil;
 	
 
-	@RequestMapping(value = "autenticacao", method = { RequestMethod.POST })
-	public ResponseEntity<AuthToken> getJwt(@RequestBody Cliente professor) {
+	@RequestMapping(value = "generate", method = { RequestMethod.POST })
+	public ResponseEntity<AuthToken> getJwt(@RequestBody CredenciaisDto credenciais) {
+		
+		System.out.println(credenciais);
 
 		final Authentication authentication = authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(professor.getEmail(), professor.getSenha()));
+				.authenticate(new UsernamePasswordAuthenticationToken(credenciais.getEmail(), credenciais.getSenha()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		final String token = jwtTokenUtil.generateToken(authentication);
 		
@@ -39,7 +42,6 @@ public class AutenticacaoResource {
 		
 		return ResponseEntity.ok(authToken);
 		
-
 	}
 
 }

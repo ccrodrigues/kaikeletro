@@ -3,7 +3,7 @@ import { ImagemModel } from './imagem.model';
 
 export class ProdutoDto{
     
-    idProduto:number;
+    id:number;
     nome:string;
     preco:number;
     imagens:Array<ImagemModel>;

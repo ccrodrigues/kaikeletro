@@ -1,6 +1,7 @@
 package com.kaikeletro.security;
 
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +17,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebConfigSecurity extends WebSecurityConfigurerAdapter  {
-	
+		
+	@Autowired
+    private Environment env;
 	
 	@Bean
 	public BCryptPasswordEncoder encoder() {
@@ -40,19 +43,20 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter  {
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /*http.cors().and().csrf().disable().
+        http.cors().and().csrf().disable().
                 authorizeRequests()
-                .antMatchers("/token/*", "/login")                
+                .antMatchers("/token/*", "/cliente", "/produtos/*")                
                 .permitAll()
-                .anyRequest().authenticated()
+                .anyRequest()
+                .authenticated()
                 .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(unauthorizedHandler)
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);*/
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         
-        http.csrf().disable().authorizeRequests().anyRequest().permitAll();
+        //http.csrf().disable().authorizeRequests().anyRequest().permitAll();
 
         http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
      

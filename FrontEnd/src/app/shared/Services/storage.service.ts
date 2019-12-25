@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { LocalUserModel } from '../models/local-user.model';
+import { LocalUserModel } from '../models/auth/local-user.model';
 import { Carrinho } from '../models/carrinho.model';
 import { EnvService } from './env.service';
 

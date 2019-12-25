@@ -49,10 +49,12 @@ export class CarrinhoComponent implements OnInit {
   }
   
   removeItem(idProduto) {
-    this.carrinho.items.splice(this.carrinho.items.findIndex(p => p.produto.idProduto == idProduto), 1);
+    this.carrinho.items.splice(this.carrinho.items.findIndex(p => p.produto.id == idProduto), 1);
     this.calculoCarrinho();
 
     this.storageService.setCarrinho(this.carrinho);
+
+    this.dialogService.showSuccess("Item removido!");
 
     if (this.carrinho.items.length <= 0) {      
       this.dialogService.showError("Seu carrinho está vazio");
@@ -75,7 +77,7 @@ export class CarrinhoComponent implements OnInit {
 
   aumentarQuantidade(produtoDto : ProdutoDto) {
         
-    let index = this.carrinho.items.findIndex(p => p.produto.idProduto == produtoDto.idProduto);
+    let index = this.carrinho.items.findIndex(p => p.produto.id == produtoDto.id);
 
     if (index > -1){
       this.carrinho.items[index].quantidade++;
@@ -87,13 +89,13 @@ export class CarrinhoComponent implements OnInit {
   }
 
   diminuirQuantidade(produtoDto : ProdutoDto){
-    let index = this.carrinho.items.findIndex(p => p.produto.idProduto == produtoDto.idProduto);
+    let index = this.carrinho.items.findIndex(p => p.produto.id == produtoDto.id);
 
     if (index > -1){
       this.carrinho.items[index].quantidade--;
 
       if (this.carrinho.items[index].quantidade < 0){
-        this.removeItem(produtoDto.idProduto);
+        this.removeItem(produtoDto.id);
       }
       this.storageService.setCarrinho(this.carrinho);
       this.calculoCarrinho();

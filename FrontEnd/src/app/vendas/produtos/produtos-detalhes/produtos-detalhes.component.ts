@@ -4,6 +4,7 @@ import { ProdutoService } from 'src/app/shared/services/produto.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProdutoDto } from 'src/app/shared/models/produto.dto';
 import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
+import { DialogService } from 'src/app/shared/toaster/dialog.service';
 
 @Component({
   selector: 'app-produtos-detalhes',
@@ -25,7 +26,8 @@ export class ProdutosDetalhesComponent implements OnInit {
    constructor(
      private activatedRoute : ActivatedRoute,
      private produtoService : ProdutoService,
-     private carrinhoService : CarrinhoService 
+     private carrinhoService : CarrinhoService,
+     private dialogService : DialogService
     ) { 
      
   }
@@ -39,8 +41,8 @@ export class ProdutosDetalhesComponent implements OnInit {
             this.produto=data;
             this.produto = this.getImagemPrincipalProduto(this.produto);
             this.imagemAtual = this.produto.imagemPrincipal.imagemProduto;
-            console.log(this.imagemAtual);
-            console.log(this.produto);
+            // console.log(this.imagemAtual);
+            // console.log(this.produto);
           }
         );
         
@@ -66,10 +68,10 @@ export class ProdutosDetalhesComponent implements OnInit {
   }
 
   adicionarCarrinho(produto){
-    console.log(produto);
+    // console.log(produto);
     this.carrinhoService.adicionarProduto(produto);
-    console.log(this.carrinhoService.getCarrinho())
-    alert("por enquanto não está funcionando");
+    // console.log(this.carrinhoService.getCarrinho());
+    this.dialogService.showSuccess("Produto adicionado no carrinho com sucesso!");    
   }
 
 }

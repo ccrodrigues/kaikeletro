@@ -173,6 +173,14 @@ public class Cliente implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", nome=" + nome + ", email=" + email + ", cpfOuCnpj=" + cpfOuCnpj + ", tipo="
+				+ tipo + ", senha=" + senha + ", enderecos=" + enderecos + ", telefones=" + telefones + ", perfis="
+				+ perfis + ", pedidos=" + pedidos + "]";
 	}	
+	
 }
 

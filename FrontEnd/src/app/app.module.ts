@@ -1,16 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 
-import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { VendasModule } from './vendas/vendas.module';
 import { LayoutModule } from './layout/layout.module';
@@ -18,6 +17,9 @@ import { CommonModule } from '@angular/common';
 
 import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from "@auth0/angular-jwt";
+import { AuthInterceptorService } from './shared/interceptors/auth-interceptor.service';
+import { HttpConfigInterceptor } from './shared/interceptors/http-config-interceptor.service';
+import { CustomErrorHandlerService } from './shared/services/error/custom-error-handler.service';
 
 export function tokenGetter() {
   return localStorage.getItem("localUser");
@@ -56,7 +58,20 @@ export function tokenGetter() {
     })
     //fim JWT Module
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    }
+    ,
+    {
+      provide: HTTP_INTERCEPTORS, 
+      useClass: HttpConfigInterceptor, 
+      multi: true
+    }
+    , {provide: ErrorHandler, useClass: CustomErrorHandlerService}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

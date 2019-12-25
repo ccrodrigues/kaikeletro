@@ -21,9 +21,17 @@ export class ProdutoService {
     return this.http.get(`${this.envService.urlAPI}/produtos`);
   }
 
-  getProdutosPaginacao(pagina : number = 0, linhasPorPagina : number = 6){
+  getProdutosPaginacao(pagina : number , linhasPorPagina : number = 6, categoria){
 
-    return this.http.get<ProdutoPaginacao>(`${this.envService.urlAPI}/produtos/page?pagina=${pagina}&qtdLinhas=${linhasPorPagina}`);    
+    if (categoria == null){
+      return this.http.get<ProdutoPaginacao>(`${this.envService.urlAPI}/produtos/page?pagina=${pagina}&qtdLinhas=${linhasPorPagina}`);  
+    }
+    else {
+      return this.http.get<ProdutoPaginacao>(
+        `${this.envService.urlAPI}/produtos/page?pagina=${pagina}&qtdLinhas=${linhasPorPagina}&categoria=${categoria}`
+        );
+    }
+      
 
   }
 
