@@ -12,13 +12,23 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.Categoria;
+import com.kaikeletro.domain.Cidade;
 import com.kaikeletro.domain.Cliente;
+import com.kaikeletro.domain.Endereco;
+import com.kaikeletro.domain.Estado;
 import com.kaikeletro.domain.ImagemProduto;
 import com.kaikeletro.domain.Produto;
+import com.kaikeletro.domain.enums.Perfil;
 import com.kaikeletro.domain.enums.TipoCliente;
 import com.kaikeletro.repositories.CategoriaRepository;
+import com.kaikeletro.repositories.CidadeRepository;
 import com.kaikeletro.repositories.ClienteRepository;
+import com.kaikeletro.repositories.EnderecoRepository;
+import com.kaikeletro.repositories.EstadoRepository;
 import com.kaikeletro.repositories.ImagemProdutoRepository;
+import com.kaikeletro.repositories.ItemPedidoRepository;
+import com.kaikeletro.repositories.PagamentoRepository;
+import com.kaikeletro.repositories.PedidoRepository;
 import com.kaikeletro.repositories.ProdutoRepository;
 
 @Service
@@ -35,6 +45,24 @@ public class PopulateDBService {
 	
 	@Autowired
 	ClienteRepository clienteRepository;
+	
+	@Autowired
+	private EstadoRepository estadoRepository;
+	
+	@Autowired
+	private CidadeRepository cidadeRepository;
+	
+	@Autowired
+	private EnderecoRepository enderecoRepository;
+	
+	@Autowired
+	private PedidoRepository pedidoRepository;
+	
+	@Autowired
+	private PagamentoRepository pagamentoRepository;
+	
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -136,7 +164,26 @@ public class PopulateDBService {
 	
 	public void clienteDemo() {
 		Cliente cli1 = new Cliente(null, "Fabrizio", "admin@brq.com", "11111111111", TipoCliente.PESSOAFISICA, bCryptPasswordEncoder.encode("admin"));
+		//cli1.addPerfil(Perfil.CLIENTE);
+		cli1.addPerfil(Perfil.ADMIN);
 		
-		clienteRepository.save(cli1);
+		cli1.getTelefones().addAll(Arrays.asList("11-982733817"));
+		
+		
+		Estado est1 = new Estado(null, "São Paulo");				
+		Cidade c1 = new Cidade(null, "São Paulo", est1);
+		
+		est1.getCidades().addAll(Arrays.asList(c1));
+		
+		estadoRepository.saveAll(Arrays.asList(est1));
+		cidadeRepository.saveAll(Arrays.asList(c1));
+		
+		Endereco e1 = new Endereco(null, "Rua Boa Vista", "254", "9 Andar", "Centro", "01014925", cli1, c1);
+		cli1.getEnderecos().addAll(Arrays.asList(e1));
+		
+		clienteRepository.save(cli1);		
+		enderecoRepository.save(e1);
+		
+		
 	}
 }

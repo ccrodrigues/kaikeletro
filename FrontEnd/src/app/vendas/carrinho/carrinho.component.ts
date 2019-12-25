@@ -7,6 +7,8 @@ import { Carrinho } from 'src/app/shared/models/carrinho.model';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { ProdutoDto } from 'src/app/shared/models/produto.dto';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
+import { PedidoService } from 'src/app/shared/services/pedido.service';
+import { PedidoDto } from 'src/app/shared/models/pedido.dto';
 
 @Component({
   selector: 'app-carrinho',
@@ -29,7 +31,8 @@ export class CarrinhoComponent implements OnInit {
     private ps: ProdutoService,
     private carrinhoService: CarrinhoService,
     private storageService : StorageService,
-    private dialogService : DialogService) { }
+    private dialogService : DialogService,
+    private pedidoService : PedidoService) { }
 
 
   ngOnInit() {
@@ -111,6 +114,25 @@ export class CarrinhoComponent implements OnInit {
     });
 
     return carrinho;
+
+  }
+
+  pagar(){
+
+    let pedido : PedidoDto = {
+      cliente: {id: 1},
+      enderecoDeEntrega: {id: 1},
+      pagamento: {
+        numeroDeParcelas: 1
+      },
+      itens : this.storageService.getCarrinho().items.map(x => {return {quantidade: x.quantidade, produto: {id: x.produto.id}}})
+    }
+
+    this.pedidoService.fazerPedido(pedido).subscribe(
+      (response) => {
+        console.log(response);
+      } 
+    );
 
   }
 

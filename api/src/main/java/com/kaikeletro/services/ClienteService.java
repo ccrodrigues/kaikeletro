@@ -42,10 +42,12 @@ public class ClienteService {
 	
 	public Cliente find(Integer id) {
 		
-		UserSecurityModel user = UserService.authenticated();
-		if (user==null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
-			throw new AuthorizationException("Acesso negado");
-		}
+//		UserSecurityModel user = UserService.authenticated();
+//		System.out.println(user);
+//		
+//		if (user==null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
+//			throw new AuthorizationException("Acesso negado");
+//		}
 		
 		Optional<Cliente> obj = repo.findById(id);
 		
