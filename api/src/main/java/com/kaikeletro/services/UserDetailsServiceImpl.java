@@ -11,12 +11,15 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import org.springframework.security.core.userdetails.User;
+
 import com.kaikeletro.domain.Cliente;
 import com.kaikeletro.repositories.ClienteRepository;
 
 
+
 @Service
-public class AuthService implements UserDetailsService  {
+public class UserDetailsServiceImpl implements UserDetailsService  {
 
 
 	@Autowired
@@ -33,7 +36,7 @@ public class AuthService implements UserDetailsService  {
 			throw new UsernameNotFoundException("Invalid username or password.");
 		}
 		
-		return new org.springframework.security.core.userdetails.User(loginCredenciais.getEmail(), loginCredenciais.getSenha(), getAuthority());
+		return new User(loginCredenciais.getEmail(), loginCredenciais.getSenha(), getAuthority());
 	}
 
 	private List<SimpleGrantedAuthority> getAuthority() {

@@ -4,21 +4,18 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.kaikeletro.domain.enums.EstadoPagamento;
 
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
-public abstract class Pagamento implements Serializable {
+public class Pagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -27,9 +24,21 @@ public abstract class Pagamento implements Serializable {
 
 	@JsonIgnore
 	@OneToOne
-	@JoinColumn(name="pedido_id")
-	@MapsId
+	@JoinColumn(name="pedido_id")	
 	private Pedido pedido;
+	
+	@JsonIgnore
+	@OneToOne
+	@JoinColumn(name="cliente_id")
+	private Cliente cliente;
+	
+	@JsonFormat(pattern="dd/MM/yyyy")
+	private Date dataVencimento;
+
+	@JsonFormat(pattern="dd/MM/yyyy")
+	private Date dataPagamento;
+		
+	private Integer numeroDeParcelas;
 	
 	public Pagamento() {
 	}
@@ -63,6 +72,29 @@ public abstract class Pagamento implements Serializable {
 
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
+	}
+	public Date getDataVencimento() {
+		return dataVencimento;
+	}
+
+	public void setDataVencimento(Date dataVencimento) {
+		this.dataVencimento = dataVencimento;
+	}
+
+	public Date getDataPagamento() {
+		return dataPagamento;
+	}
+
+	public void setDataPagamento(Date dataPagamento) {
+		this.dataPagamento = dataPagamento;
+	}	
+	
+	public Integer getNumeroDeParcelas() {
+		return numeroDeParcelas;
+	}
+
+	public void setNumeroDeParcelas(Integer numeroDeParcelas) {
+		this.numeroDeParcelas = numeroDeParcelas;
 	}
 
 	@Override
