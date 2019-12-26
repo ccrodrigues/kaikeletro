@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.Usuario;
+import com.kaikeletro.repositories.EnderecoUsuarioRepository;
 import com.kaikeletro.repositories.UsuarioRepository;
 
 @Service
@@ -28,6 +29,9 @@ public class UsuarioService implements Serializable{
 	
 	@Autowired
 	private UsuarioRepository userRepo;
+	
+	@Autowired
+	private EnderecoUsuarioRepository endRepo;
 
 	public List<Usuario> getAll() {
 		List<Usuario> usuario = userRepo.findAll();
@@ -40,7 +44,11 @@ public class UsuarioService implements Serializable{
 
 	public Usuario save(Usuario user) {
 		user.senha=bCryptPasswordEncoder.encode(user.senha);
-		return userRepo.save(user);
+		Usuario u = user;
+		userRepo.save(user);
+		endRepo.saveAll(u.getIdEndereco());
+		
+		return u;
 	}
 
 	public Usuario updatebyID(Usuario user, int id) {
