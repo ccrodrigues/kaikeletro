@@ -28,9 +28,8 @@ export class CarrinhoComponent implements OnInit {
       this.carrinhoService.alterarQuantidade(selectedOption,id)
       //console.log(typeof(selectedOption)) 
     }
-
     
-    fecha(){
+    finalizarVenda(){
       this.carrinhoService.fecharVenda();
       this.vendasService.fecharVenda(this.carrinhoService.venda).subscribe(
         (data)=>{
@@ -40,6 +39,7 @@ export class CarrinhoComponent implements OnInit {
           }
       )
     }
+    
   }
 
 

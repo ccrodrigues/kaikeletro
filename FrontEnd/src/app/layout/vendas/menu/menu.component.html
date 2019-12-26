@@ -1,25 +1,35 @@
 
-  <div class="navbar navbar-expand-lg navbar-dark barra-topo">
-    <div class="container ">
+<div class="navbar navbar-expand-lg navbar-dark barra-topo">
+    <div class="container">
 
       <div id="left"></div>
 
       <div id="center"></div>
 
-      <div id="right">
-        
+      <div id="right" style="display: inline-flex;">
+
+        <div class="box">
+          <i routerLink="dashboardAdm" class="fas fa-key" title="Entrar como administrador" width="500px" height="500px" ></i>
+        </div>
+
         <div *ngIf="!isAuth" class="box">
-          <img routerLink = "registro"  class="img-fluid subscribe" title="Cadastre-se" src="https://img.icons8.com/dotty/80/000000/sign-up--v1.png">
+          <img routerLink = "registro"  class="img-fluid subscribe" title="Cadastre-se" src="https://img.icons8.com/dotty/80/000000/sign-up--v1.png" >
         </div>
+
         <div *ngIf="!isAuth" class="box">
-          <img  routerLink = "login" title="Entrar" class="img-fluid logout" src="https://img.icons8.com/ios-glyphs/24/000000/enter-2.png">
+          <img  routerLink = "login" title="Entrar" class="img-fluid logout" src="https://img.icons8.com/ios-glyphs/24/000000/enter-2.png" >
         </div>
+
         <div *ngIf="isAuth" class="box">
-          <img class="img-fluid logout" src="https://img.icons8.com/metro/26/000000/exit.png" title="Sair"> 
+          <img class="img-fluid logout" src="https://img.icons8.com/metro/26/000000/exit.png" title="Sair" width="50px" height="50px"> 
         </div>
+
         <div *ngIf="isAuth" class="box">
-          <img routerLink="carrinho" class="img-fluid logout" src="/assets/imagens/shopping-cart.svg" title="Carrinho">
+          <img routerLink="carrinho" class="img-fluid logout" src="/assets/imagens/shopping-cart.svg" title="Carrinho" width="50px" height="50px">
         </div>
+
+
+
       </div>
 
     </div>
@@ -29,14 +39,16 @@
 <nav  class="navbar navbar-expand-lg navbar-dark  navbar-mine">
   <div class="container-fluid">
   <div >
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand">
   <img routerLink='home'  class=" img-fluid img-logo" src="/assets/imagens/ecommerce-logo.png">
 </a>
 </div>
 <button (click)="isCollapsed = !isCollapsed" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
   <span class="navbar-toggler-icon"></span>
 </button>
-  <div  [collapse]="isCollapsed" class="collapse navbar-collapse menu" id="navbarToggle">
+
+  <div  [collapse]="isCollapsed" class="collapse navbar-collapse menu" id="navbarToggle" style="justify-content: center;">
+
     <ul id="btn-busca" class="nav navbar-nav navbar-right">
 
       <li class="nav-item">
@@ -64,9 +76,6 @@
         </a>
       </li>
         
-      <li class="nav-item">
-        <a class="nav-link"  routerLink="dashboardAdm"  ><h6 class="mb-0" >dashboardAdm</h6></a>
-      </li>
     </ul >
      
   </div>

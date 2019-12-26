@@ -16,7 +16,7 @@
                <div style="display: inline-flex;">
                     
                 <div  style="display: inline-flex; margin: 0;" class="col-sm-4"> 
-                 <img src="{{ p.produto.imagens[0].imagemProduto }}">
+                    <img [src]="it?.produto.imagens[0].imagemProduto">
                     <p style=" white-space: normal;display: block; margin-top: 20px; margin-left: 20px;">{{ it.produto.nome }}</p>
                 </div>
 
@@ -51,7 +51,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp; {{ carrinhoService.frete | currency:'BRL':'symbol':'1.2-2' }}</p>
                 <p style="border-top: solid 1px black;">TOTAL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  {{ carrinhoService.valorTotalFrete() | currency:'BRL':'symbol':'1.2-2' }}</p>
-              <button (click)="fecha()"  class="btn btn-primary">Continuar</button>
+              <button (click)="finalizarVenda()"  class="btn btn-primary">Continuar</button>
             </div>
           </div>
     </div>

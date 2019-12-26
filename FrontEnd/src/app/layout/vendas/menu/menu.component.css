@@ -39,8 +39,8 @@ a{
 
 .img-logo{
 
-    height:100px;
-	width:200px;
+    height:50px;
+	width:100px;
 
 	display:block;
 	
@@ -94,6 +94,7 @@ a{
 .box{
     float: right;
     margin-right: 15px;
+    margin-left: 3px;
 }
  
   

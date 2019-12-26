@@ -5,6 +5,7 @@ import { VendasModel } from '../models/vendas.model';
 import { ProdutoModel } from '../models/produto.model';
 import { Router } from '@angular/router';
 import { EnvService } from 'src/app/env.service';
+import { Usuario } from '../models/usuario.model';
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +20,8 @@ import { EnvService } from 'src/app/env.service';
 
    public venda : VendasModel = new VendasModel();
 
-   public produto : ProdutoModel = new ProdutoModel();
+   public user : Usuario = new Usuario();
+
 
    valorTotal:number;
    frete:number = 20;
@@ -89,20 +91,18 @@ import { EnvService } from 'src/app/env.service';
 
     totalizarVenda(){
         //this.venda.itens = this.itensCarrinho
-        this.venda.pagamento = "Aguardando"
-        this.venda.status = "Aberta"
-        this.venda.totalItens = this.totalItensCarrinho()
-        this.venda.valor = this.valorTotal  
+        this.venda.usuario = this.user;
+        this.venda.pagamento = "Aguardando";
+        this.venda.status = "Aberta";
+        this.venda.totalItens = this.totalItensCarrinho();
+        this.venda.valor = this.valorTotalFrete()
     }
 
 
     fecharVenda(){
         this.totalizarVenda();
         this.venda.item = this.itensCarrinho
-        this.venda.totalItens = this.totalItensCarrinho()
-        this.venda.valor = this.valorTotalFrete()
         console.log("Venda: " + this.itensCarrinho)
-    }
-       
+    }   
   }
   

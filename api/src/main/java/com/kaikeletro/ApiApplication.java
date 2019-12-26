@@ -57,6 +57,17 @@ public class ApiApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 
 		this.produtoCategoriaDemo();
+		Usuario u1 = new Usuario();
+		
+		u1.setCelular("1148748-8743");
+		u1.setCpf("123456786");
+		u1.setDataDeNascimento("30/01/1998");
+		u1.setEmail("a@a.com");
+		u1.setNome("Usuario 01");
+		u1.setSenha(bCryptPasswordEncoder.encode("123"));
+		u1.setTelefone("1345365328");
+		
+		usuarioRepository.save(u1);
 		//this.vendasProdutoUsuario();
 
 		//this.produtoCategoriaDemo();
