@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.Admin;
@@ -22,6 +23,9 @@ public class AdminService implements Serializable{
 	@Autowired
 	private AdminRepository adminRepo;
 	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder; 
+	
 	public List<Admin> getAll() {
 		List<Admin> administrador = adminRepo.findAll();
 		return administrador;
@@ -32,7 +36,7 @@ public class AdminService implements Serializable{
 	}
 
 	public Admin save(Admin user) {
-		user.senha=CriptografiaService.criptografarSenha(user.senha);
+		user.senha=bCryptPasswordEncoder.encode(user.senha);
 		return adminRepo.save(user);
 	}
 
@@ -83,7 +87,7 @@ public class AdminService implements Serializable{
 		
 	public boolean findOneByEmailAndSenha(String email, String senha) {
 			
-			if(adminRepo.findOneByEmailAndSenha(email, CriptografiaService.criptografarSenha(senha))!= null) {
+			if(adminRepo.findOneByEmailAndSenha(email, bCryptPasswordEncoder.encode(senha))!= null) {
 				return true;
 			}else {
 				return false;

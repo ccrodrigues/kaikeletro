@@ -95,7 +95,7 @@ public class UsuarioService implements Serializable{
 	
 	
 	public boolean findOneByEmailAndSenha(String email, String senha) {
-		if(userRepo.findOneByEmailAndSenha(email, CriptografiaService.criptografarSenha(senha)) != null) {
+		if(userRepo.findOneByEmailAndSenha(email, bCryptPasswordEncoder.encode(senha)) != null) {
 			return true;
 		}else {
 			return false;
