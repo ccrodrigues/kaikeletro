@@ -24,7 +24,7 @@ import { ServiceLoginService } from 'src/app/vendas/usuario-login/service-login/
 
     console.log(nivel);
 
-    this.isDisabled = this.loginService.getIsAdmin() && this.loginService.getIsAutenticado();
+   // this.isDisabled = this.loginService.getIsAdmin() && this.loginService.getIsAutenticado();
 
     // if(this.loginService.isAutenticado == true && this.loginService.isAdmin == true){
     //      this.isDisabled = true;
