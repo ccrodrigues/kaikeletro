@@ -14,7 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -32,8 +32,7 @@ public class Usuario implements Serializable {
 	private int id;
 	
 	@OneToMany(mappedBy = "fk_Usuario") //pk EnderecoUsuario
-	@JsonIgnore
-	@Column(name= "idUsuario")
+	@JsonManagedReference
 	private List<EnderecoUsuario> idEndereco;
 
 	@NotNull
