@@ -30,21 +30,21 @@ public class VendasService {
 		return vendas;
 	}
 
-	@Transactional
+	//@Transactional
 	public Vendas createVenda(Vendas vendas) {
 		
 		Vendas sell = new Vendas();
 		
-	try {
+	//try {
 		 sell = vendasRepo.save(vendas);	
 		
 	   for(Item_Venda item : vendas.getItem()) {
 		   item.setVenda(vendas);
 		   itemRepo.save(item);
 	   }
-	} catch(Exception e) {
-		System.err.println(e);
-	}
+	//} catch(Exception e) {
+	//	System.err.println(e);
+	//}
 	
 	   return sell;
 	}

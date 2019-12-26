@@ -17,6 +17,8 @@ import { CommonModule } from '@angular/common';
 import { CarrinhoService } from './shared/Services/carrinho.service';
 import { ProdutosComponent } from './vendas/home/produtos/produtos.component';
 import { HomeComponent } from './vendas/home/home.component';
+import { DialogService } from './shared/toaster/dialog.service';
+import { Toast, ToastrService, ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { HomeComponent } from './vendas/home/home.component';
     FormsModule,
     ReactiveFormsModule,
     CollapseModule.forRoot(),
+    ToastrModule.forRoot(),
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,

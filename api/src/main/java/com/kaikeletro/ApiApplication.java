@@ -45,6 +45,7 @@ public class ApiApplication implements CommandLineRunner{
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder; 
 
+	@Autowired
 	ItemVendaRepository itemRepository;
 
 
@@ -74,7 +75,7 @@ public class ApiApplication implements CommandLineRunner{
 		//this.produtoCategoriaDemo();
 		//this.produtoCategoriaDemo();
 		this.produtoCategoriaDemo();
-		//this.vendasProdutoUsuario();
+		this.vendasProdutoUsuario();
 
 	}
 	
@@ -171,9 +172,7 @@ public class ApiApplication implements CommandLineRunner{
 		produtoRepository.save(p1);
 		produtoRepository.save(p2);
 		vendasRepository.save(v1);
-
-	
-
+		
 		vendasRepository.save(v2);
 		itemRepository.save(item);
 		itemRepository.save(item2);

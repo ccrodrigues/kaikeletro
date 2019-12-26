@@ -41,9 +41,7 @@ a{
 
     height:50px;
 	width:100px;
-
 	display:block;
-	
     color:transparent;
 }
 
@@ -69,7 +67,7 @@ a{
   .subscribe{
   
     height: 30px;
-    width: 26;
+    width: 26px;
     padding: 0;
 
  }
@@ -96,6 +94,10 @@ a{
     margin-right: 15px;
     margin-left: 3px;
 }
+
+.cursor {
+    cursor: pointer;
+  }
  
   
 

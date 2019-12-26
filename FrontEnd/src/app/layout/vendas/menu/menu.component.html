@@ -13,25 +13,22 @@
         </div>
 
         <div *ngIf="!isAuth" class="box">
-          <img routerLink = "registro"  class="img-fluid subscribe" title="Cadastre-se" src="https://img.icons8.com/dotty/80/000000/sign-up--v1.png" >
+          <img routerLink = "registro"  class="img-fluid subscribe cursor" title="Cadastre-se" src="https://img.icons8.com/dotty/80/000000/sign-up--v1.png" >
         </div>
 
         <div *ngIf="!isAuth" class="box">
-          <img  routerLink = "login" title="Entrar" class="img-fluid logout" src="https://img.icons8.com/ios-glyphs/24/000000/enter-2.png" >
+          <img  routerLink = "login" title="Entrar" class="img-fluid logout cursor" src="https://img.icons8.com/ios-glyphs/24/000000/enter-2.png" >
         </div>
 
         <div *ngIf="isAuth" class="box">
-          <img class="img-fluid logout" src="https://img.icons8.com/metro/26/000000/exit.png" title="Sair" width="50px" height="50px"> 
+          <img class="img-fluid logout cursor" src="https://img.icons8.com/metro/26/000000/exit.png" title="Sair" width="50px" height="50px"> 
         </div>
 
         <div *ngIf="isAuth" class="box">
-          <img routerLink="carrinho" class="img-fluid logout" src="/assets/imagens/shopping-cart.svg" title="Carrinho" width="50px" height="50px">
+          <img routerLink="carrinho" class="img-fluid logout cursor" src="/assets/imagens/shopping-cart.svg" title="Carrinho" width="50px" height="50px">
         </div>
-
-
 
       </div>
-
     </div>
   </div>
 
@@ -50,6 +47,12 @@
   <div  [collapse]="isCollapsed" class="collapse navbar-collapse menu" id="navbarToggle" style="justify-content: center;">
 
     <ul id="btn-busca" class="nav navbar-nav navbar-right">
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="produtos" routerLinkActive="active" [queryParams]="{categoria: 'melhores-ofertas'}">
+          <h6 class="mb-0">Melhores Ofertas</h6>
+        </a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" routerLink="produtos" [queryParams]="{nomeCaterogia: 'celular'}"

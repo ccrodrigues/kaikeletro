@@ -11,7 +11,7 @@ import { ServiceLoginService } from 'src/app/vendas/usuario-login/service-login/
 export class MenuComponent implements OnInit {
 
    isCollapsed = false;
-   isAuth : boolean = false;
+   isAuth : boolean = true;
  
 
 
