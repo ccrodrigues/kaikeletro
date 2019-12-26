@@ -1,0 +1,26 @@
+<div class="row">
+    <div *ngFor="let obj of pedidosPaginacao?.content" class="card  col-sm-4">
+      <div class="box-produtos">
+        
+        <div class="card-body">
+          <!-- <span class="badge badge-pill badge-info">{{ categoria }}</span> -->
+          <h5 class="card-title">{{ obj?.id }}</h5>
+
+          <button (click)="mostrarProdutoDetalhes(prod)" class="btn btn-primary">Comprar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-12 text-center">
+  
+      <button class="btn-primary" (click)="primeiraPagina()" style="margin-right: 10px;">Primeira</button>
+      <button class="btn-primary" (click)="proximaPagina()" style="margin-right: 10px;">Anterior</button>
+      <button class="btn-primary" (click)="anteriorPagina()" style="margin-right: 10px;">Próxima</button>
+      <button class="btn-primary" (click)="ultimaPagina()">Última</button>
+  
+    </div>
+  
+  </div>
+  

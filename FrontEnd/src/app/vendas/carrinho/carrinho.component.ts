@@ -120,6 +120,7 @@ export class CarrinhoComponent implements OnInit {
   pagar(){
 
     let pedido : PedidoDto = {
+      id : null,
       cliente: {id: 1},
       enderecoDeEntrega: {id: 1},
       pagamento: {

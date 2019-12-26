@@ -18,10 +18,10 @@ export class ProdutoService {
   // Pegando todos os produto
   getAll() {
     //fazendo a requisição
-    return this.http.get(`${this.envService.urlAPI}/produtos`);
+    return this.http.get<ProdutoDto>(`${this.envService.urlAPI}/produtos`);
   }
 
-  getProdutosPaginacao(pagina : number , linhasPorPagina : number = 6, categoria){
+  getProdutosPaginacao(pagina : number = 0 , linhasPorPagina : number = 6, categoria = null){
 
     if (categoria == null){
       return this.http.get<ProdutoPaginacao>(`${this.envService.urlAPI}/produtos/page?pagina=${pagina}&qtdLinhas=${linhasPorPagina}`);  
