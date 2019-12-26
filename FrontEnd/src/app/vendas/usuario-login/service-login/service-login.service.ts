@@ -21,7 +21,7 @@ export class ServiceLoginService {
   //verifica os campos email e senha na API e retorna se true ou false
   fazerLogin(login: { email: String, senha: String }) {
 
-    this.http.post(this.envService.urlAPI + `/usuarios/login`, login).subscribe(
+    this.http.post(this.envService.urlAPI + `/autenticacao`, login).subscribe(
       (cliente) => {
         console.log("cliente ? ", cliente);
         if (cliente == true) {
