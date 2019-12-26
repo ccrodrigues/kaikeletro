@@ -15,15 +15,16 @@
           <img  routerLink = "login" title="Entrar" class="img-fluid logout" src="https://img.icons8.com/ios-glyphs/24/000000/enter-2.png">
         </div>
         <div *ngIf="isAuth" class="box">
-          <img class="img-fluid logout" src="https://img.icons8.com/metro/26/000000/exit.png" title="Sair"> 
+          <img class="img-fluid" src="https://img.icons8.com/metro/26/000000/exit.png" title="Sair" [routerLink]="['login']"> 
         </div>
         <div *ngIf="isAuth" class="box">
-          <img routerLink="carrinho" class="img-fluid logout" src="/assets/imagens/shopping-cart.svg" title="Carrinho">
+          <img routerLink="carrinho" class="img-fluid" src="/assets/imagens/shopping-cart.svg" title="Carrinho">
         </div>
       </div>
+</div>
 
     </div>
-  </div>
+  
 
 
 <nav  class="navbar navbar-expand-lg navbar-dark  navbar-mine">
@@ -67,8 +68,9 @@
           <a class="nav-link" routerLink="produtos/eletro" routerLinkActive="active"><h6 class="mb-0">Eletrodomésticos</h6></a>
         </li> 
         
-        <li class="nav-item">
-        <a class="nav-link"  routerLink="dashboardAdm"  ><h6 class="mb-0" >dashboardAdm</h6></a>
+        
+        <li class="nav-item" *ngIf="logadoAdmin() == true" >
+        <a class="nav-link" routerLink="dashboardAdm"  ><h6 class="mb-0" >dashboardAdm</h6></a>
         </li>
     </ul > 
   </div>

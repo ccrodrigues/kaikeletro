@@ -9,6 +9,7 @@ import { MsgErroComponent } from './erro/msg-erro/msg-erro.component';
   ],
   exports: [
     MsgErroComponent
+
   ]
 })
 

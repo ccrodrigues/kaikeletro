@@ -11,12 +11,12 @@ export class GuardsService {
 
   canActivate(){
 
-    let serviceLogin = this.serviceLogin.getIsAutenticado() 
-    && this.serviceLogin.getIsAdmin();
+    let serviceLogin = this.serviceLogin.getIsAdmin() && this.serviceLogin.getIsAutenticado();
 
-    if(serviceLogin == false){
+    if(!serviceLogin){
 
-      this.router.navigate(['login']);
+      alert("Acesso Negado")
+      this.router.navigate(['login']); 
 
     }
     return serviceLogin;

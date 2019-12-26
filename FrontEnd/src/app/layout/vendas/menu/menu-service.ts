@@ -9,33 +9,11 @@ import { ServiceLoginService } from 'src/app/vendas/usuario-login/service-login/
     providedIn: 'root'
   })
   export class menuService {
-    administrador;
-    isAdminNivel : boolean;
-    isNiveldeAcesso1: boolean;
-    isNiveldeAcesso2: boolean;
-    isDisabled : boolean = false;
   
-   constructor(private http: HttpClient, private envService: EnvService
-    , private adminService : AdminService, private loginService : ServiceLoginService) {
+   constructor() {
       
    }
 
- habilitarAdmin(nivel){
-
-    console.log(nivel);
-
-    this.isDisabled = this.loginService.getIsAdmin() && this.loginService.getIsAutenticado();
-
-    // if(this.loginService.isAutenticado == true && this.loginService.isAdmin == true){
-    //      this.isDisabled = true;
-    //     }else{
-    //   this.isDisabled = false;
-    //    }
-  
-         console.log(this.isAdminNivel);
-
-
-}
 }
 
 
