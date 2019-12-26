@@ -66,7 +66,8 @@ export class ProdutosComponent implements OnInit {
   }
 
   proximaPagina(){
-    this.paginacao.pagina = this.paginacao.pagina + 1; console.log(this.paginacao);
+    this.paginacao.pagina = this.paginacao.pagina + 1; 
+    
     this.paginacaoRequest(); 
   }
 
