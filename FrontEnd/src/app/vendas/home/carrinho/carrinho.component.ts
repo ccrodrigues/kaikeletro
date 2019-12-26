@@ -14,33 +14,6 @@ import { ProdutoModel } from 'src/app/shared/models/produto.model';
 export class CarrinhoComponent implements OnInit {
 
   
-
-  selectForm = new FormGroup({
-    select: new FormControl()
- });
- 
-  totalProdutos;
-  valorTotal;
-  valorProdutos;
-  frete = 10.99; 
-  selectedOption;
-
-  
-
-  itensCarrinhos = [
-    {"idProduto": 1, "nome" : "produto",  "preco" : 1000, "quantidade" : 1, "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
-    {"idProduto": 2,"nome" : "produto",  "preco"  : 1000, "quantidade" : 1, "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
-    {"idProduto": 3,"nome" : "produto",  "preco"  : 1000, "quantidade" : 1, "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
-    {"idProduto": 4,"nome" : "produto",  "preco"  : 1000, "quantidade" : 1, "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
-    {"idProduto": 4,"nome" : "produto",  "preco"  : 1000, "quantidade" : 1, "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"},
-  ]
-
-  itemCarrinho = []
-
-  itens = [
-    {"idProduto": 1, "quantidade": 1 }
-  ]
-
   constructor(private router : Router, private formBuilder : FormBuilder,
     private ps: ProdutosService, private carrinhoService : CarrinhoService, private vendasService : VendaService) { }
 
