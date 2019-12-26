@@ -14,6 +14,7 @@ import { VendasModule } from './vendas/vendas.module';
 import { LayoutModule } from './layout/layout.module';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CommonModule } from '@angular/common';
     BsDropdownModule.forRoot(),
     VendasModule,
     LayoutModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

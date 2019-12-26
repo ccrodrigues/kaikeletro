@@ -6,7 +6,7 @@ import { Administrador } from '../models/administrador.module';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminServiceService {
+export class AdminService {
   administrador;
 
  constructor(private http: HttpClient, private envService: EnvService) {
@@ -37,7 +37,13 @@ return this.http.patch<Administrador>(this.envService.urlAPI + `/administrador/$
 administradorUser(senha, email, administrador){
   return this.http.post<Administrador[]>(this.envService.urlAPI + `/administrador/${email}/${senha}`, administrador);
 }
-verificarNivelDeAcesso(cpf, nivel, administrador){
-  return this.http.post<Administrador[]>(this.envService.urlAPI + `/administrador/${cpf}/${nivel}`, administrador);
+
+// verificarIsAdmin(cpf, nivel, administrador){
+//   return this.http.post<Administrador[]>(this.envService.urlAPI + `/administrador/${cpf}/${nivel}`, administrador);
+// }
+verificarNivelDeAcesso(nivel, administrador){
+  return this.http.get<Administrador[]>(this.envService.urlAPI + `/administrador/nivel/${nivel}`, administrador)
 }
+
+
 }
