@@ -4,6 +4,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -43,7 +44,9 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter  {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().
                 authorizeRequests()
-                .antMatchers("/token/*", "/login")                
+                .antMatchers("/autenticacao/")
+                .permitAll()
+                .antMatchers(HttpMethod.GET, "/produtos/*")                
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()

@@ -36,9 +36,9 @@ public class AuthService implements UserDetailsService  {
 
 	private List<SimpleGrantedAuthority> getAuthority() {
 		SimpleGrantedAuthority usuario = new SimpleGrantedAuthority("ROLE_USER");
-		SimpleGrantedAuthority admin = new SimpleGrantedAuthority("ROLE_ADMIN");
+		//SimpleGrantedAuthority admin = new SimpleGrantedAuthority("ROLE_ADMIN");
 		
-		return Arrays.asList( usuario, admin );
+		return Arrays.asList( usuario);
 	}
 
 }

@@ -17,7 +17,7 @@ import com.kaikeletro.security.GeradorToken;
 
 
 @RestController
-@RequestMapping(value = "/token")
+@RequestMapping(value = "autenticacao")
 public class AutenticacaoController {
 
 	@Autowired
@@ -27,11 +27,11 @@ public class AutenticacaoController {
 	private GeradorToken jwtTokenUtil;
 	
 
-	@RequestMapping(value = "autenticacao", method = { RequestMethod.POST })
-	public ResponseEntity<AuthToken> getJwt(@RequestBody UsuarioDto professor) {
-
+	@RequestMapping(value = "", method = { RequestMethod.POST })
+	public ResponseEntity<AuthToken> getJwt(@RequestBody UsuarioDto usuario) {
+		System.out.println(usuario);
 		final Authentication authentication = authenticationManager
-				.authenticate(new UsernamePasswordAuthenticationToken(professor.getEmail(), professor.getSenha()));
+				.authenticate(new UsernamePasswordAuthenticationToken(usuario.getEmail(), usuario.getSenha()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		final String token = jwtTokenUtil.generateToken(authentication);
 		
