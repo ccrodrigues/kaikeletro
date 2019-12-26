@@ -12,8 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.Admin;
-import com.kaikeletro.domain.Produto;
-import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.repositories.AdminRepository;
 
 @Service

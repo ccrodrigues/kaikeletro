@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kaikeletro.domain.Item_Venda;
-import com.kaikeletro.domain.Produto;
 import com.kaikeletro.domain.Vendas;
-import com.kaikeletro.services.ItemVendaService;
 import com.kaikeletro.services.VendasService;
 
 @RequestMapping(value="vendas")
@@ -23,9 +20,6 @@ public class VendasController {
 	
 	@Autowired
 	private VendasService service;
-	
-	@Autowired
-	private ItemVendaService itemService;
 	
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)

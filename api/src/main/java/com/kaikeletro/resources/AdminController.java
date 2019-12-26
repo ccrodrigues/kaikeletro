@@ -16,11 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaikeletro.domain.Admin;
-import com.kaikeletro.domain.Produto;
-import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.AdminService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping(value = "/administrador")
