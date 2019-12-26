@@ -14,9 +14,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CarouselModule } from 'ngx-bootstrap/carousel'
 import { CarouselComponent } from './home/carousel/carousel.component';
-import { MelhoresOfertasComponent } from './produtos/melhores-ofertas/melhores-ofertas.component';
-import { MaisVendidosComponent } from './produtos/mais-vendidos/mais-vendidos.component';
-import { MaisDesejadosComponent } from './produtos/mais-desejados/mais-desejados.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 
 @NgModule({
@@ -29,9 +26,6 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
     ProdutosComponent,
     ProdutosDetalhesComponent,
     CarouselComponent,
-    MelhoresOfertasComponent,
-    MaisVendidosComponent,
-    MaisDesejadosComponent,
     CarrinhoComponent
   ],
   imports: [
@@ -48,13 +42,6 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
     CarouselModule,
   ],
   exports:[
-    // PaginacaoComponent,
-    // ProdutosComponent,
-    // TelaRegistroComponent,
-    // UsuarioLoginComponent,
-    // HomeComponent,
-    // ProdutosDetalhesComponent,
-    // CarrinhoComponent
     
   ]
 })
