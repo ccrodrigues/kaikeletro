@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.Usuario;
@@ -20,6 +21,11 @@ public class UsuarioService implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder; 
+	
 	@Autowired
 	private UsuarioRepository userRepo;
 
@@ -33,7 +39,7 @@ public class UsuarioService implements Serializable{
 	}
 
 	public Usuario save(Usuario user) {
-		user.senha=CriptografiaService.criptografarSenha(user.senha);
+		user.senha=bCryptPasswordEncoder.encode(user.senha);
 		return userRepo.save(user);
 	}
 
