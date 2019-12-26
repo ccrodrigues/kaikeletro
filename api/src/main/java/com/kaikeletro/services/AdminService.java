@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.Admin;
+import com.kaikeletro.domain.Produto;
 import com.kaikeletro.repositories.AdminRepository;
 
 @Service
@@ -87,6 +88,12 @@ public class AdminService implements Serializable{
 			}
 			
 		}
+	
+	// Método do UsuarioController - Busca por nivel
+	public List<Admin> findByNivel(int nivel){
+		List<Admin> lista = adminRepo.findByNivel(nivel);
+		return lista;
+	}
 
 	
 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaikeletro.domain.Admin;
+import com.kaikeletro.domain.Produto;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.AdminService;
@@ -107,5 +108,11 @@ public class AdminController {
 	public ResponseEntity<Boolean> admin(@RequestBody Admin admin) {	
 		return ResponseEntity.ok().body(service.findOneByEmailAndSenha(admin.getEmail(), admin.getSenha()));
 	}
+	
 
+	// Busca por nivel
+	@RequestMapping(value="/nivel/{nivelBusca}", method=RequestMethod.GET)
+	public ResponseEntity<List <Admin> > findByNivel(@PathVariable("nivelBusca")int nivel){
+		return ResponseEntity.ok().body(service.findByNivel(nivel));
+}
 }
