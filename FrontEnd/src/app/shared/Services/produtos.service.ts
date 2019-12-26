@@ -44,7 +44,7 @@ export class ProdutosService {
   }
   //adcionando o produto ao banco
   saveProduto(produto){
-    return this.http.post<ProdutoModel>(this.envService.urlAPI+ "produtos",produto);
+    return this.http.post<ProdutoModel>(this.envService.urlAPI+ "/produtos",produto);
   }
   //deletando o produto
   deleteProduto(id){

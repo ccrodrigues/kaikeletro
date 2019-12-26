@@ -4,7 +4,7 @@
             <h1><span aria-hidden="true">&times;</span></h1>
           </button>
           <div class="container">
-            <form action="" >
+            <form action="" [formGroup]="meuForm" (ngSubmit)="onSubmit()">
                 <h5 class="id"><b>ID: {{ produto.idProduto }}</b> </h5>
                 <div class="form-group">
                     <div class="row">
@@ -14,8 +14,8 @@
                         </div>
                         <div class="col">
                             Categoria
-                            <select name="categoria" class="form-control" *ngFor="let cat of produto.categorias">
-                                <option value="{{ cat.nome }}">{{ cat.nome }}</option>
+                            <select name="categoria" class="form-control" >
+                                <option *ngFor="let cat of produto.categorias" value="{{ cat.nome }}">{{ cat.nome }}</option>
                             </select>
                         </div>
                     </div>

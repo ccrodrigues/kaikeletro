@@ -9,6 +9,7 @@ import { ShowMoreComponent } from './produtos/lista/show-more/show-more.componen
 import { ListaComponent } from './produtos/lista/lista.component';
 import { DeletarProdutoComponent } from './produtos/lista/deletar-produto/deletar-produto.component';
 import { AdicionarComponent } from './produtos/adicionar/adicionar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { AdicionarComponent } from './produtos/adicionar/adicionar.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

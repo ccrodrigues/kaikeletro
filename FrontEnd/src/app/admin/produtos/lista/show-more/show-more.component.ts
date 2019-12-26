@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-show-more',
@@ -14,16 +15,31 @@ export class ShowMoreComponent implements OnInit {
   imagem : File     = null;
   ler = new FileReader();
   valor;
-
-  constructor(private sanitizer : DomSanitizer) { }
+  meuForm : FormGroup;
+  constructor(private sanitizer : DomSanitizer,
+              private fb : FormBuilder) { }
 
   ngOnInit() {
     this.imagens = this.produto.imagens;
-    console.log(this.imagens)
+    
+    console.log(this.produto)
+
+    this.meuForm = this.fb
+        .group({
+          idProduto: ['',[]],
+          nome: ['', []],
+          preco: ['', []],
+          imagens: ['' , []],
+          descricao: ['', []],
+          categorias: ['' , []]
+    });
+  }
+
+  ngSubmit() {
+
   }
 
   fechar() {
-    console.log("aqui");
     
     this.close.emit(false)
   }
@@ -35,14 +51,15 @@ export class ShowMoreComponent implements OnInit {
 
   putImage(url) {
     let mimetype = this.imagem.type;
+
     if(mimetype.match(/image\/*/) == null) {
       return;
     }
+
     let reader = new FileReader();
     reader.readAsDataURL(this.imagem);
     reader.onload = (_event) => {
       this.imagens.push(reader.result);
-      console.log("=========>>>" + this.imagens)
     }
   }
 
@@ -59,4 +76,6 @@ export class ShowMoreComponent implements OnInit {
   verificarImagem( imgs )  {
     return typeof imgs === 'string'
   }
+
+
 }

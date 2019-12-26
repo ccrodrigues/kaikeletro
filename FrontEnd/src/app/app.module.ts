@@ -14,6 +14,7 @@ import { VendasModule } from './vendas/vendas.module';
 import { LayoutModule } from './layout/layout.module';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CommonModule } from '@angular/common';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CommonModule } from '@angular/common';
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     VendasModule,
-    LayoutModule
+    LayoutModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

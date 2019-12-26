@@ -1,18 +1,32 @@
 <div class="background">
     <h2><small class="form-text text-muted negrito-padding text-center">Adicionar um Produto</small></h2>
-    <form>
-        <div class="form-group">
-            <h3><small>Nome *</small></h3>
-            <input type="text" class="form-control">
-        </div>
-
-        <div class="form-group">
-            <h3><small>Descricao *</small></h3>
-            <textarea name="" class="form-control" id=""></textarea>
-        </div>
+        <form action="" [formGroup]="prodForm" (ngSubmit)="onSubmit()">
 
         <div class="row">
+            <div class="col">
+                <h3><small>Nome *</small></h3>
+                <input type="text" class="form-control" formControlName="nome">
 
+                <h3><small>Preço *</small></h3>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                    <div class="input-group-text">R$</div>
+                    </div>
+                    <input type="number" class="form-control" formControlName="preco" placeholder="00,00">
+                </div>
+            </div>
+            <div class="col imagem_principal">
+                <label for="imagem-principal">
+                    <img src="../../../../assets/imagens/camera.png" #alter>
+                </label>
+                <input type="file" id="imagem-principal" (change)="imagePrincipalSelect($event, alter)">
+            </div>
+        </div>
+
+        <div >
+            <h3><small>Descricao *</small></h3>
+            <textarea name="" class="form-control" id="" formControlName="descricao"></textarea>
+        </div>
 
             <!-- ### INPUT: a cada tecla pressionada ira verificar se o que foi digitado -->
             <!-- é igual a alguma categoria. -->
@@ -24,58 +38,48 @@
             <!-- ### SELECT à direita: Categorias selecionadas pelo ADM. -->
             <!-- ### BUTTON ( Adicionar nova categoria ): Ira pegar o nome da nova categoria e, -->
             <!-- verificar se a categoria nao existe, caso for false ira ser adicionada na tabela do bd. -->
-
-            <div class="col">
-                <h3><small>Categoria *</small></h3>
-                <div class="col-5">
-                    <input type="search" class="form-control col-form-label-sm"
-                        placeholder="Pesquise por uma categoria..." #pesquisa (keydown)="search(pesquisa)">
+            
+        <h3><small>Categoria *</small></h3>
+           <div class="row">
+                <div class="col-8 box rounded">
+                    <div *ngFor="let cats of categorias" #categoria (click)="escolhida(categoria, cats)"> {{ cats.nome }}</div>
                 </div>
-                <div class="row container margin-top">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <select multiple class="form-control" id="exampleFormControlSelect1" *ngIf="!userPesquisando;else respostas">
-                                <option value="{{c.nome}}" *ngFor="let c of categorias" #categoria (click)="selecionada(categoria)">{{ c.nome  }}</option>
-                            </select>
-
-                            <ng-template #respostas>
-                                <select   multiple class="form-control" id="exampleFormControlSelect1">
-                                    <option value="{{p.nome}}" *ngFor="let p of pesquisado"  #categoria (click)="selecionada(categoria)">{{ p.nome }}</option>
-                                </select>
-                            </ng-template>
-                            
-                        </div>
+                
+            </div>
+            <div class="container"> 
+                <p class="linkFake" (click)="showAddCategoria(screen)">Adicionar uma nova categoria.</p>
+                <div class="row addCat" *ngIf="showAddCat">
+                    <div class="col">
+                        <input type="text" class="form-control" #newCategoria>
                     </div>
-                    <div class="col-1">
-                        <div>
-                            <button class="btn btn-success" (click)="showAddCategoria($event, selects)" [disabled]="!add"> >
-                            </button>
-                        </div>
-                        <div>
-                            <button class="btn btn-danger" (click)="removeWhat($event, removeThis)" [disabled]="!remove">
-                                < </button> </div> </div>
-
-                        <div class="col-5">
-                            <div class="form-group">
-                                <select multiple class="form-control" >
-                                    <option value="" *ngFor="let slc of selecionadas" #removeThis (click)="selectForRemove()"> {{ slc }}</option>
-                                </select>
-                            </div>
-                        </div>
+                    <div class="col">
+                        <button class="btn btn-success" (click)="addCategoria($event, newCategoria)">adicionar</button>
                     </div>
-                    <div class="container">
-                        <p (click)="adicionarCategoria($event)" class="linkCategoria">Adicionar uma nova categoria<p>
-                    </div>
-                    <div class="form-group">
-                        <h3><small>Preco</small></h3>
-                        <input class="form-control" type="number">
+                    <div class="col-12" *ngIf="erroAdd">
+                        <p class="error"> 
+                            Já existe uma categoria com esse nome!
+                        </p>
                     </div>
                 </div>
-
+                
             </div>
-            <div class="row container">
-                <button class="btn btn-success">Adicionar Foto</button>
+           <div class="container">
+            <div class="images">
+                <label for="images" class="btn btn-info">Adicionar mais imagens</label>
+                <input type="file" id="images" (change)="imagensSelect($event)" formControlName="imagens">
+            </div>    
+
+            <div class="row">
+                <div *ngFor="let img of images" class="col-3">
+                    <img [src]="img" class="img-thumbnail" *ngIf="img != ''">
+                    <input type="button" *ngIf="img != ''" class="btn btn-danger rounded-circle myBtnClose btn-sm" value="x" (click)="lessImage(imgs)">
+                </div>
             </div>
 
+        </div>
+        <div class="float-right">
+            <button class="btn btn-success">Salvar</button>
+        </div>
     </form>
+
 </div>
