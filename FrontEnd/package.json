@@ -26,9 +26,12 @@
     "ngx-mask": "^8.1.6",
     "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^11.2.1",
+    "ngx-xml2json": "^1.0.2",
     "rxjs": "~6.4.0",
     "serialize-javascript": "^2.1.2",
+    "simple-xml-to-json": "^1.0.2",
     "tslib": "^1.10.0",
+    "xml2js": "^0.4.23",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

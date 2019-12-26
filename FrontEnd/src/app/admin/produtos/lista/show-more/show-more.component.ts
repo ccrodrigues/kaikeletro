@@ -8,11 +8,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ShowMoreComponent implements OnInit {
 
-<<<<<<< HEAD
-  @Input() produto  = [];
-=======
   @Input() produto : any  = [];
->>>>>>> master
+
   @Output() close   = new EventEmitter();
   imagens           = [];
   imagem : File     = null;
@@ -59,11 +56,8 @@ export class ShowMoreComponent implements OnInit {
       }
     }
   }
-<<<<<<< HEAD
-=======
 
   verificarImagem( imgs )  {
     return typeof imgs === 'string'
   }
->>>>>>> master
 }

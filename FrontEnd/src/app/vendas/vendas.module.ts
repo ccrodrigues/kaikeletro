@@ -20,11 +20,6 @@ import { MaisVendidosComponent } from './home/mais-vendidos/mais-vendidos.compon
 import { MaisDesejadosComponent } from './home/mais-desejados/mais-desejados.component';
 import { CarrinhoComponent } from './home/carrinho/carrinho.component';
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
 @NgModule({
   declarations: [TelaRegistroComponent, UsuarioLoginComponent, HomeComponent, TelaRegistroComponent,
      UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent, MelhoresOfertasComponent, MaisVendidosComponent, MaisDesejadosComponent,CarrinhoComponent],

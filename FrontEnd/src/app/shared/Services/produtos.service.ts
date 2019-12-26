@@ -26,19 +26,9 @@ export class ProdutosService {
     return this.http.get(`${this.envService.urlAPI}produtos/carrinho`)
   }
 
-<<<<<<< HEAD
-  delete(id) {
-    return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "/produtos");
-=======
-  //Pegando a lista de produtosDto
-  getProdutoDto(){
-    return this.http.get(`${this.envService.urlAPI}produtos/carrinho`)
-  }
-
   //Busca de ProdutoDTO por id
   getProdutoDtoId(id){
     return this.http.get<ProdutoDtoModel>(`${this.envService.urlAPI}produtos/carrinho/${id}`)
->>>>>>> master
   }
 
   //pegando o produto filtrando por id

@@ -1,18 +1,10 @@
-<<<<<<< HEAD
 <!-- Carrosel de imagens -->
 <div class="row" id="CarrosselDeImagens">
-=======
-<div class="row " >
->>>>>>> master
     <div class="col-4 ">
         <img [src]="imagemAtual" height="65%" width="100%" />
         <div class="row">
             <div class="col zeroPadding " *ngFor="let img of produto?.imagens">
-<<<<<<< HEAD
                 <img width="100%" heigth="15%" [src]="img?.imagemProduto" (click)="trocarImagem(img?.imagemProduto)" />
-=======
-                <img width="100%"   heigth="15%" [src]="img?.imagemProduto" (click)="trocarImagem(img?.imagemProduto)" />
->>>>>>> master
             </div>
         </div>
     </div>
@@ -32,15 +24,14 @@
             </span>
         </div>
 
-
         <!-- Calculo de prazo e frete -->
         <div id="exFrete">
             <div id="intFrete">
                 <span>Calcular frete e prazo</span>
                 <br>
-                <input type="number" maxlength=8 placeholder="00000-000" id="inputCalcFrete" #cep> 
-                <button class="btn btn-primary" id="btnCalcFrete" (click)="calcularCEP()" >
-                    Calcular 
+                <input type="text" (keyup)='validarCEP()' maxlength=8 placeholder="01234111" id="inputCalcFrete" #cep>
+                <button class="btn btn-primary" id="btnCalcFrete" (click)="calcularFrete()" [disabled]="!isCepValid">
+                    Calcular
                     <i class="fa fa-search"></i>
                 </button>
 
@@ -49,24 +40,27 @@
                 <table class="table">
                     <thead id="headCalcFrete">
                         <tr>
-                            <th scope="col">Prazo</th>
                             <th scope="col">Valor</th>
+                            <th scope="col">Prazo</th>
                         </tr>
                     </thead>
 
                     <!-- Mostrar mensagem solicitando que o user digite o CEP para calcular -->
-                    <span *ngIf="true" id="bodyDefaultFrete">
-                        Digite o CEP para calcular
+                    <span *ngIf="!showFrete" id="bodyDefaultFrete">
+                        <div class="alert alert-warning" role="alert">
+                            Digite o CEP para calcular
+                        </div>
                     </span>
 
                     <!-- Mostrar na tela o valor e prazo do frete (caso o usuário já tiver preenchido o CEP) -->
 
-                    <tbody *ngIf="false" id="bodyWithDetailsFrete">
+                    <tbody *ngIf="showFrete" id="bodyWithDetailsFrete">
                         <tr>
-                            <td>3 dias úteis</td>
-                            <td>R$ 20,00</td>
+                            <td>R$ {{ valorFrete }}</td>
+                            <td>{{ prazoentregaFrete }} dias úteis</td>
                         </tr>
                     </tbody>
+
                 </table>
             </div>
         </div>
@@ -75,16 +69,16 @@
         <div id="exCompra">
             <div class="qty mt-5" id="intCompra">
                 Quantidade:<br>
-                <span class="minus bg-dark">-</span>
-                <input type="number" class="count" name="qty" value="1" readonly id="inputCompra">
-                <span class="plus bg-dark">+</span>
+                <span class="minus bg-dark" (click)="removerQtdd()">-</span>
+                {{ quantidade }}
+                <span class="plus bg-dark" (click)="adicionarQtdd()">+</span>
             </div>
             <br>
 
             <!-- Mostrar preços -->
             <div id="divMostrarPreco">
-                <h4 id="precoFinal"> 
-                    {{ produto?.preco| currency:'BRL':true:'1.2-2' }}
+                <h4 id="precoFinal">
+                    {{ precoAPI | currency:'BRL':true:'1.2-2' }}
                 </h4>
                 <!-- Botão de comprar -->
                 <button class="btn btn-primary" id="btnComprarAgora">
@@ -103,34 +97,33 @@
 
         <!-- Botaão de formas de pagamento -->
         <div id="parcelamento">
-            <button  class="btn btn-outline-primary"
-                id="btnFormaDePagamento" (click)="valorPorParcela()">Formas de pagamento</button>
+            <button class="btn btn-outline-primary" id="btnFormaDePagamento" (click)="valorPorParcela()">Formas de
+                pagamento</button>
 
             <!-- Pop-up que irá aparecer quando o user clicar no botão de formas de pagamento-->
             <div id="id01" class="modal" #modal>
                 <form class="modal-content animate" method="post">
-                    
+
                     <span (click)="closeModal()" class="close"> &times; </span>
-                    
-                        <!-- Pop- up de parcelas -->
-                    <div class="container" >
-                        <table class="table table-striped" >
-                            <tbody >
+
+                    <!-- Pop- up de parcelas -->
+                    <div class="container">
+                        <table class="table table-striped">
+                            <tbody>
                                 <tr *ngFor="let parc of parcelamentos">
-                                    <th scope="row" ></th>
+                                    <th scope="row"></th>
                                     <td> {{ parc?.parcela }}</td>
                                     <td> {{ parc?.valorPorParcela | currency:'BRL':true:'1.2-2'}}</td>
                                     <td> {{ parc?.juros }} </td>
-                                    <td> {{ parc?.valorTotal | currency:'BRL':true:'1.2-2'}}</td> 
+                                    <td> {{ parc?.valorTotal | currency:'BRL':true:'1.2-2'}}</td>
                                 </tr>
                             </tbody>
                         </table>
                         Para financiamento com juros de 2,29% a.m. - CET máximo de 31,21% a.a.
 
-                <!-- Botão para fechar -->
+                        <!-- Botão para fechar -->
                     </div>
-                        <button type="button" ngbAutofocus class="btn btn-danger"
-                        (click)="closeModal()">Fechar</button>
+                    <button type="button" ngbAutofocus class="btn btn-danger" (click)="closeModal()">Fechar</button>
                 </form>
 
             </div>
