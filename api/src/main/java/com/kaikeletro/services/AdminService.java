@@ -11,6 +11,8 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.Admin;
+import com.kaikeletro.domain.Produto;
+import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.repositories.AdminRepository;
 
 @Service
@@ -24,12 +26,13 @@ public class AdminService implements Serializable{
 		List<Admin> administrador = adminRepo.findAll();
 		return administrador;
 	}
-
+	
 	public Optional<Admin> findById(int id) {
 		return adminRepo.findById(id);
 	}
 
 	public Admin save(Admin user) {
+		user.senha=CriptografiaService.criptografarSenha(user.senha);
 		return adminRepo.save(user);
 	}
 
@@ -80,13 +83,19 @@ public class AdminService implements Serializable{
 		
 	public boolean findOneByEmailAndSenha(String email, String senha) {
 			
-			if(adminRepo.findOneByEmailAndSenha(email, senha) != null) {
+			if(adminRepo.findOneByEmailAndSenha(email, CriptografiaService.criptografarSenha(senha))!= null) {
 				return true;
 			}else {
 				return false;
 			}
 			
 		}
+	
+	// Método do UsuarioController - Busca por nivel
+	public List<Admin> findByNivel(int nivel){
+		List<Admin> lista = adminRepo.findByNivel(nivel);
+		return lista;
+	}
 
 	
 
