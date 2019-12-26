@@ -28,8 +28,9 @@ public class Vendas implements Serializable {
 	
 	//Atributos
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VENDAS_NAME_SEQ")
-    @SequenceGenerator(sequenceName = "vendas_seq", allocationSize = 1, name = "VENDAS_NAME_SEQ")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO, generator = "VENDAS_NAME_SEQ")
+   // @SequenceGenerator(sequenceName = "vendas_seq", allocationSize = 1, name = "VENDAS_NAME_SEQ")
 	private int id;
 	
 	@Column(name= "valor")
