@@ -40,6 +40,11 @@ public class UsuarioDto {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	@Override
+	public String toString() {
+		return "UsuarioDto [idUsuario=" + idUsuario + ", email=" + email + ", senha=" + senha + "]";
+	}
 	
 	
 }
