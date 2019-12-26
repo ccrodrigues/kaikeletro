@@ -31,12 +31,12 @@ export class ProdutosComponent implements OnInit {
     produto.categorias = this.categoria
     produto.descricao = this.descricaoProduto
     produto.idProduto = this.id
-    //produto.imagens = this.imgSRC
+    //produto.imagens.push(this.imgSRC)
     produto.nome = this.nome
     produto.preco = this.preco
     this.carrinhoService.verifyItemExists(produto)
     //this.carrinhoService.addProduto(produto)
-    console.log("Adicionando " + this.carrinhoService.exibirItens())
+    console.log("Adicionando " + this.imgSRC)
   }
 
 }

@@ -60,7 +60,7 @@ import { EnvService } from 'src/app/env.service';
 
   calculoCarrinho(){
     let totalValor = 0
-    totalValor =this.itensCarrinho.reduce((valorProdutos, valor) => valorProdutos + (valor.produto.preco*valor.quantidade), 0)
+    totalValor =this.itensCarrinho.reduce((valorProdutos, item) => valorProdutos + (item.produto.preco*item.quantidade), 0)
     return  totalValor
   }
 

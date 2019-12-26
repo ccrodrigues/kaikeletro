@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kaikeletro.domain.Item_Venda;
 import com.kaikeletro.domain.Vendas;
@@ -29,14 +30,22 @@ public class VendasService {
 		return vendas;
 	}
 
+	@Transactional
 	public Vendas createVenda(Vendas vendas) {
-		Vendas sell = vendasRepo.save(vendas);	
+		
+		Vendas sell = new Vendas();
+		
+	try {
+		 sell = vendasRepo.save(vendas);	
 		
 	   for(Item_Venda item : vendas.getItem()) {
 		   item.setVenda(vendas);
 		   itemRepo.save(item);
 	   }
-	   
+	} catch(Exception e) {
+		System.err.println(e);
+	}
+	
 	   return sell;
 	}
 }
