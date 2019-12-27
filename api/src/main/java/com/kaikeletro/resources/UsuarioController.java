@@ -106,7 +106,9 @@ public class UsuarioController {
 	
 	@RequestMapping (value="login", method = RequestMethod.POST)
 	public ResponseEntity<Boolean> usuario(@RequestBody Usuario user) {	
+		System.out.print(user.getSenha());
 		return ResponseEntity.ok().body(service.findOneByEmailAndSenha(user.getEmail(), user.getSenha()));
+		
 	}
 	
 
