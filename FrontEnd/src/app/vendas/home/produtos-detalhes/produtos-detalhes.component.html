@@ -46,9 +46,16 @@
                     <i class="fa fa-search"></i>
                 </button>
 
+                <!-- Mostrar mensagem solicitando que o user digite o CEP para calcular -->
+                <span *ngIf="!showFrete" id="bodyDefaultFrete">
+                    <div class="alert alert-warning" role="alert">
+                        Digite o CEP para calcular
+                    </div>
+                </span>
+
                 <hr>
                 <!-- Mostrar componente para calculo de frete -->
-                <table class="table">
+                <table class="table" *ngIf="showFrete"> 
                     <thead id="headCalcFrete">
                         <tr>
                             <th scope="col">Valor</th>
@@ -56,16 +63,8 @@
                         </tr>
                     </thead>
 
-                    <!-- Mostrar mensagem solicitando que o user digite o CEP para calcular -->
-                    <span *ngIf="!showFrete" id="bodyDefaultFrete">
-                        <div class="alert alert-warning" role="alert">
-                            Digite o CEP para calcular
-                        </div>
-                    </span>
-
                     <!-- Mostrar na tela o valor e prazo do frete (caso o usuário já tiver preenchido o CEP) -->
-
-                    <tbody *ngIf="showFrete" id="bodyWithDetailsFrete">
+                    <tbody id="bodyWithDetailsFrete">
                         <tr>
                             <td>R$ {{ valorFrete }}</td>
                             <td>{{ prazoentregaFrete }} dias úteis</td>
