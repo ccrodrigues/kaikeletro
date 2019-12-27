@@ -14,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -29,10 +28,9 @@ public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	//@SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USUARIO_NAME_SEQ")
-	private int id;
+	private int id; 
 	
-	@OneToMany(mappedBy = "fk_Usuario") //pk EnderecoUsuario
-	@JsonManagedReference
+	@OneToMany(mappedBy = "fk_Usuario")
 	private List<EnderecoUsuario> idEndereco;
 
 	@NotNull

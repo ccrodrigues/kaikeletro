@@ -6,9 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.ForeignKey;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -25,16 +28,17 @@ public class EnderecoUsuario implements Serializable {
 	@PrimaryKeyJoinColumn
 	private int idEndereco;
 
-	@ManyToOne
+    @ManyToOne
 	@JsonBackReference
+	@JoinColumn(name="idUsuario")
 	private Usuario fk_Usuario;
 	
 	private String logradouro;
 	
-	private int numero;
+	private String numero;
 	
 	@NotNull
-	private int cep;
+	private String cep;
 	
 	private String cidade;
 	
@@ -57,19 +61,19 @@ public class EnderecoUsuario implements Serializable {
 		this.logradouro = logradouro;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
-	public int getCep() {
+	public String getCep() {
 		return cep;
 	}
 
-	public void setCep(int cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 
@@ -99,7 +103,7 @@ public class EnderecoUsuario implements Serializable {
 
 	@Override
 	public String toString() {
-		return "EnderecoUsuario [idEndereco=" + idEndereco + ", fk_Usuario=" + fk_Usuario + ", logradouro=" + logradouro
+		return "EnderecoUsuario [idEndereco=" + idEndereco +  ", logradouro=" + logradouro
 				+ ", numero=" + numero + ", cep=" + cep + ", cidade=" + cidade + ", estado=" + estado + "]";
 	}
 

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.kaikeletro.domain.EnderecoUsuario;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.repositories.EnderecoUsuarioRepository;
 import com.kaikeletro.repositories.UsuarioRepository;
@@ -43,12 +44,31 @@ public class UsuarioService implements Serializable{
 	}
 
 	public Usuario save(Usuario user) {
-		user.senha=bCryptPasswordEncoder.encode(user.senha);
-		Usuario u = user;
-		userRepo.save(user);
-		endRepo.saveAll(u.getIdEndereco());
+		user.senha=bCryptPasswordEncoder.encode(user.senha);	
+		
+		Usuario u = userRepo.save(user);
+		
+		for (EnderecoUsuario end : u.getIdEndereco()) {
+			end.setFk_Usuario(u);
+			endRepo.save(end);
+		}
 		
 		return u;
+		
+		/*Usuario u = user;
+		
+		u = userRepo.save(user);
+		
+		u.toString();
+		
+		user.getIdEndereco().toString();
+		System.out.println(user.getIdEndereco());
+
+		for (EnderecoUsuario end : user.getIdEndereco()) {
+				end.setFk_Usuario(user);
+				System.out.println("ENTREI DENTRO DO FOR ----------");
+				endRepo.save(end);
+		}*/
 	}
 
 	public Usuario updatebyID(Usuario user, int id) {

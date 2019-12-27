@@ -29,7 +29,6 @@ public class EnderecoUsuarioController {
 	
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public ResponseEntity<EnderecoUsuario> save(@RequestBody @Valid EnderecoUsuario end) {
-		
 		return ResponseEntity.ok().body(service.save(end));
 	}
 }
