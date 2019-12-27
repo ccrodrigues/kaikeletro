@@ -9,6 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class ShowMoreComponent implements OnInit {
 
   @Input() produto : any  = [];
+
   @Output() close   = new EventEmitter();
   imagens           = [];
   imagem : File     = null;

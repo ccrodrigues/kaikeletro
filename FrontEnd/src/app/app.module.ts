@@ -12,13 +12,15 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { VendasModule } from './vendas/vendas.module';
 import { LayoutModule } from './layout/layout.module';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CommonModule } from '@angular/common';
 import { CarrinhoService } from './shared/Services/carrinho.service';
 import { ProdutosComponent } from './vendas/home/produtos/produtos.component';
 import { HomeComponent } from './vendas/home/home.component';
 import { DialogService } from './shared/toaster/dialog.service';
 import { Toast, ToastrService, ToastrModule } from 'ngx-toastr';
+
+
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,6 @@ import { Toast, ToastrService, ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
-    //CarouselModule.forRoot(),
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     VendasModule,
