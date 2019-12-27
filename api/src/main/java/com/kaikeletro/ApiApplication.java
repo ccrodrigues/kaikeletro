@@ -63,6 +63,7 @@ public class ApiApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 
 		this.produtoCategoriaDemo();
+		
 		Usuario u1 = new Usuario();
 		EnderecoUsuario end1 = new EnderecoUsuario();
 		
