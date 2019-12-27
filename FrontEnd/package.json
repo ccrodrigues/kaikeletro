@@ -20,12 +20,6 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "@brunoc/ngx-viacep": "^2.1.2",
-<<<<<<< HEAD
-    "bootstrap": "^4.4.1",
-    "ngx-bootstrap": "^5.2.0",
-    "ngx-pagination": "^5.0.0",
-    "ngx-toastr": "^11.2.1",
-=======
     "@ng-bootstrap/ng-bootstrap": "^5.1.4",
     "angular-ui-carousel": "^0.1.10",
     "angular2-text-mask": "^9.0.0",
@@ -35,7 +29,6 @@
     "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^11.2.1",
     "ngx-xml2json": "^1.0.2",
->>>>>>> produtosDetalhes
     "rxjs": "~6.4.0",
     "serialize-javascript": "^2.1.2",
     "simple-xml-to-json": "^1.0.2",
@@ -45,11 +38,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.803.21",
-<<<<<<< HEAD
-    "@angular/cli": "~8.3.20",
-=======
     "@angular/cli": "^8.3.21",
->>>>>>> produtosDetalhes
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
     "@types/jasmine": "~3.3.8",

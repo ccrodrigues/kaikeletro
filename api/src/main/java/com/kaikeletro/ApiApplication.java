@@ -68,7 +68,7 @@ public class ApiApplication implements CommandLineRunner{
 		EnderecoUsuario end1 = new EnderecoUsuario();
 		
 		u1.setCelular("1148748-8743");
-		u1.setCpf("12345678689");
+		u1.setCpf("123456786");
 		u1.setDataDeNascimento("30/01/1998");
 		u1.setEmail("a@a.com");
 		u1.setNome("Usuario 01");
@@ -202,7 +202,7 @@ public class ApiApplication implements CommandLineRunner{
 	private void produtoCategoriaDemo() {
 	Categoria c1 = new Categoria();
 	c1.setNome("Microcomputador");
-	
+		
 	ImagemProd a1 = new ImagemProd();
 	a1.setImagemProduto("https://www.saldaodainformatica.com.br/5712-thickbox_default/notebook-lenovo-ideapad-320-80yh0006br-prata-intel-core-i5-7200u-ram-8gb-hd-1tb-tela-156-windows-10.jpg");
 	a1.setDescricaoImagem("NoteBook Lenovo");

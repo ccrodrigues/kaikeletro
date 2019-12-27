@@ -6,6 +6,7 @@ import { ProdutoModel } from 'src/app/shared/models/produto.model';
 import { ProdutosService } from 'src/app/shared/Services/produtos.service';
 import { ProdutosDetalhesService } from './produtos-detalhes.service';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 // classe base para calculo do parcelamento
@@ -68,8 +69,14 @@ export class ProdutosDetalhesComponent implements OnInit {
   //variavel para retornar o erro de calculo de frete  
   erroFrete;
 
+  id: string;
+
   constructor(private produtoService: ProdutosService,
     private prodDetailsCEP: ProdutosDetalhesService,
+
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    
     config: NgbCarouselConfig
   ) {
     config.interval = 2000;
@@ -80,7 +87,14 @@ export class ProdutosDetalhesComponent implements OnInit {
 
   ngOnInit() {
     // settar aqui o id do produto(da API) que irá ser carregado na página de detalhes
-    this.produtoService.getById("9").subscribe
+    this.activatedRoute.params.subscribe(data => {
+      console.log(data.id)
+      this.id=data.id;
+    })
+
+
+
+    this.produtoService.getById("1").subscribe
       (data => {
         this.valorinicialPrecoFrete = data.preco;
         this.produto = data;
