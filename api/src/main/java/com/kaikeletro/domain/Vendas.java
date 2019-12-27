@@ -19,7 +19,6 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kaikeletro.enumeration.StatusPagamento;
 import com.kaikeletro.enumeration.StatusVendas;
 
