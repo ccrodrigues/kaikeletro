@@ -122,6 +122,7 @@ public class ApiApplication implements CommandLineRunner {
 =======
 
 		this.produtoCategoriaDemo();
+		
 		Usuario u1 = new Usuario();
 		EnderecoUsuario end1 = new EnderecoUsuario();
 		
