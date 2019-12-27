@@ -4,6 +4,10 @@
 * Int- Div Interna
 *
 */
+.carousel-item{
+  margin-right: 0% !important;
+}
+
 
 #spanNomeDoProduto {
   font-family: sans-serif;
@@ -255,3 +259,4 @@ input:disabled {
 input[type=text]:focus {
   border: 3px solid #555;
 }
+
