@@ -19,10 +19,15 @@ import { MelhoresOfertasComponent } from './home/melhores-ofertas/melhores-ofert
 import { MaisVendidosComponent } from './home/mais-vendidos/mais-vendidos.component';
 import { MaisDesejadosComponent } from './home/mais-desejados/mais-desejados.component';
 import { CarrinhoComponent } from './home/carrinho/carrinho.component';
+import { ConfirmacaoEnderecoComponent } from './confirmacao-endereco/confirmacao-endereco.component';
+import { PagamentoFinalizacaoComponent } from './pagamento-finalizacao/pagamento-finalizacao.component';
+
 
 @NgModule({
   declarations: [TelaRegistroComponent, UsuarioLoginComponent, HomeComponent, TelaRegistroComponent,
-     UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent, MelhoresOfertasComponent, MaisVendidosComponent, MaisDesejadosComponent,CarrinhoComponent],
+     UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent, 
+     MelhoresOfertasComponent, MaisVendidosComponent, MaisDesejadosComponent,CarrinhoComponent, 
+     ConfirmacaoEnderecoComponent, PagamentoFinalizacaoComponent],
   imports: [
     CommonModule,
     VendasRoutingModule,
@@ -43,7 +48,9 @@ import { CarrinhoComponent } from './home/carrinho/carrinho.component';
     UsuarioLoginComponent,
     HomeComponent,
     ProdutosDetalhesComponent,
-    CarrinhoComponent
+    CarrinhoComponent,
+    ConfirmacaoEnderecoComponent,
+    PagamentoFinalizacaoComponent
     //CarouselComponent
   ]
 })
