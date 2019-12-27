@@ -25,6 +25,7 @@ import com.kaikeletro.repositories.ItemVendaRepository;
 import com.kaikeletro.repositories.ProdutoRepository;
 import com.kaikeletro.repositories.UsuarioRepository;
 import com.kaikeletro.repositories.VendasRepository;
+import com.kaikeletro.services.PopularBancoService;
 
 @SpringBootApplication
 public class ApiApplication implements CommandLineRunner{
@@ -52,6 +53,8 @@ public class ApiApplication implements CommandLineRunner{
 
 	@Autowired
 	ItemVendaRepository itemRepository;
+	
+	PopularBancoService popularBanco = new PopularBancoService();
 
 
 	public static void main(String[] args) {
@@ -61,9 +64,6 @@ public class ApiApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-
-		this.produtoCategoriaDemo();
-		
 		Usuario u1 = new Usuario();
 		EnderecoUsuario end1 = new EnderecoUsuario();
 		
@@ -91,9 +91,10 @@ public class ApiApplication implements CommandLineRunner{
 		//this.produtoCategoriaDemo();
 		//this.produtoCategoriaDemo();
 		//this.produtoCategoriaDemo();
-		this.produtoCategoriaDemo();
-		this.vendasProdutoUsuario();
-
+		//this.produtoCategoriaDemo();
+		//this.vendasProdutoUsuario();
+		
+		popularBanco.produtoCategoriaDemo();		
 	}
 	
 	//Teste de incluir Vendas com produtos e usuários
