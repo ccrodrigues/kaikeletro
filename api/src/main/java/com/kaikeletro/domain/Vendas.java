@@ -59,6 +59,12 @@ public class Vendas implements Serializable {
 	private int totalItens;
 	
 	private StatusPagamento pagamento;
+	
+	@Column(name= "parcela")
+	private int parcela;
+	
+	@Column(name= "valorParcela")
+	private double valorParcela;
 
 	// Construtor
 	public Vendas() {
@@ -137,6 +143,25 @@ public class Vendas implements Serializable {
 	
 	public StatusPagamento getPagamento() {
 		return pagamento;
+	}
+	
+	public int getParcela() {
+		return parcela;
+	}
+
+
+	public void setParcela(int parcela) {
+		this.parcela = parcela;
+	}
+
+
+	public double getValorParcela() {
+		return valorParcela;
+	}
+
+
+	public void setValorParcela(double valorParcela) {
+		this.valorParcela = valorParcela;
 	}
 
 
