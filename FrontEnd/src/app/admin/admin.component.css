@@ -1,0 +1,19 @@
+.divs > div > button {
+    height: 240px;
+    width: 160px;
+    margin-bottom: 40px;
+    background: none;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.divs > div > button:hover {
+    box-shadow: 0px 0px 6px 2px rgba(44, 44, 44, 0.6);
+}
+
+.my-text-title {
+    text-align: center;
+    font-weight: 100;
+    font-size: 29px;
+    margin: 10px 0px;
+}
