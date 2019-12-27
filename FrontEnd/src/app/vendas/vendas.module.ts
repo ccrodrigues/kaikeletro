@@ -15,6 +15,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CarouselModule } from 'ngx-bootstrap/carousel'
 import { CarouselComponent } from './home/carousel/carousel.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { TooltipDirective } from '../shared/directives/tooltip.directive';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { CarrinhoComponent } from './carrinho/carrinho.component';
     BsDropdownModule.forRoot(),
     FormsModule,
     NgxPaginationModule,
-    CarouselModule,
+    CarouselModule
   ],
   exports:[
     

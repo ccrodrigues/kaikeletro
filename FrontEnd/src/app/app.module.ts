@@ -21,6 +21,7 @@ import { AuthInterceptorService } from './shared/interceptors/auth-interceptor.s
 import { HttpConfigInterceptor } from './shared/interceptors/http-config-interceptor.service';
 import { CustomErrorHandlerService } from './shared/services/error/custom-error-handler.service';
 
+
 export function tokenGetter() {
   return localStorage.getItem("localUser");
 }

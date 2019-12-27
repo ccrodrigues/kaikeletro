@@ -79,8 +79,11 @@
         </ul>
       </div>
       <form class="form-inline my-1 my-lg-0 search-form">
-        <input class="form-control mr-sm-1" type="search" placeholder="Buscar" aria-label="Buscar">
-        <!-- <button class="btn btn-dark" type="submit">Buscar Produto</button> -->
+          
+        <div [tooltip]="tooltipProdutos" placement="bottom" delay="500"  >
+          <input class="form-control mr-sm-1" type="search" placeholder="Buscar" aria-label="Buscar" #nomeProduto  (change) = "buscarProdutos(nomeProduto)">
+        </div>
+          
       </form>
 
     </div>

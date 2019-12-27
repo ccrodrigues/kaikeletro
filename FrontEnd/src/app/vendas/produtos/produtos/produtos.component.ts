@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ProdutoService } from 'src/app/shared/services/produto.service';
 import { ProdutoPaginacao } from 'src/app/shared/models/paginacao/produto.paginacao';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,6 +11,7 @@ import { Paginacao } from 'src/app/shared/models/paginacao/paginacao.model';
   styleUrls: ['./produtos.component.css']
 })
 export class ProdutosComponent implements OnInit {
+
 
   produtosPaginacao : ProdutoPaginacao ;
 
@@ -30,6 +31,7 @@ export class ProdutosComponent implements OnInit {
 
   ngOnInit() {
 
+  
     this.activatedRoute.queryParams.subscribe(
       (queryParams => {
                 

@@ -7,6 +7,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { FooterLayoutComponent } from './vendas/footer-layout/footer-layout.component';
+import { SharedModule } from '../shared/shared.module';
+
 @NgModule({
   declarations: [MenuComponent, FooterLayoutComponent],
   imports: [
@@ -15,7 +17,8 @@ import { FooterLayoutComponent } from './vendas/footer-layout/footer-layout.comp
     BrowserModule,
     CollapseModule,
     BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   exports: [
     MenuComponent,
