@@ -1,23 +1,11 @@
 package com.kaikeletro;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.kaikeletro.domain.Categoria;
-import com.kaikeletro.domain.EnderecoUsuario;
-import com.kaikeletro.domain.ImagemProd;
-import com.kaikeletro.domain.Item_Venda;
-import com.kaikeletro.domain.Produto;
-import com.kaikeletro.domain.Usuario;
-import com.kaikeletro.domain.Vendas;
-import com.kaikeletro.enumeration.StatusPagamento;
-import com.kaikeletro.enumeration.StatusVendas;
 import com.kaikeletro.repositories.CategoriaRepository;
 import com.kaikeletro.repositories.EnderecoUsuarioRepository;
 import com.kaikeletro.repositories.ImagemProdutoRepository;
@@ -54,7 +42,8 @@ public class ApiApplication implements CommandLineRunner{
 	@Autowired
 	ItemVendaRepository itemRepository;
 	
-	PopularBancoService popularBanco = new PopularBancoService();
+	@Autowired
+	PopularBancoService popularBanco;
 
 
 	public static void main(String[] args) {
@@ -64,7 +53,8 @@ public class ApiApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		Usuario u1 = new Usuario();
+		popularBanco.produtoCategoriaDemo();		
+		/*Usuario u1 = new Usuario();
 		EnderecoUsuario end1 = new EnderecoUsuario();
 		
 		u1.setCelular("1148748-8743");
@@ -92,13 +82,11 @@ public class ApiApplication implements CommandLineRunner{
 		//this.produtoCategoriaDemo();
 		//this.produtoCategoriaDemo();
 		//this.produtoCategoriaDemo();
-		//this.vendasProdutoUsuario();
-		
-		popularBanco.produtoCategoriaDemo();		
+		//this.vendasProdutoUsuario();*/		
 	}
 	
 	//Teste de incluir Vendas com produtos e usuários
-	private void vendasProdutoUsuario() {
+	/*private void vendasProdutoUsuario() {
 		Vendas v1 = new Vendas();
 		Vendas v2 = new Vendas();
 		Usuario u1 = new Usuario();
@@ -235,6 +223,6 @@ public class ApiApplication implements CommandLineRunner{
 		produtoRepository.save(prod);
 	}
 	
-	}	
+	}	*/
 
 }
