@@ -2,14 +2,17 @@
 
 <div *ngIf="carrinhoService.exibirItens().length; else carrinhoVazio">
 
-<div class="container-fluid">
+<div class="container-fluid cart-box">
+
+    
 <div class="row basket_columns">
-        <h6 class="col-3">Produto</h6>
-        <h6 class="col-3">Quantidade</h6>
+        <h6 class="col-3" >Produto</h6>
+        <h6 class="col-3" style="margin-left: 60px;" >Quantidade</h6>
         <h6 class="col-3">Preço</h6>
 </div>
+   
 
-<div class="row">
+<div class="row ">
     <div  class="col-sm-8">
         <ul  class="lista">
             <li *ngFor = "let it of carrinhoService.itensCarrinho" style=" margin-top: 10px ;border-top: 1px solid #086575; width: 700px;">
@@ -42,7 +45,7 @@
     </div>
 
     <div class="col-sm-4">
-        <div class="card" style="width: 18rem; margin-left: 100px; height: 300px; margin-bottom: 20px;">
+        <div class="card">
             <div class="card-body">
               <h5 class="card-title">Resumo do pedido</h5>
               <p class="card-text">{{ carrinhoService.totalItensCarrinho() }} produtos &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -61,12 +64,12 @@
 </div>
 
 
-
 <ng-template #carrinhoVazio>
-    <div 
+    <div id="sombra1"
         class="form-row d-flex justify-content-center" 
-        style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #086575; margin: 20px" >
-        Seu Carrinho está vazio
+        style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #086575; margin: 20px;  box-shadow: 5px 5px 5px rbga(0,0,0,0.5);" 
+       >
+       <p style="font-size: 17px;">Seu Carrinho está vazio!</p>
     </div>
 </ng-template>
 
