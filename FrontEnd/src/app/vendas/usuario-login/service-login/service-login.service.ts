@@ -60,7 +60,7 @@ export class ServiceLoginService {
 
 
               }
-              // console.log("Administrador? ", this.isAdmin);
+              console.log("Administrador? ", this.isAdmin);
               // console.log("Usuario autenticado ?", this.isAutenticado);
 
 

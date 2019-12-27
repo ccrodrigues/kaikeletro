@@ -37,10 +37,21 @@ return this.http.patch<Usuario>(this.envService.urlAPI + `/usuarios/${id}`, usua
 
 }
 UsuarioUser(senha, email, usuario){
+  
   return this.http.post<Usuario[]>(this.envService.urlAPI + `/usuarios/${email}/${senha}`, usuario);
 }
 verificarNivelDeAcesso(cpf, nivel, usuario){
+
   return this.http.post<Usuario[]>(this.envService.urlAPI + `/usuarios/${cpf}/${nivel}`, usuario);
+}
+pesquisarPorCpf(cpf, usuario){
+
+  return this.http.get<Usuario>(this.envService.urlAPI + `/usuarios/cpf/${cpf}`, usuario)
+}
+pesquisarPorNome(nome, usuario){
+
+  return this.http.get<Usuario>(this.envService.urlAPI + `/usuarios/nome/${nome}`, usuario)
+
 }
 
 }
