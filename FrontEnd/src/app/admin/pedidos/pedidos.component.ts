@@ -77,7 +77,7 @@ export class PedidosComponent implements OnInit {
       (dados)=>{
         this.pedidosPaginacao = dados;        
         this.setPaginacao(this.pedidosPaginacao);
-        //console.log(this.pedidosPaginacao);
+        console.log(this.pedidosPaginacao);
         //console.log(this.paginacao);
       }
     );
