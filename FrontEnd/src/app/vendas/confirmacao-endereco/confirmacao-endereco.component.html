@@ -1,5 +1,5 @@
 <p>Aqui vai aparecer o endereço cadastrado do cliente para Entrega</p>
-<button class="btn btn-primary">Ir Para Pagamento</button>
+<button class="btn btn-primary" [routerLink]= "['/pagamento']">Ir Para Pagamento</button>
 
 <div class="col-md-10 order-md-1">
 <form [formGroup]="endForm" (ngSubmit)="onSubmit()">
@@ -52,7 +52,7 @@
             <hr class="mb-4">
 
             <div>
-            <button type="submit" class="btn btn-primary">Salvar e ir para Pagamento</button>
+            <button type="submit" class="btn btn-primary" [routerLink]= "['/pagamento']">Salvar e ir para Pagamento</button>
             </div>
         </div>
     </span>

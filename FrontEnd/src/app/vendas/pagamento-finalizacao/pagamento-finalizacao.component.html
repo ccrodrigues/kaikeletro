@@ -1,48 +1,83 @@
-<p>Aqui vai os produtos que adicionados ao carrinho</p><br>
+
 <p>aqui vai o endereço confirmado</p>
 
-<div class="col-md-8 order-md-1">
-    <form [formGroup]="pagamento">
-        <h4 class="mb-3">Pagamento</h4>
-        <div class="d-block my-3">
-            <div class="custom-control custom-radio">
-                <input id="credito" type="radio" class="custom-control-input" name="metodo">
-                <label class="custom-control-label" for="credito">Cartão de Crédito</label>
+<div class=row>
+    <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Seu Carrinho</span>
+            <span class="badge badge-secondary badge-pill">4</span>
+        </h4>
+
+        <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between">
+                <div>
+                    <h6 class="my-0">Nome do Produto</h6>
+                    <small class="text-muted">Descrição</small>
+                </div>
+                <span class="text-muted">R$90,00</span>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Frete </span>
+                <strong>R$15,00</strong>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between">
+                <span>TOTAL(BRL) </span>
+                <strong>R$105,00</strong>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="col-md-8 order-md-1">
+        <form [formGroup]="pagaForm" (submit)="onSubmit()">
+            <h4 class="mb-3">Pagamento</h4>
+
+            <div class="d-block my-3">
+                <div class="custom-control custom-radio">
+                    <input id="credito" type="radio" class="custom-control-input" name="metodo" >
+                    <label class="custom-control-label" for="credito">Cartão de Crédito</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input id="debito" type="radio" class="custom-control-input" name="metodo" >
+                    <label class="custom-control-label" for="debito">Cartão de Débito</label>
+                </div>
             </div>
 
-            <div class="custom-control custom-radio">
-                <input id="debito" type="radio" class="custom-control-input" name="metodo">
-                <label class="custom-control-label" for="debito">Cartão de Débito</label>
-            </div>
-        </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="nomeCartao">Nome no Cartão</label>
+                    <input type="text" class="form-control" id="nomeCartao" formControlName="nomeCartao">
+                    <small class="text-muted">Nome Completo, como no Cartão.</small>
+                    <app-msg-erro [isError]="isErrorCampo('nomeCartao')" mensagem="Preencha corretamente"></app-msg-erro>
+                </div>
 
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="nome-cartao">Nome no Cartão</label>
-                <input type="text" class="form-control" id="nome-cartao">
-                <small class="text-muted">Nome Completo, como no Cartão.</small>
-            </div>
-
-            <div class="col-md-6 mb-3">
-                <label for="num-cartao">Número do Cartão</label>
-                <input type="text" class="form-control" id="num-cartao">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-3 mb-3">
-                <label for="validade">Data de Validade</label>
-                <input type="text" class="form-control" id="validade">
+                <div class="col-md-6 mb-3">
+                    <label for="numCartao">Número do Cartão</label>
+                    <input type="text" class="form-control" id="numCartao" formControlName="numCartao" maxlength="16">
+                    <app-msg-erro [isError]="isErrorCampo('numCartao')" mensagem="Preencha corretamente"></app-msg-erro>
+                </div>
             </div>
 
-            <div class="col-md-3 mb-3">
-                <label for="cvv">CVV</label>
-                <input type="text" class="form-control" id="cvv">
-                <small class="text-muted">Código de Segurança</small>
-            </div>
-        </div>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="validade">Data de Validade</label>
+                    <input type="text" class="form-control" id="validade" formControlName="validade">
+                    <app-msg-erro [isError]="isErrorCampo('validade')" mensagem="Preencha corretamente"></app-msg-erro>
+                </div>
 
-        <hr class="mb-3">
-        <button class="btn btn-primary" type="submit">Confirmar Pagamento</button><br>
-    </form>
+                <div class="col-md-3 mb-3">
+                    <label for="cvv">CVV</label>
+                    <input type="text" class="form-control" id="cvv" formControlName="cvv" maxlength="3">
+                    <small class="text-muted">Código de Segurança</small>
+                    <app-msg-erro [isError]="isErrorCampo('cvv')" mensagem="Insira o código (3 dígitos)"></app-msg-erro>
+                </div>
+            </div>
+
+            <hr class="mb-3">
+            <button class="btn btn-primary" type="submit" >Confirmar Pagamento</button><br>
+        </form>
+    </div>
 </div>
