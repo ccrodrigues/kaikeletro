@@ -1,55 +1,77 @@
-<div class="dark-screen">
-    <div class="screen">
-        <button type="button" class="close  float-right btn-exc" (click)="fechar()" aria-label="Close">
-            <h1><span aria-hidden="true">&times;</span></h1>
-          </button>
-          <div class="container">
-            <form action="" [formGroup]="meuForm" (ngSubmit)="onSubmit()">
-                <h5 class="id"><b>ID: {{ produto.idProduto }}</b> </h5>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col">
-                            Nome produto
-                            <input type="text" [value]="produto.nome" class="form-control">
-                        </div>
-                        <div class="col">
-                            Categoria
-                            <select name="categoria" class="form-control" >
-                                <option *ngFor="let cat of produto.categorias" value="{{ cat.nome }}">{{ cat.nome }}</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
 
-                        <div class="col-4">
-                                Preco
-                                <input type="number" [value]="produto.preco" class="form-control">   
-                        </div>
-                        <div class="col-8">
-                            <p>Descrição</p> 
-                            <textarea rows="3" class="form-control">{{ produto.descricao }}</textarea>
-                         </div>
+<button type="button" class="close  float-right btn-exc" (click)="fechar()" aria-label="Close">
+    <h1><span aria-hidden="true">×</span></h1>
+</button>
+<div class="background">
+    <h2><small class="form-text text-muted negrito-padding text-center">Editar / Vizualizar</small></h2>
+        <form action="" [formGroup]="meuForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <div class="col">
+                <h3><small>Nome *</small></h3>
+                <input type="text" class="form-control" formControlName="nome" value="{{ produto.nome }}">
+
+                <h3><small>Preço *</small></h3>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                    <div class="input-group-text">R$</div>
                     </div>
-                    
+                    <input type="number" class="form-control" formControlName="preco" placeholder="00,00" value="{{ produto.preco }}">
+                </div>
+            </div>
+            <div class="col imagem_principal">
+                <label for="imagem-principal">
+                    <img [src]="imagemPrincipal" #alter>
+                </label>
+                <input type="file" id="imagem-principal" (change)="imagePrincipalSelect($event, alter)">
+            </div>
+        </div>
+
+        <div >
+            <h3><small>Descricao *</small></h3>
+            <textarea  class="form-control" id="" formControlName="descricao"value="{{ produto.descricao }}"></textarea>
+        </div>
+
+            <!-- ### INPUT: a cada tecla pressionada ira verificar se o que foi digitado -->
+            <!-- é igual a alguma categoria. -->
+            <!-- ### SELECT à esquerda: Categorias existentes no banco. -->
+            <!-- ### BUTTON ( > ): 1º Verifica se um ou mais itens da SELECT foi selecionado, -->
+            <!-- se true ira habilitar o botao. 2º Ira adicionar a categoria selecionada para a tabela da direta.  -->
+            <!-- ### BUTTON ( < ): 1º Verifica se um ou mais itens da SELECT foi selecionado, -->
+            <!-- se retornar true ira habilitar o botao. 2º Removera os itens que foram marcados. -->
+            <!-- ### SELECT à direita: Categorias selecionadas pelo ADM. -->
+            <!-- ### BUTTON ( Adicionar nova categoria ): Ira pegar o nome da nova categoria e, -->
+            <!-- verificar se a categoria nao existe, caso for false ira ser adicionada na tabela do bd. -->
+            
+        <h3><small>Categoria *</small></h3>
+           <div class="row">
+               
+                <div class="col-8 box rounded">
+                    <div *ngFor="let cats of allCategorias" #categoria 
+                     (click)="escolhida(categoria, cats)" [ngClass]="{selecionado: categoriaTem(cats)}"> {{ cats.nome }}</div>
                 </div>
                 
-                <label for='selecao-arquivo' class="btn btn-success btn-sm">Adicionar uma imagem</label><br><br>
-                <input id='selecao-arquivo' type='file' (change)="getImageAndPut($event)">
+            </div>
 
-                <div class="row">
-                   
-                    <div class="col-3" *ngFor="let imgs of imagens">
-                        <input type="button" class="btn btn-danger rounded-circle myBtnClose btn-sm" value="x" (click)="lessImage(imgs)">
-                        <img class="img-thumbnail " [src]=" verificarImagem( imgs )  ? imgs : imgs.imagemProduto " alt="Generic placeholder image">
-                    </div>
-                
+         
+           
+           <div class="container">
+            <div class="images">
+                <label for="images" class="btn btn-info">Adicionar mais imagens</label>
+                <input type="file" id="images" (change)="imagensSelect($event)" formControlName="imagens">
+            </div>
+
+            <div class="row">
+                <div *ngFor="let img of imagens" class="col-3">
+                    <input type="button" *ngIf="img != ''" class="btn btn-danger rounded-circle myBtnClose btn-sm" value="x" (click)="lessImage(img)">
+                    <img [src]="img.imagemProduto" class="img-thumbnail" *ngIf="img != ''">
                 </div>
-                <div class="container clearfix">
-                    <button type="button" class="btn btn-success float-right">Salvar</button>
-                  </div>
-            </form>
-    </div>
-    </div>
+            </div>
+
+        </div>
+        <div class="float-right">
+            <button class="btn btn-success">Salvar</button>
+        </div>
+    </form>
+
 </div>

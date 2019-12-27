@@ -52,7 +52,7 @@ export class ProdutosService {
   }
   //editando um produto ja existente
   updateProduto(produto,id){
-    return this.http.patch<ProdutoModel>(this.envService.urlAPI+ "produtos"+"/"+id,produto);
+    return this.http.patch<ProdutoModel>(this.envService.urlAPI+ "/produtos"+"/"+id,produto);
   }
   //recebendo os produtos por paginacao
   getProdutoPage(pagina,qtdLinhas,direcao,campo){

@@ -80,11 +80,14 @@ public ResponseEntity< Optional<ProdutoDto> > findByIdDto(@PathVariable("id") in
 	}
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public ResponseEntity<Produto> createProduto(@RequestBody @Valid Produto prod){
+	public ResponseEntity<Produto> createProduto(@RequestBody Produto prod){
+		System.out.println(prod);
+		
+		
 		return ResponseEntity.ok().body(produtoService.createProduto(prod));
 	}
 	
-	@RequestMapping(value="/{id]", method=RequestMethod.PATCH)
+	@RequestMapping(value="/{id}", method=RequestMethod.PATCH)
 	public ResponseEntity<Produto> editProduto(@RequestBody Produto prod, @PathVariable("id") int id){
 		return ResponseEntity.ok().body(produtoService.editProduto(id, prod));
 	}

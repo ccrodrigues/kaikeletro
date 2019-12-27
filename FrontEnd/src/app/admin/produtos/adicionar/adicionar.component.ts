@@ -33,7 +33,7 @@ export class AdicionarComponent implements OnInit {
               private ps : ProdutosService,
               private route : Router) { }
 
-  ngOnInit() {
+    ngOnInit() {
 
     this.prodForm = this.fb
         .group({
@@ -96,7 +96,6 @@ export class AdicionarComponent implements OnInit {
   imagensSelect(img) {
     this.imagem = <File>img.target.files[0];
     this.putImages(img.value);
-
   }
 
   putImages(url) {
@@ -131,8 +130,6 @@ export class AdicionarComponent implements OnInit {
   }
 
   onSubmit() {
-
-    console.log(this.queVai);
 
     let produto = new ProdutoModel();
 
