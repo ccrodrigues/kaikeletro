@@ -3,7 +3,6 @@ package com.kaikeletro.resources;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.Id;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,10 +102,7 @@ public class UsuarioController {
 		return ResponseEntity.ok().body(lista);
 	}
 	
-	@RequestMapping (value="login", method = RequestMethod.POST)
-	public ResponseEntity<Boolean> autenticacao(@RequestBody Usuario user) {	
-		return ResponseEntity.ok().body(service.findOneByEmailAndSenha(user.getEmail(), user.getSenha()));
-	}
+
 	
 	
 

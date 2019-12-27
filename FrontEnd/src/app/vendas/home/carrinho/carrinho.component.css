@@ -36,4 +36,32 @@ select{
     size: 100px;
 }
 
+.card{
+    width: 18rem; 
+    margin-left: 50px; 
+    height: 300px; 
+    margin-bottom: 20px; 
+    border: solid 1px #086575;
+}
+
+.cart-box{
+    background-color: #FAFAFA; 
+    margin-bottom: 30px; 
+    margin-top: 30px; 
+}
+
+#sombra1{
+ 
+    box-shadow: 5px 5px 0 #333;
+    -webkit-box-shadow: 5px 5px 0 #333;
+    -moz-box-shadow: 5px 5px 0 #333;
+
+    background: #FAFAFA;
+    padding: 20px;
+    border-bottom: solid 1px #086575;
+    margin: 20px;
+    box-shadow: 5px 5px 5px rbga(0,0,0,0.5);
+ }
+ 
+ 
 

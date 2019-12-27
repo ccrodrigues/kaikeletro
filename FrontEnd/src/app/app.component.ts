@@ -9,7 +9,7 @@ import { Router, NavigationEnd } from '@angular/router';
 
 export class AppComponent {
   title = 'FrontEnd';
-  isAuth : boolean = false;
+  isAuth : boolean = true;
 
   constructor(
     private router: Router,

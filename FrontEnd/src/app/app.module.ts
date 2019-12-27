@@ -14,10 +14,15 @@ import { VendasModule } from './vendas/vendas.module';
 import { LayoutModule } from './layout/layout.module';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CommonModule } from '@angular/common';
+import { CarrinhoService } from './shared/Services/carrinho.service';
+import { ProdutosComponent } from './vendas/home/produtos/produtos.component';
+import { HomeComponent } from './vendas/home/home.component';
+import { DialogService } from './shared/toaster/dialog.service';
+import { Toast, ToastrService, ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
-    AppComponent    
+    AppComponent  
   ],
   imports: [
     BrowserModule,
@@ -26,6 +31,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     CollapseModule.forRoot(),
+    ToastrModule.forRoot(),
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
@@ -34,8 +40,9 @@ import { CommonModule } from '@angular/common';
     BsDropdownModule.forRoot(),
     VendasModule,
     LayoutModule
+
   ],
-  providers: [],
+  providers: [CarrinhoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

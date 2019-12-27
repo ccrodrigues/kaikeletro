@@ -8,9 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.kaikeletro.domain.EnderecoUsuario;
 import com.kaikeletro.domain.Usuario;
+import com.kaikeletro.repositories.EnderecoUsuarioRepository;
 import com.kaikeletro.repositories.UsuarioRepository;
 
 @Service
@@ -20,8 +23,16 @@ public class UsuarioService implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder; 
+	
 	@Autowired
 	private UsuarioRepository userRepo;
+	
+	@Autowired
+	private EnderecoUsuarioRepository endRepo;
 
 	public List<Usuario> getAll() {
 		List<Usuario> usuario = userRepo.findAll();
@@ -33,8 +44,16 @@ public class UsuarioService implements Serializable{
 	}
 
 	public Usuario save(Usuario user) {
-		user.senha=CriptografiaService.criptografarSenha(user.senha);
-		return userRepo.save(user);
+		user.senha=bCryptPasswordEncoder.encode(user.senha);	
+		
+		Usuario u = userRepo.save(user);
+		
+		for (EnderecoUsuario end : u.getIdEndereco()) {
+			end.setFk_Usuario(u);
+			endRepo.save(end);
+		}
+		
+		return u;
 	}
 
 	public Usuario updatebyID(Usuario user, int id) {
@@ -89,7 +108,7 @@ public class UsuarioService implements Serializable{
 	
 	
 	public boolean findOneByEmailAndSenha(String email, String senha) {
-		if(userRepo.findOneByEmailAndSenha(email, CriptografiaService.criptografarSenha(senha)) != null) {
+		if(userRepo.findOneByEmailAndSenha(email, bCryptPasswordEncoder.encode(senha)) != null) {
 			return true;
 		}else {
 			return false;

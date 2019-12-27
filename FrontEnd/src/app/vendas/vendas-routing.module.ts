@@ -10,8 +10,7 @@ import { CarrinhoComponent } from './home/carrinho/carrinho.component';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
-  {path: 'logado', component : HomeComponent},
-  {path: 'logado/admin', component : HomeComponent},
+  {path:'home', component: HomeComponent},
   {path:'login', component: UsuarioLoginComponent},
   {path:'registro', component: TelaRegistroComponent},
   {path: 'detalhes', component: ProdutosDetalhesComponent},
