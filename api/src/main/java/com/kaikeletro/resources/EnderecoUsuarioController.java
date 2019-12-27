@@ -11,27 +11,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kaikeletro.domain.Vendas;
-import com.kaikeletro.services.VendasService;
+import com.kaikeletro.domain.EnderecoUsuario;
+import com.kaikeletro.repositories.EnderecoUsuarioRepository;
 
-@RequestMapping(value="vendas")
 @RestController
-public class VendasController {
-	
+@RequestMapping(value = "/enderecos")
+public class EnderecoUsuarioController {
+
 	@Autowired
-	private VendasService service;
-	
+	EnderecoUsuarioRepository service;
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public ResponseEntity<List<Vendas>> getAll() {
+	public ResponseEntity<List<EnderecoUsuario>> getAll() {
 
-		return ResponseEntity.ok().body(service.getAll());
+		return ResponseEntity.ok().body(service.findAll());
 	}
 	
-	@RequestMapping(value="", method=RequestMethod.POST)
-	public ResponseEntity<Vendas> createVenda(@RequestBody @Valid Vendas venda){
-		return ResponseEntity.ok().body(service.createVenda(venda));
+	@RequestMapping(value = "", method = RequestMethod.POST)
+	public ResponseEntity<EnderecoUsuario> save(@RequestBody @Valid EnderecoUsuario end) {
+		return ResponseEntity.ok().body(service.save(end));
 	}
-
-
 }

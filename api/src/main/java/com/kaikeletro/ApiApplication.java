@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.kaikeletro.domain.Categoria;
+import com.kaikeletro.domain.EnderecoUsuario;
 import com.kaikeletro.domain.ImagemProd;
 import com.kaikeletro.domain.Item_Venda;
 import com.kaikeletro.domain.Produto;
@@ -18,6 +19,7 @@ import com.kaikeletro.domain.Vendas;
 import com.kaikeletro.enumeration.StatusPagamento;
 import com.kaikeletro.enumeration.StatusVendas;
 import com.kaikeletro.repositories.CategoriaRepository;
+import com.kaikeletro.repositories.EnderecoUsuarioRepository;
 import com.kaikeletro.repositories.ImagemProdutoRepository;
 import com.kaikeletro.repositories.ItemVendaRepository;
 import com.kaikeletro.repositories.ProdutoRepository;
@@ -44,6 +46,9 @@ public class ApiApplication implements CommandLineRunner{
 	
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder; 
+	
+	@Autowired
+	EnderecoUsuarioRepository enderecoRepository;
 
 	@Autowired
 	ItemVendaRepository itemRepository;
@@ -59,6 +64,7 @@ public class ApiApplication implements CommandLineRunner{
 
 		this.produtoCategoriaDemo();
 		Usuario u1 = new Usuario();
+		EnderecoUsuario end1 = new EnderecoUsuario();
 		
 		u1.setCelular("1148748-8743");
 		u1.setCpf("123456786");
@@ -69,6 +75,16 @@ public class ApiApplication implements CommandLineRunner{
 		u1.setTelefone("1345365328");
 		
 		usuarioRepository.save(u1);
+		
+		end1.setCep("03254010");
+		end1.setCidade("São Paulo");
+		end1.setEstado("SP");
+		end1.setLogradouro("Av. nove de julho");
+		end1.setNumero("15A");
+		end1.setFk_Usuario(u1);
+		
+		enderecoRepository.save(end1);
+	
 		//this.vendasProdutoUsuario();
 
 		//this.produtoCategoriaDemo();
