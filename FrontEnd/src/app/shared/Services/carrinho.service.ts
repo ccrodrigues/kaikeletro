@@ -90,8 +90,7 @@ import { Usuario } from '../models/usuario.model';
     }
 
     totalizarVenda(){
-        //this.venda.itens = this.itensCarrinho
-        this.venda.usuario = this.user;
+       // this.venda.usuario = this.user;
         this.venda.pagamento = "Aguardando";
         this.venda.status = "Aberta";
         this.venda.totalItens = this.totalItensCarrinho();
