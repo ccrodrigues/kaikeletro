@@ -10,8 +10,6 @@ import com.kaikeletro.domain.Vendas;
 import com.kaikeletro.repositories.ItemVendaRepository;
 import com.kaikeletro.repositories.VendasRepository;
 
-import com.kaikeletro.repositories.ItemVendaRepository;
-
 
 @Service
 public class ItemVendaService {

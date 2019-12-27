@@ -12,6 +12,8 @@ export class VendasModel{
     pagamento : string;
     totalItens: number;
     valor : number;
+    parcela : number;
+    valorParcela : number;
     item:Array<ItemVendaModel>;
 
 }

@@ -95,6 +95,8 @@ import { Usuario } from '../models/usuario.model';
         this.venda.status = "Aberta";
         this.venda.totalItens = this.totalItensCarrinho();
         this.venda.valor = this.valorTotalFrete()
+        this.venda.parcela = 10;
+        this.venda.valorParcela = this.valorTotalFrete() / this.venda.parcela;
     }
 
 
