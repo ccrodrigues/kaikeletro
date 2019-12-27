@@ -44,13 +44,13 @@ verificarNivelDeAcesso(cpf, nivel, usuario){
 
   return this.http.post<Usuario[]>(this.envService.urlAPI + `/usuarios/${cpf}/${nivel}`, usuario);
 }
-pesquisarPorCpf(cpf, usuario){
+pesquisarPorCpf(cpf){
 
-  return this.http.get<Usuario>(this.envService.urlAPI + `/usuarios/cpf/${cpf}`, usuario)
+  return this.http.get<Usuario>(this.envService.urlAPI + `/usuarios/cpf/${cpf}`)
 }
-pesquisarPorNome(nome, usuario){
+pesquisarPorNome(nome){
 
-  return this.http.get<Usuario>(this.envService.urlAPI + `/usuarios/nome/${nome}`, usuario)
+  return this.http.get<Usuario>(this.envService.urlAPI + `/usuarios/nome/${nome}`)
 
 }
 
