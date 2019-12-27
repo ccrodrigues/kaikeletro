@@ -68,7 +68,7 @@ public class ApiApplication implements CommandLineRunner{
 		EnderecoUsuario end1 = new EnderecoUsuario();
 		
 		u1.setCelular("1148748-8743");
-		u1.setCpf("123456786");
+		u1.setCpf("1234567869");
 		u1.setDataDeNascimento("30/01/1998");
 		u1.setEmail("a@a.com");
 		u1.setNome("Usuario 01");
