@@ -69,6 +69,7 @@
             </div>
             <app-msg-erro [isError]="isErrorCampo('usuario.email')" mensagem="Preencha os dados corretamente"></app-msg-erro>
             <br>
+            <div class="card">
             <h2><small class="form-text text-muted negrito-padding text-center">Endereço</small></h2>
             <div class="form-group" [formGroupName]="endereco">
 
@@ -145,6 +146,7 @@
                             <input [value]="objEnd?.uf" type="text" class="form-control" id="estado"
                                 formControlName="estado">
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>

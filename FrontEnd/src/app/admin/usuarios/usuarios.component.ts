@@ -22,7 +22,11 @@ export class UsuariosComponent implements OnInit {
         console.log(cliente)
         this.listUsers = cliente;
       }
+
     );
+  }
+  pesquisar(){
+    this.usuarioService.pesquisarPorCpf
   }
 
 }

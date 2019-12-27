@@ -1,14 +1,16 @@
 <div class="background rounded">
 
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
+
     <h2><small class="form-text text-muted negrito-padding text-center">Lista de Usuarios</small></h2>
 
     <div class="row barraPesquisa">
             <div class="col-9 padding-0">
-                <input type="text" class="form-control" placeholder="Pesquise..." #pesquise>
+                <input type="text" class="form-control" placeholder="Pesquise..." #pesquise >
             </div>
 
             <div class="col-2 padding-0">
-                <select name="pesquisaPor" class="form-control padding-0" #pesquisaPor>
+                <select name="pesquisaPor" class="form-control padding-0" #pesquisaPor [(ngModel)]="titulo">
                     <option value="cpf">CPF</option>
                     <option value="nome">Nome</option>
                 </select>
@@ -48,5 +50,5 @@
     </table>
 
     <!-- <app-deletar-produto [hidden]="isDelete == false" [idProduto]="id" (close)="lessDelete()" (deletado)="showMsgApagou($event)"></app-deletar-produto> -->
-    
+    </form>
 </div>
