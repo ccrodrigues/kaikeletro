@@ -36,6 +36,9 @@ export class CarrinhoComponent implements OnInit {
           data = data
           console.log(data)
           console.log(this.carrinhoService.itensCarrinho)
+          while(this.carrinhoService.itensCarrinho.length) {
+            this.carrinhoService.itensCarrinho.pop();
+         }
           }
       )
     }
