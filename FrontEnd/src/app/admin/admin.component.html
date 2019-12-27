@@ -1,7 +1,30 @@
+<p class="my-text-title">Dashboard</p>
 
-
-<button [routerLink]="['produtos']">Produtos</button>
-<br>
-<button [routerLink]="['pedidos']">Pedidos</button>
-<br>
-<button [routerLink]="['usuarios']">Usuarios</button>
+<div class="row text-center divs">
+    
+    <div class="col">
+        
+        <button [routerLink]="['produtos']">
+            <div>
+                <img src="../../assets/imagens/product.png" alt="">
+            </div>
+            Produtos
+        </button>
+    </div>
+    <div class="col">
+        <button [routerLink]="['pedidos']">
+            <div>
+                <img src="../../assets/imagens/order.png" alt="">
+            </div>
+            Pedidos
+        </button>
+    </div>
+    <div class="col">
+        <button [routerLink]="['usuarios']">
+            <div>
+                <img src="../../assets/imagens/multiple.png" alt="">
+            </div>
+            Usuarios
+        </button>
+    </div>
+</div>
