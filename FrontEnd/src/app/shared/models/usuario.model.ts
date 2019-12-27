@@ -3,5 +3,10 @@ export class Usuario {
     nome: string = "";
     email: string = "";
     senha: string = "";
+    cpf : String = "";
+    telefone : String = "";
+    celular : String = "";
+    dataDeNacimento : String = "";
+    
   
   }
