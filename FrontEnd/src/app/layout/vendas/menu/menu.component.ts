@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
 
    isCollapsed = false;
-   isAuth : boolean = false;
+   isAuth : boolean = true;
    isDashboard : boolean = false;
  
 
@@ -22,10 +22,10 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
      
-     this.isAuth = this.loginService.getIsAutenticado();
-         if(this.isAuth == false){
-            this.loginService.Logout();
-         }
+    // this.isAuth = this.loginService.getIsAutenticado();
+       //  if(this.isAuth == false){
+          //  this.loginService.Logout();
+        // }
    
   }
   logadoAdmin(){

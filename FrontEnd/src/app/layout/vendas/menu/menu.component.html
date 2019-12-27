@@ -9,7 +9,7 @@
       <div id="right" style="display: inline-flex;">
 
         <div class="box">
-          <i routerLink="dashboardAdm" class="fas fa-key" title="Entrar como administrador" width="500px" height="500px" ></i>
+          <i routerLink="dashboardAdm" class="fas fa-key cursor" title="Entrar como administrador" width="500px" height="500px" ></i>
         </div>
 
         <div *ngIf="!isAuth" class="box">
@@ -30,13 +30,14 @@
 
       </div>
     </div>
-</div>
+  </div>
+  
 
 
 <nav  class="navbar navbar-expand-lg navbar-dark  navbar-mine">
   <div class="container-fluid">
   <div >
-  <a class="navbar-brand">
+  <a class="navbar-brand cursor" title="Home">
   <img routerLink='home'  class=" img-fluid img-logo" src="/assets/imagens/ecommerce-logo.png">
 </a>
 </div>
