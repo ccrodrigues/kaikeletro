@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
@@ -27,6 +28,7 @@ public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@PrimaryKeyJoinColumn
 	//@SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USUARIO_NAME_SEQ")
 	private int id; 
 	
@@ -38,11 +40,7 @@ public class Usuario implements Serializable {
 
 	@Column(unique = true)
 	private String email;
-
-	public int getId() {
-		return id;
-	}
-
+	
 	public String senha;
 
 	public String dataDeNascimento;
@@ -54,8 +52,11 @@ public class Usuario implements Serializable {
 	public String telefone;
 
 	public String celular;
-	
 
+	public int getId() {
+		return id;
+	}
+ 
 	public String getNome() {
 		return nome;
 	}

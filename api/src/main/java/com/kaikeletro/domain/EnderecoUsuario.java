@@ -11,8 +11,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.ForeignKey;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
@@ -22,10 +20,11 @@ public class EnderecoUsuario implements Serializable {
 	/**
 	 * 
 	 */
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@PrimaryKeyJoinColumn
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idEndereco;
 
     @ManyToOne

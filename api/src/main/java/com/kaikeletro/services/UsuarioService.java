@@ -54,21 +54,6 @@ public class UsuarioService implements Serializable{
 		}
 		
 		return u;
-		
-		/*Usuario u = user;
-		
-		u = userRepo.save(user);
-		
-		u.toString();
-		
-		user.getIdEndereco().toString();
-		System.out.println(user.getIdEndereco());
-
-		for (EnderecoUsuario end : user.getIdEndereco()) {
-				end.setFk_Usuario(user);
-				System.out.println("ENTREI DENTRO DO FOR ----------");
-				endRepo.save(end);
-		}*/
 	}
 
 	public Usuario updatebyID(Usuario user, int id) {
