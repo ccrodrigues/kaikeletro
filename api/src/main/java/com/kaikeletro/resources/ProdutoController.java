@@ -44,9 +44,9 @@ public class ProdutoController {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	//Get Produto by id DTO para o usar no Carrinho no Front
-@RequestMapping(value="/carrinho/{id}", method=RequestMethod.GET)
-public ResponseEntity< Optional<ProdutoDto> > findByIdDto(@PathVariable("id") int id){
+	//Get Produto by id DTO para o usar no Carrinho do Front
+	@RequestMapping(value="/carrinho/{id}", method=RequestMethod.GET)
+	public ResponseEntity< Optional<ProdutoDto> > findByIdDto(@PathVariable("id") int id){
 		Optional<Produto> prod =  produtoService.findById(id);
 		
 		Optional <ProdutoDto> prodDto = prod
@@ -97,17 +97,24 @@ public ResponseEntity< Optional<ProdutoDto> > findByIdDto(@PathVariable("id") in
 		produtoService.deleteProduto(id);
 	}
 	
-	//Paginação
+	//Paginação, podendo passar a categoria como parametro p/ listar os produtos que pertencem a ela
 	@RequestMapping(value="/page", method=RequestMethod.GET)
-	public ResponseEntity< Page <Produto> > findPage(
+	public ResponseEntity< List <ProdutoDto> > findPage(
 						@RequestParam(value="pagina", defaultValue="0")int pagina,
 						@RequestParam(value="qtdLinhas", defaultValue="10") int qtdLinhas,
 						@RequestParam(value="direcao", defaultValue="ASC") String direcao,
-						@RequestParam(value="campo", defaultValue="idProduto") String campo) {
+						@RequestParam(value="campo", defaultValue="idProduto") String campo,
+						@RequestParam(value="nomeCategoria", defaultValue="") String nomeCategoria){
 		
-		Page<Produto> pageProdutos = produtoService.findPage(pagina, qtdLinhas, direcao, campo);
+		//Page<Produto> pageProdutos = produtoService.findPage(pagina, qtdLinhas, direcao, campo);
+		Page<Produto> pageProdutos = produtoService.findDistinctByCategoriasNomeContaining(nomeCategoria, pagina, qtdLinhas, direcao, campo);
 		
-		return ResponseEntity.ok().body(pageProdutos);
+		List<ProdutoDto> pageDto = pageProdutos
+				.stream()
+				.map(obj -> new ProdutoDto( obj ))
+				.collect(Collectors.toList());
+		
+		return ResponseEntity.ok().body(pageDto);
 	}
 	
 	//Pegando uma lista de ProdutosDto
@@ -117,3 +124,4 @@ public ResponseEntity< Optional<ProdutoDto> > findByIdDto(@PathVariable("id") in
 //		return ResponseEntity.ok().body( produtoService.getAllProdutoDto() );
 //	}
 }
+ 

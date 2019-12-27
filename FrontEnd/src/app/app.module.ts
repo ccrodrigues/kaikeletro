@@ -14,11 +14,19 @@ import { VendasModule } from './vendas/vendas.module';
 import { LayoutModule } from './layout/layout.module';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CommonModule } from '@angular/common';
+<<<<<<< HEAD
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+=======
+import { CarrinhoService } from './shared/Services/carrinho.service';
+import { ProdutosComponent } from './vendas/home/produtos/produtos.component';
+import { HomeComponent } from './vendas/home/home.component';
+import { DialogService } from './shared/toaster/dialog.service';
+import { Toast, ToastrService, ToastrModule } from 'ngx-toastr';
+>>>>>>> 197f5c863e55846ef9232aeb1eabd5123487e8c0
 
 @NgModule({
   declarations: [
-    AppComponent    
+    AppComponent  
   ],
   imports: [
     BrowserModule,
@@ -27,6 +35,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     FormsModule,
     ReactiveFormsModule,
     CollapseModule.forRoot(),
+    ToastrModule.forRoot(),
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
@@ -34,10 +43,15 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     VendasModule,
+<<<<<<< HEAD
     LayoutModule,
     NgMultiSelectDropDownModule.forRoot()
+=======
+    LayoutModule
+
+>>>>>>> 197f5c863e55846ef9232aeb1eabd5123487e8c0
   ],
-  providers: [],
+  providers: [CarrinhoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,8 +2,11 @@ package com.kaikeletro.resources;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,5 +28,10 @@ public class VendasController {
 		return ResponseEntity.ok().body(service.getAll());
 	}
 	
+	@RequestMapping(value="", method=RequestMethod.POST)
+	public ResponseEntity<Vendas> createVenda(@RequestBody @Valid Vendas venda){
+		return ResponseEntity.ok().body(service.createVenda(venda));
+	}
+
 
 }

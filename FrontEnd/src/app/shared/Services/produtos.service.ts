@@ -15,7 +15,7 @@ export class ProdutosService {
   constructor(private http : HttpClient,private envService:EnvService) { }
 
   // Url da API
-  url : string = "http://localhost:8080/produtos/"
+  url : string = "http://localhost:8080/produtos"
 
   // Pegando todos os produto
   getAll() {

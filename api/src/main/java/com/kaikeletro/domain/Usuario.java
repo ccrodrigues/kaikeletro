@@ -1,6 +1,7 @@
 package com.kaikeletro.domain;
 
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -11,25 +12,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "usuario")
+public class Usuario implements Serializable {
 
-public class Usuario  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USUARIO_NAME_SEQ")
-	@SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USUARIO_NAME_SEQ")
-	private int id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@PrimaryKeyJoinColumn
+	//@SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USUARIO_NAME_SEQ")
+	private int id; 
 	
-	@OneToMany(mappedBy = "fk_Usuario") //pk EnderecoUsuario
-	@JsonIgnore
-	@Column(name= "idUsuario")
+	@OneToMany(mappedBy = "fk_Usuario")
 	private List<EnderecoUsuario> idEndereco;
 
 	@NotNull
@@ -37,11 +40,7 @@ public class Usuario  {
 
 	@Column(unique = true)
 	private String email;
-
-	public int getId() {
-		return id;
-	}
-
+	
 	public String senha;
 
 	public String dataDeNascimento;
@@ -54,6 +53,10 @@ public class Usuario  {
 
 	public String celular;
 
+	public int getId() {
+		return id;
+	}
+ 
 	public String getNome() {
 		return nome;
 	}
@@ -156,4 +159,13 @@ public class Usuario  {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", idEndereco=" + idEndereco + ", nome=" + nome + ", email=" + email + ", senha="
+				+ senha + ", dataDeNascimento=" + dataDeNascimento + ", cpf=" + cpf + ", telefone=" + telefone
+				+ ", celular=" + celular + "]";
+	}
+	
 }
+
