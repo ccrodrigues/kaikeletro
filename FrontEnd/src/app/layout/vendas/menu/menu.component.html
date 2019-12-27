@@ -1,5 +1,6 @@
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
 <div class="navbar navbar-expand-lg navbar-dark barra-topo">
+  
     <div class="container">
 
       <div id="left"></div>
@@ -9,23 +10,24 @@
       <div id="right" style="display: inline-flex;">
 
         <div class="box">
-          <i routerLink="dashboardAdm" class="fas fa-key cursor" title="Entrar como administrador" width="500px" height="500px" ></i>
+       
+          <i routerLink="dashboardAdm" style="font-size: 20px;" class="fas fa-lock cursor" title="Entrar como administrador" width="500px" height="500px" ></i>
         </div>
 
         <div *ngIf="!isAuth" class="box">
-          <img routerLink = "registro"  class="img-fluid subscribe cursor" title="Cadastre-se" src="https://img.icons8.com/dotty/80/000000/sign-up--v1.png" >
+          <i class="fas fa-user-plus cursor" routerLink="registro" title="Cadastre-se" style="font-size: 20px;"></i>
         </div>
 
         <div *ngIf="!isAuth" class="box">
-          <img  routerLink = "login" title="Entrar" class="img-fluid logout cursor" src="https://img.icons8.com/ios-glyphs/24/000000/enter-2.png" >
+          <i class="fas fa-sign-in-alt cursor" title="Entrar" routerLink="login" style="font-size: 20px;"></i>
         </div>
 
         <div *ngIf="isAuth" class="box">
-          <img class="img-fluid logout cursor" src="https://img.icons8.com/metro/26/000000/exit.png" title="Sair" width="50px" height="50px"> 
+          <i title="Ver carrinho" class="fas fa-cart-arrow-down cursor" routerLink="carrinho" style="font-size: 20px;"></i>
         </div>
 
         <div *ngIf="isAuth" class="box">
-          <img routerLink="carrinho" class="img-fluid logout cursor" src="/assets/imagens/shopping-cart.svg" title="Carrinho" width="50px" height="50px">
+          <i class="fas fa-sign-out-alt cursor" title="Sair" style="font-size: 20px;"></i>
         </div>
 
       </div>
