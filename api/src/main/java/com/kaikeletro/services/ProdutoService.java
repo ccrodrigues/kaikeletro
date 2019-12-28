@@ -61,7 +61,7 @@ public class ProdutoService  {
 		return repoProduto.findAll(pageRequest);
 	}
 
-	// Paginação
+	// Paginação com a busca pela categoria
 	public Page<Produto> findDistinctByCategoriasNomeContaining(String nomeCategoria, int pagina, int qtdLinhas, String direcao, String campo) {
 		PageRequest pageRequest = PageRequest.of(pagina, qtdLinhas, Direction.valueOf(direcao), campo);
 		return repoProduto.findDistinctByCategoriasNomeContaining(nomeCategoria, pageRequest);

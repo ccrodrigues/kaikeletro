@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaikeletro.domain.Produto;
-import com.kaikeletro.dto.ProdutoDto;
+import com.kaikeletro.dto.ProdutoDTO;
 import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.ProdutoService;
 
@@ -46,10 +46,10 @@ public class ProdutoResource {
 
 	// Get Produto by id DTO para o usar no Carrinho no Front
 	@RequestMapping(value = "/carrinho/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Optional<ProdutoDto>> findByIdDto(@PathVariable("id") int id) {
+	public ResponseEntity<Optional<ProdutoDTO>> findByIdDto(@PathVariable("id") int id) {
 		Optional<Produto> prod = produtoService.findById(id);
 
-		Optional<ProdutoDto> prodDto = prod.map(obj -> new ProdutoDto(obj));
+		Optional<ProdutoDTO> prodDto = prod.map(obj -> new ProdutoDTO(obj));
 
 		if (prod.isPresent() == false) {
 			throw new TratamentoDeErros(id, new Produto());
@@ -60,11 +60,11 @@ public class ProdutoResource {
 
 	// Get all Produto DTO para o front
 	@RequestMapping(value = "/carrinho", method = RequestMethod.GET)
-	public ResponseEntity<List<ProdutoDto>> getAllCategoriasDto() {
+	public ResponseEntity<List<ProdutoDTO>> getAllCategoriasDto() {
 
 		List<Produto> listaProd = produtoService.listarProdutos();
 
-		List<ProdutoDto> listaDto = listaProd.stream().map(obj -> new ProdutoDto(obj)).collect(Collectors.toList());
+		List<ProdutoDTO> listaDto = listaProd.stream().map(obj -> new ProdutoDTO(obj)).collect(Collectors.toList());
 
 		return ResponseEntity.ok().body(listaDto);
 	}
@@ -92,7 +92,7 @@ public class ProdutoResource {
 
 	// Paginação
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
-	public ResponseEntity<Page<ProdutoDto>> findPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
+	public ResponseEntity<Page<ProdutoDTO>> findPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
 			@RequestParam(value = "qtdLinhas", defaultValue = "10") int qtdLinhas,
 			@RequestParam(value = "direcao", defaultValue = "ASC") String direcao,
 			@RequestParam(value = "campo", defaultValue = "id") String campo,
@@ -106,7 +106,7 @@ public class ProdutoResource {
 		Page<Produto> list = produtoService.findDistinctByCategoriasNomeContaining(nomeCategoria, pagina, qtdLinhas,
 				direcao, campo);
 
-		Page<ProdutoDto> listDto = list.map(obj -> new ProdutoDto(obj));
+		Page<ProdutoDTO> listDto = list.map(obj -> new ProdutoDTO(obj));
 
 		return ResponseEntity.ok().body(listDto);
 	}

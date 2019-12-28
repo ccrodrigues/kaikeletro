@@ -5,7 +5,7 @@ import java.util.List;
 import com.kaikeletro.domain.ImagemProduto;
 import com.kaikeletro.domain.Produto;
 
-public class ProdutoDto {
+public class ProdutoDTO {
 	
 	private int id;
 	
@@ -15,11 +15,11 @@ public class ProdutoDto {
 	
 	private List <ImagemProduto> imagens;
 	
-	public ProdutoDto() {
+	public ProdutoDTO() {
 		
 	}
 	
-	public ProdutoDto(Produto obj) {
+	public ProdutoDTO(Produto obj) {
 		this.id = obj.getId();
 		this.nome = obj.getNome();
 		this.preco = obj.getPreco();

@@ -6,7 +6,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import com.kaikeletro.exception.CriptografiaException;
-import com.kaikeletro.exception.ResourceExceptionHandler;
 
 public class CriptografiaService {
 
@@ -31,12 +30,12 @@ public class CriptografiaService {
 		return new BigInteger(1, m.digest()).toString(16); // retornando hash
 	}
 
-//irar receber o hash criptografado MD5 e retornar a String revertida 
+	//irar receber o hash criptografado MD5 e retornar a String revertida 
 	private static String inverterHash(String hashSenha) {
 		return new StringBuilder(hashSenha).reverse().toString();
 	}
 
-//recebendo o hash revertido e criptografar em SHA
+	//recebendo o hash revertido e criptografar em SHA
 	private static byte[] criptografarSHA(String md5) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
 		return algorithm.digest(md5.getBytes("UTF-8"));
