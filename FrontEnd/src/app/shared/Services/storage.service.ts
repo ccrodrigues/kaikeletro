@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { EnvService } from 'src/app/env.service';
 import { LocalUserModel } from '../models/auth/local-user.model';
 import { Carrinho } from '../models/carrinho.model';
+import { ItemVendaModel } from '../models/item-venda.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ setLocalUser(obj : LocalUserModel) {
     }
 }
 
-getCarrinho() : Carrinho {
+getCarrinho() : ItemVendaModel[] {
     let str = localStorage.getItem(this.envService.storageKeysConfig.carrinho);
     if (str != null) {
         return JSON.parse(str);
@@ -39,7 +40,7 @@ getCarrinho() : Carrinho {
     }
 }
 
-setCarrinho(obj : Carrinho) {
+setCarrinho(obj : ItemVendaModel[]) {
     if (obj != null) {
         localStorage.setItem(this.envService.storageKeysConfig.carrinho, JSON.stringify(obj));
     } 

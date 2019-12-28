@@ -92,8 +92,8 @@ public class UsuarioController {
 
 	// Busca por email
 	@RequestMapping(value = "email/{emailBusca}", method = RequestMethod.GET)
-	public ResponseEntity<List<Usuario>> findByEmail(@PathVariable("emailBusca") String emailBusca) {
-		List<Usuario> lista = service.findByEmail(emailBusca);
+	public ResponseEntity<Usuario> findByEmail(@PathVariable("emailBusca") String emailBusca) {
+		Usuario lista = service.findByEmail(emailBusca);
 		return ResponseEntity.ok().body(lista);
 	}
 	// Busca por cpf

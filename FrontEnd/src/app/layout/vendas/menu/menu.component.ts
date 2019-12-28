@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { menuService } from './menu-service'
 import { ServiceLoginService } from 'src/app/vendas/usuario-login/service-login/service-login.service';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/shared/services/storage.service';
+import { AuthServiceService } from 'src/app/shared/Services/auth-service.service';
 
 
 @Component({
@@ -17,22 +19,38 @@ export class MenuComponent implements OnInit {
  
 
 
-  constructor(private menuService : menuService, private loginService : ServiceLoginService
-   ,private router: Router ) { }
+  constructor(private menuService : menuService, 
+    private loginService : ServiceLoginService
+   ,private router: Router,
+   private storage : StorageService,
+   private authService : AuthServiceService ) { }
 
   ngOnInit() {
+
+    if(this.storage.getLocalUser()!=null){
+      this.isAuth = true;
+    }else{
+      this.isAuth = false;
+    }
+
      
-    this.isAuth = this.loginService.getIsAutenticado();
-        if(this.isAuth == false){
-           this.loginService.Logout();
-         }
-   
+    //this.isAuth = this.loginService.getIsAutenticado();
+        //if(this.isAuth == false){
+         //  this.loginService.Logout();
+        // }
+  // console.log(this.isAuth)
   }
+
   logadoAdmin(){
       this.isDashboard = this.loginService.getIsAdmin() && this.loginService.getIsAutenticado();
 
       return this.isDashboard;
          
+  }
+
+  sair(){
+    this.loginService.Logout()
+    this.isAuth = false;
   }
 
 

@@ -97,8 +97,8 @@ public class UsuarioService implements Serializable{
 	}
 	
 	// Método do UsuarioController - Busca por Email
-	public List<Usuario> findByEmail(String emailBusca){
-		return userRepo.findByEmailIgnoreCase(emailBusca);
+	public Usuario findByEmail(String emailBusca){
+		return  userRepo.findByEmailIgnoreCase(emailBusca);
 	}
 	
 	// Método do UsuarioController - Busca por cpf

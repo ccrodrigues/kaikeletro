@@ -11,23 +11,21 @@ public class ProdutoDto {
 	private int idProduto;
 	private String nome;
 	private double preco;
-<<<<<<< HEAD
+
 	private String descricao;
-=======
-	
-	private String descricao;
+
 	
 	private List <Categoria> categorias;
 	
->>>>>>> 197f5c863e55846ef9232aeb1eabd5123487e8c0
+
 	private List <ImagemProd> imagens;
 	
 	
 	public ProdutoDto(Produto obj) {
-<<<<<<< HEAD
+
 		// TODO Auto-generated constructor stub
-	}
-=======
+	
+
 		this.idProduto = obj.getIdProduto();
 		this.nome = obj.getNome();
 		this.preco = obj.getPreco();
@@ -36,7 +34,7 @@ public class ProdutoDto {
 		this.categorias = obj.getCategorias();
 }
 
->>>>>>> 197f5c863e55846ef9232aeb1eabd5123487e8c0
+
 	public int getIdProduto() {
 		return idProduto;
 	}
@@ -67,7 +65,7 @@ public class ProdutoDto {
 	public void setImagens(List<ImagemProd> imagens) {
 		this.imagens = imagens;
 	}
-<<<<<<< HEAD
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -113,16 +111,6 @@ public class ProdutoDto {
 		return true;
 	}
 	
-	
-=======
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
 
 	public List<Categoria> getCategorias() {
 		return categorias;
@@ -132,8 +120,4 @@ public class ProdutoDto {
 		this.categorias = categorias;
 	}
 	
-	
-		
-
->>>>>>> 197f5c863e55846ef9232aeb1eabd5123487e8c0
-}
+	}

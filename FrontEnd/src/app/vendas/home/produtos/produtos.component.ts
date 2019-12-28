@@ -53,7 +53,7 @@ export class ProdutosComponent implements OnInit {
     produto.preco = this.preco;
     this.carrinhoService.verifyItemExists(produto);
     console.log("Adicionando " +  produto);
-    //this.dialogService.showSuccess("Produto adicionado no carrinho com sucesso!"); 
+    this.dialogService.showSuccess("Produto adicionado no carrinho com sucesso!"); 
 
   }
 

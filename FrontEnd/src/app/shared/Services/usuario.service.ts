@@ -27,6 +27,10 @@ getAll(){
   return this.usuarios = this.http.get<Usuario>(this.envService.urlAPI + `/usuarios/${id}`);
 }
 
+getUserByEmail(email){
+  return this.usuarios = this.http.get<Usuario>(this.envService.urlAPI + `/usuarios/email/${email}`);
+}
+
 addUsuario( usuario ){
 
   return this.http.post<Usuario>(this.envService.urlAPI + `/usuarios`,usuario );
