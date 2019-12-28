@@ -18,7 +18,7 @@ import com.kaikeletro.exception.ObjectNotFoundException;
 import com.kaikeletro.repositories.ItemPedidoRepository;
 import com.kaikeletro.repositories.PagamentoRepository;
 import com.kaikeletro.repositories.PedidoRepository;
-import com.kaikeletro.security.UserSecurityModel;
+import com.kaikeletro.security.CredencialSecurityModel;
 
 
 

@@ -8,7 +8,9 @@ import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-
+/*
+ * Componente responsável por gerar, validar o token (jwt)
+ * */
 @Component
 public class JWTUtil {
 	
@@ -19,8 +21,13 @@ public class JWTUtil {
 	private Long expiration;
 	
 	public String generateToken(String username) {
+		
+		Claims claims = Jwts.claims().setSubject(username);
+		claims.put("nome", "Fabrizio");
+		
 		return Jwts.builder()
 				.setSubject(username)
+				.setClaims(claims)
 				.setExpiration(new Date(System.currentTimeMillis() + expiration))
 				.signWith(SignatureAlgorithm.HS512, secret.getBytes())
 				.compact();

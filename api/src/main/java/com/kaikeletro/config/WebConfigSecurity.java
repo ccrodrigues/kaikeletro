@@ -16,14 +16,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+//import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.kaikeletro.security.EntradaJwt;
-import com.kaikeletro.security.FiltroJwt;
 import com.kaikeletro.security.JWTAutenticacaoFiltro;
 import com.kaikeletro.security.JWTAutorizacaoFiltro;
 import com.kaikeletro.security.JWTUtil;
-import com.kaikeletro.services.UserDetailsServiceImpl;
+import com.kaikeletro.services.CredentialDetailsServiceImpl;
 
 
 
@@ -48,16 +46,13 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter  {
     private Environment env;
 	
 	@Autowired
-	private UserDetailsServiceImpl userDetailsService;
-	
-	@Autowired
-	private EntradaJwt unauthorizedHandler;
-	
+	private CredentialDetailsServiceImpl userDetailsService;
+		
 	@Autowired
 	private JWTUtil jwtUtil;
-	
+		
 	@Bean
-	public BCryptPasswordEncoder encoder() {
+	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
@@ -65,19 +60,12 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter  {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-	
-
-    @Bean
-    public FiltroJwt authenticationTokenFilterBean() {
-        return new FiltroJwt();
-    }	
-    
+	    
     @Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
-   
-	
+     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	
@@ -101,9 +89,9 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter  {
             //Toda requisição deve ser autenticada - usuário e senha
             .anyRequest().authenticated()
             
-            .and()
+            //.and()
             //A exceção é tratada aqui
-            .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
+            //.exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
             
             .and()
             //gerenciamenteo de sessão STATELESS
@@ -117,8 +105,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter  {
     	/* vamos adicionar dois filtros : um para autenticação e outro para autorização */
     	http.addFilter(new JWTAutenticacaoFiltro(authenticationManager(), jwtUtil));
 		http.addFilter(new JWTAutorizacaoFiltro(authenticationManager(), jwtUtil, userDetailsService));
-        
-     
+             
     }
 
 }

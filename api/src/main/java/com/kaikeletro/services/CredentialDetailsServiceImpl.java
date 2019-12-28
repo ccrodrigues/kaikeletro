@@ -1,34 +1,27 @@
 package com.kaikeletro.services;
 
-import java.util.Arrays;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import org.springframework.security.core.userdetails.User;
 
 import com.kaikeletro.domain.Cliente;
 import com.kaikeletro.repositories.ClienteRepository;
-
-
+import com.kaikeletro.security.CredencialSecurityModel;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService  {
+public class CredentialDetailsServiceImpl implements UserDetailsService  {
 
 
 	@Autowired
 	private ClienteRepository clienteRepository;
 	
-	@Autowired
-	BCryptPasswordEncoder bCryptPasswordEncoder; 
+	//@Autowired
+	//BCryptPasswordEncoder passwordEncoder; 
 	
-	public UserDetails loadUserByUsername(String usuario) throws UsernameNotFoundException {
+	/*public UserDetails loadUserByUsername(String usuario) throws UsernameNotFoundException {
 		
 		Cliente loginCredenciais = clienteRepository.findByEmail(usuario);
 		
@@ -44,6 +37,15 @@ public class UserDetailsServiceImpl implements UserDetailsService  {
 		SimpleGrantedAuthority admin = new SimpleGrantedAuthority("ROLE_ADMIN");
 		
 		return Arrays.asList( usuario, admin );
+	}*/
+	
+	@Override
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		Cliente cli = clienteRepository.findByEmail(email);
+		if (cli == null) {
+			throw new UsernameNotFoundException(email);
+		}
+		return new CredencialSecurityModel(cli.getId(), cli.getEmail(), cli.getSenha(), cli.getPerfis());
 	}
 
 }

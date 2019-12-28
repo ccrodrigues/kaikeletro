@@ -25,7 +25,7 @@ import com.kaikeletro.exception.DataIntegrityException;
 import com.kaikeletro.exception.ObjectNotFoundException;
 import com.kaikeletro.repositories.ClienteRepository;
 import com.kaikeletro.repositories.EnderecoRepository;
-import com.kaikeletro.security.UserSecurityModel;
+import com.kaikeletro.security.CredencialSecurityModel;
 
 @Service
 public class ClienteService {
@@ -84,7 +84,7 @@ public class ClienteService {
 	}
 	
 	public Cliente findByEmail(String email) {
-		UserSecurityModel user = UserService.authenticated();
+		CredencialSecurityModel user = CredendialService.authenticated();
 		if (user == null || !user.hasRole(Perfil.ADMIN) && !email.equals(user.getUsername())) {
 			throw new AuthorizationException("Acesso negado");
 		}

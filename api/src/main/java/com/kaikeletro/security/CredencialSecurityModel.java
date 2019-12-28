@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.kaikeletro.domain.enums.Perfil;
 
-public class UserSecurityModel implements UserDetails {
+public class CredencialSecurityModel implements UserDetails {
 
 private static final long serialVersionUID = 1L;
 	
@@ -19,10 +19,10 @@ private static final long serialVersionUID = 1L;
 	private String senha;
 	private Collection<? extends GrantedAuthority> authorities;
 	
-	public UserSecurityModel() {
+	public CredencialSecurityModel() {
 	}
 	
-	public UserSecurityModel(Integer id, String email, String senha, Set<Perfil> perfis) {
+	public CredencialSecurityModel(Integer id, String email, String senha, Set<Perfil> perfis) {
 		super();
 		this.id = id;
 		this.email = email;

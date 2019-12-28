@@ -33,6 +33,7 @@ public class JWTAutorizacaoFiltro extends BasicAuthenticationFilter {
 		
 		String header = request.getHeader("Authorization");
 		if (header != null && header.startsWith("Bearer ")) {
+			//olha o header e remove a palavra Bearer 
 			UsernamePasswordAuthenticationToken auth = getAuthentication(header.substring(7));
 			if (auth != null) {
 				SecurityContextHolder.getContext().setAuthentication(auth);
