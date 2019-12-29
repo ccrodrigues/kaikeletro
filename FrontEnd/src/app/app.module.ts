@@ -71,7 +71,11 @@ export function tokenGetter() {
       useClass: HttpConfigInterceptor, 
       multi: true
     }
-    , {provide: ErrorHandler, useClass: CustomErrorHandlerService}
+    ,
+    {
+      provide: ErrorHandler,
+      useClass: CustomErrorHandlerService
+    }
   ],
   bootstrap: [AppComponent]
 })

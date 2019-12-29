@@ -7,6 +7,7 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 import { LocalUserModel } from 'src/app/shared/models/auth/local-user.model';
 import { AuthToken } from 'src/app/shared/models/auth/auth-token.model';
 import { DialogService } from '../../toaster/dialog.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Injectable({
@@ -33,17 +34,25 @@ export class AuthService {
 
     console.log(login);
 
-    this.http.post<AuthToken>(this.envService.urlAPI + `/token/generate`, login).subscribe(
+    this.http.post<AuthToken>(`${this.envService.urlAPI}/token/generate`, login).subscribe(
       (data) => {
 
         console.log(data);
+
+        const helper = new JwtHelperService();
+        const decodedToken = helper.decodeToken(data.token);
 
         this.isAuth = true;
         this.isMostrarMenu.emit(true);
         
         let localUser: LocalUserModel = {
           token: data.token,
-          email: login.email
+          
+          email : decodedToken.sub,
+          nome : decodedToken.nome,
+          exp : decodedToken.exp,
+          iat : decodedToken.iat,
+          scopes : decodedToken.scopes.split(',')
         }
 
         this.storageService.setLocalUser(localUser);
@@ -71,4 +80,27 @@ export class AuthService {
     this.isAuth = false;
     return this.isAuth;
   }
+
+  refreshToken() {
+    return this.http.post<AuthToken>(`${this.envService.urlAPI}/token/refresh`, {})
+      .subscribe(
+        (response) => {
+          console.log('token has been refreshed');
+          const helper = new JwtHelperService();
+          const decodedToken = helper.decodeToken(response.token);
+
+          let localUser: LocalUserModel = {
+            token: response.token,
+              
+            email : decodedToken.sub,
+            nome : decodedToken.nome,
+            exp : decodedToken.exp,
+            iat : decodedToken.iat,
+            scopes : decodedToken.scopes.split(',')
+          }
+  
+          this.storageService.setLocalUser(localUser);
+        }
+      );
+}
 }

@@ -4,12 +4,14 @@ import { Observable, throwError, EMPTY } from 'rxjs';
 import { StorageService } from '../services/storage.service';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthInterceptorService implements HttpInterceptor {
+
+  
 
   constructor(
     private storage: StorageService
@@ -19,6 +21,8 @@ export class AuthInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
 
+    const helper = new JwtHelperService();
+ 
     let localUser = this.storage.getLocalUser();
     
     console.log('interceptor jwt works!');
@@ -28,6 +32,22 @@ export class AuthInterceptorService implements HttpInterceptor {
     if (localUser) {
 
       let tokenStr = 'Bearer ' + localUser.token;
+
+      const decodedToken = helper.decodeToken(localUser.token);
+      const expirationDate = helper.getTokenExpirationDate(localUser.token);
+      const isExpired = helper.isTokenExpired(localUser.token);
+
+      console.log(decodedToken);
+      console.log(expirationDate);
+      console.log(isExpired);
+
+      localUser.email = decodedToken.sub;
+      localUser.nome = decodedToken.nome;
+      localUser.exp = decodedToken.exp;
+      localUser.iat = decodedToken.iat;
+      localUser.scopes = decodedToken.scopes.split(',');
+
+      console.log(localUser);
 
       req = req.clone({
 
