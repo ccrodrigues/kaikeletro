@@ -84,6 +84,13 @@ public class PopularBancoService {
 		); 
 		a1.setDescricaoImagem("Notebook Lenovo");
 		a1.setNomeImagem("imagem 1");
+		
+		ImagemProd a2 = new ImagemProd(); 
+		a2.setImagemProduto(
+		"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/HKPV2?wid=1144&hei=1144&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1483663690142"
+		); 
+		a2.setDescricaoImagem("Impressora HP Colorida");
+		a2.setNomeImagem("imagem 2");
 
 		cat1.setProdutos(Arrays.asList(p1, p2, p3));
 		cat2.setProdutos(Arrays.asList(p2));
@@ -105,7 +112,7 @@ public class PopularBancoService {
 		p9.setCategorias(Arrays.asList(cat9,cat10));
 		
 		p1.setImagens(Arrays.asList(a1));
-		p2.setImagens(Arrays.asList(a1));
+		p2.setImagens(Arrays.asList(a2));
 		p3.setImagens(Arrays.asList(a1));
 		p4.setImagens(Arrays.asList(a1));
 		p5.setImagens(Arrays.asList(a1));
@@ -115,7 +122,7 @@ public class PopularBancoService {
 		p9.setImagens(Arrays.asList(a1));
 		
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8, cat9,cat10));
-		imagemRepository.saveAll(Arrays.asList(a1));
+		imagemRepository.saveAll(Arrays.asList(a1, a2));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7,p8,p9));
 	}
 }
