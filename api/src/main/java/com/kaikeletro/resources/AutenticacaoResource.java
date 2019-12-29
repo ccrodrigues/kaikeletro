@@ -10,18 +10,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kaikeletro.domain.Cliente;
+
 import com.kaikeletro.dto.CredenciaisDTO;
 import com.kaikeletro.security.AuthTokenModel;
 import com.kaikeletro.security.CredencialSecurityModel;
-import com.kaikeletro.security.GeradorToken;
 import com.kaikeletro.security.JWTUtil;
 import com.kaikeletro.services.CredendialService;
 
@@ -31,14 +29,10 @@ public class AutenticacaoResource {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
-
-//	@Autowired
-//	private GeradorToken jwtTokenUtil;
 	
 	@Autowired
 	private JWTUtil jwtUtil;
 	
-
 	@RequestMapping(value = "generate", method = { RequestMethod.POST })
 	public ResponseEntity<AuthTokenModel> getJwt(@RequestBody CredenciaisDTO credenciais) {
 		

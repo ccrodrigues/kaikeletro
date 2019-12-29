@@ -15,7 +15,9 @@ import java.util.Date;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-
+/*
+ * 
+ * Classe de geração de token antiga
 @Component
 public class GeradorToken implements Serializable {
 	
@@ -83,3 +85,4 @@ public class GeradorToken implements Serializable {
     }
 
 }
+*/
