@@ -17,16 +17,18 @@ private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String email;
 	private String senha;
+	private String nome;
 	private Collection<? extends GrantedAuthority> authorities;
 	
 	public CredencialSecurityModel() {
 	}
 	
-	public CredencialSecurityModel(Integer id, String email, String senha, Set<Perfil> perfis) {
+	public CredencialSecurityModel(Integer id, String email, String senha, String nome, Set<Perfil> perfis) {
 		super();
 		this.id = id;
 		this.email = email;
 		this.senha = senha;
+		this.nome = nome;
 		this.authorities = perfis.stream().map(x -> new SimpleGrantedAuthority(x.getDescricao())).collect(Collectors.toList());
 	}
 
@@ -47,6 +49,11 @@ private static final long serialVersionUID = 1L;
 	@Override
 	public String getUsername() {
 		return email;
+	}
+	
+	
+	public String getNome() {
+		return nome;
 	}
 
 	@Override
@@ -72,5 +79,6 @@ private static final long serialVersionUID = 1L;
 	public boolean hasRole(Perfil perfil) {
 		return getAuthorities().contains(new SimpleGrantedAuthority(perfil.getDescricao()));
 	}
+	
 	
 }

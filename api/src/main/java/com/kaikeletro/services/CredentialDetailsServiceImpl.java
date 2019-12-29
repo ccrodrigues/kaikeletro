@@ -45,7 +45,10 @@ public class CredentialDetailsServiceImpl implements UserDetailsService  {
 		if (cli == null) {
 			throw new UsernameNotFoundException(email);
 		}
-		return new CredencialSecurityModel(cli.getId(), cli.getEmail(), cli.getSenha(), cli.getPerfis());
+		return new CredencialSecurityModel(
+				cli.getId(), cli.getEmail(), cli.getSenha(), 
+					cli.getNome(), cli.getPerfis()
+					);
 	}
 
 }

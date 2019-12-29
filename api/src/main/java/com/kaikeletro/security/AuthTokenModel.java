@@ -1,11 +1,11 @@
 package com.kaikeletro.security;
 
-public class AuthToken {
+public class AuthTokenModel {
 	
 	private String token;
 		
 
-	public AuthToken(String token) {
+	public AuthTokenModel(String token) {
 		super();
 		this.token = token;
 	}

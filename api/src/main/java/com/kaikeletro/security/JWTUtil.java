@@ -1,8 +1,10 @@
 package com.kaikeletro.security;
 
 import java.util.Date;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -20,14 +22,30 @@ public class JWTUtil {
 	@Value("${jwt.expiration}")
 	private Long expiration;
 	
+	@Value("${jwt.authorities_key}")
+	private String authorities_key;
+	
+	@Value("${jwt.nome_credencial}")
+	private String nome_credencial;
+	
 	public String generateToken(String username) {
-		
-		Claims claims = Jwts.claims().setSubject(username);
-		claims.put("nome", "Fabrizio");
-		
+				
+			
 		return Jwts.builder()
-				.setSubject(username)
-				.setClaims(claims)
+				.setSubject(username)				
+				.setExpiration(new Date(System.currentTimeMillis() + expiration))
+				.signWith(SignatureAlgorithm.HS512, secret.getBytes())
+				.compact();
+	}
+	
+	public String generateToken(String email, String nome, String authorities) {
+		
+				
+		return Jwts.builder()
+				.setSubject(email)
+				.claim(authorities_key, authorities)
+				.claim(nome_credencial, nome)
+				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + expiration))
 				.signWith(SignatureAlgorithm.HS512, secret.getBytes())
 				.compact();
