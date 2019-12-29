@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,6 +40,13 @@ private static final long serialVersionUID = 1L;
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
+	}
+	
+	public String getAuthorityToString() {
+		final String authoritiesStr = authorities.stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.joining(","));
+		return authoritiesStr;
 	}
 
 	@Override
@@ -79,6 +87,15 @@ private static final long serialVersionUID = 1L;
 	public boolean hasRole(Perfil perfil) {
 		return getAuthorities().contains(new SimpleGrantedAuthority(perfil.getDescricao()));
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "CredencialSecurityModel [id=" + id + ", email=" + email + ", senha=" + senha + ", nome=" + nome
+				+ ", authorities=" + authorities + "]";
+	}
+	
 	
 	
 }

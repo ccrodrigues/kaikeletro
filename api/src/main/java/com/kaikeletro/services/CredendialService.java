@@ -22,11 +22,11 @@ public class CredendialService {
 	}
 	
 	/*  Pega todas as regras de acesso do usuário logado */
-	public static String getAuthorityToString(Authentication authentication) {
-		final String authorities = authentication.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.joining(","));
-		return authorities;
-	}
+//	public static String getAuthorityToString(Authentication authentication) {
+//		final String authorities = authentication.getAuthorities().stream()
+//                .map(GrantedAuthority::getAuthority)
+//                .collect(Collectors.joining(","));
+//		return authorities;
+//	}
 
 }

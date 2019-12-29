@@ -52,9 +52,10 @@ public class AutenticacaoResource {
 								
 		String username = ((CredencialSecurityModel) authentication.getPrincipal()).getUsername();
 		String nome = ((CredencialSecurityModel) authentication.getPrincipal()).getNome();
-		String authorities = CredendialService.getAuthorityToString(authentication);
+		//String authorities = CredendialService.getAuthorityToString(authentication);
+		String authorities = ((CredencialSecurityModel) authentication.getPrincipal()).getAuthorityToString();
 		
-		final String token = jwtUtil.generateToken(username, nome,authorities);
+		final String token = jwtUtil.generateToken(username, nome, authorities);
 		
 		AuthTokenModel authToken = new AuthTokenModel(token);
 		
@@ -63,12 +64,25 @@ public class AutenticacaoResource {
 	}
 	
 	@RequestMapping(value = "/refresh", method = RequestMethod.POST)
-	public ResponseEntity<Void> refreshToken(HttpServletResponse response) {
-		CredencialSecurityModel user = CredendialService.authenticated();
-		String token = jwtUtil.generateToken(user.getUsername());
-		response.addHeader("Authorization", "Bearer " + token);
-		response.addHeader("access-control-expose-headers", "Authorization");
-		return ResponseEntity.noContent().build();
+	public ResponseEntity<AuthTokenModel> refreshToken(HttpServletResponse response) {
+		
+		CredencialSecurityModel credenciais = CredendialService.authenticated();
+		System.out.println(credenciais);
+				
+		String username = credenciais.getUsername();
+		String nome = credenciais.getNome();
+		//String authorities = CredendialService.getAuthorityToString(authentication);
+		String authorities = credenciais.getAuthorityToString();
+		
+		//String token = jwtUtil.generateToken(credenciais.getUsername());
+		String token = jwtUtil.generateToken(username, nome, authorities);
+		//response.addHeader("Authorization", "Bearer " + token);
+		//response.addHeader("access-control-expose-headers", "Authorization");
+		//return ResponseEntity.noContent().build();
+		
+		AuthTokenModel authToken = new AuthTokenModel(token);		
+		return ResponseEntity.ok(authToken);
+		
 	}
 
 }

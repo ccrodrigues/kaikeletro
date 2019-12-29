@@ -58,9 +58,11 @@ public class JWTUtil {
 			Date expirationDate = claims.getExpiration();
 			Date now = new Date(System.currentTimeMillis());
 			if (username != null && expirationDate != null && now.before(expirationDate)) {
+				System.out.println("Token Válido");
 				return true;
 			}
 		}
+		System.out.println("Token Inválido");
 		return false;
 	}
 
