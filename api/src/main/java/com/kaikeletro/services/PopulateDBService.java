@@ -1,7 +1,9 @@
 package com.kaikeletro.services;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
-
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,7 +15,11 @@ import com.kaikeletro.domain.Cliente;
 import com.kaikeletro.domain.Endereco;
 import com.kaikeletro.domain.Estado;
 import com.kaikeletro.domain.ImagemProduto;
+import com.kaikeletro.domain.ItemPedido;
+import com.kaikeletro.domain.Pagamento;
+import com.kaikeletro.domain.Pedido;
 import com.kaikeletro.domain.Produto;
+import com.kaikeletro.domain.enums.EstadoPagamento;
 import com.kaikeletro.domain.enums.Perfil;
 import com.kaikeletro.domain.enums.TipoCliente;
 import com.kaikeletro.repositories.CategoriaRepository;
@@ -165,6 +171,10 @@ public class PopulateDBService {
 		
 		cli1.getTelefones().addAll(Arrays.asList("11-982733817"));
 		
+		Cliente cli2 = new Cliente(null, "Borelli", "cliente@brq.com", "2222222222", TipoCliente.PESSOAFISICA, bCryptPasswordEncoder.encode("cliente"));
+		cli2.getTelefones().addAll(Arrays.asList("999999999", "999999999"));
+		cli2.addPerfil(Perfil.CLIENTE);
+		
 		
 		Estado est1 = new Estado(null, "São Paulo");				
 		Cidade c1 = new Cidade(null, "São Paulo", est1);
@@ -177,9 +187,67 @@ public class PopulateDBService {
 		Endereco e1 = new Endereco(null, "Rua Boa Vista", "254", "9 Andar", "Centro", "01014925", cli1, c1);
 		cli1.getEnderecos().addAll(Arrays.asList(e1));
 		
-		clienteRepository.save(cli1);		
+		cli2.getEnderecos().addAll(Arrays.asList(e1));
+		
+		clienteRepository.saveAll(Arrays.asList(cli1, cli2));		
+		enderecoRepository.save(e1);
+			
+	}
+	
+	public void pedidoDemo() throws ParseException {
+		
+		Cliente cli1 = new Cliente(null, "Cliente 1", "cliente1@brq.com", "11111111111", TipoCliente.PESSOAFISICA, bCryptPasswordEncoder.encode("cliente1"));
+		cli1.addPerfil(Perfil.CLIENTE);
+			
+		cli1.getTelefones().addAll(Arrays.asList("11-982733817"));
+		
+		Estado est1 = new Estado(null, "Santa Catarina");				
+		Cidade c1 = new Cidade(null, "Florianópolis", est1);
+		
+		est1.getCidades().addAll(Arrays.asList(c1));
+		
+		estadoRepository.saveAll(Arrays.asList(est1));
+		cidadeRepository.saveAll(Arrays.asList(c1));
+		
+		Endereco e1 = new Endereco(null, "Rua Boa Vista", "254", "9 Andar", "Centro", "01014925", cli1, c1);
+		cli1.getEnderecos().addAll(Arrays.asList(e1));
+		
+		clienteRepository.saveAll(Arrays.asList(cli1));		
 		enderecoRepository.save(e1);
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
+		Pedido ped1 = new Pedido(null, sdf.parse("25/12/2019 12:01"), cli1, e1);
+		Pedido ped2 = new Pedido(null, sdf.parse("01/01/2020 19:35"), cli1, e1);
+		
+		Pagamento pagto1 = new Pagamento(null, EstadoPagamento.QUITADO, ped1);
+		ped1.setPagamento(pagto1);
+		
+		Pagamento pagto2 = new Pagamento(null, EstadoPagamento.PENDENTE, ped2);
+		ped2.setPagamento(pagto2);
+		
+		cli1.getPedidos().addAll(Arrays.asList(ped1, ped2));
+		
+		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
+		pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
+		
+		List<Produto> listaProdutos = produtoRepository.findAll();
+		
+		Produto p1 = listaProdutos.get(0);
+		Produto p2 = listaProdutos.get(1);
+		Produto p3 = listaProdutos.get(2);
+		
+		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, p1.getPreco());
+		ItemPedido ip2 = new ItemPedido(ped1, p2, 0.00, 2, p2.getPreco());
+		ItemPedido ip3 = new ItemPedido(ped2, p3, 0.00, 1, p3.getPreco());
+		
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+		
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p2.getItens().addAll(Arrays.asList(ip3));
+		p3.getItens().addAll(Arrays.asList(ip2));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
 	}
 }

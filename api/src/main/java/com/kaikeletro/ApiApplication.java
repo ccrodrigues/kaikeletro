@@ -26,6 +26,7 @@ public class ApiApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		populateDBService.produtoCategoriaDemo();
 		populateDBService.clienteDemo();
+		populateDBService.pedidoDemo();
 		
 	}
 

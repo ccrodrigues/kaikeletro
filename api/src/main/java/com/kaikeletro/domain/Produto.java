@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +37,7 @@ public class Produto  implements Serializable {
 	private List<Categoria> categorias = new ArrayList<>();
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="id.produto")
+	@OneToMany(mappedBy="id.produto", fetch=FetchType.EAGER)
 	private Set<ItemPedido> itens = new HashSet<>();
 	
 	
