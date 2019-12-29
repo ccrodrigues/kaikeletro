@@ -1,8 +1,5 @@
 package com.kaikeletro.resources;
 
-
-import java.util.stream.Collectors;
-
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.kaikeletro.dto.CredenciaisDTO;
+import com.kaikeletro.exception.AuthorizationException;
 import com.kaikeletro.security.AuthTokenModel;
 import com.kaikeletro.security.CredencialSecurityModel;
 import com.kaikeletro.security.JWTUtil;
@@ -62,6 +60,10 @@ public class AutenticacaoResource {
 		
 		CredencialSecurityModel credenciais = CredendialService.authenticated();
 		System.out.println(credenciais);
+		
+		if (credenciais == null) {
+			throw new AuthorizationException("Falha refresh token");
+		}
 				
 		String username = credenciais.getUsername();
 		String nome = credenciais.getNome();

@@ -31,15 +31,15 @@ import com.kaikeletro.services.CredentialDetailsServiceImpl;
 public class WebConfigSecurity extends WebSecurityConfigurerAdapter  {
 	
 	private static final String[] PUBLIC_ENDPOINTS = {
-			"/token/**", "/cliente", "/produtos/*"
+			
 	};
 
 	private static final String[] PUBLIC_ENDPOINTS_GET = {
-			
+			"/produtos/**"
 	};
 
 	private static final String[] PUBLIC_ENDPOINTS_POST = {
-			
+			"/token/**", "/cliente"
 	};
 		
 	@Autowired

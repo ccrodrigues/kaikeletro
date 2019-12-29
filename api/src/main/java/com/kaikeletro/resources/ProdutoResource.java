@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -75,7 +76,8 @@ public class ProdutoResource {
 		return ResponseEntity.ok().body(produtoService.findByNome(nomeBusca));
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.POST)
+	@PreAuthorize("hasAnyRole('ADMIN')")
+	@RequestMapping( method = RequestMethod.POST)
 	public ResponseEntity<Produto> createProduto(@RequestBody @Valid Produto prod) {
 		return ResponseEntity.ok().body(produtoService.createProduto(prod));
 	}
@@ -85,12 +87,13 @@ public class ProdutoResource {
 		return ResponseEntity.ok().body(produtoService.editProduto(id, prod));
 	}
 
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteProduto(@PathVariable("id") int id) {
 		return ResponseEntity.ok().body(produtoService.deleteProduto(id));
 	}
 
-	// Paginação
+	// Paginação	
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public ResponseEntity<Page<ProdutoDTO>> findPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
 			@RequestParam(value = "qtdLinhas", defaultValue = "10") int qtdLinhas,
