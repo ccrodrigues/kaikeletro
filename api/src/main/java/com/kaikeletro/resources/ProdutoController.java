@@ -109,8 +109,8 @@ public class ProdutoController {
 		return ResponseEntity.ok().body(pageDto);
 	}
 	
-	//Pegando uma lista de ProdutosDto
-	//Criada para retornar dados objetivos
+//  Pegando uma lista de ProdutosDto
+//  Criada para retornar dados objetivos
 //	@RequestMapping(value="/produtosDto" , method=RequestMethod.GET)
 //	public ResponseEntity< List<ProdutoDto>> getAllProdutoDto() {
 //		return ResponseEntity.ok().body( produtoService.getAllProdutoDto() );

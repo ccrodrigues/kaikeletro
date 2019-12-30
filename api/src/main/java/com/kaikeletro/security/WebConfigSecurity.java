@@ -46,7 +46,15 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 //                .permitAll()
 				// .anyRequest().authenticated()
 				.and().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and().sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .anyRequest().authenticated()
+                .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(unauthorizedHandler)
+                .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
 
 		http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 
