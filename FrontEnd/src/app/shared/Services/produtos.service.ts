@@ -23,7 +23,12 @@ export class ProdutosService {
     return this.http.get(this.url);
   }
 
-  //Pegando a lista de produtosDto
+  delete(id) {
+    console.log(this.url + id)
+    return this.http.delete(this.url + id);
+    // return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "produtos");
+  }
+
   getProdutoDto(){
     return this.http.get(`${this.envService.urlAPI}produtos/carrinho`)
   }
@@ -39,7 +44,7 @@ export class ProdutosService {
   }
   //adcionando o produto ao banco
   saveProduto(produto){
-    return this.http.post<ProdutoModel>(this.envService.urlAPI+ "produtos",produto);
+    return this.http.post<ProdutoModel>(this.envService.urlAPI+ "/produtos",produto);
   }
   //deletando o produto
   deleteProduto(id){
@@ -47,7 +52,7 @@ export class ProdutosService {
   }
   //editando um produto ja existente
   updateProduto(produto,id){
-    return this.http.patch<ProdutoModel>(this.envService.urlAPI+ "produtos"+"/"+id,produto);
+    return this.http.patch<ProdutoModel>(this.envService.urlAPI+ "/produtos"+"/"+id,produto);
   }
   //recebendo os produtos por paginacao
   getProdutoPage(pagina,qtdLinhas,direcao,campo){

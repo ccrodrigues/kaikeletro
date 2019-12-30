@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
 import { EnvService } from 'src/app/env.service';
+import { LocalUserModel } from 'src/app/shared/models/auth/local-user.model';
+import { tokenAuth } from 'src/app/shared/models/auth/token-auth.model';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,18 +19,27 @@ export class ServiceLoginService {
 
   constructor(private router: Router, private usuarioService: UsuarioService
     , private http: HttpClient
-    , private envService: EnvService) {
+    , private envService: EnvService
+    , private storageService:StorageService
+    ) {
 
   }
   //verifica os campos email e senha na API e retorna se true ou false
-  fazerLogin(login: { email: String, senha: String }) {
+  fazerLogin(login: { email: string, senha: string }) {
 
-    this.http.post(this.envService.urlAPI + `/autenticacao`, login).subscribe(
+
+    this.http.post<tokenAuth>(this.envService.urlAPI + `/autenticacao`, login).subscribe(
       (cliente) => {
         console.log("cliente ? ", cliente);
-        if (cliente == true) {
+        if (cliente) {
           this.isAdmin = false;
           this.isAutenticado = true;
+          let localUser: LocalUserModel = {
+            token: cliente,
+            email: login.email
+          }
+          console.log(localUser)
+          this.storageService.setLocalUser(localUser);
           this.router.navigate(['']);
           
 
@@ -39,8 +51,8 @@ export class ServiceLoginService {
                 this.isAdmin = true;
                 this.isAutenticado = true;
                 this.router.navigate(['']);
-                
-
+          
+         
               } else {
                 this.router.navigate(['login']),
                 this.isAdmin = false;

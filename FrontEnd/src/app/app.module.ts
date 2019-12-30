@@ -39,8 +39,7 @@ import { Toast, ToastrService, ToastrModule } from 'ngx-toastr';
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     VendasModule,
-    LayoutModule
-
+    LayoutModule,
   ],
   providers: [CarrinhoService],
   bootstrap: [AppComponent]
