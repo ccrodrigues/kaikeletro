@@ -30,7 +30,16 @@ private static final long serialVersionUID = 1L;
 		this.email = email;
 		this.senha = senha;
 		this.nome = nome;
-		this.authorities = perfis.stream().map(x -> new SimpleGrantedAuthority(x.getDescricao())).collect(Collectors.toList());
+		/*
+		 * Converte a coleção de perfis vindo do banco de dados para uma coleção de SimpleGrantedAuthority 
+		 * */
+		this.authorities = perfis.stream().map(
+				x -> new SimpleGrantedAuthority(
+						x.getDescricao()
+					)
+				).collect(
+						Collectors.toList()
+				);
 	}
 
 	public Integer getId() {
@@ -42,9 +51,15 @@ private static final long serialVersionUID = 1L;
 		return authorities;
 	}
 	
+	/*
+	 * Converter SimpleGrantedAuthority para uma String separados por ,
+	 * */
+	
 	public String getAuthorityToString() {
 		final String authoritiesStr = authorities.stream()
-                .map(GrantedAuthority::getAuthority)
+                .map(
+                		GrantedAuthority::getAuthority
+                		)
                 .collect(Collectors.joining(","));
 		return authoritiesStr;
 	}

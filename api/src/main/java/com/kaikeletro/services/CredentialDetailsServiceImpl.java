@@ -17,28 +17,7 @@ public class CredentialDetailsServiceImpl implements UserDetailsService  {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
-	
-	//@Autowired
-	//BCryptPasswordEncoder passwordEncoder; 
-	
-	/*public UserDetails loadUserByUsername(String usuario) throws UsernameNotFoundException {
 		
-		Cliente loginCredenciais = clienteRepository.findByEmail(usuario);
-		
-		if(loginCredenciais == null){
-			throw new UsernameNotFoundException("Invalid username or password.");
-		}
-		
-		return new User(loginCredenciais.getEmail(), loginCredenciais.getSenha(), getAuthority());
-	}
-
-	private List<SimpleGrantedAuthority> getAuthority() {
-		SimpleGrantedAuthority usuario = new SimpleGrantedAuthority("ROLE_USER");
-		SimpleGrantedAuthority admin = new SimpleGrantedAuthority("ROLE_ADMIN");
-		
-		return Arrays.asList( usuario, admin );
-	}*/
-	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		Cliente cli = clienteRepository.findByEmail(email);

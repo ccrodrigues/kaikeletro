@@ -47,6 +47,10 @@ public class Cliente implements Serializable {
 	@CollectionTable(name="TELEFONE")
 	private Set<String> telefones = new HashSet<>();
 	
+	/*
+	 * EAGER --> sempre traz do banco de dados os dados de desejo
+	 * LAZY --> traz os dados somente quando necessário
+	 * */
 	@ElementCollection(fetch=FetchType.EAGER)
 	@CollectionTable(name="PERFIS")
 	private Set<Integer> perfis = new HashSet<>();

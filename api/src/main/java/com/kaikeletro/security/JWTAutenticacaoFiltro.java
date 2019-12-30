@@ -22,29 +22,36 @@ import com.kaikeletro.dto.CredenciaisDTO;
 
 public class JWTAutenticacaoFiltro extends UsernamePasswordAuthenticationFilter {
 
-	
+	/*pegando valor do application.properties*/
 	@Value("${jwt.token_prefix}")
-	private String token_prefix;
+	private String token_prefix;	
 	
 	private AuthenticationManager authenticationManager;
     
     private JWTUtil jwtUtil;
 
+    //contrutor
     public JWTAutenticacaoFiltro(AuthenticationManager authenticationManager, JWTUtil jwtUtil) {
     	setAuthenticationFailureHandler(new JWTAuthenticationFailureHandler());
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
     }
 	
+    /*
+     * Para verificar se o email e senha estão corretos
+     * */
 	@Override
     public Authentication attemptAuthentication(HttpServletRequest req,
                                                 HttpServletResponse res) throws AuthenticationException {
 
 		try {
+			//IVO - Converter do Domain para DTO 'automaticamente'
 			CredenciaisDTO creds = new ObjectMapper()
 	                .readValue(req.getInputStream(), CredenciaisDTO.class);
 	
-	        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(creds.getEmail(), creds.getSenha(), new ArrayList<>());
+	        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+	        		creds.getEmail(), creds.getSenha(), new ArrayList<>()
+	        	);
 	        
 	        Authentication auth = authenticationManager.authenticate(authToken);
 	        return auth;
@@ -54,6 +61,9 @@ public class JWTAutenticacaoFiltro extends UsernamePasswordAuthenticationFilter 
 		}
 	}
 	
+	 /*
+     * Se a autenticação deu certo, entra aqui
+     * */
 	@Override
     protected void successfulAuthentication(HttpServletRequest req,
                                             HttpServletResponse res,
@@ -61,12 +71,15 @@ public class JWTAutenticacaoFiltro extends UsernamePasswordAuthenticationFilter 
                                             Authentication auth) throws IOException, ServletException {
 	
 		String username = ((CredencialSecurityModel) auth.getPrincipal()).getUsername();
+		/*
+		 * Se a autenticação deu certo, gera-se o token
+		 * */
         String token = jwtUtil.generateToken(username);
         res.addHeader("Authorization", "Bearer " + token);
         res.addHeader("access-control-expose-headers", "Authorization");
 	}
 	
-	//Se a autenticação for inválida
+	/*Se a autenticação for inválida, sobrescrever o autenticação inválida*/
 	private class JWTAuthenticationFailureHandler implements AuthenticationFailureHandler {
 		 
         @Override
