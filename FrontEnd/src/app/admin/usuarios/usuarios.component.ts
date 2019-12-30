@@ -26,13 +26,13 @@ export class UsuariosComponent implements OnInit {
 
     );
   }
-  pesquisar(cpf){
-    this.usuarioService.pesquisarPorCpf(cpf).subscribe(
-      data =>{
-        this.result = this.result.result
+  // pesquisar(cpf){
+  //   this.usuarioService.pesquisarPorCpf(cpf).subscribe(
+  //     data =>{
+  //       this.result = this.result.result
 
-      }
-    )
-  }
+  //     }
+  //   )
+  // }
 
 }

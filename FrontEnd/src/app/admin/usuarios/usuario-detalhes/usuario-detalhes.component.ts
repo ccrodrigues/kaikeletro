@@ -15,143 +15,147 @@ import { EnvService } from 'src/app/env.service';
 })
 export class UsuarioDetalhesComponent implements OnInit {
 
-  detalhesForm : FormGroup;
-  objEnd : Endereco;
+  detalhesForm: FormGroup;
+  objEnd: Endereco;
   idRota;
   isEdicao = false;
-  usuario : Usuario[] = [];
-  endereco : Endereco[] = [];
+  usuario: Usuario[] = [];
+  endereco: Endereco[] = [];
 
-  constructor(private formBuilder :  FormBuilder
-              ,private viaCep : AuthServiceService
-              , private activedRoute : ActivatedRoute
-              ,private usuarioService : UsuarioService
-              ,private router : Router
-              , private envService: EnvService) { }
+  constructor(private formBuilder: FormBuilder
+    , private viaCep: AuthServiceService
+    , private activedRoute: ActivatedRoute
+    , private usuarioService: UsuarioService
+    , private router: Router
+    , private envService: EnvService) { }
 
   ngOnInit() {
 
-    this.detalhesForm = this.formBuilder.group( 
-      { 
-      usuario : [{
-      id: ['',[Validators.required ] ],
-      nome : ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)] ],
-      nascimento: ['', [Validators.compose([Validators.required, Validacoes.MaiorQue18Anos])]],
-      cpf: ['', [Validators.compose([Validators.required, Validacoes.validaCpf])]],
-      telefone: ['', [Validators.required]],
-      celular: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-    }],
+    this.detalhesForm = this.formBuilder.group(
+      {
+        usuario : this.formBuilder.group( {
+          id:['', []],
 
-      endereco: [{
-        cep: ['', [Validators.required]],
-        numero: ['', [Validators.required]],
-        complemento: ['',[] ],
-        logradouro: ['', [Validators.required]],
-        bairro: ['', [Validators.required]],
-        cidade: ['', [Validators.required]],
-        estado: ['', [Validators.required]]
-      }]
-    });
-    this.activedRoute.params.subscribe( (data)=>{
+          endereco: this.formBuilder.group( {
+            cep: ['', [Validators.required]],
+            numero: ['', [Validators.required]],
+            complemento: ['', []],
+            logradouro: ['', [Validators.required]],
+            bairro: ['', [Validators.required]],
+            cidade: ['', [Validators.required]],
+            estado: ['', [Validators.required]]
+          }),
+
+          nome: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
+          nascimento: ['', [Validators.compose([Validators.required, Validacoes.MaiorQue18Anos])]],
+          cpf: ['', [Validators.compose([Validators.required, Validacoes.validaCpf])]],
+          telefone: ['', [Validators.required]],
+          celular: ['', [Validators.required]],
+          email: ['', [Validators.required]],
+        })
+
+      });
+    this.activedRoute.params.subscribe((data) => {
       this.idRota = data.id;
       console.log('ID DA ROTA: ' + this.idRota);
-  
-      if(this.idRota){
+
+      if (this.idRota){
         console.log('Edição');
         this.isEdicao = true;
-  
-        this.usuarioService.getOneUsuario(this.idRota).subscribe( (usuarioAPI)=>{
+
+        this.usuarioService.getOneUsuario(this.idRota).subscribe((usuarioAPI) => {
           //patchValue quando o formulario já está criado e quer alterar o campo
           this.detalhesForm.patchValue(
-            {
-              usuario : {
-              id : usuarioAPI['id'],
-              nome : usuarioAPI['nome'],
-              nascimento: ['nascimento'],
-              cpf: ['cpf'],
-              telefone: ['telefone'],
-              celular: ['celular'],
-              email: ['email'],
-              },
-              endereco: {
-                cep: ['cep'],
-                numero: ['numero'],
-                complemento: ['complemento'],
-                logradouro: ['logradouro'],
-                bairro: ['bairro'],
-                cidade: ['cidade'],
-                estado: ['estado']
-  
-              }
-          });
+          {
+          usuario :{
+          id: usuarioAPI['id'],
+
+          endereco: [{
+            idEndereco: ['idEndereco'],
+            cep:  ['cep'],
+            numero:  ['numero'],
+            complemento:  ['complemento'],
+            logradouro:  ['logradouro'],
+            bairro:  ['bairro'],
+            cidade:  ['cidade'],
+            estado:  ['estado']
+          }] ,
+          nome: usuarioAPI ['nome'],
+          nascimento: usuarioAPI['dataDeNascimento'],
+          cpf: usuarioAPI['cpf'],
+          telefone: usuarioAPI['telefone'],
+          celular: usuarioAPI['celular'],
+          email: usuarioAPI['email'],
+        }
         });
-        
-      }else{
+      });
+
+      } else {
         console.log('Criação');
         this.isEdicao = false;
       }
-      
-  
-    } );
+
+
+    });
   }
+
 
   somenteNumerosCpf(e: any) {
     let charCode = e.charCode ? e.charCode : e.keyCode;
     // charCode 8 = backspace   
     // charCode 9 = tab
-  
+
     if (charCode != 8 && charCode != 9) {
       // charCode 48 equivale a 0   
       // charCode 57 equivale a 9
-      let max = 11;    
-  
-      if ((charCode < 48 || charCode > 57)||(e.target.value.length >= max)) return false;
+      let max = 11;
+
+      if ((charCode < 48 || charCode > 57) || (e.target.value.length >= max)) return false;
     }
   }
 
-  buscarCep(cep){
+  buscarCep(cep) {
     console.log("Evento do botão funcionando");
     console.log(cep);
-    this.viaCep.getEnderecoPorCep(cep).subscribe( (data) => {
+    this.viaCep.getEnderecoPorCep(cep).subscribe((data) => {
       console.log('res cep ' + data);
       this.objEnd = data;
     }
     )
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.detalhesForm);
     //Criação
-    if(this.isEdicao == false){
+    if (this.isEdicao == false) {
 
-      this.usuarioService.addUsuario(this.detalhesForm.value.usuario).subscribe( (adicionar)=>{
+      this.usuarioService.addUsuario(this.detalhesForm.value.usuario).subscribe((adicionar) => {
         console.log(adicionar);
-        this.router.navigate( [ '/usuarios' ]) ;
+        this.router.navigate(['/usuarios']);
       }
       );
-    }else{
-  
+    } else {
+
       this.usuarioService.updateUsuario(this.idRota, this.detalhesForm.value.usuario)
-      .subscribe( (reposta)=>{
-        console.log(reposta);
-        console.log(this.detalhesForm.value.usuario);
-        //redreciona apos atualizar para navigate indicada
-        this.router.navigate(['/usuarios'])
-      });
+        .subscribe((reposta) => {
+          console.log(reposta);
+          console.log(this.detalhesForm.value.usuario);
+          //redreciona apos atualizar para navigate indicada
+          this.router.navigate(['/usuarios'])
+        });
     }
-    }
-  
+  }
+
 
   //validar se os campos forem devidamente preenchidos 
-  isErrorCampo(nomeCampo){
-    return (!this.detalhesForm.get(nomeCampo).valid && this.detalhesForm.get(nomeCampo).touched ); 
+  isErrorCampo(nomeCampo) {
+    return (!this.detalhesForm.get(nomeCampo).valid && this.detalhesForm.get(nomeCampo).touched);
   }
 
 }
 
 
- 
-  
 
- 
+
+
+

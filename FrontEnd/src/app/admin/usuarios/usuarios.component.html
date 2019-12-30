@@ -3,8 +3,11 @@
 
     <form autocomplete="off" (ngSubmit)="pesquisar()">
 
+        
+
     <h2><small class="form-text text-muted negrito-padding text-center">Lista de Usuarios</small></h2>
 
+    
     <div class="row barraPesquisa">
             <div class="col-9 padding-0">
                 <input type="text" class="form-control" placeholder="Pesquise..." #pesquise placeholder="Search">
@@ -17,10 +20,14 @@
                 </select>
             </div>
 
+
             <div class="col-1 padding-0">
                 <button class="btn btn-sm btn-cheio" (click)="pesquisar(pesquisaPor, pesquise)"><img src="https://img.icons8.com/search" class="icon"></button>
             </div>
     </div>
+    <div class="divAdicionar">
+    <button class="btn btn-info btn-sm margin-right-5 adicionar" [routerLink]="['novo']" >Adicionar</button>
+</div>
 
     <table class="table text-center" *ngIf="pesquisado == undefined" [hidden]="isDelete == true || isShowMore">
         <thead>
