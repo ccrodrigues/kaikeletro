@@ -71,10 +71,22 @@ public class ApiApplication implements CommandLineRunner {
 		this.vendasProdutoUsuario();
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a79f689d79146968d3705c16917c9143a88b95e2
 		this.produtoCategoriaDemo();
 		this.produtoCategoriaDemo();
 		this.produtoCategoriaDemo();
 
+<<<<<<< HEAD
+=======
+		
+
+
+
+>>>>>>> a79f689d79146968d3705c16917c9143a88b95e2
 
 		this.produtoCategoriaDemo();
 		this.produtoCategoriaDemo();

@@ -6,13 +6,20 @@ import { ProdutoModel } from '../models/produto.model';
 import { Router } from '@angular/router';
 import { EnvService } from 'src/app/env.service';
 import { Usuario } from '../models/usuario.model';
+import { StorageService } from './storage.service';
+import { UsuarioService } from './usuario.service';
 
 @Injectable({
     providedIn: 'root'
   })
   export class CarrinhoService {
   
-    constructor(private router : Router,private http : HttpClient, private envService:EnvService) { }
+    constructor(
+      private router : Router,
+      private http : HttpClient,
+      private envService:EnvService,
+      private localStorage : StorageService,
+      private usuarioService : UsuarioService) { }
 
    private url : string = "http://localhost:8080/";
 
@@ -25,6 +32,21 @@ import { Usuario } from '../models/usuario.model';
 
    valorTotal:number;
    frete:number = 20;
+
+   criarOuLimparCarrinho() : ItemVendaModel[] {
+         let carrinho: ItemVendaModel[] = null;
+        this.localStorage
+        this.itensCarrinho = []
+          return carrinho;
+      }
+    
+      getCarrinho() : ItemVendaModel[] {
+          let cart: ItemVendaModel[] = this.localStorage.getCarrinho();
+          if (cart == null) {
+              cart = this.criarOuLimparCarrinho();
+          }
+          return cart;
+      }
 
    public exibirItens(): ItemVendaModel[]{
      return this.itensCarrinho
@@ -52,12 +74,14 @@ import { Usuario } from '../models/usuario.model';
         console.log(this.itensCarrinho)
         console.log(selectedOption)
         console.log(id)
+        this.localStorage.setCarrinho(this.itensCarrinho);
       
       }
 
   
    removeItem(idProduto){
     this.itensCarrinho.splice(this.itensCarrinho.findIndex(p=>p.produto.idProduto==idProduto),1);
+    this.localStorage.setCarrinho(this.itensCarrinho);
   }
 
   calculoCarrinho(){
@@ -87,9 +111,11 @@ import { Usuario } from '../models/usuario.model';
     }else{
       this.addProduto(produ)
     } 
+    this.localStorage.setCarrinho(this.itensCarrinho);
     }
 
     totalizarVenda(){
+       this.user.email = this.localStorage.getLocalUser().email
        // this.venda.usuario = this.user;
         this.venda.pagamento = "Aguardando";
         this.venda.status = "Aberta";
@@ -97,6 +123,7 @@ import { Usuario } from '../models/usuario.model';
         this.venda.valor = this.valorTotalFrete()
         this.venda.parcela = 10;
         this.venda.valorParcela = this.valorTotalFrete() / this.venda.parcela;
+        this.venda.usuario = this.user
     }
 
 
@@ -104,6 +131,11 @@ import { Usuario } from '../models/usuario.model';
         this.totalizarVenda();
         this.venda.item = this.itensCarrinho
         console.log("Venda: " + this.itensCarrinho)
-    }   
+        console.log("User: " + this.user.id)
+    }
+
+  
+    
+    
   }
   
