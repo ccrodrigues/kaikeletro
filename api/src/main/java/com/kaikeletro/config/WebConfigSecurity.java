@@ -31,7 +31,12 @@ import com.kaikeletro.services.CredentialDetailsServiceImpl;
 public class WebConfigSecurity extends WebSecurityConfigurerAdapter  {
 	
 	private static final String[] PUBLIC_ENDPOINTS = {
-			
+			"/v2/api-docs",
+            "/configuration/ui",
+            "/swagger-resources/**",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/webjars/**"
 	};
 
 	private static final String[] PUBLIC_ENDPOINTS_GET = {

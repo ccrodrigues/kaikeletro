@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.kaikeletro.services.PopulateDBService;
+import com.kaikeletro.services.SenderEmailService;
 
 
 
@@ -16,6 +17,9 @@ public class ApiApplication implements CommandLineRunner {
 
 	@Autowired
 	PopulateDBService populateDBService;
+	
+	@Autowired
+	SenderEmailService senderEmailService; 
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
@@ -27,6 +31,8 @@ public class ApiApplication implements CommandLineRunner {
 		populateDBService.produtoCategoriaDemo();
 		populateDBService.clienteDemo();
 		populateDBService.pedidoDemo();
+		
+		//senderEmailService.enviarEmailSimples("ffborelli@gmail.com");
 		
 	}
 
