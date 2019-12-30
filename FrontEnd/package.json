@@ -21,8 +21,12 @@
     "@angular/router": "~8.2.14",
     "@brunoc/ngx-viacep": "^2.1.2",
     "bootstrap": "^4.4.1",
+<<<<<<< HEAD
     "ng-multiselect-dropdown": "^0.2.10",
     "ngx-bootstrap": "^5.2.0",
+=======
+
+>>>>>>> DashboardPedidos
     "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^11.2.1",
     "rxjs": "~6.4.0",
