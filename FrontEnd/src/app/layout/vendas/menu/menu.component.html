@@ -10,7 +10,6 @@
       <div id="right" style="display: inline-flex;">
 
         <div class="box">
-       
           <i routerLink="dashboardAdm" style="font-size: 20px;" class="fas fa-lock cursor" title="Entrar como administrador" width="500px" height="500px" ></i>
         </div>
 
@@ -27,9 +26,8 @@
         </div>
 
         <div *ngIf="isAuth" class="box">
-          <i class="fas fa-sign-out-alt cursor" title="Sair" style="font-size: 20px;"></i>
+          <i (click)="sair()" class="fas fa-sign-out-alt cursor" title="Sair" style="font-size: 20px;"></i>
         </div>
-
       </div>
     </div>
   </div>

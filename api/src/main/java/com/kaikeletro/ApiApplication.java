@@ -66,10 +66,26 @@ public class ApiApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+		this.produtoCategoriaDemo();
+
+		this.vendasProdutoUsuario();
+
+
+
+
+		this.produtoCategoriaDemo();
+		this.produtoCategoriaDemo();
+		this.produtoCategoriaDemo();
+
+		
+
+
+
 
 		this.produtoCategoriaDemo();
 		this.produtoCategoriaDemo();
 		
+
 		Usuario u1 = new Usuario();
 		EnderecoUsuario end1 = new EnderecoUsuario();
 		
@@ -90,9 +106,14 @@ public class ApiApplication implements CommandLineRunner {
 		end1.setNumero("15A");
 		end1.setFk_Usuario(u1);
 		
+
+		//enderecoRepository.save(end1);
+
+
 		enderecoRepository.save(end1);
 	
 		//this.vendasProdutoUsuario();
+
 
 		//this.produtoCategoriaDemo();
 		//this.produtoCategoriaDemo();
@@ -200,8 +221,12 @@ public class ApiApplication implements CommandLineRunner {
 		itemRepository.save(item3);
 		itemRepository.save(item4);
 	}
+
 	
+
 	//Teste de Produtos e Categorias
+
+
 	private void produtoCategoriaDemo() {
 		Categoria c1 = new Categoria();
 		c1.setNome("Microcomputador");

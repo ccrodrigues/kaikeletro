@@ -7,6 +7,8 @@ import { EnvService } from 'src/app/env.service';
 import { LocalUserModel } from 'src/app/shared/models/auth/local-user.model';
 import { tokenAuth } from 'src/app/shared/models/auth/token-auth.model';
 import { StorageService } from 'src/app/shared/services/storage.service';
+import { CarrinhoService } from 'src/app/shared/Services/carrinho.service';
+import { Usuario } from 'src/app/shared/models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,7 @@ export class ServiceLoginService {
     , private http: HttpClient
     , private envService: EnvService
     , private storageService:StorageService
+    ,private carrinhoService : CarrinhoService
     ) {
 
   }
@@ -69,13 +72,7 @@ export class ServiceLoginService {
           )
           console.log(this.isAdmin);
         }
-
-
-        
-      });
-
-
-      
+      }); 
   }
 
   getIsAutenticado() {
@@ -89,9 +86,12 @@ export class ServiceLoginService {
   }
 
   Logout() {
+    let user : LocalUserModel
+    user = null
+    this.storageService.setLocalUser(user)
     this.isAutenticado = false;
-
-
+    this.isAdmin = false;
+    this.router.navigate(['']);
   }
   
 }
