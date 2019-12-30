@@ -9,11 +9,11 @@ import { ShowMoreComponent } from './produtos/lista/show-more/show-more.componen
 import { ListaComponent } from './produtos/lista/lista.component';
 import { DeletarProdutoComponent } from './produtos/lista/deletar-produto/deletar-produto.component';
 import { AdicionarComponent } from './produtos/adicionar/adicionar.component';
-import { PedidosComponent } from './pedidos/pedidos.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { UsuarioDetalhesComponent } from './usuarios/usuario-detalhes/usuario-detalhes.component';
-import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PedidosComponent } from './pedidos/pedidos.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -33,6 +33,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AdminRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule

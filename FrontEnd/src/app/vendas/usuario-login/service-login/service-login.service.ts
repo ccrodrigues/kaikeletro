@@ -27,6 +27,24 @@ export class ServiceLoginService {
   //verifica os campos email e senha na API e retorna se true ou false
   fazerLogin(login: { email: string, senha: string }) {
 
+
+    this.http.post<tokenAuth>(this.envService.urlAPI + `/autenticacao`, login).subscribe(
+      (cliente) => {
+        console.log("cliente ? ", cliente);
+        if (cliente) {
+          this.isAdmin = false;
+          this.isAutenticado = true;
+          let localUser: LocalUserModel = {
+            token: cliente,
+            email: login.email
+          }
+          console.log(localUser)
+          this.storageService.setLocalUser(localUser);
+          this.router.navigate(['']);
+          
+
+
+        } else {
           this.http.post(this.envService.urlAPI + `/administrador/login`, login).subscribe(
             (admin) => {
               if (admin == true) {
@@ -34,23 +52,7 @@ export class ServiceLoginService {
                 this.isAutenticado = true;
                 this.router.navigate(['']);
           
-         } else {
-          this.http.post<tokenAuth>(this.envService.urlAPI + `/autenticacao`, login).subscribe(
-            (cliente) => {
-              console.log("cliente ? ", cliente);
-              if (cliente) {
-                this.isAdmin = false;
-                this.isAutenticado = true;
-                let localUser: LocalUserModel = {
-                  token: cliente,
-                  email: login.email
-                }
-                console.log(localUser)
-                this.storageService.setLocalUser(localUser);
-                this.router.navigate(['']);
-          
-                
-
+         
               } else {
                 this.router.navigate(['login']),
                 this.isAdmin = false;

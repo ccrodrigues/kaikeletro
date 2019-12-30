@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-produtos',
@@ -9,7 +9,7 @@ export class DSProdutosComponent implements OnInit {
 
   constructor() { }
 
-  isLista : boolean = true;
+  @Input() isLista : boolean = true;
  
   ngOnInit() {
   }
@@ -18,5 +18,9 @@ export class DSProdutosComponent implements OnInit {
   esconder(boo) {
     console.log()
     this.isLista = boo;
+  }
+
+  adicionou() {
+    this.isLista = true;
   }
 }

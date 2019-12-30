@@ -7,3 +7,94 @@
 textarea {
     resize: none;
 }
+
+.margin-top {
+    margin-top: 5px;
+}
+
+.linkCategoria {
+    cursor: pointer;
+}
+.linkCategoria:hover {
+    color: black;
+}
+
+.box {
+    border: 1px solid #c5c5c5;
+    padding-top: 24px;
+    padding: 10px;
+    padding-bottom: 0px;
+    height: 170px;   
+    margin: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px; 
+    overflow-y: auto;
+}
+
+.box > div {
+    display: inline-block;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.15);
+    color: #474747;
+    padding: 2px 10px 4px;
+    margin: 0px 5px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.box > div:hover {
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.4);
+}
+
+.selecionado {
+    background-color: #474747;
+    color: #fff!important;
+    position: relative;
+}
+.imagem_principal > label {
+    border: 1px solid #cfcfcf;
+    width: 100%;
+    height: 200px;
+    width: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0px auto;
+}
+.imagem_principal > input{
+    display: none;
+}
+.imagem_principal > label > img{
+    max-width: 200px;
+    max-height: 195px;
+}
+.images > input{
+    display: none;
+}
+
+.myBtnClose {
+    position: absolute;
+    right: 5px;
+    top: -5px;
+    padding: 3px 10px 5px;
+}
+
+.linkFake {
+    cursor: pointer;
+    color: rgb(128, 128, 128);
+}
+
+.linkFake:hover {
+    color: black;
+}
+
+.hide  {
+    display: none;
+}
+
+.addCat {
+    margin-bottom: 15px;
+}
+
+.error {
+    color: rgb(197, 56, 56);
+}

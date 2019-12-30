@@ -39,7 +39,7 @@ public class ProdutoController {
 		
 		if (obj.isPresent() == false) {
 			throw new TratamentoDeErros(id, new Produto());
-		}
+		} 
 		
 		return ResponseEntity.ok().body(obj);
 	}
@@ -80,18 +80,21 @@ public class ProdutoController {
 	}
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public ResponseEntity<Produto> createProduto(@RequestBody @Valid Produto prod){
+	public ResponseEntity<Produto> createProduto(@RequestBody Produto prod){
+		System.out.println(prod);
+		
+		
 		return ResponseEntity.ok().body(produtoService.createProduto(prod));
 	}
 	
-	@RequestMapping(value="/{id]", method=RequestMethod.PATCH)
+	@RequestMapping(value="/{id}", method=RequestMethod.PATCH)
 	public ResponseEntity<Produto> editProduto(@RequestBody Produto prod, @PathVariable("id") int id){
 		return ResponseEntity.ok().body(produtoService.editProduto(id, prod));
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-	public ResponseEntity<Boolean> deleteProduto(@PathVariable("id") int id){
-		return ResponseEntity.ok().body(produtoService.deleteProduto(id));
+	public void  deleteProduto(@PathVariable("id") int id){
+		produtoService.deleteProduto(id);
 	}
 	
 	//Paginação, podendo passar a categoria como parametro p/ listar os produtos que pertencem a ela
@@ -113,6 +116,12 @@ public class ProdutoController {
 		
 		return ResponseEntity.ok().body(pageDto);
 	}
-
+	
+	//Pegando uma lista de ProdutosDto
+	//Criada para retornar dados objetivos
+//	@RequestMapping(value="/produtosDto" , method=RequestMethod.GET)
+//	public ResponseEntity< List<ProdutoDto>> getAllProdutoDto() {
+//		return ResponseEntity.ok().body( produtoService.getAllProdutoDto() );
+//	}
 }
  
