@@ -37,7 +37,6 @@ export class ServiceLoginService {
             token: cliente,
             email: login.email
           }
-          console.log(localUser)
           this.storageService.setLocalUser(localUser);
           this.router.navigate(['']);
           

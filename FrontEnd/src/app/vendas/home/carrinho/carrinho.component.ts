@@ -22,7 +22,7 @@ export class CarrinhoComponent implements OnInit {
     console.log("Itens: " + this.carrinhoService.exibirItens())
     }
 
-
+    
     changeSuit(selectedOption : number, id) : void {
 
       this.carrinhoService.alterarQuantidade(selectedOption,id)
