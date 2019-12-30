@@ -81,6 +81,7 @@ export class AuthService {
     return this.isAuth;
   }
 
+  /** pegar um novo token válido com data de expiração válida  */
   refreshToken() {
     return this.http.post<AuthToken>(`${this.envService.urlAPI}/token/refresh`, {})
       .subscribe(

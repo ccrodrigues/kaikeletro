@@ -23,7 +23,7 @@ import { CustomErrorHandlerService } from './shared/services/error/custom-error-
 
 
 export function tokenGetter() {
-  return localStorage.getItem("localUser");
+  return localStorage.getItem("localUser.token");
 }
 
 @NgModule({
@@ -50,6 +50,7 @@ export function tokenGetter() {
     VendasModule,
     LayoutModule,
 
+    /**Importar auth0/angular-jwt    no app.module */
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

@@ -23,6 +23,8 @@ import com.kaikeletro.dto.ClienteDTO;
 import com.kaikeletro.dto.ClienteNewDTO;
 import com.kaikeletro.services.ClienteService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value="/clientes")
 public class ClienteResource {
@@ -65,6 +67,12 @@ public class ClienteResource {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	@ApiOperation(httpMethod = "GET", 
+			   value = "Resource to get a user", 
+			   response = Cliente.class,
+			   responseContainer = "List"
+			   )
 	
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.GET)

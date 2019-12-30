@@ -33,7 +33,9 @@ export class AuthInterceptorService implements HttpInterceptor {
 
       let tokenStr = 'Bearer ' + localUser.token;
 
+      /**Decodificando o token e extraindo os parâmetros do payload*/
       const decodedToken = helper.decodeToken(localUser.token);
+
       const expirationDate = helper.getTokenExpirationDate(localUser.token);
       const isExpired = helper.isTokenExpired(localUser.token);
 

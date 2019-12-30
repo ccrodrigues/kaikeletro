@@ -27,11 +27,11 @@ public class SenderEmailService  {
 	
 	
 	public void sendConfirmacaoPedidoEmail(Pedido obj) {
-		SimpleMailMessage sm = criarEmailParaPedido(obj);
+		SimpleMailMessage sm = criarEmailConfirmacaodePedido(obj);
 		sendEmail(sm);
 	}
 
-	public SimpleMailMessage criarEmailParaPedido(Pedido obj) {
+	public SimpleMailMessage criarEmailConfirmacaodePedido(Pedido obj) {
 		SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setTo(obj.getCliente().getEmail());
 		sm.setFrom(sender);

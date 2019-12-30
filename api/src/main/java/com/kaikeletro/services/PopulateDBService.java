@@ -3,6 +3,7 @@ package com.kaikeletro.services;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,30 +72,6 @@ public class PopulateDBService {
 
 	// Teste de Produtos e Categorias
 	public void produtoCategoriaDemo() {
-		/*
-		 * Categoria cat1 = new Categoria(null,"notebook"); Categoria cat2 = new
-		 * Categoria(null,"celular"); Categoria cat3 = new
-		 * Categoria(null,"informatica"); Categoria cat4 = new Categoria(null,"tv");
-		 * Categoria cat5 = new Categoria(null,"eletrodomestico");
-		 * 
-		 * ImagemProduto a1 = new ImagemProduto(); a1.setImagemProduto(
-		 * "https://www.saldaodainformatica.com.br/5712-thickbox_default/notebook-lenovo-ideapad-320-80yh0006br-prata-intel-core-i5-7200u-ram-8gb-hd-1tb-tela-156-windows-10.jpg"
-		 * ); a1.setDescricaoImagem("Notebook Lenovo"); a1.setNomeImagem("note");
-		 * 
-		 * Produto prod1 = new Produto(null,"Notebook 1", 6000.00);
-		 * 
-		 * Produto prod2 = new Produto(null,"Celular 2", 1000.00);
-		 * 
-		 * Produto prod3 = new Produto(null,"Geladeira 3", 3000.00);
-		 * 
-		 * cat1.getProdutos().addAll(Arrays.asList(prod1));
-		 * cat3.getProdutos().addAll(Arrays.asList(prod1,prod2));
-		 * cat5.getProdutos().addAll(Arrays.asList(prod3));
-		 * 
-		 * imagemRepository.saveAll(Arrays.asList(a1));
-		 * categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5));
-		 * produtoRepository.saveAll(Arrays.asList(prod1,prod2,prod3));
-		 */
 
 		Categoria cat1 = new Categoria(null, "Informática");
 		Categoria cat2 = new Categoria(null, "Escritório");		
@@ -222,9 +199,14 @@ public class PopulateDBService {
 		
 		Pagamento pagto1 = new Pagamento(null, EstadoPagamento.QUITADO, ped1);
 		ped1.setPagamento(pagto1);
+		pagto1.setCliente(cli1);
+		pagto1.setDataVencimento(new Date());
+		pagto1.setDataPagamento(new Date());
 		
+		Cliente cli2 = clienteRepository.findById(2).get();
 		Pagamento pagto2 = new Pagamento(null, EstadoPagamento.PENDENTE, ped2);
 		ped2.setPagamento(pagto2);
+		pagto2.setCliente(cli2);
 		
 		cli1.getPedidos().addAll(Arrays.asList(ped1, ped2));
 		

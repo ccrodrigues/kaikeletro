@@ -98,6 +98,18 @@ public class Pagamento implements Serializable {
 
 	public void setNumeroDeParcelas(Integer numeroDeParcelas) {
 		this.numeroDeParcelas = numeroDeParcelas;
+	}	
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public void setEstado(Integer estado) {
+		this.estado = estado;
 	}
 
 	@Override
