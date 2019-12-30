@@ -61,24 +61,16 @@ public class ApiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		this.produtoCategoriaDemo();
+		this.vendasProdutoUsuario();
 
-		this.produtoCategoriaDemo();
-<<<<<<< HEAD
-
-		this.produtoCategoriaDemo();
-		this.produtoCategoriaDemo();
-		this.produtoCategoriaDemo();
-=======
-		
 		Usuario u1 = new Usuario();
 		EnderecoUsuario end1 = new EnderecoUsuario();
 		
 		u1.setCelular("1148748-8743");
-<<<<<<< HEAD
+
 		u1.setCpf("12345678689");
-=======
-		u1.setCpf("1234567869");
->>>>>>> DashboardPedidos
+
 		u1.setDataDeNascimento("30/01/1998");
 		u1.setEmail("a@a.com");
 		u1.setNome("Usuario 01");
@@ -94,17 +86,8 @@ public class ApiApplication implements CommandLineRunner {
 		end1.setNumero("15A");
 		end1.setFk_Usuario(u1);
 		
-		enderecoRepository.save(end1);
-	
+		//enderecoRepository.save(end1);
 		//this.vendasProdutoUsuario();
-
-		//this.produtoCategoriaDemo();
-		//this.produtoCategoriaDemo();
-		//this.produtoCategoriaDemo();
->>>>>>> 197f5c863e55846ef9232aeb1eabd5123487e8c0
-		this.produtoCategoriaDemo();
-		this.vendasProdutoUsuario();
-
 	}
 	
 	//Teste de incluir Vendas com produtos e usuários
@@ -123,7 +106,6 @@ public class ApiApplication implements CommandLineRunner {
 		Item_Venda item4 = new Item_Venda();
 		ArrayList<Item_Venda>itemArray = new ArrayList();
 		ArrayList<Item_Venda>itemArray2 = new ArrayList();
-		
 		
 		//Atributos categoria
 		c1.setNome("Eletronicos");
@@ -161,7 +143,6 @@ public class ApiApplication implements CommandLineRunner {
 		v1.setStatus(StatusVendas.Concluida);
 		v1.setTotalItens(10);
 		v1.setPagamento(StatusPagamento.Aguardando);
-
 
 		//v1.setTotalProdutos(Arrays.asList(p1));
 
@@ -206,12 +187,7 @@ public class ApiApplication implements CommandLineRunner {
 		itemRepository.save(item4);
 	}
 
-<<<<<<< HEAD
-	// Teste de Produtos e Categorias
-=======
-	
 	//Teste de Produtos e Categorias
->>>>>>> 197f5c863e55846ef9232aeb1eabd5123487e8c0
 	private void produtoCategoriaDemo() {
 		Categoria c1 = new Categoria();
 		c1.setNome("Microcomputador");
@@ -231,18 +207,6 @@ public class ApiApplication implements CommandLineRunner {
 		categoriaRepository.saveAll(Arrays.asList(c1));
 		imagemRepository.saveAll(Arrays.asList(a1));
 		produtoRepository.saveAll(Arrays.asList(p1));
-
-	
-	Produto p1 = new Produto();
-	p1.setNome("Notebook");
-	p1.setDescricao("Notebook Lenovo E490 - Core I7");
-	p1.setPreco(6000);
-	p1.setCategorias(Arrays.asList(c1));
-	p1.setImagens(Arrays.asList(a1));
-	
-	categoriaRepository.saveAll(Arrays.asList(c1));
-	imagemRepository.saveAll(Arrays.asList(a1));
-	produtoRepository.saveAll(Arrays.asList(p1));
 	
 	for (int i =3 ; i < 40 ; i++) {
 		Produto prod = new Produto();

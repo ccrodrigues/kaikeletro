@@ -32,7 +32,7 @@ public class UsuarioService implements Serializable{
 	private UsuarioRepository userRepo;
 	
 	@Autowired
-	private EnderecoUsuarioRepository endRepo;
+	EnderecoUsuarioRepository endRepo;
 
 	public List<Usuario> getAll() {
 		List<Usuario> usuario = userRepo.findAll();
