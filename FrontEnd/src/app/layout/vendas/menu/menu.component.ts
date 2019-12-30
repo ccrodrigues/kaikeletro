@@ -51,6 +51,8 @@ export class MenuComponent implements OnInit {
   sair(){
     this.loginService.Logout()
     this.isAuth = false;
+    this.isDashboard = false;
+    console.log(this.isDashboard)
   }
 
 

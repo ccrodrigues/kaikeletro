@@ -73,13 +73,7 @@ export class ServiceLoginService {
           )
           console.log(this.isAdmin);
         }
-
-
-        
-      });
-
-
-      
+      }); 
   }
 
   getIsAutenticado() {
@@ -97,8 +91,8 @@ export class ServiceLoginService {
     user = null
     this.storageService.setLocalUser(user)
     this.isAutenticado = false;
-
-
+    this.isAdmin = false;
+    this.router.navigate(['']);
   }
   
 }
