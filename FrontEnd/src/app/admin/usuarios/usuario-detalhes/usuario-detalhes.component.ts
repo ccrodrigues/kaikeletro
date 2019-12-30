@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Validacoes } from 'src/app/shared/validacoes';
 import { Endereco } from 'src/app/shared/models/endereco.model';
-import { AuthServiceService } from 'src/app/shared/Services/auth-service.service';
+import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
 import { Usuario } from 'src/app/shared/models/usuario.model';
