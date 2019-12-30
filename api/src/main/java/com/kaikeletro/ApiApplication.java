@@ -25,6 +25,7 @@ import com.kaikeletro.repositories.ItemVendaRepository;
 import com.kaikeletro.repositories.ProdutoRepository;
 import com.kaikeletro.repositories.UsuarioRepository;
 import com.kaikeletro.repositories.VendasRepository;
+import com.kaikeletro.services.PopularBancoService;
 
 @SpringBootApplication
 public class ApiApplication implements CommandLineRunner {
@@ -52,6 +53,9 @@ public class ApiApplication implements CommandLineRunner {
 
 	@Autowired
 	ItemVendaRepository itemRepository;
+	
+	@Autowired
+	PopularBancoService popularBanco;
 
 
 	public static void main(String[] args) {
@@ -61,6 +65,7 @@ public class ApiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+
 		this.produtoCategoriaDemo();
 
 		this.vendasProdutoUsuario();
@@ -74,13 +79,18 @@ public class ApiApplication implements CommandLineRunner {
 
 		
 
+
+
+
+		this.produtoCategoriaDemo();
+		this.produtoCategoriaDemo();
+		
+
 		Usuario u1 = new Usuario();
 		EnderecoUsuario end1 = new EnderecoUsuario();
 		
 		u1.setCelular("1148748-8743");
-
-		u1.setCpf("12345678689");
-
+		u1.setCpf("1234567869");
 		u1.setDataDeNascimento("30/01/1998");
 		u1.setEmail("a@a.com");
 		u1.setNome("Usuario 01");
@@ -96,7 +106,13 @@ public class ApiApplication implements CommandLineRunner {
 		end1.setNumero("15A");
 		end1.setFk_Usuario(u1);
 		
+
 		//enderecoRepository.save(end1);
+
+
+		enderecoRepository.save(end1);
+	
+		//this.vendasProdutoUsuario();
 
 
 		//this.produtoCategoriaDemo();
@@ -123,6 +139,7 @@ public class ApiApplication implements CommandLineRunner {
 		Item_Venda item4 = new Item_Venda();
 		ArrayList<Item_Venda>itemArray = new ArrayList();
 		ArrayList<Item_Venda>itemArray2 = new ArrayList();
+		
 		
 		//Atributos categoria
 		c1.setNome("Eletronicos");
@@ -160,6 +177,7 @@ public class ApiApplication implements CommandLineRunner {
 		v1.setStatus(StatusVendas.Concluida);
 		v1.setTotalItens(10);
 		v1.setPagamento(StatusPagamento.Aguardando);
+
 
 		//v1.setTotalProdutos(Arrays.asList(p1));
 
@@ -204,6 +222,7 @@ public class ApiApplication implements CommandLineRunner {
 		itemRepository.save(item4);
 	}
 
+	
 
 	//Teste de Produtos e Categorias
 
@@ -229,20 +248,20 @@ public class ApiApplication implements CommandLineRunner {
 		produtoRepository.saveAll(Arrays.asList(p1));
 
 	
-	for (int i =3 ; i < 40 ; i++) {
-		Produto prod = new Produto();
-		prod.setNome("Notebook " + i);
-		prod.setDescricao("Notebook Kaik i171");
-		prod.setCategorias(Arrays.asList(c1));
-		prod.setDescricao("Notebook Kaik i17i");
-		prod.setPreco(1000);
-
-		prod.setImagens(Arrays.asList(a1));
-		prod.setPreco(5000);
-		imagemRepository.saveAll(Arrays.asList(a1));
-		produtoRepository.saveAll(Arrays.asList(prod));
-		produtoRepository.save(prod);
+		for (int i =3 ; i < 40 ; i++) {
+			Produto prod = new Produto();
+			prod.setNome("Notebook " + i);
+			prod.setDescricao("Notebook Kaik i171");
+			prod.setCategorias(Arrays.asList(c1));
+			prod.setDescricao("Notebook Kaik i17i");
+			prod.setPreco(1000);
+	
+			prod.setImagens(Arrays.asList(a1));
+			prod.setPreco(5000);
+			imagemRepository.saveAll(Arrays.asList(a1));
+			produtoRepository.saveAll(Arrays.asList(prod));
+			produtoRepository.save(prod);
+		}
 	}
-}
 }
 
