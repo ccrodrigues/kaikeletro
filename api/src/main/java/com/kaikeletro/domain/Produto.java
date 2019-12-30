@@ -3,7 +3,6 @@ package com.kaikeletro.domain;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -59,6 +58,11 @@ public class Produto implements Serializable {
 
 	public Produto() {
 		
+	}
+
+	public Produto(String nome, double preco) {
+		this.nome = nome;
+		this.preco = preco;
 	}
 
 	public Produto(int idProduto, String nome, double preco, String descricao, List<Categoria> categorias,

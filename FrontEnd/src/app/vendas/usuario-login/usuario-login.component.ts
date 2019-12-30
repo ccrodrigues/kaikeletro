@@ -25,8 +25,6 @@ export class UsuarioLoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group( { 
       email : [ '',[Validators.required]  ], 
       senha : [ '' , [Validators.required] ] 
-      
-
     });
   }
   onSubmit(){

@@ -18,22 +18,22 @@ export class ProdutosService {
   getAll() {
     //fazendo a requisição
 
-    return this.http.get(this.envService.urlAPI+"produtos");
+    return this.http.get(this.envService.urlAPI+"/produtos");
   }
 
   delete(id) {
-    console.log(this.url + id)
-    return this.http.delete(this.url + id);
+    console.log(this.envService.urlAPI + id)
+    return this.http.delete(this.envService.urlAPI + id);
     // return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "produtos");
   }
 
   getProdutoDto(){
-    return this.http.get(`${this.envService.urlAPI}produtos/carrinho`)
+    return this.http.get(`${this.envService.urlAPI}/produtos/carrinho`)
   }
 
   //Busca de ProdutoDTO por id
   getProdutoDtoId(id){
-    return this.http.get<ProdutoDtoModel>(`${this.envService.urlAPI}produtos/carrinho/${id}`)
+    return this.http.get<ProdutoDtoModel>(`${this.envService.urlAPI}/produtos/carrinho/${id}`)
   }
 
   //pegando o produto filtrando por id

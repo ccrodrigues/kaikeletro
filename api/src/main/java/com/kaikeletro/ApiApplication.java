@@ -25,6 +25,7 @@ import com.kaikeletro.repositories.ItemVendaRepository;
 import com.kaikeletro.repositories.ProdutoRepository;
 import com.kaikeletro.repositories.UsuarioRepository;
 import com.kaikeletro.repositories.VendasRepository;
+import com.kaikeletro.services.PopularBancoService;
 
 @SpringBootApplication
 public class ApiApplication implements CommandLineRunner {
@@ -52,6 +53,9 @@ public class ApiApplication implements CommandLineRunner {
 
 	@Autowired
 	ItemVendaRepository itemRepository;
+	
+	@Autowired
+	PopularBancoService popularBanco;
 
 
 	public static void main(String[] args) {
@@ -61,16 +65,26 @@ public class ApiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+
 		this.produtoCategoriaDemo();
+
 		this.vendasProdutoUsuario();
+
+
+		this.produtoCategoriaDemo();
+		this.produtoCategoriaDemo();
+		this.produtoCategoriaDemo();
+
+
+		this.produtoCategoriaDemo();
+		this.produtoCategoriaDemo();
+		
 
 		Usuario u1 = new Usuario();
 		EnderecoUsuario end1 = new EnderecoUsuario();
 		
 		u1.setCelular("1148748-8743");
-
-		u1.setCpf("12345678689");
-
+		u1.setCpf("1234567869");
 		u1.setDataDeNascimento("30/01/1998");
 		u1.setEmail("a@a.com");
 		u1.setNome("Usuario 01");
@@ -86,8 +100,21 @@ public class ApiApplication implements CommandLineRunner {
 		end1.setNumero("15A");
 		end1.setFk_Usuario(u1);
 		
+
 		//enderecoRepository.save(end1);
+
+
+		enderecoRepository.save(end1);
+	
 		//this.vendasProdutoUsuario();
+
+
+		//this.produtoCategoriaDemo();
+		//this.produtoCategoriaDemo();
+		//this.produtoCategoriaDemo();
+		this.produtoCategoriaDemo();
+		this.vendasProdutoUsuario();
+
 	}
 	
 	//Teste de incluir Vendas com produtos e usuários
@@ -106,6 +133,7 @@ public class ApiApplication implements CommandLineRunner {
 		Item_Venda item4 = new Item_Venda();
 		ArrayList<Item_Venda>itemArray = new ArrayList();
 		ArrayList<Item_Venda>itemArray2 = new ArrayList();
+		
 		
 		//Atributos categoria
 		c1.setNome("Eletronicos");
@@ -143,6 +171,7 @@ public class ApiApplication implements CommandLineRunner {
 		v1.setStatus(StatusVendas.Concluida);
 		v1.setTotalItens(10);
 		v1.setPagamento(StatusPagamento.Aguardando);
+
 
 		//v1.setTotalProdutos(Arrays.asList(p1));
 
@@ -187,9 +216,12 @@ public class ApiApplication implements CommandLineRunner {
 		itemRepository.save(item4);
 	}
 
+	
+
 	//Teste de Produtos e Categorias
+
+
 	private void produtoCategoriaDemo() {
-<<<<<<< HEAD
 		Categoria c1 = new Categoria();
 		c1.setNome("Microcomputador");
 
@@ -208,41 +240,22 @@ public class ApiApplication implements CommandLineRunner {
 		categoriaRepository.saveAll(Arrays.asList(c1));
 		imagemRepository.saveAll(Arrays.asList(a1));
 		produtoRepository.saveAll(Arrays.asList(p1));
-=======
-	Categoria c1 = new Categoria();
-	c1.setNome("Microcomputador");
-		
-	ImagemProd a1 = new ImagemProd();
-	a1.setImagemProduto("https://www.saldaodainformatica.com.br/5712-thickbox_default/notebook-lenovo-ideapad-320-80yh0006br-prata-intel-core-i5-7200u-ram-8gb-hd-1tb-tela-156-windows-10.jpg");
-	a1.setDescricaoImagem("NoteBook Lenovo");
-	a1.setNomeImagem("note");
-	
-	Produto p1 = new Produto();
-	p1.setNome("Notebook");
-	p1.setDescricao("Notebook Lenovo E490 - Core I7");
-	p1.setPreco(6000);
-	p1.setCategorias(Arrays.asList(c1));
-	p1.setImagens(Arrays.asList(a1));
-	
-	categoriaRepository.saveAll(Arrays.asList(c1));
-	imagemRepository.saveAll(Arrays.asList(a1));
-	produtoRepository.saveAll(Arrays.asList(p1));
->>>>>>> integracoesProdDetalhes
-	
-	for (int i =3 ; i < 40 ; i++) {
-		Produto prod = new Produto();
-		prod.setNome("Notebook " + i);
-		prod.setDescricao("Notebook Kaik i171");
-		prod.setCategorias(Arrays.asList(c1));
-		prod.setDescricao("Notebook Kaik i17i");
-		prod.setPreco(1000);
 
-		prod.setImagens(Arrays.asList(a1));
-		prod.setPreco(5000);
-		imagemRepository.saveAll(Arrays.asList(a1));
-		produtoRepository.saveAll(Arrays.asList(prod));
-		produtoRepository.save(prod);
+	
+		for (int i =3 ; i < 40 ; i++) {
+			Produto prod = new Produto();
+			prod.setNome("Notebook " + i);
+			prod.setDescricao("Notebook Kaik i171");
+			prod.setCategorias(Arrays.asList(c1));
+			prod.setDescricao("Notebook Kaik i17i");
+			prod.setPreco(1000);
+	
+			prod.setImagens(Arrays.asList(a1));
+			prod.setPreco(5000);
+			imagemRepository.saveAll(Arrays.asList(a1));
+			produtoRepository.saveAll(Arrays.asList(prod));
+			produtoRepository.save(prod);
+		}
 	}
-}
 }
 
