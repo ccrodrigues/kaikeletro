@@ -22,3 +22,6 @@ public interface ProdutoRepository extends JpaRepository <Produto, Integer>{
 	//"SELECT DISTINCT obj FROM Produto obj INNER JOIN obj.categorias cat WHERE obj.nome LIKE %:nomeCategoria%"
 	Page<Produto> findDistinctByCategoriasNomeContaining(@Param("nomeCategoria")String nomeCategoria, Pageable pageRequest);
 }
+
+
+

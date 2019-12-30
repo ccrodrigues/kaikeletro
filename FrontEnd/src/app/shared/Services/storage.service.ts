@@ -3,6 +3,7 @@ import { EnvService } from 'src/app/env.service';
 import { LocalUserModel } from '../models/auth/local-user.model';
 import { Carrinho } from '../models/carrinho.model';
 import { BehaviorSubject } from 'rxjs';
+import { ItemVendaModel } from '../models/item-venda.model';
 
 @Injectable({
     providedIn: 'root'
@@ -37,26 +38,19 @@ export class StorageService implements OnInit,OnDestroy {
         else {
             localStorage.setItem(this.envService.storageKeysConfig.localUser, JSON.stringify(obj));
         }
+getCarrinho() : ItemVendaModel[] {
+    let str = localStorage.getItem(this.envService.storageKeysConfig.carrinho);
+    if (str != null) {
+        return JSON.parse(str);
     }
 
-    getCarrinho(): Carrinho {
-        let str = localStorage.getItem(this.envService.storageKeysConfig.carrinho);
-        if (str != null) {
-            return JSON.parse(str);
-        }
-        else {
-            return null;
-        }
-    }
 
-    setCarrinho(obj: Carrinho) {
-        if (obj != null) {
-            localStorage.setItem(this.envService.storageKeysConfig.carrinho, JSON.stringify(obj));
-            this.teste.next(this.envService.storageKeysConfig.localUser);
-        }
-        else {
-            localStorage.removeItem(this.envService.storageKeysConfig.carrinho);
-        }
+setCarrinho(obj : ItemVendaModel[]) {
+    if (obj != null) {
+        localStorage.setItem(this.envService.storageKeysConfig.carrinho, JSON.stringify(obj));
+    } 
+    else {
+        localStorage.removeItem(this.envService.storageKeysConfig.carrinho);
     }
 
 

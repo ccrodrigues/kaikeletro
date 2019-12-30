@@ -62,7 +62,17 @@ public class ApiApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		this.produtoCategoriaDemo();
+
 		this.vendasProdutoUsuario();
+
+
+
+
+		this.produtoCategoriaDemo();
+		this.produtoCategoriaDemo();
+		this.produtoCategoriaDemo();
+
+		
 
 		Usuario u1 = new Usuario();
 		EnderecoUsuario end1 = new EnderecoUsuario();
@@ -87,7 +97,14 @@ public class ApiApplication implements CommandLineRunner {
 		end1.setFk_Usuario(u1);
 		
 		//enderecoRepository.save(end1);
-		//this.vendasProdutoUsuario();
+
+
+		//this.produtoCategoriaDemo();
+		//this.produtoCategoriaDemo();
+		//this.produtoCategoriaDemo();
+		this.produtoCategoriaDemo();
+		this.vendasProdutoUsuario();
+
 	}
 	
 	//Teste de incluir Vendas com produtos e usuários
@@ -187,7 +204,10 @@ public class ApiApplication implements CommandLineRunner {
 		itemRepository.save(item4);
 	}
 
+
 	//Teste de Produtos e Categorias
+
+
 	private void produtoCategoriaDemo() {
 		Categoria c1 = new Categoria();
 		c1.setNome("Microcomputador");
@@ -207,6 +227,7 @@ public class ApiApplication implements CommandLineRunner {
 		categoriaRepository.saveAll(Arrays.asList(c1));
 		imagemRepository.saveAll(Arrays.asList(a1));
 		produtoRepository.saveAll(Arrays.asList(p1));
+
 	
 	for (int i =3 ; i < 40 ; i++) {
 		Produto prod = new Produto();
