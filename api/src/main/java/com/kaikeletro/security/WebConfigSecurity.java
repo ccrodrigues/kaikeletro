@@ -51,7 +51,11 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter  {
 //                .permitAll()
 //                .antMatchers(HttpMethod.POST, "/usuarios")                
 //                .permitAll()
+<<<<<<< HEAD
                 //.anyRequest().authenticated()
+=======
+               // .anyRequest().authenticated()
+>>>>>>> integracoesProdDetalhes
                 .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(unauthorizedHandler)

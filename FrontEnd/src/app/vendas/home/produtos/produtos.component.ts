@@ -5,6 +5,7 @@ import { ImagenModel } from 'src/app/shared/models/imagen.model';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CategoriaModel } from 'src/app/shared/models/categoria.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-produtos',
@@ -22,14 +23,21 @@ export class ProdutosComponent implements OnInit {
 
   constructor(
     private carrinhoService : CarrinhoService, 
-    private dialogService   : DialogService) { }
+    private dialogService   : DialogService,
+    private route: Router) { }
   
   ngOnInit() {
     console.log("itens : " + this.carrinhoService.exibirItens())
   }
+  navigateDetalhes(){
+    console.log("detalhes"); 
+    console.log(this.id)
+    this.route.navigate([`/detalhes`, this.id])
+  }
 
   adcionarCarrinho(){
-    
+    console.log("adcCarrinho")
+
     let produto : ProdutoModel = new ProdutoModel();
     let img : ImagenModel = new ImagenModel();
     let cate : CategoriaModel = new CategoriaModel();

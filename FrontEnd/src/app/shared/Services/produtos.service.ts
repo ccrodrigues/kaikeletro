@@ -13,14 +13,12 @@ export class ProdutosService {
   
   // Chamando o HttpCliente e injetando o envService que é responsavel por pegar a url Da Api
   constructor(private http : HttpClient,private envService:EnvService) { }
-
-  // Url da API
-  url : string = "http://localhost:8080/produtos"
-
+  
   // Pegando todos os produto
   getAll() {
     //fazendo a requisição
-    return this.http.get(this.url);
+
+    return this.http.get(this.envService.urlAPI+"produtos");
   }
 
   delete(id) {
@@ -40,7 +38,7 @@ export class ProdutosService {
 
   //pegando o produto filtrando por id
   getById(id){
-    return this.http.get<ProdutoModel>(this.envService.urlAPI+ "produtos"+"/"+id);
+    return this.http.get<ProdutoModel>(this.envService.urlAPI+ "/produtos"+"/"+id);
   }
   //adcionando o produto ao banco
   saveProduto(produto){
@@ -56,7 +54,7 @@ export class ProdutosService {
   }
   //recebendo os produtos por paginacao
   getProdutoPage(pagina,qtdLinhas,direcao,campo){
-    return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "produtos"
+    return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "/produtos"
     +`pagina=${pagina}&qtdLinhas=${qtdLinhas}&direcao=${direcao}&campo=${campo}`)
   }
 }
