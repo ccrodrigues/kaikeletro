@@ -14,7 +14,6 @@ import { VendasModule } from './vendas/vendas.module';
 import { LayoutModule } from './layout/layout.module';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CommonModule } from '@angular/common';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CarrinhoService } from './shared/Services/carrinho.service';
 import { ProdutosComponent } from './vendas/home/produtos/produtos.component';
 import { HomeComponent } from './vendas/home/home.component';
@@ -41,7 +40,7 @@ import { Toast, ToastrService, ToastrModule } from 'ngx-toastr';
     BsDropdownModule.forRoot(),
     VendasModule,
     LayoutModule,
-    NgMultiSelectDropDownModule.forRoot()
+
   ],
   providers: [CarrinhoService],
   bootstrap: [AppComponent]
