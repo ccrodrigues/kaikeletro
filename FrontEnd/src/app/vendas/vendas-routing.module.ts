@@ -6,6 +6,8 @@ import { TelaRegistroComponent } from './tela-registro/tela-registro.component';
 import { ProdutosDetalhesComponent } from './home/produtos-detalhes/produtos-detalhes.component';
 import { PaginacaoComponent } from './home/paginacao/paginacao.component';
 import { CarrinhoComponent } from './home/carrinho/carrinho.component';
+import { ConfirmacaoEnderecoComponent} from './confirmacao-endereco/confirmacao-endereco.component'
+import { PagamentoFinalizacaoComponent } from './pagamento-finalizacao/pagamento-finalizacao.component';
 
 
 const routes: Routes = [
@@ -15,7 +17,9 @@ const routes: Routes = [
   {path:'registro', component: TelaRegistroComponent},
   {path: 'detalhes/:id', component: ProdutosDetalhesComponent},
   {path: 'paginacao', component: PaginacaoComponent},
-  {path: 'carrinho', component: CarrinhoComponent}
+  {path: 'carrinho', component: CarrinhoComponent},
+  {path: 'entrega', component: ConfirmacaoEnderecoComponent},
+  {path: 'pagamento', component: PagamentoFinalizacaoComponent}
 
 ];
 

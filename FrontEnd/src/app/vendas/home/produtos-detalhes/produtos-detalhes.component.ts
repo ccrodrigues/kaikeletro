@@ -7,6 +7,8 @@ import { ProdutosService } from 'src/app/shared/Services/produtos.service';
 import { ProdutosDetalhesService } from './produtos-detalhes.service';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ImagenModel } from 'src/app/shared/models/imagen.model';
+import { CategoriaModel } from 'src/app/shared/models/categoria.model';
 
 
 // classe base para calculo do parcelamento
@@ -69,7 +71,8 @@ export class ProdutosDetalhesComponent implements OnInit {
   //variavel para retornar o erro de calculo de frete  
   erroFrete;
 
-  id: string;
+  idProdutoAPI: string;
+  id: number;
 
   constructor(private produtoService: ProdutosService,
     private prodDetailsCEP: ProdutosDetalhesService,
@@ -88,13 +91,11 @@ export class ProdutosDetalhesComponent implements OnInit {
   ngOnInit() {
     // settar aqui o id do produto(da API) que irá ser carregado na página de detalhes
     this.activatedRoute.params.subscribe(data => {
-      console.log(data.id)
-      this.id=data.id;
+      this.idProdutoAPI=data.id;
     })
 
 
-
-    this.produtoService.getById("1").subscribe
+    this.produtoService.getById(this.idProdutoAPI).subscribe
       (data => {
         this.valorinicialPrecoFrete = data.preco;
         this.produto = data;
@@ -217,12 +218,21 @@ export class ProdutosDetalhesComponent implements OnInit {
     return true;
   }
 
+  navigateComprarAgora(){
+    console.log("comprar agora"); 
+    this.router.navigate([`/entrega`])
+  }
+ 
+adicionarCarrinho(){
+  console.log("adicionando ao carrinho")
+  let compra=[{
+  
+    "idProduto":  this.idProdutoAPI,
+    "valorProduto":  this.valorTotalCalc,
+    "valorFreteProduto":  this.valorFrete,
+    "quantidadeProduto":  this.quantidade
+  }]
 
-  itemsPerSlide = 3;
-  singleSlideOffset = false;
-  noWrap = false;
-
-  slidesChangeMessage = '';
 
   
-}
+}}

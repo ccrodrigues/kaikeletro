@@ -5,9 +5,10 @@
         <img [src]="imagemAtual" height="65%" width="100%" />
 
 <div id="miniaturaDeImagensSecundarias">
-    <carousel [itemsPerSlide]="itemsPerSlide" 
-    [singleSlideOffset]="singleSlideOffset" 
-    [noWrap]="!noWrap" 
+    <carousel 
+    itemsPerSlide=3 
+    singleSlideOffset="false" 
+    noWrap="true" 
     [interval]="false"
     [startFromIndex]="5">
 
@@ -91,15 +92,15 @@
                     {{ precoAPI | currency:'BRL':true:'1.2-2' }}
                 </h4>
                 <!-- Botão de comprar -->
-                <button class="btn btn-primary" id="btnComprarAgora">
-                    <i class="fas fa-shopping-basket"></i>
+                <button class="btn btn-primary" id="btnComprarAgora" (click)="navigateComprarAgora()">
+                    <i class="fas fa-shopping-basket" ></i>
                     Comprar agora
                 </button>
                 <br>
 
                 <!-- Botão de adicionar ao carrinho -->
-                <button class="btn btn-primary">
-                    <i class="fas fa-cart-plus"></i>
+                <button class="btn btn-primary" (click)="adicionarCarrinho()">
+                    <i class="fas fa-cart-plus" ></i>
                     Adicionar ao carrinho
                 </button>
             </div>
