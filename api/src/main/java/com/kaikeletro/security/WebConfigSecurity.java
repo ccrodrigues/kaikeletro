@@ -12,55 +12,44 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@EnableGlobalMethodSecurity (prePostEnabled = true) 
-@Configuration 
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+@Configuration
 @EnableWebSecurity
-public class WebConfigSecurity extends WebSecurityConfigurerAdapter  {
-	
-	
+public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
+
 	@Bean
 	public BCryptPasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
 
 	@Autowired
 	private EntradaJwt unauthorizedHandler;
-	
 
-    @Bean
-    public FiltroJwt authenticationTokenFilterBean() {
-        return new FiltroJwt();
-    }	
-    
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-   
-	
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable().
-                authorizeRequests()
-                .antMatchers("/*")
-                .permitAll()
+	@Bean
+	public FiltroJwt authenticationTokenFilterBean() {
+		return new FiltroJwt();
+	}
+
+	@Bean
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
+	}
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.cors().and().csrf().disable().authorizeRequests().antMatchers("/*").permitAll()
 //                .antMatchers("/autenticacao")
 //                .permitAll()
 //                .antMatchers(HttpMethod.GET, "/produtos","/produtos/*")                
 //                .permitAll()
 //                .antMatchers(HttpMethod.POST, "/usuarios")                
 //                .permitAll()
-                //.anyRequest().authenticated()
-                .and()
-                .exceptionHandling()
-                .authenticationEntryPoint(unauthorizedHandler)
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+				// .anyRequest().authenticated()
+				.and().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and().sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-        http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
-     
-    }
+		http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+
+	}
 
 }
