@@ -3,7 +3,7 @@ import { menuService } from './menu-service'
 import { ServiceLoginService } from 'src/app/vendas/usuario-login/service-login/service-login.service';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/shared/services/storage.service';
-import { AuthServiceService } from 'src/app/shared/Services/auth-service.service';
+import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 
 
 @Component({

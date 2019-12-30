@@ -7,7 +7,7 @@ import { EnvService } from 'src/app/env.service';
 import { LocalUserModel } from 'src/app/shared/models/auth/local-user.model';
 import { tokenAuth } from 'src/app/shared/models/auth/token-auth.model';
 import { StorageService } from 'src/app/shared/services/storage.service';
-import { CarrinhoService } from 'src/app/shared/Services/carrinho.service';
+import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 import { Usuario } from 'src/app/shared/models/usuario.model';
 
 @Injectable({
