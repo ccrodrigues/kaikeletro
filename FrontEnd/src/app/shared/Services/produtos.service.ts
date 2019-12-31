@@ -27,6 +27,15 @@ export class ProdutosService {
     // return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "produtos");
   }
 
+<<<<<<< HEAD
+=======
+  delete(id) {
+    console.log(this.envService.urlAPI + id)
+    return this.http.delete(this.envService.urlAPI + id);
+    // return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "produtos");
+  }
+
+>>>>>>> 658b852880ceabd340dd0edc9b1292b347194878
   getProdutoDto(){
     return this.http.get(`${this.envService.urlAPI}/produtos/carrinho`)
   }

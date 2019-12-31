@@ -25,7 +25,11 @@
     "angular2-text-mask": "^9.0.0",
     "bootstrap": "^4.4.1",
     "ng-multiselect-dropdown": "^0.2.10",
+<<<<<<< HEAD
     "ngx-bootstrap": "^2.0.5",
+=======
+    "ngx-bootstrap": "^5.2.0",
+>>>>>>> 658b852880ceabd340dd0edc9b1292b347194878
     "ngx-mask": "^8.1.7",
     "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^11.2.1",
