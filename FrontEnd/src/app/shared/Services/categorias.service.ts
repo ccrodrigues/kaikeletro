@@ -14,4 +14,8 @@ export class CategoriasService {
     return this.http.get(this.url);
   }
 
+  addCat(categoria) {
+    return this.http.post(this.url, categoria);
+  }
+
 }

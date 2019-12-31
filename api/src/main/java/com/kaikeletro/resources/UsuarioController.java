@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kaikeletro.domain.Admin;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.UsuarioService;
@@ -100,6 +101,13 @@ public class UsuarioController {
 	public ResponseEntity<List<Usuario>> findBycpf(@PathVariable("cpfBusca") String cpf) {
 		List<Usuario> lista = service.findBycpf(cpf);
 		return ResponseEntity.ok().body(lista);
+	}
+	
+	@RequestMapping (value="login", method = RequestMethod.POST)
+	public ResponseEntity<Boolean> usuario(@RequestBody Usuario user) {	
+		System.out.print(user.getSenha());
+		return ResponseEntity.ok().body(service.findOneByEmailAndSenha(user.getEmail(), user.getSenha()));
+		
 	}
 	
 

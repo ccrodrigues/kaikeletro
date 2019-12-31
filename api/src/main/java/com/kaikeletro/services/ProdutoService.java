@@ -1,5 +1,6 @@
 package com.kaikeletro.services;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +10,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.kaikeletro.domain.ImagemProd;
 import com.kaikeletro.domain.Produto;
+import com.kaikeletro.dto.ProdutoDto;
+import com.kaikeletro.repositories.ImagemProdutoRepository;
 import com.kaikeletro.repositories.ProdutoRepository;
 
 @Service
@@ -18,7 +22,19 @@ public class ProdutoService  {
 	@Autowired
 	ProdutoRepository repoProduto;
 	
+	@Autowired
+	ImagemProdutoRepository imagemProdutoRepository;
+	
 	public Produto createProduto(Produto prod) {
+		
+		List <ImagemProd> imagens = prod.getImagens();
+		
+		for (ImagemProd imagemProd : imagens) {
+			imagemProd.setProduto(Arrays.asList(prod));
+		}
+		
+		imagemProdutoRepository.saveAll(imagens);
+		
 		return repoProduto.save(prod);
 	}
 	
@@ -51,9 +67,8 @@ public class ProdutoService  {
 		}
 	}
 	
-	public boolean deleteProduto(int id) {
+	public void deleteProduto(int id) {
 		repoProduto.deleteById(id);
-		return true;
 	}
 	
 	//Paginação
@@ -69,4 +84,5 @@ public class ProdutoService  {
 		PageRequest pageRequest = PageRequest.of(pagina, qtdLinhas, Direction.valueOf(direcao), campo);
 		return repoProduto.findDistinctByCategoriasNomeContaining(nomeCategoria, pageRequest);
 	}
+
 }

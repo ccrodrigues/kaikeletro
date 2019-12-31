@@ -33,33 +33,11 @@ public class ImagemProd implements Serializable{
 	@Column(name="imagem")
 	private String imagemProduto;
 	
-	@Column(name="descricao")
-	private String descricaoImagem;
-	
-	@Column(name="nome")
-	private String nomeImagem;
-	
 	@ManyToMany(mappedBy= "imagens")
 	@JsonIgnore
 	private List <Produto> produto;
 
 	public ImagemProd() {
-	}
-
-	public ImagemProd(int idImagem, String imagemProduto, String descricaoImagem, String nomeImagem) {
-		this.idImagem = idImagem;
-		this.imagemProduto = imagemProduto;
-		this.descricaoImagem = descricaoImagem;
-		this.nomeImagem = nomeImagem;
-	}
-	
-
-	public List<Produto> getProduto() {
-		return produto;
-	}
-
-	public void setProduto(List<Produto> produto) {
-		this.produto = produto;
 	}
 
 	public int getIdImagem() {
@@ -78,30 +56,25 @@ public class ImagemProd implements Serializable{
 		this.imagemProduto = imagemProduto;
 	}
 
-	public String getDescricaoImagem() {
-		return descricaoImagem;
+	public List<Produto> getProduto() {
+		return produto;
 	}
 
-	public void setDescricaoImagem(String descricaoImagem) {
-		this.descricaoImagem = descricaoImagem;
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
 	}
 
-	public String getNomeImagem() {
-		return nomeImagem;
-	}
-
-	public void setNomeImagem(String nomeImagem) {
-		this.nomeImagem = nomeImagem;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((descricaoImagem == null) ? 0 : descricaoImagem.hashCode());
 		result = prime * result + idImagem;
 		result = prime * result + ((imagemProduto == null) ? 0 : imagemProduto.hashCode());
-		result = prime * result + ((nomeImagem == null) ? 0 : nomeImagem.hashCode());
+		result = prime * result + ((produto == null) ? 0 : produto.hashCode());
 		return result;
 	}
 
@@ -114,11 +87,6 @@ public class ImagemProd implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		ImagemProd other = (ImagemProd) obj;
-		if (descricaoImagem == null) {
-			if (other.descricaoImagem != null)
-				return false;
-		} else if (!descricaoImagem.equals(other.descricaoImagem))
-			return false;
 		if (idImagem != other.idImagem)
 			return false;
 		if (imagemProduto == null) {
@@ -126,20 +94,21 @@ public class ImagemProd implements Serializable{
 				return false;
 		} else if (!imagemProduto.equals(other.imagemProduto))
 			return false;
-		if (nomeImagem == null) {
-			if (other.nomeImagem != null)
+		if (produto == null) {
+			if (other.produto != null)
 				return false;
-		} else if (!nomeImagem.equals(other.nomeImagem))
+		} else if (!produto.equals(other.produto))
 			return false;
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "ImagemProduto [idImagem=" + idImagem + ", imagemProduto=" + imagemProduto + ", descricaoImagem="
-				+ descricaoImagem + ", nomeImagem=" + nomeImagem + "]";
+	public ImagemProd(int idImagem, String imagemProduto, List<Produto> produto) {
+		super();
+		this.idImagem = idImagem;
+		this.imagemProduto = imagemProduto;
+		this.produto = produto;
 	}
-	
+
 	
 	
 	

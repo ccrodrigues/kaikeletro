@@ -1,34 +1,85 @@
 <div class="background">
     <h2><small class="form-text text-muted negrito-padding text-center">Adicionar um Produto</small></h2>
-        <form>
-            <div class="form-group">
-                <h3><small>Nome</small></h3>
-                <input type="text" class="form-control">
+        <form action="" [formGroup]="prodForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+            <div class="col">
+                <h3><small>Nome *</small></h3>
+                <input type="text" class="form-control" formControlName="nome">
+
+                <h3><small>Preço *</small></h3>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                    <div class="input-group-text">R$</div>
+                    </div>
+                    <input type="number" class="form-control" formControlName="preco" placeholder="00,00">
+                </div>
             </div>
+            <div class="col imagem_principal">
+                <label for="imagem-principal">
+                    <img src="../../../../assets/imagens/camera.png" #alter>
+                </label>
+                <input type="file" id="imagem-principal" (change)="imagePrincipalSelect($event, alter)">
+            </div>
+        </div>
+
+        <div >
+            <h3><small>Descricao *</small></h3>
+            <textarea name="" class="form-control" id="" formControlName="descricao"></textarea>
+        </div>
+
+            <!-- ### INPUT: a cada tecla pressionada ira verificar se o que foi digitado -->
+            <!-- é igual a alguma categoria. -->
+            <!-- ### SELECT à esquerda: Categorias existentes no banco. -->
+            <!-- ### BUTTON ( > ): 1º Verifica se um ou mais itens da SELECT foi selecionado, -->
+            <!-- se true ira habilitar o botao. 2º Ira adicionar a categoria selecionada para a tabela da direta.  -->
+            <!-- ### BUTTON ( < ): 1º Verifica se um ou mais itens da SELECT foi selecionado, -->
+            <!-- se retornar true ira habilitar o botao. 2º Removera os itens que foram marcados. -->
+            <!-- ### SELECT à direita: Categorias selecionadas pelo ADM. -->
+            <!-- ### BUTTON ( Adicionar nova categoria ): Ira pegar o nome da nova categoria e, -->
+            <!-- verificar se a categoria nao existe, caso for false ira ser adicionada na tabela do bd. -->
             
-            <div class="form-group">
-                <h3><small>Descricao</small></h3>
-                <textarea name="" class="form-control" id=""></textarea>
+        <h3><small>Categoria *</small></h3>
+           <div class="row">
+                <div class="col-8 box rounded">
+                    <div *ngFor="let cats of categorias" #categoria (click)="escolhida(categoria, cats)"> {{ cats.nome }}</div>
+                </div>
+                
             </div>
-
-            <div class="row">
-
-                <div class="col">
-                    <div class="form-group">
-                        <h3><small>Preco</small></h3>
-                        <input class="form-control" type="number">
+            <div class="container"> 
+                <p class="linkFake" (click)="showAddCategoria(screen)">Adicionar uma nova categoria.</p>
+                <div class="row addCat" *ngIf="showAddCat">
+                    <div class="col">
+                        <input type="text" class="form-control" #newCategoria>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-success" (click)="addCategoria($event, newCategoria)">adicionar</button>
+                    </div>
+                    <div class="col-12" *ngIf="erroAdd">
+                        <p class="error"> 
+                            Já existe uma categoria com esse nome!
+                        </p>
                     </div>
                 </div>
-                <div class="col">   
-                    <h3><small>Categoria</small></h3>
-                    <select class="form-control" name="" id="">
-                        <option value="">Exemplo</option>
-                        <option value="">Exemplo</option>
-                        <option value="">Exemplo</option>
-                    </select>
+                
+            </div>
+           <div class="container">
+            <div class="images">
+                <label for="images" class="btn btn-info">Adicionar mais imagens</label>
+                <input type="file" id="images" (change)="imagensSelect($event)" formControlName="imagens">
+            </div>    
+
+            <div class="row">
+                <div *ngFor="let img of images" class="col-3">
+                    <img [src]="img" class="img-thumbnail" *ngIf="img != ''">
+                    <input type="button" *ngIf="img != ''" class="btn btn-danger rounded-circle myBtnClose btn-sm" value="x" (click)="lessImage(imgs)">
                 </div>
             </div>
-            
 
-        </form>
+        </div>
+        <div class="float-right">
+            <button class="btn btn-success">Salvar</button>
+        </div>
+    </form>
+
 </div>

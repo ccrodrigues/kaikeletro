@@ -81,14 +81,20 @@
         <h6 class="mb-0">Eletrodomésticos</h6>
         </a>
       </li>
-        
-    </ul >
-     
+
+        <li class="nav-item" *ngIf="logadoAdmin() == true" >
+            
+        <a class="nav-link" routerLink="dashboardAdm"  ><h6 class="mb-0" >dashboardAdm</h6></a>
+        </li>
+    </ul > 
+
   </div>
     <form class="form-inline my-1 my-lg-0 search-form">
       <input class="form-control mr-sm-1" type="search" placeholder="Buscar" aria-label="Buscar">
       <!-- <button class="btn btn-dark" type="submit">Buscar Produto</button> -->
     </form>
-  </div>
+ 
+
+</div>
 </nav>
 

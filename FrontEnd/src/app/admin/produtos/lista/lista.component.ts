@@ -33,7 +33,6 @@ export class ListaComponent implements OnInit {
     //    Pegando todos os registros de produtos
     this.ps.getAll().subscribe(
       a => {
-        console.log(a)
         this.listProducts = a;
       }
     );
@@ -46,6 +45,7 @@ export class ListaComponent implements OnInit {
 
   lessMore() {
     this.isShowMore = false;
+    this.showAll();
   }
 
   showDelete(id) {

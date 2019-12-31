@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@GeneratedValue(strategy = GenerationType.AUTO, generator = "PRODUTO_NAME_SEQ")
     //@SequenceGenerator(sequenceName = "produto_seq", allocationSize = 1, name = "PRODUTO_NAME_SEQ")
 	private int idProduto;
@@ -37,7 +38,8 @@ public class Produto implements Serializable {
 	@Column(name="descricao")
 	private String descricao;
 	
-	@ManyToMany()
+	@ManyToMany(fetch = FetchType.LAZY
+            )
 	@JoinTable(name="produtos_categorias",
 		joinColumns = @JoinColumn(name = "produto_id"),
 		inverseJoinColumns = @JoinColumn(name = "categoria_id")
@@ -56,6 +58,11 @@ public class Produto implements Serializable {
 
 	public Produto() {
 		
+	}
+
+	public Produto(String nome, double preco) {
+		this.nome = nome;
+		this.preco = preco;
 	}
 
 	public Produto(int idProduto, String nome, double preco, String descricao, List<Categoria> categorias,

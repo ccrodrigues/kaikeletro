@@ -1,3 +1,4 @@
+
 import { Injectable, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -36,7 +37,6 @@ export class ServiceLoginService {
             token: cliente,
             email: login.email
           }
-          console.log(localUser)
           this.storageService.setLocalUser(localUser);
           this.router.navigate(['']);
           
