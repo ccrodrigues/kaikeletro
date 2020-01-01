@@ -43,7 +43,7 @@ export class UsuarioLoginComponent implements OnInit {
   }
   //metodo para verificar se os dados de Autenticidade estão de acordo, recebe um boolean
   isErrorLogin(){
-    return this.serviceLogin.getIsAutenticado();
+    return this.serviceLogin.isAutenticado();
           
   }
   

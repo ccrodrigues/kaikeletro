@@ -15,8 +15,10 @@ import { DialogService } from 'src/app/shared/toaster/dialog.service';
   providedIn: 'root'
 })
 export class ServiceLoginService {
-  private isAuth : boolean = false;
-  
+  private isAuth : boolean;
+  private isAdministrador : boolean;
+
+
   isMostrarMenu : EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private router: Router,
@@ -35,16 +37,19 @@ export class ServiceLoginService {
     console.log(login);
 
 
-this.http.post<AuthToken>(`${this.envService.urlAPI}/token/generate`, login).subscribe(
+this.http.post<tokenAuth>(`${this.envService.urlAPI}/autenticacao`, login).subscribe(
       (data) => {
+        
 
-        console.log(data);
+        console.log("data : ", data);
 
         const helper = new JwtHelperService();
         const decodedToken = helper.decodeToken(data.token);
 
+        
         this.isAuth = true;
         this.isMostrarMenu.emit(true);
+      
         
         let localUser: LocalUserModel = {
           token: data.token,
@@ -62,19 +67,23 @@ this.http.post<AuthToken>(`${this.envService.urlAPI}/token/generate`, login).sub
 
         this.router.navigate(['/home']);
 
-      }
+    }
     );
   }
 
   isAutenticado(){
-    let localUser: LocalUserModel =this.storageService.getLocalUser();
     
+    let localUser: LocalUserModel =this.storageService.getLocalUser();
     if (localUser == null){
       this.isAuth = false;
     }
+    console.log(localUser);
 
+
+    console.log("isAuth2:",this.isAuth);
     return this.isAuth;
   }
+ 
 
   logout() {
     this.storageService.setLocalUser(null);
@@ -84,7 +93,7 @@ this.http.post<AuthToken>(`${this.envService.urlAPI}/token/generate`, login).sub
 
   /** pegar um novo token válido com data de expiração válida  */
   refreshToken() {
-    return this.http.post<AuthToken>(`${this.envService.urlAPI}/token/refresh`, {})
+    return this.http.post<tokenAuth>(`${this.envService.urlAPI}/token/refresh`, {})
       .subscribe(
         (response) => {
           console.log('token has been refreshed');
@@ -104,5 +113,15 @@ this.http.post<AuthToken>(`${this.envService.urlAPI}/token/generate`, login).sub
           this.storageService.setLocalUser(localUser);
         }
       );
+}
+isAdmin(){
+  let administrador = this.storageService.getLocalUser().scopes.toString();
+   if(administrador == "ROLE_USER"){
+        this.isAdministrador = false;
+
+   }else{
+     this.isAdministrador = true;
+   }
+   return this.isAdministrador;
 }
 }

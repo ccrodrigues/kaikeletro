@@ -22,17 +22,16 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
      
-    this.isAuth = this.loginService.getIsAutenticado();
+    this.isAuth = this.loginService.isAutenticado();
         if(this.isAuth == false){
-           this.loginService.Logout();
+           this.loginService.logout();
          }
    
   }
   logadoAdmin(){
-      this.isDashboard = this.loginService.getIsAdmin() && this.loginService.getIsAutenticado();
+    this.isDashboard = this.loginService.isAdmin() && this.loginService.isAutenticado();
 
-      return this.isDashboard;
-         
+    return this.isDashboard;
   }
 
 
