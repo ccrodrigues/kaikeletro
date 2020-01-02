@@ -53,5 +53,4 @@ export class PagamentoFinalizacaoComponent implements OnInit {
       console.log(this.card);
     }
   }
-
 }
