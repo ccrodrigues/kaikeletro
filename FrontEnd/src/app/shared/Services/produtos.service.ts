@@ -14,6 +14,8 @@ export class ProdutosService {
   // Chamando o HttpCliente e injetando o envService que é responsavel por pegar a url Da Api
   constructor(private http : HttpClient,private envService:EnvService) { }
 
+  categoriaProduto = "";
+
   // Url da API
   url : string = "http://localhost:8080/produtos"
 
@@ -58,5 +60,10 @@ export class ProdutosService {
   getProdutoPage(pagina,qtdLinhas,direcao,campo){
     return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "produtos"
     +`pagina=${pagina}&qtdLinhas=${qtdLinhas}&direcao=${direcao}&campo=${campo}`)
+  }
+
+  //Recebe categoria e retorna produtos dela
+  getProdutosCategoria(categoria){
+    return this.http.get<ProdutoModel[]>(this.envService.urlAPI + "/produtos/page/?nomeCategoria=" + categoria);
   }
 }

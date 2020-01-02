@@ -8,6 +8,7 @@ import { PaginacaoComponent } from './home/paginacao/paginacao.component';
 import { CarrinhoComponent } from './home/carrinho/carrinho.component';
 import { ConfirmacaoEnderecoComponent} from './confirmacao-endereco/confirmacao-endereco.component'
 import { PagamentoFinalizacaoComponent } from './pagamento-finalizacao/pagamento-finalizacao.component';
+import { ProdutosCategoriaComponent } from './produtos-categoria/produtos-categoria.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'paginacao', component: PaginacaoComponent},
   {path: 'carrinho', component: CarrinhoComponent},
   {path: 'entrega', component: ConfirmacaoEnderecoComponent},
-  {path: 'pagamento', component: PagamentoFinalizacaoComponent}
+  {path: 'pagamento', component: PagamentoFinalizacaoComponent},
+  {path: 'nossos-produtos', component: ProdutosCategoriaComponent}
 
 ];
 

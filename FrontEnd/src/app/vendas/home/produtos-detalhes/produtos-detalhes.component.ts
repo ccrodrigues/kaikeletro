@@ -11,36 +11,36 @@ import { ProdutoModel } from 'src/app/shared/models/produto.model';
 })
 export class ProdutosDetalhesComponent implements OnInit {
 
-  produto:ProdutoModel = new ProdutoModel();
+  produto: ProdutoModel = new ProdutoModel();
 
-  numerosParcela= [1,2,3,4,5,6,7,8,9,10,11,12];
-  numeroParcelaAtual=1; 
-  imagemAtual ;
-  Preco:number;
+  numerosParcela = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  numeroParcelaAtual = 1;
+  imagemAtual;
+  Preco: number;
   Parcela;
 
 
-   constructor(private produtoService:ProdutosService) { 
-     
+  constructor(private produtoService: ProdutosService) {
+
   }
 
-   ngOnInit() {
-    this.produtoService.getById("162").subscribe(  data =>{
-      this.produto=data;
-      this.Preco=data.preco; 
-      this.Parcela=data.preco
-      this.imagemAtual=this.produto.imagens[0].imagemProduto;
+  ngOnInit() {
+    this.produtoService.getById("162").subscribe(data => {
+      this.produto = data;
+      this.Preco = data.preco;
+      this.Parcela = data.preco
+      this.imagemAtual = this.produto.imagens[0].imagemProduto;
     });
     console.log(this.produto)
-   
+
   }
   trocarImagem(img) {
     this.imagemAtual = img;
   }
 
-  mudarParcela(numero){
-    this.numeroParcelaAtual=numero;
-    this.Parcela=((this.Preco)/this.numeroParcelaAtual).toFixed(2);
+  mudarParcela(numero) {
+    this.numeroParcelaAtual = numero;
+    this.Parcela = ((this.Preco) / this.numeroParcelaAtual).toFixed(2);
   }
 
 }
