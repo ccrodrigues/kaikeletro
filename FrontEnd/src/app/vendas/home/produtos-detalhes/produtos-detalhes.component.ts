@@ -6,12 +6,10 @@ import { ProdutosService } from 'src/app/shared/services/produtos.service';
 import { ProdutosDetalhesService } from './produtos-detalhes.service';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
+import { DialogService } from 'src/app/shared/toaster/dialog.service';
 
-
-// classe base para calculo do parcelamento
 class Parcelamento {
-  parcela: number
-  valorPorParcela: number
   juros: string
   valorTotal: number
 }
@@ -62,6 +60,8 @@ export class ProdutosDetalhesComponent implements OnInit {
   //valor do frete retornado pela API dos correios
   valorFrete;
 
+  idRota;
+
   //estimativa de tempo em dias úteis para entrega. De acordo com a API de frete
   prazoentregaFrete;
 
@@ -76,7 +76,11 @@ export class ProdutosDetalhesComponent implements OnInit {
 
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    
+
+    private carrinhoService : CarrinhoService,
+
+    private dialogService   : DialogService,
+
     config: NgbCarouselConfig
   ) {
     config.interval = 2000;
@@ -221,16 +225,11 @@ export class ProdutosDetalhesComponent implements OnInit {
     this.router.navigate([`/entrega`])
   }
  
-adicionarCarrinho(){
-  console.log("adicionando ao carrinho")
-  let compra=[{
-  
-    "idProduto":  this.idProdutoAPI,
-    "valorProduto":  this.valorTotalCalc,
-    "valorFreteProduto":  this.valorFrete,
-    "quantidadeProduto":  this.quantidade
-  }]
+  adicionarCarrinho(){
 
+    this.carrinhoService.verifyItemExists(this.produto, this.quantidade);
+    console.log("Adicionando " +  this.produto);
+    this.dialogService.showSuccess("Produto adicionado no carrinho com sucesso!"); 
+ }
 
-  
-}}
+}

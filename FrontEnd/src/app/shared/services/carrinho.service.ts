@@ -21,7 +21,6 @@ import { UsuarioService } from './usuario.service';
       private localStorage : StorageService,
       private usuarioService : UsuarioService) { }
 
-   private url : string = "http://localhost:8080/";
 
    public itensCarrinho : ItemVendaModel[] = []
 
@@ -53,10 +52,10 @@ import { UsuarioService } from './usuario.service';
    }
 
 
-  public addProduto(produ : ProdutoModel = new ProdutoModel() ){
+  public addProduto(produ : ProdutoModel = new ProdutoModel(), quant ){
     let item : ItemVendaModel = new ItemVendaModel() 
        item.produto = produ
-       item.quantidade = 1
+       item.quantidade = quant
        this.itensCarrinho.push(item)  
        console.log(item)
    }
@@ -103,13 +102,13 @@ import { UsuarioService } from './usuario.service';
       return total;
   }
 
-  verifyItemExists(produ : ProdutoModel = new ProdutoModel()){
+  verifyItemExists(produ : ProdutoModel = new ProdutoModel(), quant){
     let find = this.itensCarrinho.find((item : ItemVendaModel) => item.produto.idProduto === produ.idProduto)
        
     if(find){
-        find.quantidade += 1;
+        find.quantidade += quant;
     }else{
-      this.addProduto(produ)
+      this.addProduto(produ,quant)
     } 
     this.localStorage.setCarrinho(this.itensCarrinho);
     }
@@ -132,10 +131,7 @@ import { UsuarioService } from './usuario.service';
         this.venda.item = this.itensCarrinho
         console.log("Venda: " + this.itensCarrinho)
         console.log("User: " + this.user.id)
-    }
-
-  
-    
+    } 
     
   }
   

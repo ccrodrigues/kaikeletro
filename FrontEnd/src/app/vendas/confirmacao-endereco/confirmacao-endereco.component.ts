@@ -18,20 +18,18 @@ export class ConfirmacaoEnderecoComponent implements OnInit {
 
   ngOnInit() {
     this.endForm = this.formBuilder.group({
-      cep: ['', [Validators.required, Validators.min(8), Validators.max(8)]],
-      logradouro: ['', [Validators.required, Validators.min(3)]],
+      cep: ['', [Validators.required]],
+      logradouro: ['', [Validators.required]],
       numero: ['', [Validators.required]],
       complemento: ['', []],
-      bairro: ['', [Validators.required, Validators.min(3)]],
-      cidade: ['', [Validators.required, Validators.min(3)]],
-      estado: ['', [Validators.required, Validators.min(2)]]
+      bairro: ['', [Validators.required ]],
+      cidade: ['', [Validators.required ]],
+      estado: ['', [Validators.required] ]
     })
   }
 
   buscarCEP() {
-    console.log(this.endForm.value.cep);
     this.viaCep.getEnderecoPorCep(this.endForm.value.cep).subscribe((data) => {
-      console.log(data);
       this.objEnd = data;
     },
       error => {
@@ -40,6 +38,7 @@ export class ConfirmacaoEnderecoComponent implements OnInit {
   }
 
   salvar() {
+    console.log(this.endForm.valid);
     if (this.endForm.valid) {
 
     } else {

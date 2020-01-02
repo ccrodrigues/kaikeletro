@@ -243,4 +243,3 @@ public class ApiApplication implements CommandLineRunner {
 	}
 }
 }
-

@@ -25,16 +25,28 @@ export class AuthInterceptorService implements HttpInterceptor {
 
     console.log(localUser);
 
+    console.log(req);
+
+    let url = req.url;
+
+    
+
     if (localUser) {
 
       let tokenStr = 'Bearer ' + localUser.token;
 
-      req = req.clone({
+      if (!url.includes('viacep')){
 
-        setHeaders: {
-          Authorization: tokenStr
-        }
-      })
+        req = req.clone({
+
+          setHeaders: {
+            Authorization: tokenStr
+          }
+        });
+
+      }
+
+      
     }
 
 
