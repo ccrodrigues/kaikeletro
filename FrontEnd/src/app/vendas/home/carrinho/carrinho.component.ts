@@ -59,9 +59,7 @@ export class CarrinhoComponent implements OnInit {
           this.carrinhoService.itensCarrinho = this.carrinhoService.criarOuLimparCarrinho()
           this.localStorage.setCarrinho(this.carrinhoService.itensCarrinho)
           }
-      )
-      
-      
+      ) 
     }
 
     getUser(email){
@@ -71,9 +69,7 @@ export class CarrinhoComponent implements OnInit {
       this.usuarioService.getUserByEmail(email).subscribe(data=>{
         user.id = data.id;
       })
-
       this.carrinhoService.user.id = user.id
-
     }
     
   }
