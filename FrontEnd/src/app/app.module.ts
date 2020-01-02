@@ -14,7 +14,7 @@ import { VendasModule } from './vendas/vendas.module';
 import { LayoutModule } from './layout/layout.module';
 import { CommonModule } from '@angular/common';
 // import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { CarrinhoService } from './shared/Services/carrinho.service';
+import { CarrinhoService } from './shared/services/carrinho.service';
 import { ProdutosComponent } from './vendas/home/produtos/produtos.component';
 import { HomeComponent } from './vendas/home/home.component';
 import { DialogService } from './shared/toaster/dialog.service';
