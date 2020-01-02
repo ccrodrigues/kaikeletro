@@ -1,60 +1,71 @@
-<p>Aqui vai aparecer o endereço cadastrado do cliente para Entrega</p>
-<button class="btn btn-primary" [routerLink]= "['/pagamento']">Ir Para Pagamento</button>
+<p>
+    O ngc vai ficar aqui
+</p>
+
+<button class="btn btn-primary" [routerLink]="['/pagamento']">Ir Para Pagamento</button>
 
 <div class="col-md-10 order-md-1">
-<form [formGroup]="endForm" (ngSubmit)="onSubmit()">
-    <span class="border border">
-        <h5>Cadastrar novo endereço:</h5>
-        <p>O novo endereço cadastrado será o endereço de entrega deste pedido somente</p>
-        
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <label for="cep" class="control-label">CEP</label>
-                    <input type="number" id="cep" class="form-control">
-                    <button class="btn btn-primary">Buscar</button>
-                    <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank" >Não sei o CEP</a>
-                </div>
-            </div><br>
+    <form [formGroup]="endForm">
+        <span class="border border">
+            <h5>Cadastrar novo endereço:</h5>
+            <p>O novo endereço cadastrado será o endereço de entrega deste pedido somente</p>
 
-            <div class="row">
-                <div class="col-sm-4">
-                    <label for="rua" class="control-label">Logradouro</label>
-                    <input type="text" id="rua" class="form-control">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="cep" class="control-label">CEP</label>
+                        <input type="text" id="cep" class="form-control" formControlName="cep">
+                        <button class="btn btn-primary" (click)="buscarCEP()">Buscar</button>
+                        <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank">Não sei o
+                            CEP</a>
+                    </div>
                 </div><br>
 
-                <div class="col-md-2">
-                    <label for="num" class="control-label">Número</label>
-                    <input type="number" id="num" class="form-control">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label for="rua" class="control-label">Logradouro</label>
+                        <input type="text" [value]="objEnd?.logradouro" id="rua" class="form-control"
+                            formControlName="logradouro">
+                    </div><br>
+
+                    <div class="col-md-2">
+                        <label for="num" class="control-label">Número</label>
+                        <input type="number" [value]="objEnd?.numero" id="num" class="form-control"
+                            formControlName="numero">
+                    </div>
+                </div><br>
+
+                <div class="col-md-6">
+                    <label for="complemento" class="control-label">Complemento</label>
+                    <input type="text" [value]="objEnd?.complemento" id="complemento" class="form-control"
+                        formControlName="complemento">
+                </div><br>
+
+                <div class="col-md-6">
+                    <label for="bairro" class="control-label">Bairro</label>
+                    <input type="text" [value]="objEnd?.bairro" id="bairro" class="form-control"
+                        formControlName="bairro">
+                </div><br>
+
+                <div class="col-md-6">
+                    <label for="cidade" class="control-label">Cidade</label>
+                    <input type="text" [value]="objEnd?.localidade" id="cidade" class="form-control"
+                        formControlName="cidade">
+                </div><br>
+
+                <div class="col-md-6">
+                    <label for="estado" class="control-label">Estado</label>
+                    <input type="text" [value]="objEnd?.uf" id="estado" class="form-control"
+                        formControlName="estado">
+                </div><br>
+
+                <hr class="mb-4">
+
+                <div>
+                    <button type="submit" class="btn btn-primary"(click)="salvar()" >Salvar e ir para
+                        Pagamento</button>
                 </div>
-            </div><br>
-
-            <div class="col-md-6">
-                <label for="complemento" class="control-label">Complemento</label>
-                <input type="text" id="complemento" class="form-control">
-            </div><br>
-
-            <div class="col-md-6">
-                <label for="bairro" class="control-label">Bairro</label>
-                <input type="text" id="bairro" class="form-control">
-            </div><br>
-
-            <div class="col-md-6">
-                <label for="cidade" class="control-label">Cidade</label>
-                <input type="text" id="cidade" class="form-control">
-            </div><br>
-
-            <div class="col-md-6">
-                <label for="estado" class="control-label">Estado</label>
-                <input type="text" id="estado" class="form-control">
-            </div><br>
-
-            <hr class="mb-4">
-
-            <div>
-            <button type="submit" class="btn btn-primary" [routerLink]= "['/pagamento']">Salvar e ir para Pagamento</button>
             </div>
-        </div>
-    </span>
-</form>
+        </span>
+    </form>
 </div>
