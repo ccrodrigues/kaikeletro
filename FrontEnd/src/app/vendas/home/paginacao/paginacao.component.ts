@@ -36,8 +36,8 @@ export class PaginacaoComponent implements OnInit {
     {"nome" : "produto", "descricao" : "testetestetestetestetestetesteteste", "preco" : 1000.00, "categoria" : "Eletronico", "img" : "https://cdn.shoppingcidade.com.br/media/catalog/product/cache/ba5967e294cce1ddc9b45d24a0071b5e/l/g/lg-k12-max-azul-manna-celulares-shopping-cidade-1.jpg"}
     
   ]
+  
   constructor() { }
-
   ngOnInit (){}
 
 

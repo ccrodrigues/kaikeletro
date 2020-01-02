@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RouteReuseStrategy, Router } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
-import { CarrinhoService } from 'src/app/shared/Services/carrinho.service';
-import { VendaService } from 'src/app/shared/Services/venda.service';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
+import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
+import { VendaService } from 'src/app/shared/services/venda.service';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
 import { Usuario } from 'src/app/shared/models/usuario.model';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';

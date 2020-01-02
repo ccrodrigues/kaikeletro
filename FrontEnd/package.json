@@ -24,12 +24,6 @@
     "angular-ui-carousel": "^0.1.10",
     "angular2-text-mask": "^9.0.0",
     "bootstrap": "^4.4.1",
-<<<<<<< HEAD
-    "ng-multiselect-dropdown": "^0.2.10",
-    "ngx-bootstrap": "^5.2.0",
-    "ngx-mask": "^8.1.7",
-=======
->>>>>>> 5353a9fd2e76d7c749822500f4d73664192f3a86
     "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^11.2.1",
     "ngx-xml2json": "^1.0.2",
