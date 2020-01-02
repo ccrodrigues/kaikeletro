@@ -80,11 +80,8 @@ this.http.post<tokenAuth>(`${this.envService.urlAPI}/autenticacao`, login).subsc
     if (localUser == null){
       this.isAuth = false;
     }
-    
-    console.log(localUser);
-
-
-    console.log("isAuth2:",this.isAuth);
+    //console.log(localUser);
+    //console.log("isAuth2:",this.isAuth);
     return this.isAuth;
   }
  
