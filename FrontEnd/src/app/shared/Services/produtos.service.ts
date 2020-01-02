@@ -40,7 +40,7 @@ export class ProdutosService {
 
   //pegando o produto filtrando por id
   getById(id){
-    return this.http.get<ProdutoModel>(this.envService.urlAPI+ "produtos"+"/"+id);
+    return this.http.get<ProdutoModel>(this.url+'/'+ id)
   }
   //adcionando o produto ao banco
   saveProduto(produto){

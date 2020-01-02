@@ -19,7 +19,7 @@
                 {{produto?.nome}}
             </span>
             <br/><hr>
-              <p class="text-center text-justify font-weight-bold">Preco: {{produto?.preco| currency:'BRL':true:'1.2-2'}} </p>
+              <p class="text-center text-justify font-weight-bold">Preco: {{produto?.preco|  currency:'BRL':'symbol':'1.2-2'}} </p>
              
                 <div class="btn-group" dropdown>
                     <p >Parcelas: </p>
@@ -37,9 +37,9 @@
         <br> <br> <br><br><br>
 
         <div>
-            <p>{{numeroParcelaAtual}}X{{Parcela| currency:'BRL':true:'1.2-2'}} </p>
+            <p>{{numeroParcelaAtual}}X{{Parcela| currency:'BRL':'symbol':'1.2-2'}} </p>
         </div>
-        <button  class="btn btn-primary">Comprar </button>
+        <button (click)="adcionarCarrinho()"  class="btn btn-primary">Comprar </button>
         
     </div>
 </div>

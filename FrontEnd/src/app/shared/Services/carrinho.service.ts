@@ -35,7 +35,7 @@ import { UsuarioService } from './usuario.service';
 
    criarOuLimparCarrinho() : ItemVendaModel[] {
          let carrinho: ItemVendaModel[] = null;
-        this.localStorage
+        this.localStorage = null
         this.itensCarrinho = []
           return carrinho;
       }
@@ -95,7 +95,7 @@ import { UsuarioService } from './usuario.service';
     return totalFrete = this.calculoCarrinho() + this.frete;
   }
 
-  totalItensCarrinho(){
+  public totalItensCarrinho(){
       let total = 0
       this.itensCarrinho.map(function(item){
           total = total + (item.quantidade);

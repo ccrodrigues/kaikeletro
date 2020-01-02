@@ -22,7 +22,9 @@
         </div>
 
         <div *ngIf="isAuth" class="box">
-          <i title="Ver carrinho" class="fas fa-cart-arrow-down cursor" routerLink="carrinho" style="font-size: 20px;"></i>
+          <i title="Ver carrinho" class="fas fa-cart-arrow-down cursor" 
+              routerLink="carrinho" style="font-size: 20px;">{{  carrinhoService.totalItensCarrinho() }}
+          </i>
         </div>
 
         <div *ngIf="isAuth" class="box">
