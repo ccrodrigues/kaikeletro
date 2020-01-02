@@ -20,7 +20,11 @@ export class ProdutosService {
   // Pegando todos os produto
   getAll() {
     //fazendo a requisição
+<<<<<<< HEAD
     return this.http.get(this.url);
+=======
+    return this.http.get(this.envService.urlAPI+"/produtos");
+>>>>>>> 8b18008e6431ad8adbdf346c40854065d505090c
   }
 
   delete(id) {
