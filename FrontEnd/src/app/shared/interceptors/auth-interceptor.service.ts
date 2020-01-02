@@ -23,7 +23,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     
     console.log('interceptor jwt works!');
 
-    console.log(localUser);
+    //console.log(localUser);
 
     if (localUser) {
 

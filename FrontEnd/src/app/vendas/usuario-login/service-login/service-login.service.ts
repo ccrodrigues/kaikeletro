@@ -126,6 +126,7 @@ export class ServiceLoginService {
       } else {
         this.isAdministrador = false;
       }
+      //console.log("admin", this.isAdministrador)
       return this.isAdministrador;
     }
   }
