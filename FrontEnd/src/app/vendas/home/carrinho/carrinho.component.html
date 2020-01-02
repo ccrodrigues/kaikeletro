@@ -48,7 +48,7 @@
                 <div class="card">
                     <div class="card-body">
                     <h5 class="card-title">Resumo do pedido</h5>
-                    <p class="card-text">{{ carrinhoService.totalItensCarrinho() }} produtos &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <p class="card-text">{{ carrinhoService?.totalItensCarrinho() }} produtos &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         {{ carrinhoService.calculoCarrinho() | currency:'BRL':'symbol':'2.2-2' }}</p>
                     <p class="card-text">Frete &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp; {{ carrinhoService.frete | currency:'BRL':'symbol':'1.2-2' }}</p>

@@ -35,12 +35,6 @@ export class MenuComponent implements OnInit {
       this.isAuth = false;
     }
 
-     this.qntd = this.carrinhoService.totalItensCarrinho();
-    //this.isAuth = this.loginService.getIsAutenticado();
-        //if(this.isAuth == false){
-         //  this.loginService.Logout();
-        // }
-    console.log(this.carrinhoService.exibirItens())
 
   }
 
