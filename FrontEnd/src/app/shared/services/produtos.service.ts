@@ -20,7 +20,15 @@ export class ProdutosService {
   // Pegando todos os produto
   getAll() {
     //fazendo a requisição
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     return this.http.get(this.envService.urlAPI + "/produtos");
+=======
+    return this.http.get(this.url);
+>>>>>>> Stashed changes
+=======
+    return this.http.get(this.url);
+>>>>>>> Stashed changes
   }
 
   delete(id) {
