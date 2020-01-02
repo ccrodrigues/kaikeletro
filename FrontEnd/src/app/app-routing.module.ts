@@ -8,6 +8,7 @@ import { GuardsService } from './shared/guards/guards.service';
 
 const routes: Routes = [
   { path: 'dashboardAdm', loadChildren: './admin/admin.module#AdminModule'
+  // , canActivate:[ GuardsService]  
   //  <=== CANATIVATE para bloquear a entrada do usuario na tela do adm 
   },
   { path: '', loadChildren:'./vendas/vendas.module#VendasModule'}

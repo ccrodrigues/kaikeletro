@@ -25,6 +25,7 @@ import com.kaikeletro.repositories.ItemVendaRepository;
 import com.kaikeletro.repositories.ProdutoRepository;
 import com.kaikeletro.repositories.UsuarioRepository;
 import com.kaikeletro.repositories.VendasRepository;
+import com.kaikeletro.services.PopularBancoService;
 
 @SpringBootApplication
 public class ApiApplication implements CommandLineRunner {
@@ -53,6 +54,8 @@ public class ApiApplication implements CommandLineRunner {
 	@Autowired
 	ItemVendaRepository itemRepository;
 
+	@Autowired
+	PopularBancoService popularBanco; 
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
@@ -235,6 +238,9 @@ public class ApiApplication implements CommandLineRunner {
 		imagemRepository.saveAll(Arrays.asList(a1));
 		produtoRepository.saveAll(Arrays.asList(prod));
 		produtoRepository.save(prod);
+
+		popularBanco.produtoCategoriaDemo();				
+
 	}
 }
 }

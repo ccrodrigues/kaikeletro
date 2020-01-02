@@ -32,7 +32,7 @@ public class UsuarioService implements Serializable{
 	private UsuarioRepository userRepo;
 	
 	@Autowired
-	private EnderecoUsuarioRepository endRepo;
+	EnderecoUsuarioRepository endRepo;
 
 	public List<Usuario> getAll() {
 		List<Usuario> usuario = userRepo.findAll();
@@ -97,8 +97,8 @@ public class UsuarioService implements Serializable{
 	}
 	
 	// Método do UsuarioController - Busca por Email
-	public List<Usuario> findByEmail(String emailBusca){
-		return userRepo.findByEmailIgnoreCase(emailBusca);
+	public Usuario findByEmail(String emailBusca){
+		return  userRepo.findByEmailIgnoreCase(emailBusca);
 	}
 	
 	// Método do UsuarioController - Busca por cpf

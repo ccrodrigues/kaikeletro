@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CarrinhoService } from 'src/app/shared/Services/carrinho.service';
+import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
 import { ImagenModel } from 'src/app/shared/models/imagen.model';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
@@ -30,30 +30,30 @@ export class ProdutosComponent implements OnInit {
 
   adcionarCarrinho(){
     
-    let produto : ProdutoModel = new ProdutoModel();
-    let img : ImagenModel = new ImagenModel();
-    let cate : CategoriaModel = new CategoriaModel();
+     let produto : ProdutoModel = new ProdutoModel();
+     let img : ImagenModel = new ImagenModel();
+     let cate : CategoriaModel = new CategoriaModel();
 
-    let imgs : ImagenModel[] = [];
-    let cat : CategoriaModel[] = []
+     let imgs : ImagenModel[] = [];
+     let cat : CategoriaModel[] = []
 
-    img.imagemProduto = this.imgSRC;
+     img.imagemProduto = this.imgSRC;
 
-    cate.nome = this.categoria
+     cate.nome = this.categoria
 
-    imgs.push(img);
-    cat.push(cate)
+     imgs.push(img);
+     cat.push(cate)
 
-    produto.imagens = imgs;
+     produto.imagens = imgs;
 
-    produto.categorias = cat ;
+     produto.categorias = cat ;
 
     produto.idProduto = this.id;
     produto.nome = this.nome;
     produto.preco = this.preco;
     this.carrinhoService.verifyItemExists(produto);
     console.log("Adicionando " +  produto);
-    //this.dialogService.showSuccess("Produto adicionado no carrinho com sucesso!"); 
+    this.dialogService.showSuccess("Produto adicionado no carrinho com sucesso!"); 
 
   }
 

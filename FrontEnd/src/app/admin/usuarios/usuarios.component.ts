@@ -9,6 +9,7 @@ import { UsuarioService } from 'src/app/shared/services/usuario.service';
 export class UsuariosComponent implements OnInit {
 
   listUsers;
+  result;
 
   constructor(private usuarioService : UsuarioService) { }
 
@@ -22,7 +23,16 @@ export class UsuariosComponent implements OnInit {
         console.log(cliente)
         this.listUsers = cliente;
       }
+
     );
   }
+  // pesquisar(cpf){
+  //   this.usuarioService.pesquisarPorCpf(cpf).subscribe(
+  //     data =>{
+  //       this.result = this.result.result
+
+  //     }
+  //   )
+  // }
 
 }
