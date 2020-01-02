@@ -43,7 +43,6 @@ export class ServiceLoginService {
 
 this.http.post<tokenAuth>(`${this.envService.urlAPI}/autenticacao`, login).subscribe(
       (data) => {
-        
 
         console.log("data : ", data);
 
@@ -81,6 +80,7 @@ this.http.post<tokenAuth>(`${this.envService.urlAPI}/autenticacao`, login).subsc
     if (localUser == null){
       this.isAuth = false;
     }
+    
     console.log(localUser);
 
 
@@ -123,11 +123,11 @@ isAdmin(){
   if(this.storageService.getLocalUser())
     administrador = this.storageService.getLocalUser().scopes.toString()
 
-   if(administrador == "ROLE_USER"){
-        this.isAdministrador = false;
+   if(administrador == "ROLE_CLIENTE"){
+        this.isAdministrador = true;
 
    }else{
-     this.isAdministrador = true;
+     this.isAdministrador = false;
    }
    return this.isAdministrador;
 }
