@@ -37,7 +37,7 @@ export class MenuComponent implements OnInit {
     let localUser = this.storage.getLocalUser();
     console.log(localUser)
     this.nomeCliente = (localUser ? localUser.nome : '' );
-    
+
     this.isAuth = this.loginService.isAutenticado();
     if(this.storage.getLocalUser()!=null){
       this.isAuth = true;
@@ -60,7 +60,7 @@ export class MenuComponent implements OnInit {
   logadoAdmin(){
     this.isDashboard = this.loginService.isAdmin() && this.loginService.isAutenticado();
 
-    console.log("isAutenticado", this.loginService.isAutenticado())
+    //console.log("isAutenticado", this.loginService.isAutenticado())
 
     return this.isDashboard;
   }

@@ -65,10 +65,8 @@ export class ServiceLoginService {
         }
 
         this.storageService.setLocalUser(localUser);
-
-        this.dialogService.showSuccess('Login feito com sucesso!');
-
         this.router.navigate(['/home']);
+        this.dialogService.showSuccess('Login feito com sucesso!');
 
       }
     );
