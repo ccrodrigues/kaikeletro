@@ -26,7 +26,7 @@
         </div>
 
         <div *ngIf="isAuth" class="box">
-          <i class="fas fa-sign-out-alt cursor" title="Sair" style="font-size: 20px;" routerLink="login"></i>
+          <i (click)="logout()" class="fas fa-sign-out-alt cursor" title="Sair" style="font-size: 20px;" routerLink="login"></i>
         </div>
       </div>
     </div>

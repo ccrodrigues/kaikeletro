@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import * as xml2js from 'xml2js';
 
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
@@ -7,8 +6,6 @@ import { ProdutosService } from 'src/app/shared/services/produtos.service';
 import { ProdutosDetalhesService } from './produtos-detalhes.service';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ImagenModel } from 'src/app/shared/models/imagen.model';
-import { CategoriaModel } from 'src/app/shared/models/categoria.model';
 
 
 // classe base para calculo do parcelamento
@@ -86,13 +83,14 @@ export class ProdutosDetalhesComponent implements OnInit {
     config.wrap = true;
     config.keyboard = false;
     config.pauseOnHover = false;
+
+    this.activatedRoute.params.subscribe(data => {
+      this.idProdutoAPI=data.id;
+    })
   }
 
   ngOnInit() {
     // settar aqui o id do produto(da API) que irá ser carregado na página de detalhes
-    this.activatedRoute.params.subscribe(data => {
-      this.idProdutoAPI=data.id;
-    })
 
 
     this.produtoService.getById(this.idProdutoAPI).subscribe
