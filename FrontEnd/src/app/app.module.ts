@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { VendasModule } from './vendas/vendas.module';
 import { LayoutModule } from './layout/layout.module';
 import { CommonModule } from '@angular/common';
