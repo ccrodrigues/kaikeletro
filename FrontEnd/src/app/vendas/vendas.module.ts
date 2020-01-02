@@ -21,7 +21,7 @@ import { MaisDesejadosComponent } from './home/mais-desejados/mais-desejados.com
 import { CarrinhoComponent } from './home/carrinho/carrinho.component';
 import { ConfirmacaoEnderecoComponent } from './confirmacao-endereco/confirmacao-endereco.component';
 import { PagamentoFinalizacaoComponent } from './pagamento-finalizacao/pagamento-finalizacao.component';
-
+import { CreditCardDirectivesModule } from 'angular-cc-library'
 
 @NgModule({
   declarations: [TelaRegistroComponent, UsuarioLoginComponent, HomeComponent, TelaRegistroComponent,
@@ -40,6 +40,9 @@ import { PagamentoFinalizacaoComponent } from './pagamento-finalizacao/pagamento
     FormsModule,
     NgxPaginationModule,
     CarouselModule,
+    CreditCardDirectivesModule
+    
+
   ],
   exports:[
     PaginacaoComponent,
