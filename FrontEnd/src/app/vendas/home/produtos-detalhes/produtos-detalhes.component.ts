@@ -3,17 +3,14 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import * as xml2js from 'xml2js';
 
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
-<<<<<<< HEAD
-import { ActivatedRoute } from '@angular/router';
-import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
-import { DialogService } from 'src/app/shared/toaster/dialog.service';
-=======
 import { ProdutosService } from 'src/app/shared/Services/produtos.service';
 import { ProdutosDetalhesService } from './produtos-detalhes.service';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ImagenModel } from 'src/app/shared/models/imagen.model';
 import { CategoriaModel } from 'src/app/shared/models/categoria.model';
+import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
+import { DialogService } from 'src/app/shared/toaster/dialog.service';
 
 
 // classe base para calculo do parcelamento
@@ -26,7 +23,6 @@ class Parcelamento {
 
 //variavel para converter xml da API de frete dos correios
 const parser = new xml2js.Parser({ strict: false, trim: true });
->>>>>>> e0324952bf054d426e779c9604e76a6eaf93d294
 
 @Component({
   selector: 'app-produtos-detalhes',
@@ -65,45 +61,14 @@ export class ProdutosDetalhesComponent implements OnInit {
   //valor FINAL do produto com os calculos de juros 
   valorTotalCalc;
 
-<<<<<<< HEAD
-  numerosParcela= [1,2,3,4,5,6,7,8,9,10,11,12];
-  numeroParcelaAtual=1; 
-  imagemAtual ;
-  Preco:number;
-  Parcela;
-  idRota;
-=======
   //valor inicial para base de calculo de produto por quantidade
   valorinicialPrecoFrete;
->>>>>>> e0324952bf054d426e779c9604e76a6eaf93d294
 
   //valor do frete retornado pela API dos correios
   valorFrete;
 
-<<<<<<< HEAD
-   constructor(
-    private produtoService:ProdutosService,  
-    private activateRoute : ActivatedRoute,
-    private carrinhoService : CarrinhoService, 
-    private dialogService   : DialogService) { 
-     
-  }
+  idRota;
 
-   ngOnInit() {
-
-    this.activateRoute.params.subscribe((data)=>{this.idRota = data.id;
-      console.log("Id da rota: " + this.idRota); 
-    });
-
-    this.produtoService.getById(this.idRota).subscribe(  data =>{
-      this.produto=data;
-      this.Preco=data.preco; 
-      this.Parcela=data.preco
-      this.imagemAtual=this.produto.imagens[0].imagemProduto;
-    });
-    console.log(this.produto)
-   
-=======
   //estimativa de tempo em dias úteis para entrega. De acordo com a API de frete
   prazoentregaFrete;
 
@@ -118,7 +83,11 @@ export class ProdutosDetalhesComponent implements OnInit {
 
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    
+
+    private carrinhoService : CarrinhoService,
+
+    private dialogService   : DialogService,
+
     config: NgbCarouselConfig
   ) {
     config.interval = 2000;
@@ -142,7 +111,6 @@ export class ProdutosDetalhesComponent implements OnInit {
         this.imagemAtual = this.produto.imagens[0]['imagemProduto'];
       })
 
->>>>>>> e0324952bf054d426e779c9604e76a6eaf93d294
   }
 
   //  metodo para trocar de imagem quando clicar
@@ -177,17 +145,6 @@ export class ProdutosDetalhesComponent implements OnInit {
     this.modal.nativeElement.style.display = 'block';
   }
 
-<<<<<<< HEAD
-  adcionarCarrinho(){
-
-    this.carrinhoService.verifyItemExists(this.produto);
-    console.log("Adicionando " +  this.produto);
-    this.dialogService.showSuccess("Produto adicionado no carrinho com sucesso!"); 
-
- }
-
-}
-=======
   //metodo para fechar o modal
   closeModal() {
     this.modal.nativeElement.style.display = 'none';
@@ -274,17 +231,11 @@ export class ProdutosDetalhesComponent implements OnInit {
     this.router.navigate([`/entrega`])
   }
  
-adicionarCarrinho(){
-  console.log("adicionando ao carrinho")
-  let compra=[{
-  
-    "idProduto":  this.idProdutoAPI,
-    "valorProduto":  this.valorTotalCalc,
-    "valorFreteProduto":  this.valorFrete,
-    "quantidadeProduto":  this.quantidade
-  }]
+  adicionarCarrinho(){
 
+    this.carrinhoService.verifyItemExists(this.produto, this.quantidade);
+    console.log("Adicionando " +  this.produto);
+    this.dialogService.showSuccess("Produto adicionado no carrinho com sucesso!"); 
+ }
 
-  
-}}
->>>>>>> e0324952bf054d426e779c9604e76a6eaf93d294
+}

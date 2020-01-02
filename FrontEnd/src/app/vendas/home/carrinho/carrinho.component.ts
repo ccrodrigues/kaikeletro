@@ -32,7 +32,11 @@ export class CarrinhoComponent implements OnInit {
     if(this.localStorage.getCarrinho()!= null){
 
       this.carrinhoService.itensCarrinho = this.localStorage.getCarrinho();
+    }else{
+     this.carrinhoService.itensCarrinho = []
     }
+
+    console.log("Itens: " + this.localStorage.getCarrinho())
     
     console.log("Itens: " + this.carrinhoService.exibirItens())
    
@@ -51,12 +55,13 @@ export class CarrinhoComponent implements OnInit {
         (data)=>{
           data = data
           console.log(data)
-          console.log(this.carrinhoService.itensCarrinho)
-          this.carrinhoService.criarOuLimparCarrinho()
-            
+          console.log(this.carrinhoService.itensCarrinho);
+          this.carrinhoService.itensCarrinho = this.carrinhoService.criarOuLimparCarrinho()
+          this.localStorage.setCarrinho(this.carrinhoService.itensCarrinho)
           }
       )
-      //this.carrinhoService.criarOuLimparCarrinho()
+      
+      
     }
 
     getUser(email){

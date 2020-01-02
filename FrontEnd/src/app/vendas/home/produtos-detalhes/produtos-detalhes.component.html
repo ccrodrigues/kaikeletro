@@ -1,3 +1,4 @@
+<div class="container">
 <!-- Carrossel de imagens -->
 <div class="row" id="">
 
@@ -12,7 +13,7 @@
     [interval]="false"
     [startFromIndex]="5">
 
-    <slide *ngFor="let img of produto?.imagens">
+    <slide *ngFor="let img of produto?.imagens" > 
         <img [src]="img?.imagemProduto" style="display: block; width: 100%;" (click)="trocarImagem(img?.imagemProduto)">
     </slide>
 </carousel>
@@ -34,33 +35,8 @@
             <span class="font-weight-light font-italic text-justify">
                 {{produto?.descricao}}
             </span>
-<<<<<<< HEAD
-            <br/><hr>
-              <p class="text-center text-justify font-weight-bold">Preco: {{produto?.preco|  currency:'BRL':'symbol':'1.2-2'}} </p>
-             
-                <div class="btn-group" dropdown>
-                    <p >Parcelas: </p>
-                    <button id="button-basic" dropdownToggle type="button" class="btn  btn-outline-primary dropdown-toggle"
-                            aria-controls="dropdown-basic">
-                     {{numeroParcelaAtual}} <span class="caret"></span>
-                    </button>
-                    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-                        role="menu" aria-labelledby="button-basic">
-                        <div *ngFor="let numero of numerosParcela">
-                            <li role="menuitem"><a class="dropdown-item" (click)="mudarParcela(numero)" >{{numero}}</a></li>
-                        </div>
-                    </ul>
-=======
->>>>>>> e0324952bf054d426e779c9604e76a6eaf93d294
         </div>
 
-<<<<<<< HEAD
-        <div>
-            <p>{{numeroParcelaAtual}}X{{Parcela| currency:'BRL':'symbol':'1.2-2'}} </p>
-        </div>
-        <button (click)="adcionarCarrinho()"  class="btn btn-primary">Comprar </button>
-        
-=======
         <!-- Calculo de prazo e frete -->
         <div id="exFrete">
             <div id="intFrete">
@@ -164,6 +140,6 @@
 
             </div>
         </div>
->>>>>>> e0324952bf054d426e779c9604e76a6eaf93d294
     </div>
+</div>
 </div>

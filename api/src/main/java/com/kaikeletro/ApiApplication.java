@@ -52,10 +52,7 @@ public class ApiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-<<<<<<< HEAD
-=======
 
->>>>>>> e0324952bf054d426e779c9604e76a6eaf93d294
 		popularBanco.produtoCategoriaDemo();				
 	}
 }
