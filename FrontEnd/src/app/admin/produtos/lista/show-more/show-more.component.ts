@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { CategoriasService } from 'src/app/shared/Services/categorias.service';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
 import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { isUndefined } from 'util';
 
 @Component({
   selector: 'app-show-more',
@@ -38,6 +39,7 @@ export class ShowMoreComponent implements OnInit {
 
     this.imagens = this.imagens.splice(0, 1);
 
+    this.selecionadas = this.produto.categorias;
 
     this.meuForm = this.fb
         .group({
@@ -177,10 +179,12 @@ export class ShowMoreComponent implements OnInit {
   }
 
   categoriaTem(cat) {
-    let resp =  this.selecionadas.find(a => {
-      a == cat.idCategoria
-    })
-    return true;
+
+    let resp =  this.selecionadas.find(a => a.idCategoria == cat)
+      
+    console.log(resp)
+
+    return isUndefined(resp) ? false : true;
   }
 
 

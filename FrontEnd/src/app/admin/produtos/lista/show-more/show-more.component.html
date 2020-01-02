@@ -48,7 +48,7 @@
                
                 <div class="col-8 box rounded">
                     <div *ngFor="let cats of allCategorias" #categoria 
-                     (click)="escolhida(categoria, cats)" [ngClass]="{selecionado: categoriaTem(cats)}"> {{ cats.nome }}</div>
+                     (click)="escolhida(categoria, cats)" [class]="categoriaTem(cats.idCategoria) ? 'selecionado' : ''"> {{ cats.nome }}</div>
                 </div>
                 
             </div>
