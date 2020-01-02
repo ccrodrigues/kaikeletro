@@ -41,10 +41,9 @@ public class ApiApplication implements CommandLineRunner {
 
 	@Autowired
 	ItemVendaRepository itemRepository;
-	
-	@Autowired
-	PopularBancoService popularBanco;
 
+	@Autowired
+	PopularBancoService popularBanco; 
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
@@ -53,11 +52,8 @@ public class ApiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+
 		popularBanco.produtoCategoriaDemo();				
 	}
 }
-
-
-
-
 

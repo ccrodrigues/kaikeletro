@@ -3,6 +3,7 @@
 
     <form [formGroup]="detalhesForm" (ngSubmit)="onSubmit()">
 
+<<<<<<< HEAD
         <div formGroupName="usuario">
 
         <div class="form-group">
@@ -17,6 +18,21 @@
                     <div class="col-md-7">
                         <label for="nome">Nome: </label>
                         <div class="input-group form-group-nome">
+=======
+        <div class="form-group" [formGroupName]="usuario">
+
+            <div class="card">
+                <div class="row cpp">
+                    <div class="col-md-1">
+                        <label for="id">ID</label>
+                        <div class="input-group form-group">
+                            <input type="text" class="form-control" formControlName="id" disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <label for="nome">Nome: </label>
+                        <div class="input-group form-group">
+>>>>>>> integracoesProdDetalhes
                             <input type="nome" class="form-control" formControlName="nome" placeholder="Nome Completo">
                         </div>
                     </div>
@@ -26,8 +42,13 @@
 
                     <div class="col-md-3">
                         <label for="nascimento">Data de Nascimento: </label>
+<<<<<<< HEAD
                         <div class="input-group form-group-dataDeNascimento">
                             <input type="text" calss="form-control" formControlName="nascimento">
+=======
+                        <div class="input-group form-group">
+                            <input type="date" calss="form-control" formControlName="nascimento">
+>>>>>>> integracoesProdDetalhes
                         </div>
                     </div><br>
                 </div>
@@ -37,7 +58,11 @@
                 <div class="row cpp">
                     <div class="col-md-7 ">
                         <label for="cpf">CPF: </label>
+<<<<<<< HEAD
                         <div class="input-group form-group-cpf">
+=======
+                        <div class="input-group form-group">
+>>>>>>> integracoesProdDetalhes
                             <input type="number" (keypress)="somenteNumerosCpf($event)" class="form-control"
                                 formControlName="cpf" placeholder="CPF">
 
@@ -47,7 +72,11 @@
                     </app-msg-erro>
                     <div class="col-md-4 ">
                         <label for="telefone">Telefone: </label>
+<<<<<<< HEAD
                         <div class="input-group form-group-telefone">
+=======
+                        <div class="input-group form-group">
+>>>>>>> integracoesProdDetalhes
                             <input type="text" class="form-control" formControlName="telefone">
                         </div>
                     </div>
@@ -55,19 +84,28 @@
                 <div class="row cpp">
                     <div class="col-md-4">
                         <label for="celular">Celular: </label>
+<<<<<<< HEAD
                         <div class="input-group form-group-celular">
+=======
+                        <div class="input-group form-group">
+>>>>>>> integracoesProdDetalhes
                             <input type="text" class="form-control" formControlName="celular">
                         </div>
                     </div>
 
                     <div class="col-md-7">
                         <label for="email">E-mail</label>
+<<<<<<< HEAD
                         <div class="input-group form-group-email">
+=======
+                        <div class="input-group form-group">
+>>>>>>> integracoesProdDetalhes
                             <input type="email" class="form-control" formControlName="email">
                         </div>
                     </div><br>
                 </div>
             </div>
+<<<<<<< HEAD
             </div>
             <app-msg-erro [isError]="isErrorCampo('usuario.email')" mensagem="Preencha os dados corretamente">
             </app-msg-erro>
@@ -153,6 +191,85 @@
                                     formControlName="estado">
                             </div>
                         </div>
+=======
+            <app-msg-erro [isError]="isErrorCampo('usuario.email')" mensagem="Preencha os dados corretamente"></app-msg-erro>
+            <br>
+            <h2><small class="form-text text-muted negrito-padding text-center">Endereço</small></h2>
+            <div class="form-group" [formGroupName]="endereco">
+
+                <div class="row cpp">
+                    <div class="col-md-6">
+                        <label for="cep" class="control-label">CEP</label>
+                        <div class="input-group form-group">
+                            <input #cep type="number" (keypress)="somenteNumerosCep($event)" required
+                                class="form-control" id="cep" formControlName="cep">
+                        </div>
+                    </div>
+                    <div class="col-md-1 but">
+                        <button class="btn btn-primary" (click)="buscarCep(cep.value)">Buscar</button>
+                        <app-msg-erro [isError]="isErrorCampo('endereco.cep')"
+                            mensagem="Preencha os dados corretamente">
+                        </app-msg-erro>
+                    </div>
+                </div>
+
+
+                <div class="row cpp">
+                    <div class="col-md-8">
+                        <label for="rua" class="control-label">Logradouro</label>
+                        <div class="input-group form-group">
+                            <input type="text" [value]="objEnd?.logradouro" class="form-control" id="logradouro"
+                                formControlName="logradouro">
+                            <app-msg-erro [isError]="isErrorCampo('endereco.logradouro')"
+                                mensagem="Preencha os dados corretamente">
+                            </app-msg-erro>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="numero" class="control-label">Número</label>
+                        <div class="input-group form-group">
+                            <input type="text" class="form-control" id="numero" formControlName="numero">
+
+                        </div>
+                    </div>
+                </div>
+
+                <app-msg-erro [isError]="isErrorCampo('endereco.numero')" mensagem="Preencha os dados corretamente">
+                </app-msg-erro>
+                <div class="row cpp">
+                    <div class="col-md-6">
+                        <label for="complemento" class="control-label">Complemento</label>
+                        <div class="input-group form-group">
+                            <input type="text" class="form-control" id="complemento" formControlName="complemento">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="bairro" class="control-label">Bairro</label>
+                        <div class="input-group form-group">
+                            <input [value]="objEnd?.bairro" type="text" class="form-control" id="bairro"
+                                formControlName="bairro">
+                            <app-msg-erro [isError]="isErrorCampo('endereco.bairro')"
+                                mensagem="Preencha os dados corretamente">
+                            </app-msg-erro>
+                        </div>
+                    </div>
+                </div>
+                <div class="row cpp">
+                    <div class="col-md-10">
+                        <label for="cidade" class="control-label">Cidade</label>
+                        <div class="input-group form-group">
+                            <input [value]="objEnd?.localidade" type="text" class="form-control" id="cidade"
+                                formControlName="cidade">
+                        </div>
+                    </div>
+                    <app-msg-erro [isError]="isErrorCampo('endereco.cidade')" mensagem="Preencha os dados corretamente">
+                    </app-msg-erro>
+                    <div class="col-md-1">
+                        <label for="estado" class="control-label">Estado</label>
+                        <div class="input-group form-group">
+                            <input [value]="objEnd?.uf" type="text" class="form-control" id="estado"
+                                formControlName="estado">
+>>>>>>> integracoesProdDetalhes
                         </div>
                     </div>
                 </div>
