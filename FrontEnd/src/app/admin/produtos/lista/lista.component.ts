@@ -70,10 +70,8 @@ export class ListaComponent implements OnInit {
 
     if(POR.value == "idProduto"){
       let escolha = this.validar_id(PESQ.value);
-      
       escolha ? 
       this.pegar_produto_por_id(POR.value, PESQ.value) : this.msg("Não use letras e caracteres especiais!")
-      
     }
 
     else if( POR.value == "nome" ) {
@@ -81,7 +79,6 @@ export class ListaComponent implements OnInit {
       escolha ? 
       this.pegar_produto_por_nome(POR.value, PESQ.value) : this.msg("Não utilize caracteres especias!")
     }
-
 
   }
 
