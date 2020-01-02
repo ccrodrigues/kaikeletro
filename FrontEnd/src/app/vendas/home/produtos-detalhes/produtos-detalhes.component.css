@@ -4,6 +4,11 @@
 * Int- Div Interna
 *
 */
+
+#miniaturaDeImagensSecundarias{
+  margin-top: 7px;
+}
+
 .carousel-item{
   margin-right: 0% !important;
 }

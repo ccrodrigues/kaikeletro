@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
+import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class MenuComponent implements OnInit {
    isDashboard : boolean = false;
    deslogar : boolean ;
    nomeCliente : string = '';
- 
+   qntd;
 
 
   constructor(private menuService : menuService, 
@@ -27,13 +28,16 @@ export class MenuComponent implements OnInit {
    private router: Router,
    private storage : StorageService,
    private authService : AuthServiceService,
-   private dialogService: DialogService ) { }
+   private carrinhoService : CarrinhoService,
+   private dialogService: DialogService,
+    ) { }
 
   ngOnInit() {
 
     let localUser = this.storage.getLocalUser();
     console.log(localUser)
     this.nomeCliente = (localUser ? localUser.nome : '' );
+    
     this.isAuth = this.loginService.isAutenticado();
     if(this.storage.getLocalUser()!=null){
       this.isAuth = true;
@@ -43,8 +47,15 @@ export class MenuComponent implements OnInit {
     }
     
 
-   
+    //  this.qntd = this.carrinhoService.totalItensCarrinho();
+    // // //this.isAuth = this.loginService.getIsAutenticado();
+    // //     //if(this.isAuth == false){
+    // //      //  this.loginService.Logout();
+    // //     // }
+    //  console.log(this.carrinhoService.exibirItens())
+
   }
+
 
   logadoAdmin(){
     this.isDashboard = this.loginService.isAdmin() && this.loginService.isAutenticado();
