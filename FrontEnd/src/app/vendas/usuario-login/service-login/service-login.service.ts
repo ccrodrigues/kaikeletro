@@ -119,10 +119,11 @@ this.http.post<tokenAuth>(`${this.envService.urlAPI}/autenticacao`, login).subsc
       );
 }
 isAdmin(){
-  let administrador;
-  if(this.storageService.getLocalUser())
-    administrador = this.storageService.getLocalUser().scopes.toString()
+  let administrador
+  if(this.storageService.getLocalUser()){
+    administrador = this.storageService.getLocalUser().scopes
 
+  }
    if(administrador == "ROLE_USER"){
         this.isAdministrador = false;
 

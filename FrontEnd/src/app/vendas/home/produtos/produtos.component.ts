@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
@@ -22,7 +23,8 @@ export class ProdutosComponent implements OnInit {
 
   constructor(
     private carrinhoService : CarrinhoService, 
-    private dialogService   : DialogService) { }
+    private dialogService   : DialogService,
+    private router : Router  ) { }
   
   ngOnInit() {
     console.log("itens : " + this.carrinhoService.exibirItens())
@@ -55,6 +57,11 @@ export class ProdutosComponent implements OnInit {
     console.log("Adicionando " +  produto);
     this.dialogService.showSuccess("Produto adicionado no carrinho com sucesso!"); 
 
+  }
+
+  navigateDetalhes(){
+    console.log("ID: "+this.id)
+    this.router.navigateByUrl("detalhes/"+ this.id)
   }
 
 }
