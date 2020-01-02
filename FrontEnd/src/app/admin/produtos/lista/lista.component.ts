@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
-import { CategoriasService } from 'src/app/shared/Services/categorias.service';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
+import { CategoriasService } from 'src/app/shared/services/categorias.service';
 import { iif } from 'rxjs';
 import { isNull, isString, isNumber, isUndefined, isNullOrUndefined, isArray } from 'util';
 

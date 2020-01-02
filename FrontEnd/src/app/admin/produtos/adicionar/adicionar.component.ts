@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { CategoriasService } from 'src/app/shared/Services/categorias.service';
+import { CategoriasService } from 'src/app/shared/services/categorias.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
 import { Router } from '@angular/router';
 
 @Component({

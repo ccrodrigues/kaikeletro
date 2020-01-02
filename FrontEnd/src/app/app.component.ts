@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { StorageService } from './shared/services/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent {
 
   constructor(
     private router: Router,
+    private storage : StorageService
   ) { }
 
   headerFooter;
@@ -24,6 +26,10 @@ export class AppComponent {
           this.headerFooter = (event.url !== '/login')
         }
       });
+
+     
+
+
 }
 
 }

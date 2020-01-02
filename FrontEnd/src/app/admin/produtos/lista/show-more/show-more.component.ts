@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { CategoriasService } from 'src/app/shared/Services/categorias.service';
+import { CategoriasService } from 'src/app/shared/services/categorias.service';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
 import { ProdutosService } from 'src/app/shared/Services/produtos.service';
 import { isUndefined } from 'util';
@@ -38,6 +38,8 @@ export class ShowMoreComponent implements OnInit {
     this.imagemPrincipal = this.imagens[0].imagemProduto
 
     this.imagens = this.imagens.splice(0, 1);
+    
+    console.log(this.imagens)
 
     this.selecionadas = this.produto.categorias;
 
@@ -186,7 +188,5 @@ export class ShowMoreComponent implements OnInit {
 
     return isUndefined(resp) ? false : true;
   }
-
-
   
 }

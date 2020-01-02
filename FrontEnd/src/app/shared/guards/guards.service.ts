@@ -11,7 +11,7 @@ export class GuardsService {
 
   canActivate(){
 
-    let serviceLogin = this.serviceLogin.getIsAdmin() && this.serviceLogin.getIsAutenticado();
+    let serviceLogin = this.serviceLogin.isAutenticado() && this.serviceLogin.isAdmin();
 
     if(!serviceLogin){
 
