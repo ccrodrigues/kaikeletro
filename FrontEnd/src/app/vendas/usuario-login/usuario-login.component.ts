@@ -25,8 +25,6 @@ export class UsuarioLoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group( { 
       email : [ '',[Validators.required]  ], 
       senha : [ '' , [Validators.required] ] 
-      
-
     });
   }
   onSubmit(){
@@ -34,6 +32,7 @@ export class UsuarioLoginComponent implements OnInit {
 
     //Verifica ao enviar se os dados informados são validos
     let login = {email : this.loginForm.value.email, senha : this.loginForm.value.senha};
+    
     return this.serviceLogin.fazerLogin(login);
   }
 

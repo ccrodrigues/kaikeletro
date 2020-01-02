@@ -3,20 +3,19 @@
 
     <form [formGroup]="detalhesForm" (ngSubmit)="onSubmit()">
 
-        <div formGroupName="usuario">
+        <div class="form-group" [formGroupName]="usuario">
 
-        <div class="form-group">
             <div class="card">
                 <div class="row cpp">
-                    <div class="col-md-2">
-                        <label for="id">ID</label>
-                        <div class="input-group">
+                    <div class="col-md-1">
+                        <label for="id">ID</label>  
+                        <div class="input-group form-group">
                             <input type="text" class="form-control" formControlName="id" disabled>
                         </div>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-8">
                         <label for="nome">Nome: </label>
-                        <div class="input-group form-group-nome">
+                        <div class="input-group form-group">
                             <input type="nome" class="form-control" formControlName="nome" placeholder="Nome Completo">
                         </div>
                     </div>
@@ -168,7 +167,5 @@
                 <button type="submit" class="btn btn-dark cad_btn"
                     [disabled]="detalhesForm.valid? false : true">Salvar</button>
             </div>
-        </div>
-
     </form>
 </div>

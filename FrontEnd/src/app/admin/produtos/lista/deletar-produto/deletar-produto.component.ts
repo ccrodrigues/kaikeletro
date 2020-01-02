@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
 
 @Component({
   selector: 'app-deletar-produto',

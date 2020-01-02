@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { RouteReuseStrategy, Router } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
-import { CarrinhoService } from 'src/app/shared/Services/carrinho.service';
-import { VendaService } from 'src/app/shared/Services/venda.service';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
+import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
+import { VendaService } from 'src/app/shared/services/venda.service';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
+import { Usuario } from 'src/app/shared/models/usuario.model';
+import { UsuarioService } from 'src/app/shared/services/usuario.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -14,15 +17,30 @@ import { ProdutoModel } from 'src/app/shared/models/produto.model';
 export class CarrinhoComponent implements OnInit {
 
   
-  constructor(private router : Router, private formBuilder : FormBuilder,
-    private ps: ProdutosService, private carrinhoService : CarrinhoService, private vendasService : VendaService) { }
+  constructor(
+    private router : Router, 
+    private formBuilder : FormBuilder,
+    private ps: ProdutosService, 
+    private carrinhoService : CarrinhoService, 
+    private vendasService : VendaService,
+    private usuarioService : UsuarioService,
+    private localStorage : StorageService) { }
 
 
   ngOnInit() {
+
+    if(this.localStorage.getCarrinho()!= null){
+
+      this.carrinhoService.itensCarrinho = this.carrinhoService.getCarrinho();
+    }
+    
+
+  
     console.log("Itens: " + this.carrinhoService.exibirItens())
+   
     }
 
-
+    
     changeSuit(selectedOption : number, id) : void {
 
       this.carrinhoService.alterarQuantidade(selectedOption,id)
@@ -36,11 +54,23 @@ export class CarrinhoComponent implements OnInit {
           data = data
           console.log(data)
           console.log(this.carrinhoService.itensCarrinho)
-          while(this.carrinhoService.itensCarrinho.length) {
-            this.carrinhoService.itensCarrinho.pop();
-         }
+            this.carrinhoService.criarOuLimparCarrinho()
+            
           }
       )
+      //this.carrinhoService.criarOuLimparCarrinho()
+    }
+
+    getUser(email){
+
+      let user : Usuario = new Usuario();
+
+      this.usuarioService.getUserByEmail(email).subscribe(data=>{
+        user.id = data.id;
+      })
+
+      this.carrinhoService.user.id = user.id
+
     }
     
   }

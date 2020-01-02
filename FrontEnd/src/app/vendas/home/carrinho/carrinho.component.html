@@ -1,6 +1,6 @@
 <h2 style="margin-top: 20px;">Meu Carrinho</h2>
 
-<div *ngIf="carrinhoService.exibirItens().length; else carrinhoVazio">
+<div *ngIf="this.carrinhoService.itensCarrinho.length; else carrinhoVazio">
 
     <div class="container-fluid cart-box">
 

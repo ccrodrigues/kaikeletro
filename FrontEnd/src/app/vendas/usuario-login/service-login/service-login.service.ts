@@ -7,6 +7,8 @@ import { EnvService } from 'src/app/env.service';
 import { LocalUserModel } from 'src/app/shared/models/auth/local-user.model';
 import {  tokenAuth } from 'src/app/shared/models/auth/token-auth.model'
 import { StorageService } from 'src/app/shared/services/storage.service';
+import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
+import { Usuario } from 'src/app/shared/models/usuario.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
 
@@ -27,10 +29,12 @@ export class ServiceLoginService {
     private envService: EnvService,
     private storageService: StorageService,
     private dialogService: DialogService
+  ,private carrinhoService : CarrinhoService
 
   ) {
     this.isMostrarMenu.emit(false);
   }
+  //verifica os campos email e senha na API e retorna se true ou false
 
   fazerLogin(login: { email: string, senha: string }) {
 
@@ -39,7 +43,6 @@ export class ServiceLoginService {
 
 this.http.post<tokenAuth>(`${this.envService.urlAPI}/autenticacao`, login).subscribe(
       (data) => {
-        
 
         console.log("data : ", data);
 
@@ -77,6 +80,7 @@ this.http.post<tokenAuth>(`${this.envService.urlAPI}/autenticacao`, login).subsc
     if (localUser == null){
       this.isAuth = false;
     }
+    
     console.log(localUser);
 
 
@@ -115,12 +119,15 @@ this.http.post<tokenAuth>(`${this.envService.urlAPI}/autenticacao`, login).subsc
       );
 }
 isAdmin(){
-  let administrador = this.storageService.getLocalUser().scopes.toString();
-   if(administrador == "ROLE_USER"){
-        this.isAdministrador = false;
+  let administrador;
+  if(this.storageService.getLocalUser())
+    administrador = this.storageService.getLocalUser().scopes.toString()
+
+   if(administrador == "ROLE_CLIENTE"){
+        this.isAdministrador = true;
 
    }else{
-     this.isAdministrador = true;
+     this.isAdministrador = false;
    }
    return this.isAdministrador;
 }

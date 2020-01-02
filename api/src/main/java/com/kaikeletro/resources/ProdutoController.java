@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -22,60 +20,56 @@ import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.ProdutoService;
 
 @RestController
-@RequestMapping(value="/produtos")
+@RequestMapping(value = "/produtos")
 public class ProdutoController {
-	
+
 	@Autowired
 	ProdutoService produtoService;
 
-	@RequestMapping(value="", method=RequestMethod.GET)
-	public ResponseEntity<List <Produto> > listarProdutos(){
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public ResponseEntity<List<Produto>> listarProdutos() {
 		return ResponseEntity.ok().body(produtoService.listarProdutos());
 	}
-	
-	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<Optional <Produto> > findById(@PathVariable("id")int id){
-		Optional <Produto> obj = produtoService.findById(id);
-		
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Optional<Produto>> findById(@PathVariable("id") int id) {
+		Optional<Produto> obj = produtoService.findById(id);
+
 		if (obj.isPresent() == false) {
 			throw new TratamentoDeErros(id, new Produto());
 		} 
-		
+
 		return ResponseEntity.ok().body(obj);
 	}
-	
-	//Get Produto by id DTO para o usar no Carrinho do Front
-	@RequestMapping(value="/carrinho/{id}", method=RequestMethod.GET)
-	public ResponseEntity< Optional<ProdutoDto> > findByIdDto(@PathVariable("id") int id){
-		Optional<Produto> prod =  produtoService.findById(id);
-		
-		Optional <ProdutoDto> prodDto = prod
-				.map(obj -> new ProdutoDto(obj));
 
-	if (prod.isPresent() == false) {
+	// Get Produto by id DTO para o usar no Carrinho do Front
+	@RequestMapping(value = "/carrinho/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Optional<ProdutoDto>> findByIdDto(@PathVariable("id") int id) {
+		Optional<Produto> prod = produtoService.findById(id);
+
+		Optional<ProdutoDto> prodDto = prod.map(obj -> new ProdutoDto(obj));
+
+		if (prod.isPresent() == false) {
 			throw new TratamentoDeErros(id, new Produto());
 		}
-		
+
 		return ResponseEntity.ok().body(prodDto);
 	}
-	
-	//Get all Produto DTO para o front 
-	@RequestMapping(value="/carrinho", method=RequestMethod.GET)
-	public ResponseEntity< List<ProdutoDto> > getAllCategoriasDto() {
-		
+
+	// Get all Produto DTO para o front
+	@RequestMapping(value = "/carrinho", method = RequestMethod.GET)
+	public ResponseEntity<List<ProdutoDto>> getAllCategoriasDto() {
+
 		List<Produto> listaProd = produtoService.listarProdutos();
-		
-		List<ProdutoDto> listaDto = listaProd
-				.stream()
-				.map(obj -> new ProdutoDto( obj ))
-				.collect(Collectors.toList());
-		
-		return ResponseEntity.ok().body( listaDto );
+
+		List<ProdutoDto> listaDto = listaProd.stream().map(obj -> new ProdutoDto(obj)).collect(Collectors.toList());
+
+		return ResponseEntity.ok().body(listaDto);
 	}
-	
-	//Buscar Produto pelo Nome
-	@RequestMapping(value="/nome/{nomeBusca}", method=RequestMethod.GET)
-	public ResponseEntity<List <Produto> > findProdutosByName(@PathVariable("nomeBusca")String nomeBusca){
+
+	// Buscar Produto pelo Nome
+	@RequestMapping(value = "/nome/{nomeBusca}", method = RequestMethod.GET)
+	public ResponseEntity<List<Produto>> findProdutosByName(@PathVariable("nomeBusca") String nomeBusca) {
 		return ResponseEntity.ok().body(produtoService.findByNome(nomeBusca));
 	}
 	
@@ -96,24 +90,23 @@ public class ProdutoController {
 	public void  deleteProduto(@PathVariable("id") int id){
 		produtoService.deleteProduto(id);
 	}
-	
-	//Paginação, podendo passar a categoria como parametro p/ listar os produtos que pertencem a ela
-	@RequestMapping(value="/page", method=RequestMethod.GET)
-	public ResponseEntity< List <ProdutoDto> > findPage(
-						@RequestParam(value="pagina", defaultValue="0")int pagina,
-						@RequestParam(value="qtdLinhas", defaultValue="10") int qtdLinhas,
-						@RequestParam(value="direcao", defaultValue="ASC") String direcao,
-						@RequestParam(value="campo", defaultValue="idProduto") String campo,
-						@RequestParam(value="nomeCategoria", defaultValue="") String nomeCategoria){
-		
-		//Page<Produto> pageProdutos = produtoService.findPage(pagina, qtdLinhas, direcao, campo);
-		Page<Produto> pageProdutos = produtoService.findDistinctByCategoriasNomeContaining(nomeCategoria, pagina, qtdLinhas, direcao, campo);
-		
-		List<ProdutoDto> pageDto = pageProdutos
-				.stream()
-				.map(obj -> new ProdutoDto( obj ))
-				.collect(Collectors.toList());
-		
+
+	// Paginação, podendo passar a categoria como parametro p/ listar os produtos
+	// que pertencem a ela
+	@RequestMapping(value = "/page", method = RequestMethod.GET)
+	public ResponseEntity<List<ProdutoDto>> findPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
+			@RequestParam(value = "qtdLinhas", defaultValue = "10") int qtdLinhas,
+			@RequestParam(value = "direcao", defaultValue = "ASC") String direcao,
+			@RequestParam(value = "campo", defaultValue = "idProduto") String campo,
+			@RequestParam(value = "nomeCategoria", defaultValue = "") String nomeCategoria) {
+
+		// Page<Produto> pageProdutos = produtoService.findPage(pagina, qtdLinhas,
+		// direcao, campo);
+		Page<Produto> pageProdutos = produtoService.findDistinctByCategoriasNomeContaining(nomeCategoria, pagina,
+				qtdLinhas, direcao, campo);
+
+		List<ProdutoDto> pageDto = pageProdutos.stream().map(obj -> new ProdutoDto(obj)).collect(Collectors.toList());
+
 		return ResponseEntity.ok().body(pageDto);
 	}
 	
@@ -124,4 +117,3 @@ public class ProdutoController {
 //		return ResponseEntity.ok().body( produtoService.getAllProdutoDto() );
 //	}
 }
- 
