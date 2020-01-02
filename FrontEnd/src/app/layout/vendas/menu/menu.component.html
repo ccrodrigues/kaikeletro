@@ -9,7 +9,7 @@
 
       <div id="right" style="display: inline-flex;">
 
-        <div class="box">
+        <div class="box" *ngIf="logadoAdmin() == true">
           <i routerLink="dashboardAdm" style="font-size: 20px;" class="fas fa-lock cursor" title="Entrar como administrador" width="500px" height="500px" ></i>
         </div>
 
@@ -26,7 +26,7 @@
         </div>
 
         <div *ngIf="isAuth" class="box">
-          <i (click)="sair()" class="fas fa-sign-out-alt cursor" title="Sair" style="font-size: 20px;"></i>
+          <i class="fas fa-sign-out-alt cursor" title="Sair" style="font-size: 20px;" routerLink="login"></i>
         </div>
       </div>
     </div>
@@ -80,10 +80,6 @@
         </a>
       </li>
 
-        <li class="nav-item" *ngIf="logadoAdmin() == true" >
-            
-        <a class="nav-link" routerLink="dashboardAdm"  ><h6 class="mb-0" >dashboardAdm</h6></a>
-        </li>
     </ul > 
 
   </div>

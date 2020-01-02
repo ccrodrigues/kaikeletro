@@ -9,9 +9,9 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { VendasModule } from './vendas/vendas.module';
 import { LayoutModule } from './layout/layout.module';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CommonModule } from '@angular/common';
 // import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CarrinhoService } from './shared/Services/carrinho.service';
@@ -23,7 +23,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
   declarations: [
-    AppComponent  
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,13 +36,11 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
-    //CarouselModule.forRoot(),
+    CarouselModule.forRoot(),
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     VendasModule,
     LayoutModule,
-    // NgMultiSelectDropDownModule.forRoot()
-
   ],
   providers: [CarrinhoService],
   bootstrap: [AppComponent]

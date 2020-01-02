@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'produtos', component: DSProdutosComponent },
   { path: 'pedidos', component: PedidosComponent },
   { path: 'usuarios', component: UsuariosComponent },
-  { path: 'usuarios/:id', component: UsuarioDetalhesComponent }
+  { path: 'usuarios/:id', component: UsuarioDetalhesComponent },
+  { path: 'usuarios/novo', component: UsuarioDetalhesComponent }
 ];
 
 @NgModule({
