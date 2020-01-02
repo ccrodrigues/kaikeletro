@@ -34,11 +34,11 @@ export class MenuComponent implements OnInit {
     }
 
      
-    //this.isAuth = this.loginService.getIsAutenticado();
-        //if(this.isAuth == false){
-         //  this.loginService.Logout();
-        // }
-  // console.log(this.isAuth)
+    this.isAuth = this.loginService.getIsAutenticado();
+        if(this.isAuth == false){
+           this.loginService.Logout();
+         }
+   
   }
 
   logadoAdmin(){
