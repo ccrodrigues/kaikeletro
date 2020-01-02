@@ -238,8 +238,7 @@ public class ApiApplication implements CommandLineRunner {
 		imagemRepository.saveAll(Arrays.asList(a1));
 		produtoRepository.saveAll(Arrays.asList(prod));
 		produtoRepository.save(prod);
-
-		popularBanco.produtoCategoriaDemo();				
+			
 
 	}
 }
