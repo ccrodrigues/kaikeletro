@@ -44,7 +44,6 @@ export class PagamentoFinalizacaoComponent implements OnInit {
   tipoCard(numCartao): void{
      this.card = CreditCard.cardFromNumber(numCartao);
     
-
      if(this.card){
       console.log(this.card.type);
        this.showType = true;
