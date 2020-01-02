@@ -67,24 +67,11 @@ public class ApiApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		this.produtoCategoriaDemo();
-
 		this.vendasProdutoUsuario();
-
-
-
-
-		this.produtoCategoriaDemo();
 		this.produtoCategoriaDemo();
 		this.produtoCategoriaDemo();
 
-		
-
-
-
-
-		this.produtoCategoriaDemo();
-		this.produtoCategoriaDemo();
-		
+		//atributos usuarios
 
 		Usuario u1 = new Usuario();
 		EnderecoUsuario end1 = new EnderecoUsuario();
@@ -105,16 +92,11 @@ public class ApiApplication implements CommandLineRunner {
 		end1.setLogradouro("Av. nove de julho");
 		end1.setNumero("15A");
 		end1.setFk_Usuario(u1);
-		
-
-		//enderecoRepository.save(end1);
 
 
 		enderecoRepository.save(end1);
 	
 		//this.vendasProdutoUsuario();
-
-
 		//this.produtoCategoriaDemo();
 		//this.produtoCategoriaDemo();
 		//this.produtoCategoriaDemo();
@@ -143,17 +125,6 @@ public class ApiApplication implements CommandLineRunner {
 		
 		//Atributos categoria
 		c1.setNome("Eletronicos");
-		
-		//Atributos usuario
-		u1.setCelular("1148748-8743");
-		u1.setCpf("123456786");
-		u1.setDataDeNascimento("30/01/1998");
-		u1.setEmail("a@a.com");
-		//u1.setDataDeNascimento("30/01/1998");
-		u1.setEmail("usuario@email.com");
-		u1.setNome("Usuario 01");
-		u1.setSenha(bCryptPasswordEncoder.encode("123"));
-		u1.setTelefone("1345365328");
 		
 		//Atributos imagem
 		a1.setImagemProduto("https://www.saldaodainformatica.com.br/5712-thickbox_default/notebook-lenovo-ideapad-320-80yh0006br-prata-intel-core-i5-7200u-ram-8gb-hd-1tb-tela-156-windows-10.jpg");
@@ -221,10 +192,10 @@ public class ApiApplication implements CommandLineRunner {
 		itemRepository.save(item3);
 		itemRepository.save(item4);
 	}
-
 	
 
 	//Teste de Produtos e Categorias
+
 
 
 	private void produtoCategoriaDemo() {
@@ -248,6 +219,7 @@ public class ApiApplication implements CommandLineRunner {
 		produtoRepository.saveAll(Arrays.asList(p1));
 
 	
+
 		for (int i =3 ; i < 40 ; i++) {
 			Produto prod = new Produto();
 			prod.setNome("Notebook " + i);
@@ -255,9 +227,18 @@ public class ApiApplication implements CommandLineRunner {
 			prod.setCategorias(Arrays.asList(c1));
 			prod.setDescricao("Notebook Kaik i17i");
 			prod.setPreco(1000);
+
+			Produto p2 = new Produto();
+			p2.setNome("Notebook");
+			p2.setDescricao("Notebook Lenovo E490 - Core I7");
+			p2.setPreco(6000);
+			p2.setCategorias(Arrays.asList(c1));
+			p2.setImagens(Arrays.asList(a1));
+
 	
 			prod.setImagens(Arrays.asList(a1));
 			prod.setPreco(5000);
+			
 			imagemRepository.saveAll(Arrays.asList(a1));
 			produtoRepository.saveAll(Arrays.asList(prod));
 			produtoRepository.save(prod);

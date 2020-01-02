@@ -25,6 +25,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private EntradaJwt unauthorizedHandler;
 
+
 	@Bean
 	public FiltroJwt authenticationTokenFilterBean() {
 		return new FiltroJwt();
@@ -38,6 +39,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable().authorizeRequests().antMatchers("/*").permitAll()
+
 //                .antMatchers("/autenticacao")
 //                .permitAll()
 //                .antMatchers(HttpMethod.GET, "/produtos","/produtos/*")                
@@ -48,6 +50,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter {
 				.and().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 //                .anyRequest().authenticated()
+                //.anyRequest().authenticated()
                 .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(unauthorizedHandler)

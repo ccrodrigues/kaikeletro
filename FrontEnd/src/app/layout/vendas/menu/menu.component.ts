@@ -20,8 +20,8 @@ export class MenuComponent implements OnInit {
 
 
   constructor(private menuService : menuService, 
-    private loginService : ServiceLoginService
-   ,private router: Router,
+   private loginService : ServiceLoginService,
+   private router: Router,
    private storage : StorageService,
    private authService : AuthServiceService ) { }
 
@@ -34,22 +34,21 @@ export class MenuComponent implements OnInit {
     }
 
      
-    //this.isAuth = this.loginService.getIsAutenticado();
-        //if(this.isAuth == false){
-         //  this.loginService.Logout();
-        // }
-  // console.log(this.isAuth)
+    this.isAuth = this.loginService.isAutenticado();
+        if(this.isAuth == false){
+           this.loginService.logout();
+         }
+   
   }
 
   logadoAdmin(){
-      this.isDashboard = this.loginService.getIsAdmin() && this.loginService.getIsAutenticado();
+    this.isDashboard = this.loginService.isAdmin() && this.loginService.isAutenticado();
 
-      return this.isDashboard;
-         
+    return this.isDashboard;
   }
 
   sair(){
-    this.loginService.Logout()
+    this.loginService.logout()
     this.isAuth = false;
     this.isDashboard = false;
     console.log(this.isDashboard)
