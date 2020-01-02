@@ -18,6 +18,7 @@ export class ProdutosService {
   getAll() {
     //fazendo a requisição
     return this.http.get(`${this.envService.urlAPI}/produtos`);
+
   }
 
   delete(id) {
