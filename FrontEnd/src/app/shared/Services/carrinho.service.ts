@@ -21,19 +21,21 @@ import { UsuarioService } from './usuario.service';
       private localStorage : StorageService,
       private usuarioService : UsuarioService) { }
 
+
    public itensCarrinho : ItemVendaModel[] = []
 
    public venda : VendasModel = new VendasModel();
 
    public user : Usuario = new Usuario();
 
+
    valorTotal:number;
    frete:number = 20;
 
    criarOuLimparCarrinho() : ItemVendaModel[] {
-         let carrinho: ItemVendaModel[] = [];
-        //this.localStorage = null
-        this.itensCarrinho = carrinho
+         let carrinho: ItemVendaModel[] = null;
+        this.localStorage
+        this.itensCarrinho = []
           return carrinho;
       }
     
@@ -92,7 +94,7 @@ import { UsuarioService } from './usuario.service';
     return totalFrete = this.calculoCarrinho() + this.frete;
   }
 
-  public totalItensCarrinho(){
+  totalItensCarrinho(){
       let total = 0
       this.itensCarrinho.map(function(item){
           total = total + (item.quantidade);
@@ -106,7 +108,7 @@ import { UsuarioService } from './usuario.service';
     if(find){
         find.quantidade += quant;
     }else{
-      this.addProduto(produ, quant)
+      this.addProduto(produ,quant)
     } 
     this.localStorage.setCarrinho(this.itensCarrinho);
     }
@@ -129,7 +131,7 @@ import { UsuarioService } from './usuario.service';
         this.venda.item = this.itensCarrinho
         console.log("Venda: " + this.itensCarrinho)
         console.log("User: " + this.user.id)
-    }
- 
+    } 
+    
   }
   
