@@ -56,4 +56,3 @@ public class ApiApplication implements CommandLineRunner {
 		popularBanco.produtoCategoriaDemo();				
 	}
 }
-

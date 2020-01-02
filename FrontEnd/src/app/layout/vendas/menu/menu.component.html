@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
+
 <div class="navbar navbar-expand-lg navbar-dark barra-topo">
   
     <div class="container">
@@ -9,7 +10,7 @@
 
       <div id="right" style="display: inline-flex;">
 
-        <div class="box" *ngIf="logadoAdmin() == true">
+        <div class="box" >
           <i routerLink="dashboardAdm" style="font-size: 20px;" class="fas fa-lock cursor" title="Entrar como administrador" width="500px" height="500px" ></i>
         </div>
 
@@ -22,7 +23,9 @@
         </div>
 
         <div *ngIf="isAuth" class="box">
-          <i title="Ver carrinho" class="fas fa-cart-arrow-down cursor" routerLink="carrinho" style="font-size: 20px;"></i>
+          <i title="Ver carrinho" class="fas fa-cart-arrow-down cursor" 
+              routerLink="carrinho" style="font-size: 20px;">{{  carrinhoService.totalItensCarrinho() }}
+          </i>
         </div>
 
         <div *ngIf="isAuth" class="box">
