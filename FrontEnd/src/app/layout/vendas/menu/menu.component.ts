@@ -19,6 +19,7 @@ export class MenuComponent implements OnInit {
    isDashboard : boolean = false;
    qntd;
  
+<<<<<<< HEAD
   constructor(
     private menuService : menuService, 
     private loginService : ServiceLoginService,
@@ -26,6 +27,15 @@ export class MenuComponent implements OnInit {
     private storage : StorageService,
     private authService : AuthServiceService,
     private carrinhoService : CarrinhoService ) { }
+=======
+
+
+  constructor(private menuService : menuService, 
+   private loginService : ServiceLoginService,
+   private router: Router,
+   private storage : StorageService,
+   private authService : AuthServiceService ) { }
+>>>>>>> e0324952bf054d426e779c9604e76a6eaf93d294
 
   ngOnInit() {
 
@@ -35,6 +45,7 @@ export class MenuComponent implements OnInit {
       this.isAuth = false;
     }
 
+<<<<<<< HEAD
     this.carrinhoService.itensCarrinho = this.storage.getCarrinho()
 
 
@@ -45,17 +56,29 @@ export class MenuComponent implements OnInit {
         // }
   console.log(this.carrinhoService.exibirItens())
 
+=======
+     
+    this.isAuth = this.loginService.isAutenticado();
+        if(this.isAuth == false){
+           this.loginService.logout();
+         }
+   
+>>>>>>> e0324952bf054d426e779c9604e76a6eaf93d294
   }
 
 
   logadoAdmin(){
-      this.isDashboard = this.loginService.getIsAdmin() && this.loginService.getIsAutenticado();
+    this.isDashboard = this.loginService.isAdmin() && this.loginService.isAutenticado();
 
+<<<<<<< HEAD
       return this.isDashboard;     
+=======
+    return this.isDashboard;
+>>>>>>> e0324952bf054d426e779c9604e76a6eaf93d294
   }
 
   sair(){
-    this.loginService.Logout()
+    this.loginService.logout()
     this.isAuth = false;
     this.isDashboard = false;
     console.log(this.isDashboard)

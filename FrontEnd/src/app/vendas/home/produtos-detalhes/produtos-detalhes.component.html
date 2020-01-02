@@ -1,23 +1,40 @@
-<div class="row " >
-    <div class="col-4 ">
+<!-- Carrossel de imagens -->
+<div class="row" id="">
+
+    <div class="col-4 "id="ImagemEvidencia">
         <img [src]="imagemAtual" height="65%" width="100%" />
-        <div class="row">
-            <div class="col zeroPadding " *ngFor="let img of produto?.imagens">
-                <img width="100%"   heigth="15%" [src]="img?.imagemProduto" (click)="trocarImagem(img?.imagemProduto)" />
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class=" zeroPadding">
+
+<div id="miniaturaDeImagensSecundarias">
+    <carousel 
+    itemsPerSlide=3 
+    singleSlideOffset="false" 
+    noWrap="true" 
+    [interval]="false"
+    [startFromIndex]="5">
+
+    <slide *ngFor="let img of produto?.imagens">
+        <img [src]="img?.imagemProduto" style="display: block; width: 100%;" (click)="trocarImagem(img?.imagemProduto)">
+    </slide>
+</carousel>
+
+</div>
+    
+</div>
+
+    <!-- Mostrar nome do produto -->
+    <div class="col" id="extDetalhesDaCompra">
+        <div class=" zeroPadding" id="intNomeDoProduto">
             <span class=" font-weight-bold">
-                <p class="text-center">{{produto?.nome}}</p>
+                <p class="text-center" id="spanNomeDoProduto">{{produto?.nome}}</p>
             </span>
         </div>
-        <br>
-        <div class="col">
+
+        <!-- Mostrar descricao do produto -->
+        <div id="DescricaoDoProduto">
             <span class="font-weight-light font-italic text-justify">
-                {{produto?.nome}}
+                {{produto?.descricao}}
             </span>
+<<<<<<< HEAD
             <br/><hr>
               <p class="text-center text-justify font-weight-bold">Preco: {{produto?.preco|  currency:'BRL':'symbol':'1.2-2'}} </p>
              
@@ -33,13 +50,120 @@
                             <li role="menuitem"><a class="dropdown-item" (click)="mudarParcela(numero)" >{{numero}}</a></li>
                         </div>
                     </ul>
+=======
+>>>>>>> e0324952bf054d426e779c9604e76a6eaf93d294
         </div>
-        <br> <br> <br><br><br>
 
+<<<<<<< HEAD
         <div>
             <p>{{numeroParcelaAtual}}X{{Parcela| currency:'BRL':'symbol':'1.2-2'}} </p>
         </div>
         <button (click)="adcionarCarrinho()"  class="btn btn-primary">Comprar </button>
         
+=======
+        <!-- Calculo de prazo e frete -->
+        <div id="exFrete">
+            <div id="intFrete">
+                <span>Calcular frete e prazo</span>
+                <br>
+                <input type="text" (keyup)='validarCEP()' maxlength=8 placeholder="01234111" id="inputCalcFrete" #cep>
+                <button class="btn btn-primary" id="btnCalcFrete" (click)="calcularFrete()" [disabled]="!isCepValid">
+                    Calcular
+                    <i class="fa fa-search"></i>
+                </button>
+
+                <!-- Mostrar mensagem solicitando que o user digite o CEP para calcular -->
+                <span *ngIf="!showFrete" id="bodyDefaultFrete">
+                    <div class="alert alert-warning" role="alert">
+                        Digite o CEP para calcular
+                    </div>
+                </span>
+
+                <hr>
+                <!-- Mostrar componente para calculo de frete -->
+                <table class="table" *ngIf="showFrete"> 
+                    <thead id="headCalcFrete">
+                        <tr>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Prazo</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Mostrar na tela o valor e prazo do frete (caso o usuário já tiver preenchido o CEP) -->
+                    <tbody id="bodyWithDetailsFrete">
+                        <tr>
+                            <td>R$ {{ valorFrete }}</td>
+                            <td>{{ prazoentregaFrete }} dias úteis</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+        <!-- Quantidade de produtos que a pessoa deseja comprar -->
+        <div id="exCompra">
+            <div class="qty mt-5" id="intCompra">
+                Quantidade:<br>
+                <span class="minus bg-dark" (click)="removerQtdd()">-</span>
+                {{ quantidade }}
+                <span class="plus bg-dark" (click)="adicionarQtdd()">+</span>
+            </div>
+            <br>
+
+            <!-- Mostrar preços -->
+            <div id="divMostrarPreco">
+                <h4 id="precoFinal">
+                    {{ precoAPI | currency:'BRL':true:'1.2-2' }}
+                </h4>
+                <!-- Botão de comprar -->
+                <button class="btn btn-primary" id="btnComprarAgora" (click)="navigateComprarAgora()">
+                    <i class="fas fa-shopping-basket" ></i>
+                    Comprar agora
+                </button>
+                <br>
+
+                <!-- Botão de adicionar ao carrinho -->
+                <button class="btn btn-primary" (click)="adicionarCarrinho()">
+                    <i class="fas fa-cart-plus" ></i>
+                    Adicionar ao carrinho
+                </button>
+            </div>
+        </div>
+
+        <!-- Botaão de formas de pagamento -->
+        <div id="parcelamento">
+            <button class="btn btn-outline-primary" id="btnFormaDePagamento" (click)="valorPorParcela()">Formas de
+                pagamento</button>
+
+            <!-- Pop-up que irá aparecer quando o user clicar no botão de formas de pagamento-->
+            <div id="id01" class="modal" #modal>
+                <form class="modal-content animate" method="post">
+
+                    <span (click)="closeModal()" class="close"> &times; </span>
+
+                    <!-- Pop- up de parcelas -->
+                    <div class="container">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr *ngFor="let parc of parcelamentos">
+                                    <th scope="row"></th>
+                                    <td> {{ parc?.parcela }}</td>
+                                    <td> {{ parc?.valorPorParcela | currency:'BRL':true:'1.2-2'}}</td>
+                                    <td> {{ parc?.juros }} </td>
+                                    <td> {{ parc?.valorTotal | currency:'BRL':true:'1.2-2'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        Para financiamento com juros de 2,29% a.m. - CET máximo de 31,21% a.a.
+
+                        <!-- Botão para fechar -->
+                    </div>
+                    <button type="button" ngbAutofocus class="btn btn-danger" (click)="closeModal()">Fechar</button>
+                </form>
+
+            </div>
+        </div>
+>>>>>>> e0324952bf054d426e779c9604e76a6eaf93d294
     </div>
 </div>

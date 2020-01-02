@@ -84,8 +84,9 @@ public class AdminService implements Serializable{
 		}
 		
 	public boolean findOneByEmailAndSenha(String email, String senha) {
-			
-			if(adminRepo.findOneByEmailAndSenha(email, bCryptPasswordEncoder.encode(senha))!= null) {
+			senha=bCryptPasswordEncoder.encode(senha);
+			System.out.println(senha);
+			if(adminRepo.findOneByEmailAndSenha(email, senha)!= null) {
 				return true;
 			}else {
 				return false;

@@ -1,24 +1,33 @@
 <div class="background rounded">
     <a [routerLink]="['/dashboardAdm']"> <img src="../../../assets/imagens/left-arrow.png" alt="" class="icon-back"> </a>
 
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
+
+        
+
     <h2><small class="form-text text-muted negrito-padding text-center">Lista de Usuarios</small></h2>
 
+    
     <div class="row barraPesquisa">
             <div class="col-9 padding-0">
-                <input type="text" class="form-control" placeholder="Pesquise..." #pesquise>
+                <input type="text" class="form-control" placeholder="Pesquise..." #pesquise placeholder="Search">
             </div>
 
             <div class="col-2 padding-0">
-                <select name="pesquisaPor" class="form-control padding-0" #pesquisaPor>
+                <select name="pesquisaPor" class="form-control padding-0" #pesquisaPor >
                     <option value="cpf">CPF</option>
                     <option value="nome">Nome</option>
                 </select>
             </div>
 
+
             <div class="col-1 padding-0">
                 <button class="btn btn-sm btn-cheio" (click)="pesquisar(pesquisaPor, pesquise)"><img src="https://img.icons8.com/search" class="icon"></button>
             </div>
     </div>
+    <div class="divAdicionar">
+    <button class="btn btn-info btn-sm margin-right-5 adicionar" [routerLink]="['novo']" >Adicionar</button>
+</div>
 
     <table class="table text-center" *ngIf="pesquisado == undefined" [hidden]="isDelete == true || isShowMore">
         <thead>
@@ -49,5 +58,5 @@
     </table>
 
     <!-- <app-deletar-produto [hidden]="isDelete == false" [idProduto]="id" (close)="lessDelete()" (deletado)="showMsgApagou($event)"></app-deletar-produto> -->
-    
+    </form>
 </div>
