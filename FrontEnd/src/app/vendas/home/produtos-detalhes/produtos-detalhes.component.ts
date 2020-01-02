@@ -3,7 +3,7 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import * as xml2js from 'xml2js';
 
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
 import { ProdutosDetalhesService } from './produtos-detalhes.service';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
