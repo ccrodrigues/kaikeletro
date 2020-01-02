@@ -45,7 +45,7 @@ this.http.post<tokenAuth>(`${this.envService.urlAPI}/autenticacao`, login).subsc
       (data) => {
         
 
-        console.log("data : ", data);
+        //console.log("data : ", data);
 
         const helper = new JwtHelperService();
         const decodedToken = helper.decodeToken(data.token);
@@ -81,10 +81,10 @@ this.http.post<tokenAuth>(`${this.envService.urlAPI}/autenticacao`, login).subsc
     if (localUser == null){
       this.isAuth = false;
     }
-    console.log(localUser);
+    //console.log(localUser);
 
 
-    console.log("isAuth2:",this.isAuth);
+    //console.log("isAuth2:",this.isAuth);
     return this.isAuth;
   }
  
@@ -121,10 +121,10 @@ this.http.post<tokenAuth>(`${this.envService.urlAPI}/autenticacao`, login).subsc
 isAdmin(){
   let administrador = this.storageService.getLocalUser().scopes.toString();
    if(administrador == "ROLE_USER"){
-        this.isAdministrador = false;
+        this.isAdministrador = true;
 
    }else{
-     this.isAdministrador = true;
+     this.isAdministrador = false;
    }
    return this.isAdministrador;
 }

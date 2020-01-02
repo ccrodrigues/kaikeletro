@@ -33,11 +33,12 @@ export class ShowMoreComponent implements OnInit {
 
   ngOnInit() {
     
+
     this.imagens = [...this.produto.imagens];
 
     this.imagemPrincipal = this.imagens[0].imagemProduto
 
-    this.imagens = this.imagens.splice(0, 1);
+    this.imagens.splice(0, 1);
     
     console.log(this.imagens)
 
@@ -184,8 +185,6 @@ export class ShowMoreComponent implements OnInit {
 
     let resp =  this.selecionadas.find(a => a.idCategoria == cat)
       
-    console.log(resp)
-
     return isUndefined(resp) ? false : true;
   }
   
