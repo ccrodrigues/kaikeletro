@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CarrinhoService } from 'src/app/shared/Services/carrinho.service';
+import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
 import { ImagenModel } from 'src/app/shared/models/imagen.model';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
