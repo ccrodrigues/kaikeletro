@@ -89,7 +89,7 @@ public class ApiApplication implements CommandLineRunner {
 		end1.setEstado("SP");
 		end1.setLogradouro("Av. nove de julho");
 		end1.setNumero("15A");
-		end1.setFk_Usuario(u1);
+		end1.setUsuarios(u1);
 		
 		enderecoRepository.save(end1);
 	
