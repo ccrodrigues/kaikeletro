@@ -117,7 +117,7 @@ public class ProdutoController {
 	//metodo que faz a paginação, buscando o produto pelo nome
 	
 	@RequestMapping(value = "/nome/page", method = RequestMethod.GET)
-	public ResponseEntity<List<ProdutoDto>> findProdutoPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
+	public ResponseEntity<Page<Produto>> findProdutoPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
 			@RequestParam(value = "qtdLinhas", defaultValue = "10") int qtdLinhas,
 			@RequestParam(value = "direcao", defaultValue = "ASC") String direcao,
 			@RequestParam(value = "campo", defaultValue = "idProduto") String campo,
@@ -130,7 +130,25 @@ public class ProdutoController {
 
 		List<ProdutoDto> pageDto = pageProdutos.stream().map(obj -> new ProdutoDto(obj)).collect(Collectors.toList());
 
-		return ResponseEntity.ok().body(pageDto);
+
+		return ResponseEntity.ok().body(pageProdutos);
+	}
+	@RequestMapping(value = "/pages", method = RequestMethod.GET)
+	public ResponseEntity<List<Produto>> findPages(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
+			@RequestParam(value = "qtdLinhas", defaultValue = "10") int qtdLinhas,
+			@RequestParam(value = "direcao", defaultValue = "ASC") String direcao,
+			@RequestParam(value = "campo", defaultValue = "idProduto") String campo,
+			@RequestParam(value = "nomeCategoria", defaultValue = "") String nomeCategoria) {
+
+		// Page<Produto> pageProdutos = produtoService.findPage(pagina, qtdLinhas,
+		// direcao, campo);
+		Page<Produto> pageProdutos = produtoService.findDistinctByCategoriasNomeContaining(nomeCategoria, pagina,
+				qtdLinhas, direcao, campo);
+		
+
+		//List<ProdutoDto> pageDto = pageProdutos.stream().map(obj -> new ProdutoDto(obj)).collect(Collectors.toList());
+
+		return ResponseEntity.ok().body(pageProdutos.getContent());
 	}
 	//Pegando uma lista de ProdutosDto
 	//Criada para retornar dados objetivos

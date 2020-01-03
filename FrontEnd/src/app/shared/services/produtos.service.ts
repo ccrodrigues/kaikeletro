@@ -65,4 +65,8 @@ export class ProdutosService {
     getProdutosCategoria(categoria){
       return this.http.get<ProdutoModel[]>(this.envService.urlAPI + "/produtos/page/?nomeCategoria=" + categoria);
     }
+  getProdutosCategorias(categoria){
+    return this.http.get<ProdutoModel[]>(this.envService.urlAPI + "/produtos/pages/?nomeCategoria=" + categoria);
   }
+ 
+}
