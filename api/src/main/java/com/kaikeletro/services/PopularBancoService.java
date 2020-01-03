@@ -54,7 +54,7 @@ public class PopularBancoService {
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	public void produtoCategoriaDemo() {
+	public void popularBancoDeDados() {
 		// Criando Categorias
 		Categoria cat1 = new Categoria("Informática");
 		Categoria cat2 = new Categoria("Celulares");
