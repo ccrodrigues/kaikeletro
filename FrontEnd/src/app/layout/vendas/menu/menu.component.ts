@@ -37,10 +37,6 @@ export class MenuComponent implements OnInit {
       return this.isDashboard;
          
   }
-
-  produtoPorCategoria(nomeCategoria){
-    this.produtoService.categoriaProduto = nomeCategoria;
-    console.log("Ola " + nomeCategoria);
-  }
+  
 }
 

@@ -141,7 +141,7 @@ public class PopularBancoService {
 		p4.setCategorias(Arrays.asList(cat3, cat4));
 		p5.setCategorias(Arrays.asList(cat3, cat4));
 		p6.setCategorias(Arrays.asList(cat4, cat4));
-		p7.setCategorias(Arrays.asList(cat10, cat5));
+		p7.setCategorias(Arrays.asList(cat10, cat5, cat6));
 		p8.setCategorias(Arrays.asList(cat8, cat10, cat5));
 		p9.setCategorias(Arrays.asList(cat9, cat10, cat5));
 		p10.setCategorias(Arrays.asList(cat1));
