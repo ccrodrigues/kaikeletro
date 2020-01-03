@@ -35,7 +35,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
 
     let localUser = this.storage.getLocalUser();
-    console.log(localUser)
+    //console.log(localUser)
     this.nomeCliente = (localUser ? localUser.nome : '' );
 
     this.isAuth = this.loginService.isAutenticado();
@@ -59,8 +59,6 @@ export class MenuComponent implements OnInit {
 
   logadoAdmin(){
     this.isDashboard = this.loginService.isAdmin() && this.loginService.isAutenticado();
-
-    //console.log("isAutenticado", this.loginService.isAutenticado())
 
     return this.isDashboard;
   }

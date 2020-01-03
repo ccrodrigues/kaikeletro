@@ -30,21 +30,24 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(
             map((event: HttpEvent<any>) => {
                 if (event instanceof HttpResponse) {
-                    console.log('event--->>>', event);
+                    //console.log('event--->>>', event);
                     // this.errorDialogService.openDialog(event);
                 }
                 return event;
             }),
             catchError((error: HttpErrorResponse) => {
-                console.log('event--->>> ERROR');
+                //console.log('event--->>> ERROR');
+                
                 let data: ErrorInterceptorModel;
                 data = {
                     reason: error && error.error && error.error.reason ? error.error.reason : '',
                     status: error.status
+
                 };
 
                 if (error instanceof HttpErrorResponse && error.status === 401) {
                     this.router.navigate(['/login'], {});
+                    this.dialog.showError('Email ou senha inválidos!!');
                     //return EMPTY;
                     //return throwError(error);
                 }

@@ -28,7 +28,7 @@ export class UsuarioLoginComponent implements OnInit {
     });
   }
   onSubmit(){
-    console.log(this.loginForm);
+    //console.log(this.loginForm);
 
     //Verifica ao enviar se os dados informados são validos
     let login = {email : this.loginForm.value.email, senha : this.loginForm.value.senha};

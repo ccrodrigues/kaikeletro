@@ -11,6 +11,7 @@ import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 import { Usuario } from 'src/app/shared/models/usuario.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
+import { Perfil } from 'src/app/shared/models/perfil.enum';
 
 
 @Injectable({
@@ -38,13 +39,13 @@ export class ServiceLoginService {
 
   fazerLogin(login: { email: string, senha: string }) {
 
-    console.log(login);
+    //console.log(login);
 
 
     this.http.post<tokenAuth>(`${this.envService.urlAPI}/autenticacao`, login).subscribe(
       (data) => {
 
-        console.log("data : ", data);
+        //console.log("data : ", data);
 
         const helper = new JwtHelperService();
         const decodedToken = helper.decodeToken(data.token);
@@ -77,11 +78,11 @@ export class ServiceLoginService {
     let localUser: LocalUserModel = this.storageService.getLocalUser();
     if (localUser == null) {
       this.isAuth = false;
-    }else if(this.isAdmin() == true){
+    } else if (this.isAdmin() == true) {
       this.isAuth = true;
     }
     //console.log(localUser);
-    //console.log("isAuth2:",this.isAuth);
+ 
     return this.isAuth;
   }
 
@@ -97,7 +98,7 @@ export class ServiceLoginService {
     return this.http.post<tokenAuth>(`${this.envService.urlAPI}/token/refresh`, {})
       .subscribe(
         (response) => {
-          console.log('token has been refreshed');
+          //console.log('token has been refreshed');
           const helper = new JwtHelperService();
           const decodedToken = helper.decodeToken(response.token);
 
@@ -116,17 +117,24 @@ export class ServiceLoginService {
       );
   }
   isAdmin() {
-    let administrador
+
     if (this.storageService.getLocalUser()) {
-      administrador = this.storageService.getLocalUser().scopes
 
-      if (administrador == "ROLE_CLIENTE") {
-        this.isAdministrador = true;
+      //atribui o scopes a variavel administrador
+      let administrador = this.storageService.getLocalUser().scopes
 
-      } else {
-        this.isAdministrador = false;
-      }
-      //console.log("admin", this.isAdministrador)
+      //percorre o array de scopes e lista eles
+      administrador.forEach(element => {
+
+        //verifica pelo enum se o perfil é cliente ou administrador
+        if (element == Perfil.CLIENTE) {
+          this.isAdministrador = false;
+
+        } else if (element == Perfil.ADMIN) {
+          this.isAdministrador = true
+        }
+
+      });
       return this.isAdministrador;
     }
   }

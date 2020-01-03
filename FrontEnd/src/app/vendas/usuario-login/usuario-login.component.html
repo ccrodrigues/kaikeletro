@@ -26,7 +26,7 @@
                         <h4 class="card-title text-center">Login</h4>
 
                         <!-- Mensagem de erro caso o usuario não seja autenticado -->
-                        <app-msg-erro [isError]="isErrorLogin() == true" mensagem="Senha ou e-mail Inválidos"></app-msg-erro>
+                        <app-msg-erro [isError]="isErrorLogin()" mensagem="Senha ou e-mail Inválidos"></app-msg-erro>
                         
                         <label for="email" class="corNPossuiCadastro">E-mail:</label>
                         <div class="input-group form-group">

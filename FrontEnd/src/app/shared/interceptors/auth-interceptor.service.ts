@@ -21,11 +21,11 @@ export class AuthInterceptorService implements HttpInterceptor {
 
     let localUser = this.storage.getLocalUser();
     
-    console.log('interceptor jwt works!');
+    //console.log('interceptor jwt works!');
 
     //console.log(localUser);
 
-    console.log(req);
+    //console.log(req);
 
     let url = req.url;
 
