@@ -93,7 +93,7 @@ public class ProdutoController {
 	// Paginação, podendo passar a categoria como parametro p/ listar os produtos
 	// que pertencem a ela
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
-	public ResponseEntity<List<ProdutoDto>> findPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
+	public ResponseEntity<Page<Produto>> findPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
 			@RequestParam(value = "qtdLinhas", defaultValue = "10") int qtdLinhas,
 			@RequestParam(value = "direcao", defaultValue = "ASC") String direcao,
 			@RequestParam(value = "campo", defaultValue = "idProduto") String campo,
@@ -104,11 +104,30 @@ public class ProdutoController {
 		Page<Produto> pageProdutos = produtoService.findDistinctByCategoriasNomeContaining(nomeCategoria, pagina,
 				qtdLinhas, direcao, campo);
 
+		//List<ProdutoDto> pageDto = pageProdutos.stream().map(obj -> new ProdutoDto(obj)).collect(Collectors.toList());
+
+		return ResponseEntity.ok().body(pageProdutos);
+	}
+	
+	
+	//metodo que faz a paginação, buscando o produto pelo nome
+	
+	@RequestMapping(value = "/nome/page", method = RequestMethod.GET)
+	public ResponseEntity<List<ProdutoDto>> findProdutoPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
+			@RequestParam(value = "qtdLinhas", defaultValue = "10") int qtdLinhas,
+			@RequestParam(value = "direcao", defaultValue = "ASC") String direcao,
+			@RequestParam(value = "campo", defaultValue = "idProduto") String campo,
+			@RequestParam(value = "nomeBusca", defaultValue = "") String nomeBusca) {
+
+		// Page<Produto> pageProdutos = produtoService.findPage(pagina, qtdLinhas,
+		// direcao, campo);
+		Page<Produto> pageProdutos = produtoService.findDistinctByNomeContaining(nomeBusca, pagina,
+				qtdLinhas, direcao, campo);
+
 		List<ProdutoDto> pageDto = pageProdutos.stream().map(obj -> new ProdutoDto(obj)).collect(Collectors.toList());
 
 		return ResponseEntity.ok().body(pageDto);
 	}
-	
 	//Pegando uma lista de ProdutosDto
 	//Criada para retornar dados objetivos
 //	@RequestMapping(value="/produtosDto" , method=RequestMethod.GET)

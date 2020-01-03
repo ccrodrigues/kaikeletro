@@ -45,7 +45,7 @@ public class ProdutoService  {
 	
 	//Buscar produto pelo nome
 	public List<Produto> findByNome(String nomeBusca){
-		List<Produto> listaProduto = repoProduto.findByNomeLike(nomeBusca);
+		List<Produto> listaProduto = repoProduto.findByNomeContaining(nomeBusca);
 		return listaProduto;
 	}
 	
@@ -77,6 +77,7 @@ public class ProdutoService  {
 		return repoProduto.findAll(pageRequest);
 	}
 	
+	
 	//Paginação para listar os produtos passando categoria como parametro na URL
 	public Page<Produto> findDistinctByCategoriasNomeContaining(String nomeCategoria, int pagina, int qtdLinhas,
 																String direcao, String campo) {
@@ -84,5 +85,13 @@ public class ProdutoService  {
 		PageRequest pageRequest = PageRequest.of(pagina, qtdLinhas, Direction.valueOf(direcao), campo);
 		return repoProduto.findDistinctByCategoriasNomeContaining(nomeCategoria, pageRequest);
 	}
+	
+	//Paginação para listar os produtos passando categoria como parametro na URL
+		public Page<Produto> findDistinctByNomeContaining(String nomeBusca, int pagina, int qtdLinhas,
+																	String direcao, String campo) {
+			
+			PageRequest pageRequest = PageRequest.of(pagina, qtdLinhas, Direction.valueOf(direcao), campo);
+			return repoProduto.findDistinctByNomeContaining(nomeBusca, pageRequest);
+		}
 
 }
