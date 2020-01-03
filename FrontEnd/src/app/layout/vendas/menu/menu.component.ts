@@ -66,9 +66,6 @@ export class MenuComponent implements OnInit {
   }
 
 
-  getSelecao(){
-    
-  }
 
   
 
