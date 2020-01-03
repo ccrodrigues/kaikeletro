@@ -47,3 +47,11 @@
 .hide {
     display: none;
 }
+
+.notFound {
+    text-align: center;
+    margin-top: 40px;
+}
+.notFound > p {
+    margin-top: 10px;
+}

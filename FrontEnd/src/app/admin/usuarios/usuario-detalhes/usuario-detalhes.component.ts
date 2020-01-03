@@ -19,8 +19,8 @@ export class UsuarioDetalhesComponent implements OnInit {
   objEnd: Endereco;
   idRota;
   isEdicao = false;
-  usuario: Usuario[] = [];
   endereco: Endereco[] = [];
+  cliente : any = [];
 
   constructor(private formBuilder: FormBuilder
     , private viaCep: AuthServiceService
@@ -31,12 +31,34 @@ export class UsuarioDetalhesComponent implements OnInit {
 
   ngOnInit() {
 
+    
+    this.activedRoute.params.subscribe((data) => {
+      this.idRota = data.id;
+      console.log('ID DA ROTA: ' + this.idRota);
+
+      if (this.idRota){
+        console.log('Edição');
+        this.isEdicao = true;
+
+        this.usuarioService.getOneUsuario(this.idRota).subscribe((usuarioAPI) => {
+          console.log("=====>> " , usuarioAPI)
+          this.cliente = usuarioAPI;
+      });
+
+      } else {
+        console.log('Criação');
+        this.isEdicao = false;
+      }
+
+
+    });
+
     this.detalhesForm = this.formBuilder.group(
       {
         usuario : this.formBuilder.group( {
           id:['', []],
 
-          endereco: this.formBuilder.group( {
+          endereco: {
             cep: ['', [Validators.required]],
             numero: ['', [Validators.required]],
             complemento: ['', []],
@@ -44,7 +66,7 @@ export class UsuarioDetalhesComponent implements OnInit {
             bairro: ['', [Validators.required]],
             cidade: ['', [Validators.required]],
             estado: ['', [Validators.required]]
-          }),
+          },
 
           nome: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
           nascimento: ['', [Validators.compose([Validators.required, Validacoes.MaiorQue18Anos])]],
@@ -55,48 +77,6 @@ export class UsuarioDetalhesComponent implements OnInit {
         })
 
       });
-    this.activedRoute.params.subscribe((data) => {
-      this.idRota = data.id;
-      console.log('ID DA ROTA: ' + this.idRota);
-
-      if (this.idRota){
-        console.log('Edição');
-        this.isEdicao = true;
-
-        this.usuarioService.getOneUsuario(this.idRota).subscribe((usuarioAPI) => {
-          //patchValue quando o formulario já está criado e quer alterar o campo
-          this.detalhesForm.patchValue(
-          {
-          usuario :{
-          id: usuarioAPI['id'],
-
-          endereco: [{
-            idEndereco: ['idEndereco'],
-            cep:  ['cep'],
-            numero:  ['numero'],
-            complemento:  ['complemento'],
-            logradouro:  ['logradouro'],
-            bairro:  ['bairro'],
-            cidade:  ['cidade'],
-            estado:  ['estado']
-          }] ,
-          nome: usuarioAPI ['nome'],
-          nascimento: usuarioAPI['dataDeNascimento'],
-          cpf: usuarioAPI['cpf'],
-          telefone: usuarioAPI['telefone'],
-          celular: usuarioAPI['celular'],
-          email: usuarioAPI['email'],
-        }
-        });
-      });
-
-      } else {
-        console.log('Criação');
-        this.isEdicao = false;
-      }
-
-
-    });
   }
 
 
