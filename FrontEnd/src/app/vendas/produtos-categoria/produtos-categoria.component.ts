@@ -1,6 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 
 @Component({

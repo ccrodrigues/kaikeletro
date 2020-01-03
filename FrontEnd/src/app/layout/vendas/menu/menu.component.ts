@@ -7,7 +7,7 @@ import { AuthServiceService } from 'src/app/shared/services/auth-service.service
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
 import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 import { ProdutosCategoriaComponent } from 'src/app/vendas/produtos-categoria/produtos-categoria.component';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
 import { VendasModule } from 'src/app/vendas/vendas.module';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
 
