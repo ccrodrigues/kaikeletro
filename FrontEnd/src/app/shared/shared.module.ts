@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MsgErroComponent } from './erro/msg-erro/msg-erro.component';
+//import { ListaprodutoshomeDirective } from './directives/listaprodutoshome.directive';
 
 @NgModule({
   declarations: [MsgErroComponent],

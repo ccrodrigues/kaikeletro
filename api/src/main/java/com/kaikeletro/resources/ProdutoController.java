@@ -112,6 +112,27 @@ public class ProdutoController {
 
 		return ResponseEntity.ok().body(pageProdutos);
 	}
+	
+	
+	//metodo que faz a paginação, buscando o produto pelo nome
+	
+	@RequestMapping(value = "/nome/page", method = RequestMethod.GET)
+	public ResponseEntity<Page<Produto>> findProdutoPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
+			@RequestParam(value = "qtdLinhas", defaultValue = "10") int qtdLinhas,
+			@RequestParam(value = "direcao", defaultValue = "ASC") String direcao,
+			@RequestParam(value = "campo", defaultValue = "idProduto") String campo,
+			@RequestParam(value = "nomeBusca", defaultValue = "") String nomeBusca) {
+
+		// Page<Produto> pageProdutos = produtoService.findPage(pagina, qtdLinhas,
+		// direcao, campo);
+		Page<Produto> pageProdutos = produtoService.findDistinctByNomeContaining(nomeBusca, pagina,
+				qtdLinhas, direcao, campo);
+
+		List<ProdutoDto> pageDto = pageProdutos.stream().map(obj -> new ProdutoDto(obj)).collect(Collectors.toList());
+
+
+		return ResponseEntity.ok().body(pageProdutos);
+	}
 	@RequestMapping(value = "/pages", method = RequestMethod.GET)
 	public ResponseEntity<List<Produto>> findPages(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
 			@RequestParam(value = "qtdLinhas", defaultValue = "10") int qtdLinhas,

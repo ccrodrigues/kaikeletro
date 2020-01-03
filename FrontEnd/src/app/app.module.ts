@@ -24,6 +24,8 @@ import { AuthInterceptorService } from './shared/interceptors/auth-interceptor.s
 import { HttpConfigInterceptor } from './shared/interceptors/http-config-interceptor.service';
 import { CustomErrorHandlerService } from './shared/error/custom-error-handler.service';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
