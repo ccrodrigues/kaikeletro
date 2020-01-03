@@ -13,7 +13,7 @@ import { EnvService } from 'src/app/env.service';
     private url : string = "http://localhost:8080/";
   
     getAll() {
-      return this.http.get(this.url);
+      return this.http.get(this.url+"/vendas");
     }
 
     fecharVenda(vendas){
