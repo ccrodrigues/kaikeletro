@@ -61,12 +61,6 @@ export class MenuComponent implements OnInit {
   
   logadoAdmin(){
     this.isDashboard = this.loginService.isAdmin() && this.loginService.isAutenticado();
-<<<<<<< HEAD
-=======
-
-    console.log("isAutenticado", this.loginService.isAutenticado())
-
->>>>>>> 8a23799067f789702434bf82b4b2bdf8d076e04c
     return this.isDashboard;
   }
 
