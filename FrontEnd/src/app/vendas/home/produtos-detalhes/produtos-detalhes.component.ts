@@ -234,6 +234,7 @@ export class ProdutosDetalhesComponent implements OnInit {
  
   adicionarCarrinho(){
 
+    
     this.carrinhoService.verifyItemExists(this.produto, this.quantidade);
     console.log("Adicionando " +  this.produto);
     this.dialogService.showSuccess("Produto adicionado no carrinho com sucesso!"); 

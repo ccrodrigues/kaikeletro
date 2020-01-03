@@ -44,9 +44,10 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                 };
 
                 if (error instanceof HttpErrorResponse && error.status === 401) {
-                    this.router.navigate(['/login'], {});
-                    //return EMPTY;
-                    //return throwError(error);
+                    this.router.navigate(['/login'], {});                    
+                }
+                else if (error instanceof HttpErrorResponse && error.status === 403) {
+                    this.router.navigate(['/login'], {});                    
                 }
                 else {
                     this.dialog.showErrorInterceptor(data);

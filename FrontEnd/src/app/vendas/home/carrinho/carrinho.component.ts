@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RouteReuseStrategy, Router } from '@angular/router';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 import { ProdutosService } from 'src/app/shared/services/produtos.service';
 import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 import { VendaService } from 'src/app/shared/services/venda.service';
-import { ProdutoModel } from 'src/app/shared/models/produto.model';
 import { Usuario } from 'src/app/shared/models/usuario.model';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
@@ -16,63 +15,62 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 })
 export class CarrinhoComponent implements OnInit {
 
-  
+
   constructor(
-    private router : Router, 
-    private formBuilder : FormBuilder,
-    private ps: ProdutosService, 
-    private carrinhoService : CarrinhoService, 
-    private vendasService : VendaService,
-    private usuarioService : UsuarioService,
-    private localStorage : StorageService) { }
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private ps: ProdutosService,
+
+    private vendasService: VendaService,
+    private usuarioService: UsuarioService,
+    private localStorage: StorageService,
+    private carrinhoService: CarrinhoService) { }
 
 
   ngOnInit() {
 
-    if(this.localStorage.getCarrinho()!= null){
+    if (this.localStorage.getCarrinho() != null) {
+
+      console.log(this.carrinhoService);
 
       this.carrinhoService.itensCarrinho = this.localStorage.getCarrinho();
-    }else{
-     this.carrinhoService.itensCarrinho = []
+
+    } else {
+
+      this.carrinhoService.itensCarrinho = [];
     }
-
-    console.log("Itens: " + this.localStorage.getCarrinho())
-    
-    console.log("Itens: " + this.carrinhoService.exibirItens())
-   
-    }
-
-    
-    changeSuit(selectedOption : number, id) : void {
-
-      this.carrinhoService.alterarQuantidade(selectedOption,id)
-      //console.log(typeof(selectedOption)) 
-    }
-    
-    finalizarVenda(){
-      this.carrinhoService.fecharVenda();
-      this.vendasService.fecharVenda(this.carrinhoService.venda).subscribe(
-        (data)=>{
-          data = data
-          console.log(data)
-          console.log(this.carrinhoService.itensCarrinho);
-          this.carrinhoService.itensCarrinho = this.carrinhoService.criarOuLimparCarrinho()
-          this.localStorage.setCarrinho(this.carrinhoService.itensCarrinho)
-          }
-      ) 
-    }
-
-    getUser(email){
-
-      let user : Usuario = new Usuario();
-
-      this.usuarioService.getUserByEmail(email).subscribe(data=>{
-        user.id = data.id;
-      })
-      this.carrinhoService.user.id = user.id
-    }
-    
   }
+
+  changeSuit(selectedOption: number, id): void {
+
+    this.carrinhoService.alterarQuantidade(selectedOption, id)
+    //console.log(typeof(selectedOption)) 
+  }
+
+  finalizarVenda() {
+    this.carrinhoService.fecharVenda();
+    this.vendasService.fecharVenda(this.carrinhoService.venda).subscribe(
+      (data) => {
+        data = data
+        console.log(data)
+        console.log(this.carrinhoService.itensCarrinho);
+        this.carrinhoService.itensCarrinho = this.carrinhoService.criarOuLimparCarrinho()
+        this.localStorage.setCarrinho(this.carrinhoService.itensCarrinho)
+      }
+    )
+  }
+
+  getUser(email) {
+
+    let user: Usuario = new Usuario();
+
+    this.usuarioService.getUserByEmail(email).subscribe(data => {
+      user.id = data.id;
+    })
+    this.carrinhoService.user.id = user.id
+  }
+
+}
 
 
 
