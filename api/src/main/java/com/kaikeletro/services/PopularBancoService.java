@@ -127,23 +127,23 @@ public class PopularBancoService {
 		cat1.setProdutos(Arrays.asList(p1, p2, p3));
 		cat2.setProdutos(Arrays.asList(p2, p6));
 		cat3.setProdutos(Arrays.asList(p4, p5));
-		cat4.setProdutos(Arrays.asList(p1, p2, p3));
-		cat5.setProdutos(Arrays.asList(p1, p2, p3));
+		cat4.setProdutos(Arrays.asList(p4, p5, p6));
+		cat5.setProdutos(Arrays.asList(p7, p8, p9));
 		cat7.setProdutos(Arrays.asList(p1, p2, p3));
 		cat8.setProdutos(Arrays.asList(p8));
 		cat9.setProdutos(Arrays.asList(p9, p10));
 		cat10.setProdutos(Arrays.asList(p7, p8, p9));
 
 		// Incluindo categorias nos produtos
-		p1.setCategorias(Arrays.asList(cat1, cat4, cat5, cat7));
-		p2.setCategorias(Arrays.asList(cat1, cat2, cat4, cat5, cat7));
-		p3.setCategorias(Arrays.asList(cat1, cat4, cat5, cat7));
-		p4.setCategorias(Arrays.asList(cat3));
-		p5.setCategorias(Arrays.asList(cat3));
-		p6.setCategorias(Arrays.asList(cat4));
-		p7.setCategorias(Arrays.asList(cat7, cat10));
-		p8.setCategorias(Arrays.asList(cat8, cat10));
-		p9.setCategorias(Arrays.asList(cat9, cat10));
+		p1.setCategorias(Arrays.asList(cat1, cat7));
+		p2.setCategorias(Arrays.asList(cat1, cat2, cat7));
+		p3.setCategorias(Arrays.asList(cat1, cat7));
+		p4.setCategorias(Arrays.asList(cat3, cat4));
+		p5.setCategorias(Arrays.asList(cat3, cat4));
+		p6.setCategorias(Arrays.asList(cat4, cat4));
+		p7.setCategorias(Arrays.asList(cat10, cat5, cat6));
+		p8.setCategorias(Arrays.asList(cat8, cat10, cat5));
+		p9.setCategorias(Arrays.asList(cat9, cat10, cat5));
 		p10.setCategorias(Arrays.asList(cat1));
 
 		// Incluindo imagens nos produtos
