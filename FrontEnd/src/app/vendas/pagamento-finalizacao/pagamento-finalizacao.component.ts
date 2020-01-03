@@ -14,6 +14,13 @@ export class PagamentoFinalizacaoComponent implements OnInit {
   showType: boolean = false;
   card : any ;
 
+  cep= "04895460 (infos estáticas)";
+  logradouro="Rua abc"
+  cidade="São Paulo"
+  estado="SP"
+  numero="20"
+  complemento="Casa B"
+
 
   constructor(private router: Router,
               private formBuilder: FormBuilder) {
