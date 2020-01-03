@@ -20,11 +20,8 @@ import { MaisDesejadosComponent } from './home/mais-desejados/mais-desejados.com
 import { CarrinhoComponent } from './home/carrinho/carrinho.component';
 import { ConfirmacaoEnderecoComponent } from './confirmacao-endereco/confirmacao-endereco.component';
 import { PagamentoFinalizacaoComponent } from './pagamento-finalizacao/pagamento-finalizacao.component';
-<<<<<<< HEAD
 import { CreditCardDirectivesModule } from 'angular-cc-library'
-=======
 import { ProdutosCategoriaComponent } from './produtos-categoria/produtos-categoria.component';
->>>>>>> atualizandoMenu
 
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { FaqComponent } from './faq/faq.component';
@@ -33,11 +30,7 @@ import { FaqComponent } from './faq/faq.component';
   declarations: [TelaRegistroComponent, UsuarioLoginComponent, HomeComponent, TelaRegistroComponent,
      UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent, 
      MelhoresOfertasComponent, MaisVendidosComponent, MaisDesejadosComponent,CarrinhoComponent, 
-<<<<<<< HEAD
-     ConfirmacaoEnderecoComponent, PagamentoFinalizacaoComponent, FaqComponent],
-=======
-     ConfirmacaoEnderecoComponent, PagamentoFinalizacaoComponent, ProdutosCategoriaComponent,ProdutosCategoriaComponent],
->>>>>>> atualizandoMenu
+     ConfirmacaoEnderecoComponent, PagamentoFinalizacaoComponent, FaqComponent , ProdutosCategoriaComponent,ProdutosCategoriaComponent],
   imports: [
     CommonModule,
     VendasRoutingModule,
