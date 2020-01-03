@@ -49,7 +49,7 @@ export class StorageService {
             localStorage.removeItem(this.envService.storageKeysConfig.carrinho);
         }
     }
-    getEndereco(): Endereco[] {
+    getEndereco(): Endereco{
         let str = localStorage.getItem(this.envService.storageKeysConfig.endereco);
         if (str != null) {
             return JSON.parse(str);

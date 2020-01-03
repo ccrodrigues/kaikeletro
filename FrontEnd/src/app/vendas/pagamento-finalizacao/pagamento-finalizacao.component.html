@@ -8,19 +8,19 @@
         <tr>
             <td>
                 <div class="card-title">CEP:
-                    <small class="atext-muted">{{ cep }}</small>
+                    <small class="atext-muted">{{ enderecoObj?.cep }}</small>
                 </div>
             </td>
 
             <td>
-                <div class="card-title">Cidade:
-                    <small class="atext-muted">{{ cidade }}</small>
+                <div class="card-title">Cidade
+                    <small class="atext-muted">{{ enderecoObj?.localidade }}</small>
                 </div>
             </td>
            
             <td>
-                <div class="card-title">Complemento:
-                    <small class="atext-muted"> {{ complemento }} </small>
+                <div class="card-title">Bairro:
+                    <small class="atext-muted"> {{ enderecoObj?.bairro }} </small>
                 </div>
             </td>
         </tr>
@@ -28,19 +28,19 @@
         <tr>
             <td>
                 <div class="card-title">Logradouro:
-                    <small class="atext-muted">{{ logradouro }}</small>
+                    <small class="atext-muted">{{ enderecoObj?.logradouro }}</small>
                 </div>
             </td>
            
             <td>
                 <div class="card-title">Estado:
-                    <small class="atext-muted">{{ estado }}</small>
+                    <small class="atext-muted">{{ enderecoObj?.uf }}</small>
                 </div>
             </td>
 
             <td>
                 <div class="card-title">Número:
-                    <small class="atext-muted"> {{ numero }} </small>
+                    <small class="atext-muted"> {{ enderecoObj?.numero }} </small>
                 </div>
             </td>
         </tr>

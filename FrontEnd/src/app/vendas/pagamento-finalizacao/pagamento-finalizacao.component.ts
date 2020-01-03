@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { CreditCardValidator, CreditCard } from 'angular-cc-library';
+import { StorageService } from 'src/app/shared/services/storage.service';
+import { Endereco } from 'src/app/shared/models/endereco.model';
 
 @Component({
   selector: 'app-pagamento-finalizacao',
@@ -14,19 +16,16 @@ export class PagamentoFinalizacaoComponent implements OnInit {
   showType: boolean = false;
   card : any ;
 
-  cep= "04895460 (infos estáticas)";
-  logradouro="Rua abc"
-  cidade="São Paulo"
-  estado="SP"
-  numero="20"
-  complemento="Casa B"
+  enderecoObj: Endereco;
 
 
   constructor(private router: Router,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private enderecoStorage: StorageService) {
               }
 
   ngOnInit() {
+    this.enderecoObj = this.enderecoStorage.getEndereco();
     this.formBuilder = new FormBuilder();
     this.pagaForm = this.formBuilder.group(
       { nomeCartao: ['', [Validators.required] ],
