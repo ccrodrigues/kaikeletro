@@ -49,7 +49,7 @@ public class UsuarioService implements Serializable{
 		Usuario u = userRepo.save(user);
 		
 		for (EnderecoUsuario end : u.getIdEndereco()) {
-			end.setFk_Usuario(u);
+			end.setUsuarios(u);
 			endRepo.save(end);
 		}
 		

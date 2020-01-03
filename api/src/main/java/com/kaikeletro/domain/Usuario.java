@@ -41,7 +41,7 @@ public class Usuario implements Serializable {
 	//@SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USUARIO_NAME_SEQ")
 	private int id; 
 	@JsonManagedReference	
-	@OneToMany(mappedBy = "fk_Usuario")
+	@OneToMany(mappedBy = "usuarios")
 	private List<EnderecoUsuario> idEndereco;
 
 	@NotNull
