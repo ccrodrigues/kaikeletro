@@ -10,7 +10,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.ImagemProd;
+import com.kaikeletro.domain.Item_Venda;
 import com.kaikeletro.domain.Produto;
 import com.kaikeletro.dto.ProdutoDto;
 import com.kaikeletro.repositories.ImagemProdutoRepository;
@@ -37,6 +39,22 @@ public class ProdutoService  {
 		
 		return repoProduto.save(prod);
 	}
+	
+	public Produto createProduto(ProdutoDto prod) {
+		
+		
+		
+		return repoProduto.save(  fromDTO (prod ) );
+	}
+	
+	private Produto fromDTO(ProdutoDto prodDTO) {
+		
+		return new Produto(0, prodDTO.getNome(), prodDTO.getPreco(), prodDTO.getDescricao(), null,
+				null, null);
+		
+	}
+	
+	
 	
 	public List<Produto> listarProdutos(){
 		List<Produto> listaProduto = repoProduto.findAll();
@@ -76,8 +94,6 @@ public class ProdutoService  {
 		PageRequest pageRequest = PageRequest.of(pagina, qtdLinhas, Direction.valueOf(direcao), campo);
 		return repoProduto.findAll(pageRequest);
 	}
-	
-	
 	//Paginação para listar os produtos passando categoria como parametro na URL
 	public Page<Produto> findDistinctByCategoriasNomeContaining(String nomeCategoria, int pagina, int qtdLinhas,
 																String direcao, String campo) {

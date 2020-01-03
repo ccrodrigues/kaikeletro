@@ -28,7 +28,7 @@ export class UsuarioLoginComponent implements OnInit {
     });
   }
   onSubmit(){
-    console.log(this.loginForm);
+    //console.log(this.loginForm);
 
     //Verifica ao enviar se os dados informados são validos
     let login = {email : this.loginForm.value.email, senha : this.loginForm.value.senha};
@@ -42,7 +42,7 @@ export class UsuarioLoginComponent implements OnInit {
   }
   //metodo para verificar se os dados de Autenticidade estão de acordo, recebe um boolean
   isErrorLogin(){
-    return this.serviceLogin.getIsAutenticado();
+    return this.serviceLogin.isAutenticado();
           
   }
   

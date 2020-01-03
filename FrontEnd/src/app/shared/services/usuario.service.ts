@@ -27,6 +27,10 @@ getAll(){
   return this.usuarios = this.http.get<Usuario>(this.envService.urlAPI + `/usuarios/${id}`);
 }
 
+getUserByEmail(email){
+  return this.usuarios = this.http.get<Usuario>(this.envService.urlAPI + `/usuarios/email/${email}`);
+}
+
 addUsuario( usuario ){
 
   return this.http.post<Usuario>(this.envService.urlAPI + `/usuarios`,usuario );
@@ -37,10 +41,21 @@ return this.http.patch<Usuario>(this.envService.urlAPI + `/usuarios/${id}`, usua
 
 }
 UsuarioUser(senha, email, usuario){
+  
   return this.http.post<Usuario[]>(this.envService.urlAPI + `/usuarios/${email}/${senha}`, usuario);
 }
 verificarNivelDeAcesso(cpf, nivel, usuario){
+
   return this.http.post<Usuario[]>(this.envService.urlAPI + `/usuarios/${cpf}/${nivel}`, usuario);
+}
+pesquisarPorCpf(cpf){
+
+  return this.http.get<Usuario>(this.envService.urlAPI + `/usuarios/cpf/${cpf}`)
+}
+pesquisarPorNome(nome){
+
+  return this.http.get<Usuario>(this.envService.urlAPI + `/usuarios/nome/${nome}`)
+
 }
 
 }

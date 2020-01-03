@@ -3,6 +3,7 @@ package com.kaikeletro.domain;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="produto")
@@ -38,12 +40,11 @@ public class Produto implements Serializable {
 	@Column(name="descricao")
 	private String descricao;
 	
-	@ManyToMany(fetch = FetchType.LAZY
-            )
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="produtos_categorias",
 		joinColumns = @JoinColumn(name = "produto_id"),
-		inverseJoinColumns = @JoinColumn(name = "categoria_id")
-	)
+		inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+	@JsonManagedReference
 	private List<Categoria> categorias;
 	
 	@ManyToMany

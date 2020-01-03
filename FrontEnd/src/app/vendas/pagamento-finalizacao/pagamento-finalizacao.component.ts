@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl, ValidatorFn, ValidationErrors } from '@angular/forms';
+import { CreditCardValidator, CreditCard } from 'angular-cc-library';
+import { StorageService } from 'src/app/shared/services/storage.service';
+import { Endereco } from 'src/app/shared/models/endereco.model';
 
 @Component({
   selector: 'app-pagamento-finalizacao',
@@ -10,16 +13,25 @@ import { FormGroup, FormBuilder, Validators, FormControl, ValidatorFn, Validatio
 export class PagamentoFinalizacaoComponent implements OnInit {
 
   pagaForm: FormGroup;
+  showType: boolean = false;
+  card : any ;
+
+  enderecoObj: Endereco;
+
 
   constructor(private router: Router,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder,
+              private enderecoStorage: StorageService) {
+              }
 
   ngOnInit() {
+    this.enderecoObj = this.enderecoStorage.getEndereco();
+    this.formBuilder = new FormBuilder();
     this.pagaForm = this.formBuilder.group(
       { nomeCartao: ['', [Validators.required] ],
-        numCartao: ['', [Validators.maxLength] ],
-        validade: ['', [Validators.required] ],
-        cvv: ['', [Validators.maxLength] ]
+        numCartao: ['', [CreditCardValidator.validateCCNumber] ],
+        exp: ['', [CreditCardValidator.validateExpDate] ],
+        cvv: ['', [Validators.required, Validators.maxLength] ]
       }
     );
   }
@@ -35,4 +47,16 @@ export class PagamentoFinalizacaoComponent implements OnInit {
     return (!this.pagaForm.get(nomeCampo).valid && this.pagaForm.get(nomeCampo).touched ); 
   }
 
+  tipoCard(numCartao): void{
+     this.card = CreditCard.cardFromNumber(numCartao);
+    
+     if(this.card){
+      console.log(this.card.type);
+       this.showType = true;
+     }
+    
+    if (numCartao != null){
+      console.log(this.card);
+    }
+  }
 }

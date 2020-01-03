@@ -30,7 +30,7 @@ public class EnderecoUsuario implements Serializable {
     @ManyToOne
 	@JsonBackReference
 	@JoinColumn(name="idUsuario")
-	private Usuario fk_Usuario;
+	private Usuario usuarios;
 	
 	private String logradouro;
 	
@@ -92,18 +92,28 @@ public class EnderecoUsuario implements Serializable {
 		this.estado = estado;
 	}
 
-	public Usuario getFk_Usuario() {
-		return fk_Usuario;
-	}
-
-	public void setFk_Usuario(Usuario fk_Usuario) {
-		this.fk_Usuario = fk_Usuario;
-	}
+//	public Usuario getFk_Usuario() {
+//		return usuarios;
+//	}
+//
+//	public void setFk_Usuario(Usuario fk_Usuario) {
+//		this.usuarios = fk_Usuario;
+//	}
+	
+	
 
 	@Override
 	public String toString() {
 		return "EnderecoUsuario [idEndereco=" + idEndereco +  ", logradouro=" + logradouro
 				+ ", numero=" + numero + ", cep=" + cep + ", cidade=" + cidade + ", estado=" + estado + "]";
+	}
+
+	public Usuario getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Usuario usuarios) {
+		this.usuarios = usuarios;
 	}
 
 	@Override

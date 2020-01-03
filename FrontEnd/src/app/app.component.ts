@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { StorageService } from './shared/services/storage.service';
+
+import { Compiler } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +16,11 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-  ) { }
+    private storage : StorageService,
+    private _compiler: Compiler
+  ) {
+    this._compiler.clearCache();
+   }
 
   headerFooter;
 
@@ -24,6 +31,10 @@ export class AppComponent {
           this.headerFooter = (event.url !== '/login')
         }
       });
+
+     
+
+
 }
 
 }

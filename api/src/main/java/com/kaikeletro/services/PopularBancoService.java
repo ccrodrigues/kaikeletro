@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.kaikeletro.domain.Admin;
 import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.EnderecoUsuario;
 import com.kaikeletro.domain.ImagemProd;
@@ -14,6 +15,8 @@ import com.kaikeletro.domain.Item_Venda;
 import com.kaikeletro.domain.Produto;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.domain.Vendas;
+import com.kaikeletro.domain.enums.Perfil;
+import com.kaikeletro.domain.enums.TipoCliente;
 import com.kaikeletro.enumeration.StatusPagamento;
 import com.kaikeletro.enumeration.StatusVendas;
 import com.kaikeletro.repositories.CategoriaRepository;
@@ -51,7 +54,7 @@ public class PopularBancoService {
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	public void produtoCategoriaDemo() {
+	public void popularBancoDeDados() {
 		// Criando Categorias
 		Categoria cat1 = new Categoria("Informática");
 		Categoria cat2 = new Categoria("Celulares");
@@ -127,23 +130,23 @@ public class PopularBancoService {
 		cat1.setProdutos(Arrays.asList(p1, p2, p3));
 		cat2.setProdutos(Arrays.asList(p2, p6));
 		cat3.setProdutos(Arrays.asList(p4, p5));
-		cat4.setProdutos(Arrays.asList(p1, p2, p3));
-		cat5.setProdutos(Arrays.asList(p1, p2, p3));
+		cat4.setProdutos(Arrays.asList(p4, p5, p6));
+		cat5.setProdutos(Arrays.asList(p7, p8, p9));
 		cat7.setProdutos(Arrays.asList(p1, p2, p3));
 		cat8.setProdutos(Arrays.asList(p8));
 		cat9.setProdutos(Arrays.asList(p9, p10));
 		cat10.setProdutos(Arrays.asList(p7, p8, p9));
 
 		// Incluindo categorias nos produtos
-		p1.setCategorias(Arrays.asList(cat1, cat4, cat5, cat7));
-		p2.setCategorias(Arrays.asList(cat1, cat2, cat4, cat5, cat7));
-		p3.setCategorias(Arrays.asList(cat1, cat4, cat5, cat7));
-		p4.setCategorias(Arrays.asList(cat3));
-		p5.setCategorias(Arrays.asList(cat3));
-		p6.setCategorias(Arrays.asList(cat4));
-		p7.setCategorias(Arrays.asList(cat7, cat10));
-		p8.setCategorias(Arrays.asList(cat8, cat10));
-		p9.setCategorias(Arrays.asList(cat9, cat10));
+		p1.setCategorias(Arrays.asList(cat1, cat7));
+		p2.setCategorias(Arrays.asList(cat1, cat2, cat7));
+		p3.setCategorias(Arrays.asList(cat1, cat7));
+		p4.setCategorias(Arrays.asList(cat3, cat4));
+		p5.setCategorias(Arrays.asList(cat3, cat4));
+		p6.setCategorias(Arrays.asList(cat4, cat4));
+		p7.setCategorias(Arrays.asList(cat10, cat5, cat6));
+		p8.setCategorias(Arrays.asList(cat8, cat10, cat5));
+		p9.setCategorias(Arrays.asList(cat9, cat10, cat5));
 		p10.setCategorias(Arrays.asList(cat1));
 
 		// Incluindo imagens nos produtos
@@ -187,6 +190,8 @@ public class PopularBancoService {
 		// Criando Usuario e Endereco
 		Usuario u1 = new Usuario();
 		Usuario u2 = new Usuario();
+		Usuario fbc = new Usuario();
+		
 		EnderecoUsuario end1 = new EnderecoUsuario();
 		EnderecoUsuario end2 = new EnderecoUsuario();
 		EnderecoUsuario end3 = new EnderecoUsuario();
@@ -199,6 +204,15 @@ public class PopularBancoService {
 		u1.setNome("Usuario 01");
 		u1.setSenha(bCryptPasswordEncoder.encode("123"));
 		u1.setTelefone("1345365328");
+		
+		fbc.setCpf("0000000001");
+		fbc.setEmail("fbc@fbc.com");
+		fbc.setNome("fbc");
+		fbc.setSenha(bCryptPasswordEncoder.encode("123"));
+		fbc.addPerfil(Perfil.ADMIN);
+		
+		
+		
 
 		u2.setCelular("11438-8743");
 		u2.setCpf("12345678689");
@@ -217,21 +231,21 @@ public class PopularBancoService {
 		end1.setEstado("SP");
 		end1.setLogradouro("Av. nove de julho");
 		end1.setNumero("15A");
-		end1.setFk_Usuario(u1);
+		end1.setUsuarios(u1);
 
 		end2.setCep("08655410");
 		end2.setCidade("São Paulo");
 		end2.setEstado("SP");
 		end2.setLogradouro("Rua das nações");
 		end2.setNumero("988");
-		end2.setFk_Usuario(u1);
+		end2.setUsuarios(u1);
 
 		end3.setCep("08655410");
 		end3.setCidade("São Paulo");
 		end3.setEstado("SP");
 		end3.setLogradouro("Alameda das Flores");
 		end3.setNumero("2156");
-		end3.setFk_Usuario(u2);
+		end3.setUsuarios(u2);
 
 		// Salvando endereco
 		enderecoRepository.saveAll(Arrays.asList(end1, end2, end3));
@@ -271,7 +285,7 @@ public class PopularBancoService {
 		end4.setEstado("SP");
 		end4.setLogradouro("Alameda das casas");
 		end4.setNumero("34");
-		end4.setFk_Usuario(u3);
+		end4.setUsuarios(u3);
 
 		// Atributos imagem
 		img1.setImagemProduto(
@@ -342,6 +356,8 @@ public class PopularBancoService {
 		produtoRepository.save(pro1);
 		produtoRepository.save(pro2);
 		usuarioRepository.save(u3);
+		usuarioRepository.save(fbc);
+		
 		enderecoRepository.saveAll(Arrays.asList(end4));
 
 		vendasRepository.save(v1);

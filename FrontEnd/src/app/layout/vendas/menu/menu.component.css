@@ -60,10 +60,10 @@ a{
    
   }
 
-  .search-form{
+  /*.search-form{
       margin-left: 90px;
   }
-
+*/
   .subscribe{
   
     height: 30px;
@@ -98,6 +98,8 @@ a{
 .cursor {
     cursor: pointer;
   }
+
+
  
   
 

@@ -5,7 +5,7 @@
         <span class="badge badge-pill badge-info">{{categoria}}</span>
         <h5 class="card-title">{{nome}}</h5>
         <p class="card-text">{{descricaoProduto}}</p>
-        <h5 class="card-title">Preço {{preco| currency:'BRL':true:'1.2-2'}}</h5>
-        <button (click)="adcionarCarrinho()" class="btn btn-primary">Comprar</button>
+        <h5 class="card-title">Preço {{preco| currency:'BRL':'symbol':'1.2-2' }}</h5>
+        <button [routerLink]="['/detalhes', id]" class="btn btn-primary">Comprar</button>
     </div>
 </div>

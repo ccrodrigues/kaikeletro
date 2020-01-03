@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { CategoriasService } from 'src/app/shared/Services/categorias.service';
+import { CategoriasService } from 'src/app/shared/services/categorias.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 
 export class AdicionarComponent implements OnInit {
 
+  erros                 : boolean[]     = [false, false, false, false, false]
   prodForm              : FormGroup               ;
   selecionadas          : any           = []      ;
   imagensSelecionada    : any           = null    ;
@@ -130,7 +131,8 @@ export class AdicionarComponent implements OnInit {
   }
 
   onSubmit() {
-
+    
+    if(this.erros[0]) {
     let produto = new ProdutoModel();
 
     produto.nome = this.prodForm.controls["nome"].value;
@@ -152,6 +154,9 @@ export class AdicionarComponent implements OnInit {
         console.log(erro)
       }
     );
+    } else {
+      this.erros[0] = true;
+    }
   }
 
   showAddCategoria() {
