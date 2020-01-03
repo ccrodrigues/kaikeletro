@@ -1,4 +1,3 @@
-
 <p>aqui vai o endereço confirmado</p>
 
 <div class=row>
@@ -31,7 +30,9 @@
     </div>
 
     <div class="col-md-8 order-md-1">
-        <form [formGroup]="pagaForm" (submit)="onSubmit()">
+        <form [formGroup]="pagaForm" 
+            (submit)="onSubmit()">
+            
             <h4 class="mb-3">Pagamento</h4>
 
             <div class="d-block my-3">
@@ -49,35 +50,36 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="nomeCartao">Nome no Cartão</label>
-                    <input type="text" class="form-control" id="nomeCartao" formControlName="nomeCartao">
+                    <input type="text" class="form-control" id="nomeCartao" formControlName="nomeCartao" >
                     <small class="text-muted">Nome Completo, como no Cartão.</small>
-                    <app-msg-erro [isError]="isErrorCampo('nomeCartao')" mensagem="Preencha corretamente"></app-msg-erro>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <label for="numCartao">Número do Cartão</label>
-                    <input type="text" class="form-control" id="numCartao" formControlName="numCartao" maxlength="16">
-                    <app-msg-erro [isError]="isErrorCampo('numCartao')" mensagem="Preencha corretamente"></app-msg-erro>
+                <div class="col-md-6 mb-3" >
+                    <label for="cc-number">Número do Cartão</label>
+                    <input type="tel" class="form-control" (input)="tipoCard($event.target.value)" autocomplete="cc-number" id="cc-number" formControlName="numCartao" ccNumber>
+                    <div *ngIf="showType == true">
+                        {{ card?.type }}
+                        
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-3 mb-3">
-                    <label for="validade">Data de Validade</label>
-                    <input type="text" class="form-control" id="validade" formControlName="validade">
-                    <app-msg-erro [isError]="isErrorCampo('validade')" mensagem="Preencha corretamente"></app-msg-erro>
+                    <label for="cc-exp">Data de Validade</label>
+                    <input type="tel" class="form-control" autocomplete="cc-exp" id="cc-exp" formControlName="exp" ccExp>
                 </div>
 
                 <div class="col-md-3 mb-3">
-                    <label for="cvv">CVV</label>
-                    <input type="text" class="form-control" id="cvv" formControlName="cvv" maxlength="3">
+                    <label for="cc-csc">CVV</label>
+                    <input type="tel" class="form-control" autocomplete="off" id="cc-csc" formControlName="cvv" maxlength="4" ccCVC >
                     <small class="text-muted">Código de Segurança</small>
-                    <app-msg-erro [isError]="isErrorCampo('cvv')" mensagem="Insira o código (3 dígitos)"></app-msg-erro>
+                    
                 </div>
             </div>
 
             <hr class="mb-3">
-            <button class="btn btn-primary" type="submit" >Confirmar Pagamento</button><br>
+            <button class="btn btn-primary" type="submit" [disabled]="pagaForm.valid == false" >Confirmar Pagamento</button><br>
         </form>
     </div>
 </div>

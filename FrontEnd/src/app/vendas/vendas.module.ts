@@ -20,15 +20,16 @@ import { MaisDesejadosComponent } from './home/mais-desejados/mais-desejados.com
 import { CarrinhoComponent } from './home/carrinho/carrinho.component';
 import { ConfirmacaoEnderecoComponent } from './confirmacao-endereco/confirmacao-endereco.component';
 import { PagamentoFinalizacaoComponent } from './pagamento-finalizacao/pagamento-finalizacao.component';
-
+import { CreditCardDirectivesModule } from 'angular-cc-library'
 
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [TelaRegistroComponent, UsuarioLoginComponent, HomeComponent, TelaRegistroComponent,
      UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent, 
      MelhoresOfertasComponent, MaisVendidosComponent, MaisDesejadosComponent,CarrinhoComponent, 
-     ConfirmacaoEnderecoComponent, PagamentoFinalizacaoComponent],
+     ConfirmacaoEnderecoComponent, PagamentoFinalizacaoComponent, FaqComponent],
   imports: [
     CommonModule,
     VendasRoutingModule,
@@ -41,6 +42,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     FormsModule,
     NgxPaginationModule,
     CarouselModule.forRoot(),
+    //CarouselModule,
+    CreditCardDirectivesModule
   ],
   exports:[
     PaginacaoComponent,
