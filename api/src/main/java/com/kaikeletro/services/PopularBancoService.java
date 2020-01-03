@@ -130,23 +130,23 @@ public class PopularBancoService {
 		cat1.setProdutos(Arrays.asList(p1, p2, p3));
 		cat2.setProdutos(Arrays.asList(p2, p6));
 		cat3.setProdutos(Arrays.asList(p4, p5));
-		cat4.setProdutos(Arrays.asList(p1, p2, p3));
-		cat5.setProdutos(Arrays.asList(p1, p2, p3));
+		cat4.setProdutos(Arrays.asList(p4, p5, p6));
+		cat5.setProdutos(Arrays.asList(p7, p8, p9));
 		cat7.setProdutos(Arrays.asList(p1, p2, p3));
 		cat8.setProdutos(Arrays.asList(p8));
 		cat9.setProdutos(Arrays.asList(p9, p10));
 		cat10.setProdutos(Arrays.asList(p7, p8, p9));
 
 		// Incluindo categorias nos produtos
-		p1.setCategorias(Arrays.asList(cat1, cat4, cat5, cat7));
-		p2.setCategorias(Arrays.asList(cat1, cat2, cat4, cat5, cat7));
-		p3.setCategorias(Arrays.asList(cat1, cat4, cat5, cat7));
-		p4.setCategorias(Arrays.asList(cat3));
-		p5.setCategorias(Arrays.asList(cat3));
-		p6.setCategorias(Arrays.asList(cat4));
-		p7.setCategorias(Arrays.asList(cat7, cat10));
-		p8.setCategorias(Arrays.asList(cat8, cat10));
-		p9.setCategorias(Arrays.asList(cat9, cat10));
+		p1.setCategorias(Arrays.asList(cat1, cat7));
+		p2.setCategorias(Arrays.asList(cat1, cat2, cat7));
+		p3.setCategorias(Arrays.asList(cat1, cat7));
+		p4.setCategorias(Arrays.asList(cat3, cat4));
+		p5.setCategorias(Arrays.asList(cat3, cat4));
+		p6.setCategorias(Arrays.asList(cat4, cat4));
+		p7.setCategorias(Arrays.asList(cat10, cat5, cat6));
+		p8.setCategorias(Arrays.asList(cat8, cat10, cat5));
+		p9.setCategorias(Arrays.asList(cat9, cat10, cat5));
 		p10.setCategorias(Arrays.asList(cat1));
 
 		// Incluindo imagens nos produtos
@@ -231,21 +231,21 @@ public class PopularBancoService {
 		end1.setEstado("SP");
 		end1.setLogradouro("Av. nove de julho");
 		end1.setNumero("15A");
-		end1.setFk_Usuario(u1);
+		end1.setUsuarios(u1);
 
 		end2.setCep("08655410");
 		end2.setCidade("São Paulo");
 		end2.setEstado("SP");
 		end2.setLogradouro("Rua das nações");
 		end2.setNumero("988");
-		end2.setFk_Usuario(u1);
+		end2.setUsuarios(u1);
 
 		end3.setCep("08655410");
 		end3.setCidade("São Paulo");
 		end3.setEstado("SP");
 		end3.setLogradouro("Alameda das Flores");
 		end3.setNumero("2156");
-		end3.setFk_Usuario(u2);
+		end3.setUsuarios(u2);
 
 		// Salvando endereco
 		enderecoRepository.saveAll(Arrays.asList(end1, end2, end3));
@@ -285,7 +285,7 @@ public class PopularBancoService {
 		end4.setEstado("SP");
 		end4.setLogradouro("Alameda das casas");
 		end4.setNumero("34");
-		end4.setFk_Usuario(u3);
+		end4.setUsuarios(u3);
 
 		// Atributos imagem
 		img1.setImagemProduto(

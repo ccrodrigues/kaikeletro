@@ -1,8 +1,5 @@
-<p>
-    O ngc vai ficar aqui
-</p>
 
-<button class="btn btn-primary" [routerLink]="['/pagamento']">Ir Para Pagamento</button>
+
 
 <div class="col-md-10 order-md-1">
     <form [formGroup]="endForm">
@@ -24,38 +21,38 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <label for="rua" class="control-label">Logradouro</label>
-                        <input type="text" [value]="objEnd?.logradouro" id="rua" class="form-control"
+                        <input type="text"  [(ngModel)]="objEnd.logradouro" id="rua" class="form-control"
                             formControlName="logradouro">
                     </div><br>
 
                     <div class="col-md-2">
                         <label for="num" class="control-label">Número</label>
-                        <input type="number" [value]="objEnd?.numero" id="num" class="form-control"
+                        <input type="number"  [(ngModel)]="objEnd.numero"    id="num" class="form-control"
                             formControlName="numero">
                     </div>
                 </div><br>
 
                 <div class="col-md-6">
                     <label for="complemento" class="control-label">Complemento</label>
-                    <input type="text" [value]="objEnd?.complemento" id="complemento" class="form-control"
+                    <input type="text"  [(ngModel)]="objEnd.complemento" id="complemento" class="form-control"
                         formControlName="complemento">
                 </div><br>
 
                 <div class="col-md-6">
                     <label for="bairro" class="control-label">Bairro</label>
-                    <input type="text" [value]="objEnd?.bairro" id="bairro" class="form-control"
+                    <input type="text"  id="bairro" [(ngModel)]="objEnd.bairro" class="form-control"
                         formControlName="bairro">
                 </div><br>
 
                 <div class="col-md-6">
                     <label for="cidade" class="control-label">Cidade</label>
-                    <input type="text" [value]="objEnd?.localidade" id="cidade" class="form-control"
+                    <input type="text"  [(ngModel)]="objEnd.localidade"  id="cidade" class="form-control"
                         formControlName="cidade">
                 </div><br>
 
                 <div class="col-md-6">
                     <label for="estado" class="control-label">Estado</label>
-                    <input type="text" [value]="objEnd?.uf" id="estado" class="form-control"
+                    <input type="text"  [(ngModel)]="objEnd.uf" id="estado" class="form-control"
                         formControlName="estado">
                 </div><br>
 

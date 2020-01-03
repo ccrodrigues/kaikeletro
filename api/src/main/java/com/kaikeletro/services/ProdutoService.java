@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.ImagemProd;
 import com.kaikeletro.domain.Produto;
-import com.kaikeletro.dto.ProdutoDto;
 import com.kaikeletro.repositories.ImagemProdutoRepository;
 import com.kaikeletro.repositories.ProdutoRepository;
 

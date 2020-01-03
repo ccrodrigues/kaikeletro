@@ -44,7 +44,7 @@ export class ServiceLoginService {
     this.http.post<tokenAuth>(`${this.envService.urlAPI}/autenticacao`, login).subscribe(
       (data) => {
 
-        console.log("data : ", data);
+        //console.log("data : ", data);
 
         const helper = new JwtHelperService();
         const decodedToken = helper.decodeToken(data.token);
@@ -83,6 +83,8 @@ export class ServiceLoginService {
       this.isAuth = true;
     }
     //console.log(localUser);
+
+
     //console.log("isAuth2:",this.isAuth);
     return this.isAuth;
   }

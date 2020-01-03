@@ -18,7 +18,7 @@ export class MelhoresOfertasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.produtoService.getAll().subscribe( (dados:ProdutoModel[]) => {
+    this.produtoService.getProdutosCategoria("Melhores-ofertas").subscribe(( dados: ProdutoModel[]) => {
       this.produtos = dados;
       console.log(dados);
     })

@@ -96,5 +96,10 @@ textarea {
 }
 
 .error {
-    color: rgb(197, 56, 56);
+    color: #c53838;
+}
+
+.error-line {
+    border: 1px solid #c53838!important;
+    box-shadow: 0px 0px 3px 1px #c53838;
 }

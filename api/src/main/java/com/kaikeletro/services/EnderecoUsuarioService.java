@@ -21,6 +21,9 @@ public class EnderecoUsuarioService {
 	public Optional<EnderecoUsuario> findById(int id) {
 		return endRepo.findById(id);
 	}
+	public List<EnderecoUsuario> findByFK(int id) {
+		return endRepo.findByUsuariosEmailContaining("a@a.com");
+	}
 
 	public EnderecoUsuario save(EnderecoUsuario end) {
 		return endRepo.save(end);
@@ -35,7 +38,7 @@ public class EnderecoUsuarioService {
 			endBD.get().setCep(end.getCep());
 			endBD.get().setCidade(end.getCidade());
 			endBD.get().setEstado(end.getEstado());
-			endBD.get().setFk_Usuario(end.getFk_Usuario());
+			endBD.get().setUsuarios(end.getUsuarios());
 			endBD.get().setLogradouro(end.getLogradouro());
 			endBD.get().setNumero(end.getNumero());
 			return endRepo.save(endBD.get());

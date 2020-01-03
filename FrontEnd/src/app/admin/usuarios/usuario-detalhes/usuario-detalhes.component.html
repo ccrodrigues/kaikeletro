@@ -3,14 +3,14 @@
 
     <form [formGroup]="detalhesForm" (ngSubmit)="onSubmit()">
 
-        <div class="form-group" [formGroupName]="usuario">
+        <div class="form-group">
 
             <div class="card">
                 <div class="row cpp">
                     <div class="col-md-1">
                         <label for="id">ID</label>  
                         <div class="input-group form-group">
-                            <input type="text" class="form-control" formControlName="id" disabled>
+                            <input type="text" class="form-control" formControlName="id" disabled >
                         </div>
                     </div>
                     <div class="col-md-8">
