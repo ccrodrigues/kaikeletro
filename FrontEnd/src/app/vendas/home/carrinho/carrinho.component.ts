@@ -47,18 +47,7 @@ export class CarrinhoComponent implements OnInit {
     //console.log(typeof(selectedOption)) 
   }
 
-  finalizarVenda() {
-    this.carrinhoService.fecharVenda();
-    this.vendasService.fecharVenda(this.carrinhoService.venda).subscribe(
-      (data) => {
-        data = data
-        console.log(data)
-        console.log(this.carrinhoService.itensCarrinho);
-        this.carrinhoService.itensCarrinho = this.carrinhoService.criarOuLimparCarrinho()
-        this.localStorage.setCarrinho(this.carrinhoService.itensCarrinho)
-      }
-    )
-  }
+ 
 
   getUser(email) {
 
