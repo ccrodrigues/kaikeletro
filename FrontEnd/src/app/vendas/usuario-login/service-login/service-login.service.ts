@@ -79,6 +79,8 @@ export class ServiceLoginService {
     let localUser: LocalUserModel = this.storageService.getLocalUser();
     if (localUser == null) {
       this.isAuth = false;
+    }else if(this.isAdmin() == true){
+      this.isAuth = true;
     }
     //console.log(localUser);
     //console.log("isAuth2:",this.isAuth);
@@ -126,6 +128,7 @@ export class ServiceLoginService {
       } else {
         this.isAdministrador = false;
       }
+      //console.log("admin", this.isAdministrador)
       return this.isAdministrador;
     }
   }
