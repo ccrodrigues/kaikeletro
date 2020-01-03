@@ -16,9 +16,9 @@ public class ProdutoDto {
 	
 	private String descricao;
 	
-	private List <Categoria> categorias;
-	
-	private List <ImagemProd> imagens;
+//	private List <Categoria> categorias;
+//	
+//	private List <ImagemProd> imagens;
 	
 	public ProdutoDto() {
 		
@@ -28,9 +28,9 @@ public class ProdutoDto {
 		this.idProduto = obj.getIdProduto();
 		this.nome = obj.getNome();
 		this.preco = obj.getPreco();
-		this.imagens = obj.getImagens();
+		//this.imagens = obj.getImagens();
 		this.descricao = obj.getDescricao();
-		this.categorias = obj.getCategorias();
+		//this.categorias = obj.getCategorias();
 }
 
 	public int getIdProduto() {
@@ -57,13 +57,13 @@ public class ProdutoDto {
 		this.preco = preco;
 	}
 
-	public List<ImagemProd> getImagens() {
-		return imagens;
-	}
-
-	public void setImagens(List<ImagemProd> imagens) {
-		this.imagens = imagens;
-	}
+//	public List<ImagemProd> getImagens() {
+//		return imagens;
+//	}
+//
+//	public void setImagens(List<ImagemProd> imagens) {
+//		this.imagens = imagens;
+//	}
 
 	public String getDescricao() {
 		return descricao;
@@ -73,11 +73,11 @@ public class ProdutoDto {
 		this.descricao = descricao;
 	}
 
-	public List<Categoria> getCategorias() {
-		return categorias;
-	}
-
-	public void setCategorias(List<Categoria> categorias) {
-		this.categorias = categorias;
-	}
+//	public List<Categoria> getCategorias() {
+//		return categorias;
+//	}
+//
+//	public void setCategorias(List<Categoria> categorias) {
+//		this.categorias = categorias;
+//	}
 }

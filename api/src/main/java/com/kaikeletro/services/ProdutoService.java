@@ -10,8 +10,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
+import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.ImagemProd;
+import com.kaikeletro.domain.Item_Venda;
 import com.kaikeletro.domain.Produto;
+import com.kaikeletro.dto.ProdutoDto;
 import com.kaikeletro.repositories.ImagemProdutoRepository;
 import com.kaikeletro.repositories.ProdutoRepository;
 
@@ -36,6 +39,22 @@ public class ProdutoService  {
 		
 		return repoProduto.save(prod);
 	}
+	
+	public Produto createProduto(ProdutoDto prod) {
+		
+		
+		
+		return repoProduto.save(  fromDTO (prod ) );
+	}
+	
+	private Produto fromDTO(ProdutoDto prodDTO) {
+		
+		return new Produto(0, prodDTO.getNome(), prodDTO.getPreco(), prodDTO.getDescricao(), null,
+				null, null);
+		
+	}
+	
+	
 	
 	public List<Produto> listarProdutos(){
 		List<Produto> listaProduto = repoProduto.findAll();

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kaikeletro.domain.Produto;
+import com.kaikeletro.dto.CredenciaisDTO;
 import com.kaikeletro.dto.ProdutoDto;
 import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.ProdutoService;
@@ -73,12 +76,12 @@ public class ProdutoController {
 		return ResponseEntity.ok().body(produtoService.findByNome(nomeBusca));
 	}
 	
-	@RequestMapping(value="", method=RequestMethod.POST)
-	public ResponseEntity<Produto> createProduto(@RequestBody Produto prod){
-		System.out.println(prod);
+	@RequestMapping(value="", method=RequestMethod.POST, consumes = "application/json;charset=UTF-8")
+	public ResponseEntity<Produto> createProduto(@RequestBody ProdutoDto prodDto){
+		System.out.println(prodDto);
 		
-		
-		return ResponseEntity.ok().body(produtoService.createProduto(prod));
+		//Produto creds = new ObjectMapper().readValue(prod, Produto.class);
+		return ResponseEntity.ok().body(produtoService.createProduto(prodDto));
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PATCH)
