@@ -49,7 +49,10 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                     this.router.navigate(['/login'], {});
                     this.dialog.showError('Email ou senha inválidos!!');
                     //return EMPTY;
-                    //return throwError(error);
+                    //return throwError(error);                   
+                }
+                else if (error instanceof HttpErrorResponse && error.status === 403) {
+                    this.router.navigate(['/login'], {});                    
                 }
                 else {
                     this.dialog.showErrorInterceptor(data);

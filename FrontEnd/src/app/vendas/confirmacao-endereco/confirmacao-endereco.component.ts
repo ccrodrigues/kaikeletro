@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TelaregistroService } from '../tela-registro/tela-registro.service';
 import { Endereco } from 'src/app/shared/models/endereco.model';
+import { StorageService } from 'src/app/shared/services/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirmacao-endereco',
@@ -14,6 +16,8 @@ export class ConfirmacaoEnderecoComponent implements OnInit {
   objEnd: Endereco;
 
   constructor(private formBuilder: FormBuilder,
+    private localStorage:StorageService,
+    private route:Router,
     private viaCep: TelaregistroService) { }
 
   ngOnInit() {
@@ -38,12 +42,14 @@ export class ConfirmacaoEnderecoComponent implements OnInit {
   }
 
   salvar() {
-    console.log(this.endForm.valid);
     if (this.endForm.valid) {
-
+      this.localStorage.setEndereco(this.objEnd);
+      this.route.navigateByUrl("/pagamento")
+      
     } else {
       alert("Preencha os dados corretamente")
     }
-
   }
+
+  
 }

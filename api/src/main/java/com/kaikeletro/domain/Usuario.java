@@ -20,9 +20,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-
 import com.kaikeletro.domain.enums.Perfil;
 import com.kaikeletro.domain.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import com.sun.istack.NotNull;
 
 @Entity
@@ -39,8 +40,8 @@ public class Usuario implements Serializable {
 	@PrimaryKeyJoinColumn
 	//@SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USUARIO_NAME_SEQ")
 	private int id; 
-	
-	@OneToMany(mappedBy = "fk_Usuario")
+	@JsonManagedReference	
+	@OneToMany(mappedBy = "usuarios")
 	private List<EnderecoUsuario> idEndereco;
 
 	@NotNull

@@ -1,11 +1,11 @@
 <div class="background">
     <h2><small class="form-text text-muted negrito-padding text-center">Adicionar um Produto</small></h2>
-        <form action="" [formGroup]="prodForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="prodForm" (ngSubmit)="onSubmit()">
 
         <div class="row">
             <div class="col">
                 <h3><small>Nome *</small></h3>
-                <input type="text" class="form-control" formControlName="nome">
+                <input type="text" class="" formControlName="nome" [class]="erros[0] ? 'form-control error-line' : 'form-control'">
 
                 <h3><small>Preço *</small></h3>
                 <div class="input-group mb-2">
@@ -16,16 +16,17 @@
                 </div>
             </div>
             <div class="col imagem_principal">
+                <h3 class="text-center"><small>Imagem Principal *</small></h3>
                 <label for="imagem-principal">
-                    <img src="../../../../assets/imagens/camera.png" #alter>
+                    <img class="" src="../../../../assets/imagens/camera.png" #alter>
                 </label>
-                <input type="file" id="imagem-principal" (change)="imagePrincipalSelect($event, alter)">
+                <input type="file" id="imagem-principal"  (change)="imagePrincipalSelect($event, alter)">
             </div>
         </div>
 
         <div >
             <h3><small>Descricao *</small></h3>
-            <textarea name="" class="form-control" id="" formControlName="descricao"></textarea>
+            <textarea class="form-control" formControlName="descricao"></textarea>
         </div>
 
             <!-- ### INPUT: a cada tecla pressionada ira verificar se o que foi digitado -->
@@ -47,7 +48,7 @@
                 
             </div>
             <div class="container"> 
-                <p class="linkFake" (click)="showAddCategoria(screen)">Adicionar uma nova categoria.</p>
+                <p class="linkFake" (click)="showAddCategoria()">Adicionar uma nova categoria.</p>
                 <div class="row addCat" *ngIf="showAddCat">
                     <div class="col">
                         <input type="text" class="form-control" #newCategoria>

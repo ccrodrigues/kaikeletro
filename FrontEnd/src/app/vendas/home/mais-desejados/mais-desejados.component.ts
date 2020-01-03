@@ -18,9 +18,13 @@ export class MaisDesejadosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.produtoService.getAll().subscribe( (dados:ProdutoModel[]) => {
+    this.produtoService.getProdutosCategoria("Mais-desejados").subscribe(( dados: ProdutoModel[]) => {
       this.produtos = dados;
       console.log(dados);
     })
+    // this.produtoService.getAll().subscribe( (dados:ProdutoModel[]) => {
+    //   this.produtos = dados;
+    //   console.log(dados);
+    // })
   }
 }

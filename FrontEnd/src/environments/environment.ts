@@ -5,6 +5,7 @@ export const environment = {
   storageKeysConfig : {
     localUser: 'localUser',
     carrinho:'carrinho',
+    endereco:'endereco'
   }
 
 };

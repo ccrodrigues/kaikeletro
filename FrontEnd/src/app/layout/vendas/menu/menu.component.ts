@@ -6,6 +6,10 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
 import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
+import { ProdutosCategoriaComponent } from 'src/app/vendas/produtos-categoria/produtos-categoria.component';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
+import { VendasModule } from 'src/app/vendas/vendas.module';
+import { ProdutoModel } from 'src/app/shared/models/produto.model';
 
 
 @Component({
@@ -46,7 +50,6 @@ export class MenuComponent implements OnInit {
       this.isAuth = false;
     }
     
-
     //  this.qntd = this.carrinhoService.totalItensCarrinho();
     // // //this.isAuth = this.loginService.getIsAutenticado();
     // //     //if(this.isAuth == false){
@@ -55,11 +58,9 @@ export class MenuComponent implements OnInit {
     //  console.log(this.carrinhoService.exibirItens())
 
   }
-
-
+  
   logadoAdmin(){
     this.isDashboard = this.loginService.isAdmin() && this.loginService.isAutenticado();
-
     return this.isDashboard;
   }
 
@@ -67,7 +68,6 @@ export class MenuComponent implements OnInit {
     this.deslogar = this.loginService.logout();
     this.dialogService.showSuccess('Logout feito com sucesso!');
   }
-
-
+  
 }
 

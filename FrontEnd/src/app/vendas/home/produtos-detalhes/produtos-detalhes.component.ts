@@ -61,6 +61,13 @@ export class ProdutosDetalhesComponent implements OnInit {
   valorFrete;
 
   idRota;
+  
+
+  numerosParcela = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  numeroParcelaAtual = 1;
+  
+  Preco: number;
+  Parcela;
 
   //estimativa de tempo em dias úteis para entrega. De acordo com a API de frete
   prazoentregaFrete;
@@ -227,6 +234,7 @@ export class ProdutosDetalhesComponent implements OnInit {
  
   adicionarCarrinho(){
 
+    
     this.carrinhoService.verifyItemExists(this.produto, this.quantidade);
     console.log("Adicionando " +  this.produto);
     this.dialogService.showSuccess("Produto adicionado no carrinho com sucesso!"); 

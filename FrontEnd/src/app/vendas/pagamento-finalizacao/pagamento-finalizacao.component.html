@@ -1,6 +1,52 @@
-<p>aqui vai o endereço confirmado</p>
+<div class="card" style="width: 70rem">
+    <div class="card-header">
+       <h4> Endereço de Entrega</h4>
+    </div>
+</div>
 
-<div class=row>
+    <table style="width: 70rem" class="table table-light" >
+        <tr>
+            <td>
+                <div class="card-title">CEP:
+                    <small class="atext-muted">{{ cep }}</small>
+                </div>
+            </td>
+
+            <td>
+                <div class="card-title">Cidade:
+                    <small class="atext-muted">{{ cidade }}</small>
+                </div>
+            </td>
+           
+            <td>
+                <div class="card-title">Complemento:
+                    <small class="atext-muted"> {{ complemento }} </small>
+                </div>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="card-title">Logradouro:
+                    <small class="atext-muted">{{ logradouro }}</small>
+                </div>
+            </td>
+           
+            <td>
+                <div class="card-title">Estado:
+                    <small class="atext-muted">{{ estado }}</small>
+                </div>
+            </td>
+
+            <td>
+                <div class="card-title">Número:
+                    <small class="atext-muted"> {{ numero }} </small>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+<div class="row">
     <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Seu Carrinho</span>
@@ -24,6 +70,11 @@
             <li class="list-group-item d-flex justify-content-between">
                 <span>TOTAL(BRL) </span>
                 <strong>R$105,00</strong>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between">
+                <span>PAGAMENTO FINAL </span>
+                <strong>5x de R$21,00</strong>
             </li>
         </ul>
 
