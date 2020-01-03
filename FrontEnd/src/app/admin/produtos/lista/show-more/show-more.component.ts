@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CategoriasService } from 'src/app/shared/services/categorias.service';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
 import { isUndefined } from 'util';
 
 @Component({
