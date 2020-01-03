@@ -23,12 +23,13 @@ import { PagamentoFinalizacaoComponent } from './pagamento-finalizacao/pagamento
 import { CreditCardDirectivesModule } from 'angular-cc-library'
 
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [TelaRegistroComponent, UsuarioLoginComponent, HomeComponent, TelaRegistroComponent,
      UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent, 
      MelhoresOfertasComponent, MaisVendidosComponent, MaisDesejadosComponent,CarrinhoComponent, 
-     ConfirmacaoEnderecoComponent, PagamentoFinalizacaoComponent],
+     ConfirmacaoEnderecoComponent, PagamentoFinalizacaoComponent, FaqComponent],
   imports: [
     CommonModule,
     VendasRoutingModule,
