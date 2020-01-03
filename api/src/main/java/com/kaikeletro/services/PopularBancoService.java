@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.kaikeletro.domain.Admin;
 import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.EnderecoUsuario;
 import com.kaikeletro.domain.ImagemProd;
@@ -14,6 +15,8 @@ import com.kaikeletro.domain.Item_Venda;
 import com.kaikeletro.domain.Produto;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.domain.Vendas;
+import com.kaikeletro.domain.enums.Perfil;
+import com.kaikeletro.domain.enums.TipoCliente;
 import com.kaikeletro.enumeration.StatusPagamento;
 import com.kaikeletro.enumeration.StatusVendas;
 import com.kaikeletro.repositories.CategoriaRepository;
@@ -187,6 +190,8 @@ public class PopularBancoService {
 		// Criando Usuario e Endereco
 		Usuario u1 = new Usuario();
 		Usuario u2 = new Usuario();
+		Usuario fbc = new Usuario();
+		
 		EnderecoUsuario end1 = new EnderecoUsuario();
 		EnderecoUsuario end2 = new EnderecoUsuario();
 		EnderecoUsuario end3 = new EnderecoUsuario();
@@ -199,6 +204,15 @@ public class PopularBancoService {
 		u1.setNome("Usuario 01");
 		u1.setSenha(bCryptPasswordEncoder.encode("123"));
 		u1.setTelefone("1345365328");
+		
+		fbc.setCpf("0000000001");
+		fbc.setEmail("fbc@fbc.com");
+		fbc.setNome("fbc");
+		fbc.setSenha(bCryptPasswordEncoder.encode("123"));
+		fbc.addPerfil(Perfil.ADMIN);
+		
+		
+		
 
 		u2.setCelular("11438-8743");
 		u2.setCpf("12345678689");
@@ -342,6 +356,8 @@ public class PopularBancoService {
 		produtoRepository.save(pro1);
 		produtoRepository.save(pro2);
 		usuarioRepository.save(u3);
+		usuarioRepository.save(fbc);
+		
 		enderecoRepository.saveAll(Arrays.asList(end4));
 
 		vendasRepository.save(v1);
