@@ -21,6 +21,8 @@ import { HomeComponent } from './vendas/home/home.component';
 import { DialogService } from './shared/toaster/dialog.service';
 import { Toast, ToastrService, ToastrModule } from 'ngx-toastr';
 
+
+
 @NgModule({
   declarations: [
     AppComponent  

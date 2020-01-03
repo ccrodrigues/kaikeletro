@@ -8,6 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterLayoutComponent } from './vendas/footer-layout/footer-layout.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+
+import {PopoverModule} from "ngx-popover";
+
 @NgModule({
   declarations: [MenuComponent, FooterLayoutComponent],
   imports: [
@@ -17,6 +20,9 @@ import { SharedModule } from '../shared/shared.module';
     CollapseModule,
     BrowserAnimationsModule,
     RouterModule
+    ,
+
+    PopoverModule
   ],
   exports: [
     MenuComponent,

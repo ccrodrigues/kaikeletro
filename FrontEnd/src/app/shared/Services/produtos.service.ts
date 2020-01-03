@@ -59,4 +59,8 @@ export class ProdutosService {
     return this.http.get<ProdutoModel[]>(this.envService.urlAPI+ "produtos"
     +`pagina=${pagina}&qtdLinhas=${qtdLinhas}&direcao=${direcao}&campo=${campo}`)
   }
+
+  getProdutoNome(nomeBusca){
+    return this.http.get<ProdutoModel[]>(this.envService.urlAPI + "/produtos/nome/" + nomeBusca)
+  }
 }
