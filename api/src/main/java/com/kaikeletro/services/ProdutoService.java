@@ -102,5 +102,6 @@ public class ProdutoService  {
 		PageRequest pageRequest = PageRequest.of(pagina, qtdLinhas, Direction.valueOf(direcao), campo);
 		return repoProduto.findDistinctByCategoriasNomeContaining(nomeCategoria, pageRequest);
 	}
+	
 
 }

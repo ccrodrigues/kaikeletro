@@ -18,9 +18,9 @@ export class MaisVendidosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.produtoService.getProdutosCategoria("Mais-vendidos").subscribe(( dados: ProdutoModel[]) => {
-      this.produtos = dados;
+    this.produtoService.getProdutosCategorias("Mais-vendidos").subscribe(( dados: ProdutoModel[]) => {
       console.log(dados);
+      this.produtos = dados;
     })
   }
 }
