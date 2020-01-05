@@ -6,6 +6,7 @@ import { Validacoes } from '../../shared/validacoes';
 import { Endereco } from '../../shared/models/endereco.model';
 import { TelaregistroService } from './tela-registro.service';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
+import { ServiceLoginService } from '../usuario-login/service-login/service-login.service';
 
 @Component({
   selector: 'app-telaregistro',
@@ -27,7 +28,8 @@ export class TelaRegistroComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private viaCep: TelaregistroService,
     private usuarioService: UsuarioService,
-    private dialogService: DialogService) { }
+    private dialogService: DialogService,
+    private serviceLoginService : ServiceLoginService) { }
 
   ngOnInit() {
     this.regForm = this.formBuilder.group(
@@ -120,14 +122,18 @@ export class TelaRegistroComponent implements OnInit {
             .subscribe(
               (dado) => {
                 this.dialogService.showSuccess("Usuário salvo com sucesso");
-                console.log("salvou");
+                
+                this.serviceLoginService.fazerLogin( 
+                  {email:this.regForm.value.email, senha : this.regForm.value.senha} 
+                  );
+
               }
             );
 
 
         } else {
-          console.log(this.regForm.status)
-          console.error("erro")
+          this.dialogService.showError("O formulário está inválido");
+          console.log(this.regForm.status)        
           console.log(this.regForm.value)
 
         }
