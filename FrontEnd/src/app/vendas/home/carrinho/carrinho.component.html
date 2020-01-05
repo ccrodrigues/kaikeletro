@@ -1,6 +1,6 @@
 <h2 style="margin-top: 20px;">Meu Carrinho</h2>
 
-<div *ngIf="this.carrinhoService.itensCarrinho.length; else carrinhoVazio">
+<div *ngIf="itensCarrinho.length; else carrinhoVazio">
 
     <div class="container-fluid cart-box">
 
@@ -15,7 +15,7 @@
         <div class="row ">
             <div  class="col-sm-8">
                 <ul  class="lista">
-                    <li *ngFor = "let it of carrinhoService.itensCarrinho" style=" margin-top: 10px ;border-top: 1px solid #086575; width: 700px;">
+                    <li *ngFor = "let it of itensCarrinho" style=" margin-top: 10px ;border-top: 1px solid #086575; width: 700px;">
                     <div style="display: inline-flex;">
                             
                         <div  style="display: inline-flex; margin: 0;" class="col-sm-4"> 

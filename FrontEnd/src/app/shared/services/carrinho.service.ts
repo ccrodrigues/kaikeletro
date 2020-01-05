@@ -32,10 +32,12 @@ export class CarrinhoService {
   frete: number = 20;
 
   criarOuLimparCarrinho(): ItemVendaModel[] {
-    let carrinho: ItemVendaModel[] = null;
-    this.localStorage
+    //let carrinho: ItemVendaModel[] = null;
+    //this.localStorage
     this.itensCarrinho = []
-    return carrinho;
+    //return carrinho;
+
+    return this.itensCarrinho;
   }
 
   getCarrinho(): ItemVendaModel[] {

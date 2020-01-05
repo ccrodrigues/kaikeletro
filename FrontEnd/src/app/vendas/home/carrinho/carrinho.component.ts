@@ -7,6 +7,8 @@ import { VendaService } from 'src/app/shared/services/venda.service';
 import { Usuario } from 'src/app/shared/models/usuario.model';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
+import { DialogService } from 'src/app/shared/toaster/dialog.service';
+import { ItemVendaModel } from 'src/app/shared/models/item-venda.model';
 
 @Component({
   selector: 'app-carrinho',
@@ -15,16 +17,14 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 })
 export class CarrinhoComponent implements OnInit {
 
+  itensCarrinho: ItemVendaModel[] = [];
 
   constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private ps: ProdutosService,
-
     private vendasService: VendaService,
     private usuarioService: UsuarioService,
     private localStorage: StorageService,
-    private carrinhoService: CarrinhoService) { }
+    private carrinhoService: CarrinhoService,
+    private dialog : DialogService) { }
 
 
   ngOnInit() {
@@ -34,17 +34,20 @@ export class CarrinhoComponent implements OnInit {
       console.log(this.carrinhoService);
 
       this.carrinhoService.itensCarrinho = this.localStorage.getCarrinho();
-
+      
     } else {
 
       this.carrinhoService.itensCarrinho = [];
     }
+
+    this.getCarrinho();
   }
 
   changeSuit(selectedOption: number, id): void {
 
     this.carrinhoService.alterarQuantidade(selectedOption, id)
-    //console.log(typeof(selectedOption)) 
+
+    this.getCarrinho();
   }
 
   finalizarVenda() {
@@ -56,6 +59,10 @@ export class CarrinhoComponent implements OnInit {
         console.log(this.carrinhoService.itensCarrinho);
         this.carrinhoService.itensCarrinho = this.carrinhoService.criarOuLimparCarrinho()
         this.localStorage.setCarrinho(this.carrinhoService.itensCarrinho)
+
+        this.getCarrinho();
+
+        this.dialog.showSuccess("Venda realizada com sucesso!");
       }
     )
   }
@@ -68,6 +75,10 @@ export class CarrinhoComponent implements OnInit {
       user.id = data.id;
     })
     this.carrinhoService.user.id = user.id
+  }
+
+  private getCarrinho(){
+    this.itensCarrinho = this.carrinhoService.itensCarrinho;
   }
 
 }
