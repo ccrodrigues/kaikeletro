@@ -50,12 +50,13 @@
 
             <div class="col-md-16">
               <input type="password" class="form-control" placeholder="Senha" formControlName="senha">
+              <p>As senhas devem conter no mínimo 8 caracteres</p>
             </div><br>
 
             <div class="col-md-16">
               <input type="password" class="form-control" placeholder="Confirme a senha"
                 formControlName="confirmarSenha">
-              <app-msg-erro [isError]="isErrorCampo('confirmarSenha')" mensagem="Preencha os dados corretamente">
+              <app-msg-erro [isError]="isErrorCampo('confirmarSenha')" mensagem="As senhas não coincidem. Tente novamente!">
               </app-msg-erro>
             </div>
 
@@ -75,7 +76,7 @@
 
               <div class="form-group col-md-6">
                 <label for="cep" class="control-label">CEP</label>
-                <input #cep type="number" (keypress)="somenteNumerosCep($event)" required class="form-control" id="cep"
+                <input #cep type="text" (keypress)="somenteNumerosCep($event)" required class="form-control" id="cep"
                   formControlName="cep">
                 <app-msg-erro [isError]="isErrorCampo('endereco.cep')" mensagem="Preencha os dados corretamente">
                 </app-msg-erro>
@@ -95,7 +96,7 @@
               <div class="col">
                 <label for="rua" class="control-label">Logradouro</label>
                 <input type="text" [value]="objEnd?.logradouro" class="form-control" id="logradouro"
-                  formControlName="logradouro">
+                  formControlName="logradouro" [(ngModel)]="logradouro">
                 <app-msg-erro [isError]="isErrorCampo('endereco.logradouro')" mensagem="Preencha os dados corretamente">
                 </app-msg-erro>
               </div>
@@ -127,7 +128,7 @@
                   <div class="col-sm">
                     <label for="bairro" class="control-label">Bairro</label>
                     <input [value]="objEnd?.bairro" type="text" class="form-control" id="bairro"
-                      formControlName="bairro">
+                      formControlName="bairro" [(ngModel)]="bairro">
                     <app-msg-erro [isError]="isErrorCampo('endereco.bairro')" mensagem="Preencha os dados corretamente">
                     </app-msg-erro>
                   </div>
@@ -137,7 +138,7 @@
                 <div class="col-md-3">
                   <label for="cidade" class="control-label">Cidade</label>
                   <input [value]="objEnd?.localidade" type="text" class="form-control" id="cidade"
-                    formControlName="cidade">
+                    formControlName="cidade"[(ngModel)]="cidade">
                   <app-msg-erro [isError]="isErrorCampo('endereco.cidade')" mensagem="Preencha os dados corretamente">
                   </app-msg-erro>
                 </div>
@@ -145,7 +146,7 @@
 
                 <div class="col">
                   <label for="estado" class="control-label">Estado</label>
-                  <input [value]="objEnd?.uf" type="text" class="form-control" id="estado" formControlName="estado">
+                  <input [value]="objEnd?.uf" type="text" class="form-control" formControlName="estado" [(ngModel)]="estado">
                   <app-msg-erro [isError]="isErrorCampo('endereco.estado')" mensagem="Preencha os dados corretamente">
                   </app-msg-erro>
                 </div>
@@ -155,7 +156,7 @@
             </div>
             <br>
             <div style="width:100%; height:100%; align-content: center;">
-              <button type="submit" class="button " ><span>Cadastrar</span></button>
+              <button (click)="cadastrar()" class="button " ><span>Cadastrar</span></button>
               <br><br>
             </div>
 

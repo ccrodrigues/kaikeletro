@@ -13,11 +13,15 @@ import { EnvService } from 'src/app/env.service';
     private url : string = "http://localhost:8080/";
   
     getAll() {
-      return this.http.get(this.url+"/vendas");
+      return this.http.get(this.url);
     }
 
     fecharVenda(vendas){
         return this.http.post<VendasModel>(this.envService.urlAPI+ "/vendas",vendas);
+    }
+    
+    getPedidos(){
+      return this.http.get(" http://localhost:8080/vendas");
     }
   
   }
