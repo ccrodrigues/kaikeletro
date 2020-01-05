@@ -1,4 +1,4 @@
-import { VendaService } from 'src/app/shared/Services/venda.service';
+import { VendaService } from 'src/app/shared/services/venda.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -40,9 +40,6 @@ public class Admin implements Serializable {
 	@NotNull
 	public String cpf;
 	
-
-
-
 	public int getId() {
 		return id;
 	}

@@ -1,16 +1,21 @@
 package com.kaikeletro.util;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.stream.Collectors;
 
+import com.kaikeletro.domain.EnderecoUsuario;
 import com.kaikeletro.domain.ImagemProd;
 import com.kaikeletro.domain.ItemVenda;
 import com.kaikeletro.domain.Produto;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.domain.Venda;
+import com.kaikeletro.dto.EnderecoUsuarioDTO;
 import com.kaikeletro.dto.ImagemProdDTO;
 import com.kaikeletro.dto.ItemVendaDTO;
 import com.kaikeletro.dto.ProdutoDTO;
 import com.kaikeletro.dto.UsuarioDTO;
+import com.kaikeletro.dto.UsuarioNewDTO;
 import com.kaikeletro.dto.VendaDTO;
 
 public class DTOUtil {
@@ -61,5 +66,37 @@ public class DTOUtil {
 				);
 
 	}
-
+	
+	public static Usuario usuarioNewFromDTO(UsuarioNewDTO obj) {
+				
+		return new Usuario(
+				obj.getId(),
+				Arrays.asList( enderecoUsuarioFromDTO ( obj.getEndereco() ) ) ,				
+				obj.getNome(), 
+				obj.getEmail(),
+				obj.getSenha(),
+				obj.getNascimento(),
+				obj.getCpf(),
+				obj.getTelefone(),
+				obj.getCelular()
+							
+				);
+		
+	}
+	
+	public static EnderecoUsuario enderecoUsuarioFromDTO(EnderecoUsuarioDTO obj) {
+		
+		return new EnderecoUsuario(
+				obj.getIdEndereco(),
+				obj.getLogradouro(),
+				obj.getNumero(),
+				obj.getCep(),
+				obj.getCidade(),
+				obj.getEstado(),
+				obj.getComplemento()
+				);
+		
+	}
+	
+	
 }

@@ -18,9 +18,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name="imagem_prod")
 public class ImagemProd implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id

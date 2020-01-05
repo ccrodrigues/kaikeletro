@@ -51,8 +51,6 @@ public class Venda implements Serializable {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
 	private Date dataVenda = new Date(System.currentTimeMillis());
 
-	// private String status;
-
 	private StatusVendas statusVenda;
 
 	private int totalItens;

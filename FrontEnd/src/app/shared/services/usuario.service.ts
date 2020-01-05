@@ -33,7 +33,7 @@ getUserByEmail(email){
 
 addUsuario( usuario ){
 
-  return this.http.post<Usuario>(this.envService.urlAPI + `/usuarios`,usuario );
+  return this.http.post<Usuario>(this.envService.urlAPI + `/usuarios`, usuario );
  }
 updateUsuario(id, usuario){
 

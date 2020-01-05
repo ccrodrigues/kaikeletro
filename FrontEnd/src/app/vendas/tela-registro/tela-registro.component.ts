@@ -1,13 +1,11 @@
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
-import { Cadastro } from './cadastro.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 
 import { Validacoes } from '../../shared/validacoes';
 import { Endereco } from '../../shared/models/endereco.model';
 import { TelaregistroService } from './tela-registro.service';
-import { DatePipe } from '@angular/common';
-import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { DialogService } from 'src/app/shared/toaster/dialog.service';
 
 @Component({
   selector: 'app-telaregistro',
@@ -20,10 +18,16 @@ export class TelaRegistroComponent implements OnInit {
   objEnd: Endereco;
   registro: FormGroup;
 
+  logradouro: any;
+  estado: any;
+  bairro: any;
+  cidade: any;
+
 
   constructor(private formBuilder: FormBuilder,
     private viaCep: TelaregistroService,
-    private usuarioService: UsuarioService) { }
+    private usuarioService: UsuarioService,
+    private dialogService: DialogService) { }
 
   ngOnInit() {
     this.regForm = this.formBuilder.group(
@@ -83,10 +87,6 @@ export class TelaRegistroComponent implements OnInit {
     }
   }
 
-  logradouro
-  estado
-  bairro
-  cidade
 
   buscarCep(cep) {
     this.viaCep.getEnderecoPorCep(cep).subscribe((data) => {
@@ -115,8 +115,15 @@ export class TelaRegistroComponent implements OnInit {
           //valido
 
           console.log(this.regForm.status)
-          this.usuarioService.addUsuario(this.regForm)
-          console.log("salvou")
+          console.log(this.regForm)
+          this.usuarioService.addUsuario(this.regForm.value)
+            .subscribe(
+              (dado) => {
+                this.dialogService.showSuccess("Usuário salvo com sucesso");
+                console.log("salvou");
+              }
+            );
+
 
         } else {
           console.log(this.regForm.status)

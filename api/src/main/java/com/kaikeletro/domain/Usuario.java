@@ -17,13 +17,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kaikeletro.domain.enums.Perfil;
-import com.kaikeletro.domain.enums.TipoCliente;
 
 @Entity
 @Table(name = "usuario")
@@ -42,15 +40,13 @@ public class Usuario implements Serializable {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "usuarios", fetch = FetchType.EAGER)
-	private List<EnderecoUsuario> idEndereco;
+	private List<EnderecoUsuario> endereco;
 
 	@NotNull
 	private String nome;
 
 	@Column(unique = true)
 	private String email;
-
-	private Integer tipo;
 
 	public String senha;
 
@@ -68,13 +64,6 @@ public class Usuario implements Serializable {
 	@CollectionTable(name = "PERFIS")
 	private Set<Integer> perfis = new HashSet<>();
 
-	public TipoCliente getTipo() {
-		return TipoCliente.toEnum(tipo);
-	}
-
-	public void setTipo(TipoCliente tipo) {
-		this.tipo = tipo.getCod();
-	}
 
 	public Usuario() {
 		// Sempre adiciona o perfil cliente por padrão
@@ -82,11 +71,10 @@ public class Usuario implements Serializable {
 	}
 
 	public Usuario(int id, List<EnderecoUsuario> idEndereco, String nome, String email, String senha,
-			String dataDeNascimento, String cpf, String telefone, String celular, Set<Integer> perfis,
-			TipoCliente tipo) {
+			String dataDeNascimento, String cpf, String telefone, String celular) {
 		super();
 		this.id = id;
-		this.idEndereco = idEndereco;
+		this.endereco = idEndereco;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
@@ -94,8 +82,7 @@ public class Usuario implements Serializable {
 		this.cpf = cpf;
 		this.telefone = telefone;
 		this.celular = celular;
-		this.perfis = perfis;
-		this.tipo = (tipo == null) ? null : tipo.getCod();
+		//this.perfis = perfis;
 		addPerfil(Perfil.CLIENTE);
 	}
 
@@ -135,11 +122,11 @@ public class Usuario implements Serializable {
 	}
 
 	public List<EnderecoUsuario> getIdEndereco() {
-		return idEndereco;
+		return endereco;
 	}
 
 	public void setIdEndereco(List<EnderecoUsuario> idEndereco) {
-		this.idEndereco = idEndereco;
+		this.endereco = idEndereco;
 	}
 
 	public String getDataDeNascimento() {
@@ -202,12 +189,12 @@ public class Usuario implements Serializable {
 		result = prime * result + ((dataDeNascimento == null) ? 0 : dataDeNascimento.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((idEndereco == null) ? 0 : idEndereco.hashCode());
+		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((perfis == null) ? 0 : perfis.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
 		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
-		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		
 		return result;
 	}
 
@@ -242,10 +229,10 @@ public class Usuario implements Serializable {
 			return false;
 		if (id != other.id)
 			return false;
-		if (idEndereco == null) {
-			if (other.idEndereco != null)
+		if (endereco == null) {
+			if (other.endereco != null)
 				return false;
-		} else if (!idEndereco.equals(other.idEndereco))
+		} else if (!endereco.equals(other.endereco))
 			return false;
 		if (nome == null) {
 			if (other.nome != null)
@@ -267,18 +254,14 @@ public class Usuario implements Serializable {
 				return false;
 		} else if (!telefone.equals(other.telefone))
 			return false;
-		if (tipo == null) {
-			if (other.tipo != null)
-				return false;
-		} else if (!tipo.equals(other.tipo))
-			return false;
+
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", idEndereco=" + idEndereco + ", nome=" + nome + ", email=" + email + ", tipo="
-				+ tipo + ", senha=" + senha + ", dataDeNascimento=" + dataDeNascimento + ", cpf=" + cpf + ", telefone="
+		return "Usuario [id=" + id + ", idEndereco=" + endereco + ", nome=" + nome + ", email=" + email + 
+				", senha=" + senha + ", dataDeNascimento=" + dataDeNascimento + ", cpf=" + cpf + ", telefone="
 				+ telefone + ", celular=" + celular + ", perfis=" + perfis + "]";
 	}
 
