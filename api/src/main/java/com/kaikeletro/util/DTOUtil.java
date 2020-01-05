@@ -45,7 +45,8 @@ public class DTOUtil {
 				objDTO.getDataVenda(), 
 				objDTO.getStatus(), 
 				objDTO.getTotalItens() ,
-				objDTO.getItem().stream().map(objDTOLambda -> itemVendaFromDTO ( objDTOLambda ) ).collect(Collectors.toList())
+				objDTO.getItem().stream().map(objDTOLambda -> itemVendaFromDTO ( objDTOLambda ) ).collect(Collectors.toList()),
+				objDTO.getPagamento()
 			);
 		
 	}

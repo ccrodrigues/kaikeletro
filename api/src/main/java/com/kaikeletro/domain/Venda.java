@@ -46,9 +46,9 @@ public class Venda implements Serializable {
 	@ManyToOne
 	private Usuario usuario;
 
-	@DateTimeFormat(pattern = "dd/MM/yy")
-	@Temporal(TemporalType.DATE)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
 	private Date dataVenda = new Date(System.currentTimeMillis());
 
 	// private String status;
@@ -71,7 +71,7 @@ public class Venda implements Serializable {
 	}
 
 	public Venda(int id, double valor, Usuario usuario, Date dataVenda, StatusVendas status, int totalItens,
-			List<ItemVenda> item) {
+			List<ItemVenda> item, StatusPagamento pagamento) {
 		super();
 		this.id = id;
 		this.valor = valor;
@@ -80,6 +80,7 @@ public class Venda implements Serializable {
 		this.statusVenda = status;
 		this.totalItens = totalItens;
 		this.item = item;
+		this.pagamento = pagamento;
 	}
 
 	// Getters & Setters

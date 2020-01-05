@@ -32,6 +32,7 @@ public class VendaResource {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Venda> createVenda(@RequestBody VendaDTO vendaDTO) {
 		System.out.println(vendaDTO);
+		
 		Venda venda = DTOUtil.vendaFromDTO(vendaDTO);
 		
 		return ResponseEntity.ok().body(service.createVenda(venda));
