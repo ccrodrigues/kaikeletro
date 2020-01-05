@@ -31,6 +31,7 @@ export class PagamentoFinalizacaoComponent implements OnInit {
 
   ngOnInit() {
     this.venda = this.localStorage.getCarrinho();
+    console.log(this.venda)
     this.enderecoObj = this.localStorage.getEndereco();
     this.formBuilder = new FormBuilder();
     this.pagaForm = this.formBuilder.group(
