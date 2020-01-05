@@ -1,37 +1,38 @@
 package com.kaikeletro.dto;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.ImagemProd;
 import com.kaikeletro.domain.Produto;
 
-public class ProdutoDto {
-	
+public class ProdutoDTO {
+
 	private int idProduto;
-	
+
 	private String nome;
-	
+
 	private double preco;
-	
+
 	private String descricao;
-	
-//	private List <Categoria> categorias;
-//	
-//	private List <ImagemProd> imagens;
-	
-	public ProdutoDto() {
-		
+
+//	private List<CategoriaDTO> categorias;
+//
+//	private List<ImagemProdDTO> imagens;
+
+	public ProdutoDTO() {
+
 	}
-	
-	public ProdutoDto(Produto obj) {
+
+	public ProdutoDTO(Produto obj) {
 		this.idProduto = obj.getIdProduto();
 		this.nome = obj.getNome();
 		this.preco = obj.getPreco();
-		//this.imagens = obj.getImagens();
 		this.descricao = obj.getDescricao();
-		//this.categorias = obj.getCategorias();
-}
+		//this.imagens = obj.getImagens().stream().map( objDomain -> new ImagemProdDTO(objDomain) ).collect(Collectors.toList());
+		//this.categorias = obj.getCategorias().stream().map( objDomain -> new CategoriaDTO(objDomain) ).collect(Collectors.toList());
+	}
 
 	public int getIdProduto() {
 		return idProduto;
@@ -57,14 +58,6 @@ public class ProdutoDto {
 		this.preco = preco;
 	}
 
-//	public List<ImagemProd> getImagens() {
-//		return imagens;
-//	}
-//
-//	public void setImagens(List<ImagemProd> imagens) {
-//		this.imagens = imagens;
-//	}
-
 	public String getDescricao() {
 		return descricao;
 	}
@@ -73,11 +66,20 @@ public class ProdutoDto {
 		this.descricao = descricao;
 	}
 
-//	public List<Categoria> getCategorias() {
+//	public List<CategoriaDTO> getCategorias() {
 //		return categorias;
 //	}
 //
-//	public void setCategorias(List<Categoria> categorias) {
+//	public void setCategorias(List<CategoriaDTO> categorias) {
 //		this.categorias = categorias;
 //	}
+//
+//	public List<ImagemProdDTO> getImagens() {
+//		return imagens;
+//	}
+//
+//	public void setImagens(List<ImagemProdDTO> imagens) {
+//		this.imagens = imagens;
+//	}
+		
 }

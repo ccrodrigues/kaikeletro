@@ -55,7 +55,7 @@ public class Produto implements Serializable {
 	
 	@OneToMany(mappedBy = "produto")
 	@JsonIgnore
-	List<Item_Venda> item;
+	List<ItemVenda> item;
 
 	public Produto() {
 		
@@ -67,7 +67,7 @@ public class Produto implements Serializable {
 	}
 
 	public Produto(int idProduto, String nome, double preco, String descricao, List<Categoria> categorias,
-			List<ImagemProd> imagens, List<Item_Venda> item) {
+			List<ImagemProd> imagens, List<ItemVenda> item) {
 		super();
 		this.idProduto = idProduto;
 		this.nome = nome;
@@ -126,11 +126,11 @@ public class Produto implements Serializable {
 		this.imagens = imagens;
 	}
 
-	public List<Item_Venda> getItem() {
+	public List<ItemVenda> getItem() {
 		return item;
 	}
 
-	public void setItem(List<Item_Venda> item) {
+	public void setItem(List<ItemVenda> item) {
 		this.item = item;
 	}
 

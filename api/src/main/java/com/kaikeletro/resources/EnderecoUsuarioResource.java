@@ -17,7 +17,7 @@ import com.kaikeletro.repositories.EnderecoUsuarioRepository;
 
 @RestController
 @RequestMapping(value = "/enderecos")
-public class EnderecoUsuarioController {
+public class EnderecoUsuarioResource {
 
 	@Autowired
 	EnderecoUsuarioRepository service;

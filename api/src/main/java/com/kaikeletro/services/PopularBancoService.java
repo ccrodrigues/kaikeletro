@@ -11,10 +11,10 @@ import com.kaikeletro.domain.Admin;
 import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.EnderecoUsuario;
 import com.kaikeletro.domain.ImagemProd;
-import com.kaikeletro.domain.Item_Venda;
+import com.kaikeletro.domain.ItemVenda;
 import com.kaikeletro.domain.Produto;
 import com.kaikeletro.domain.Usuario;
-import com.kaikeletro.domain.Vendas;
+import com.kaikeletro.domain.Venda;
 import com.kaikeletro.domain.enums.Perfil;
 import com.kaikeletro.domain.enums.TipoCliente;
 import com.kaikeletro.enumeration.StatusPagamento;
@@ -251,20 +251,20 @@ public class PopularBancoService {
 		enderecoRepository.saveAll(Arrays.asList(end1, end2, end3));
 
 		// Teste de incluir Vendas com produtos e usuários
-		Vendas v1 = new Vendas();
-		Vendas v2 = new Vendas();
+		Venda v1 = new Venda();
+		Venda v2 = new Venda();
 		Usuario u3 = new Usuario();
 		Produto pro1 = new Produto();
 		Produto pro2 = new Produto();
 		Categoria ca1 = new Categoria();
 		ImagemProd img1 = new ImagemProd();
 		ImagemProd img2 = new ImagemProd();
-		Item_Venda item = new Item_Venda();
-		Item_Venda item2 = new Item_Venda();
-		Item_Venda item3 = new Item_Venda();
-		Item_Venda item4 = new Item_Venda();
-		ArrayList<Item_Venda> itemArray = new ArrayList<Item_Venda>();
-		ArrayList<Item_Venda> itemArray2 = new ArrayList<Item_Venda>();
+		ItemVenda item = new ItemVenda();
+		ItemVenda item2 = new ItemVenda();
+		ItemVenda item3 = new ItemVenda();
+		ItemVenda item4 = new ItemVenda();
+		ArrayList<ItemVenda> itemArray = new ArrayList<ItemVenda>();
+		ArrayList<ItemVenda> itemArray2 = new ArrayList<ItemVenda>();
 
 		// Atributos categoria
 		ca1.setNome("Eletronicos");

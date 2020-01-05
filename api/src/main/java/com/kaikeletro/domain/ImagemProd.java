@@ -33,8 +33,8 @@ public class ImagemProd implements Serializable{
 	@Column(name="imagem")
 	private String imagemProduto;
 	
-	@ManyToMany(mappedBy= "imagens")
 	@JsonIgnore
+	@ManyToMany(mappedBy= "imagens")	
 	private List <Produto> produto;
 
 	public ImagemProd() {
@@ -108,8 +108,5 @@ public class ImagemProd implements Serializable{
 		this.imagemProduto = imagemProduto;
 		this.produto = produto;
 	}
-
-	
-	
 	
 }

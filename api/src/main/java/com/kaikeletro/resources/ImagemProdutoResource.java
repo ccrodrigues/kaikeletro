@@ -19,7 +19,7 @@ import com.kaikeletro.services.ImagemProdutoService;
 
 @RestController
 @RequestMapping(value="/imagens")
-public class ImagemProdutoController {
+public class ImagemProdutoResource {
 	
 	@Autowired
 	ImagemProdutoService imgService;

@@ -2,16 +2,16 @@ package com.kaikeletro.dto;
 
 import com.kaikeletro.domain.Categoria;
 
-public class CategoriaDto {
+public class CategoriaDTO {
 	
 	private int idCategoria;
 	private String nome;
 	
-	CategoriaDto(){
+	CategoriaDTO(){
 		
 	}
 	
-	public CategoriaDto(Categoria obj) {
+	public CategoriaDTO(Categoria obj) {
 		this.idCategoria = obj.getIdCategoria();
 		this.nome = obj.getNome();
 	}

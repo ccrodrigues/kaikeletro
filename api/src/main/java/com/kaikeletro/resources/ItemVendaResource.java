@@ -11,27 +11,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kaikeletro.domain.Vendas;
-import com.kaikeletro.services.VendasService;
+import com.kaikeletro.domain.ItemVenda;
+import com.kaikeletro.services.ItemVendaService;
 
-@RequestMapping(value="vendas")
+@RequestMapping(value="itens")
 @RestController
-public class VendasController {
+public class ItemVendaResource {
 	
 	@Autowired
-	private VendasService service;
-	
+	private ItemVendaService service; 
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public ResponseEntity<List<Vendas>> getAll() {
+	public ResponseEntity<List<ItemVenda>> getAll() {
 
 		return ResponseEntity.ok().body(service.getAll());
 	}
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public ResponseEntity<Vendas> createVenda(@RequestBody @Valid Vendas venda){
-		return ResponseEntity.ok().body(service.createVenda(venda));
+	public ResponseEntity<List<ItemVenda>> saveItem(@RequestBody @Valid List<ItemVenda> item){
+		return ResponseEntity.ok().body(service.saveItem(item));
 	}
 
-
 }
+
+	
+
+

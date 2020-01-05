@@ -22,6 +22,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import com.kaikeletro.domain.enums.Perfil;
 import com.kaikeletro.domain.enums.TipoCliente;
+import com.kaikeletro.dto.UsuarioDTO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import com.sun.istack.NotNull;
@@ -30,9 +31,6 @@ import com.sun.istack.NotNull;
 @Table(name = "usuario")
 public class Usuario implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -40,8 +38,9 @@ public class Usuario implements Serializable {
 	@PrimaryKeyJoinColumn
 	//@SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USUARIO_NAME_SEQ")
 	private int id; 
+	
 	@JsonManagedReference	
-	@OneToMany(mappedBy = "usuarios")
+	@OneToMany(mappedBy = "usuarios", fetch=FetchType.EAGER)
 	private List<EnderecoUsuario> idEndereco;
 
 	@NotNull
@@ -49,8 +48,8 @@ public class Usuario implements Serializable {
 
 	@Column(unique = true)
 	private String email;
+	
 	private Integer tipo;
-
 	
 	public String senha;
 
@@ -76,12 +75,37 @@ public class Usuario implements Serializable {
 	public void setTipo(TipoCliente tipo) {
 		this.tipo = tipo.getCod();
 	}
-
 	
 	public Usuario() {
+		//Sempre adiciona o perfil cliente por padrão
 		addPerfil(Perfil.CLIENTE);
 	}
 	
+	public Usuario(int id, List<EnderecoUsuario> idEndereco, String nome, String email, String senha,
+			String dataDeNascimento, String cpf, String telefone, String celular, Set<Integer> perfis, TipoCliente tipo) {
+		super();
+		this.id = id;
+		this.idEndereco = idEndereco;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.dataDeNascimento = dataDeNascimento;
+		this.cpf = cpf;
+		this.telefone = telefone;
+		this.celular = celular;
+		this.perfis = perfis;
+		this.tipo = (tipo==null) ? null : tipo.getCod();
+		addPerfil(Perfil.CLIENTE);
+	}
+	
+	public Usuario(int id, String nome, String email)
+			 {
+		super();
+		this.id = id;		
+		this.nome = nome;
+		this.email = email;		
+	}
+		
 	public void addPerfil(Perfil perfil) {
 		perfis.add(perfil.getCod());
 	}
@@ -167,24 +191,6 @@ public class Usuario implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-
-	public Usuario(int id, List<EnderecoUsuario> idEndereco, String nome, String email, String senha,
-			String dataDeNascimento, String cpf, String telefone, String celular, Set<Integer> perfis, TipoCliente tipo) {
-		super();
-		this.id = id;
-		this.idEndereco = idEndereco;
-		this.nome = nome;
-		this.email = email;
-		this.senha = senha;
-		this.dataDeNascimento = dataDeNascimento;
-		this.cpf = cpf;
-		this.telefone = telefone;
-		this.celular = celular;
-		this.perfis = perfis;
-		this.tipo = (tipo==null) ? null : tipo.getCod();
-		addPerfil(Perfil.CLIENTE);
 	}
 
 	@Override
@@ -276,8 +282,5 @@ public class Usuario implements Serializable {
 				+ telefone + ", celular=" + celular + ", perfis=" + perfis + "]";
 	}
 	
-	
-	
-
 }
 

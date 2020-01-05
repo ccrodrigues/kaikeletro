@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { menuService } from './menu-service'
 import { ServiceLoginService } from 'src/app/vendas/usuario-login/service-login/service-login.service';
 import { Router } from '@angular/router';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
 import { ProdutoModel } from 'src/app/shared/models/produto.model';
 import { Popover } from 'ngx-popover';
 import { isNull } from 'util';

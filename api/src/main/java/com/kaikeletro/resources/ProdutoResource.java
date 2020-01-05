@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -15,16 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kaikeletro.domain.Produto;
-import com.kaikeletro.dto.CredenciaisDTO;
-import com.kaikeletro.dto.ProdutoDto;
+import com.kaikeletro.dto.ProdutoDTO;
 import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.ProdutoService;
 
 @RestController
 @RequestMapping(value = "/produtos")
-public class ProdutoController {
+public class ProdutoResource {
 
 	@Autowired
 	ProdutoService produtoService;
@@ -47,10 +44,10 @@ public class ProdutoController {
 
 	// Get Produto by id DTO para o usar no Carrinho do Front
 	@RequestMapping(value = "/carrinho/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Optional<ProdutoDto>> findByIdDto(@PathVariable("id") int id) {
+	public ResponseEntity<Optional<ProdutoDTO>> findByIdDto(@PathVariable("id") int id) {
 		Optional<Produto> prod = produtoService.findById(id);
 
-		Optional<ProdutoDto> prodDto = prod.map(obj -> new ProdutoDto(obj));
+		Optional<ProdutoDTO> prodDto = prod.map(obj -> new ProdutoDTO(obj));
 
 		if (prod.isPresent() == false) {
 			throw new TratamentoDeErros(id, new Produto());
@@ -61,11 +58,11 @@ public class ProdutoController {
 
 	// Get all Produto DTO para o front
 	@RequestMapping(value = "/carrinho", method = RequestMethod.GET)
-	public ResponseEntity<List<ProdutoDto>> getAllCategoriasDto() {
+	public ResponseEntity<List<ProdutoDTO>> getAllCategoriasDto() {
 
 		List<Produto> listaProd = produtoService.listarProdutos();
 
-		List<ProdutoDto> listaDto = listaProd.stream().map(obj -> new ProdutoDto(obj)).collect(Collectors.toList());
+		List<ProdutoDTO> listaDto = listaProd.stream().map(obj -> new ProdutoDTO(obj)).collect(Collectors.toList());
 
 		return ResponseEntity.ok().body(listaDto);
 	}
@@ -77,7 +74,7 @@ public class ProdutoController {
 	}
 	
 	@RequestMapping(value="", method=RequestMethod.POST, consumes = "application/json;charset=UTF-8")
-	public ResponseEntity<Produto> createProduto(@RequestBody ProdutoDto prodDto){
+	public ResponseEntity<Produto> createProduto(@RequestBody ProdutoDTO prodDto){
 		System.out.println(prodDto);
 		
 		//Produto creds = new ObjectMapper().readValue(prod, Produto.class);
@@ -128,7 +125,7 @@ public class ProdutoController {
 		Page<Produto> pageProdutos = produtoService.findDistinctByNomeContaining(nomeBusca, pagina,
 				qtdLinhas, direcao, campo);
 
-		List<ProdutoDto> pageDto = pageProdutos.stream().map(obj -> new ProdutoDto(obj)).collect(Collectors.toList());
+		List<ProdutoDTO> pageDto = pageProdutos.stream().map(obj -> new ProdutoDTO(obj)).collect(Collectors.toList());
 
 
 		return ResponseEntity.ok().body(pageProdutos);
