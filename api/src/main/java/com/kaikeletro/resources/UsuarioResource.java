@@ -68,10 +68,10 @@ public class UsuarioResource {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
 	public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable("id") int id) {
-		Optional<Usuario> obj = service.findById(id);
+		/*Optional<Usuario> obj = service.findById(id);
 		if (obj.isPresent() == false) {
 			throw new TratamentoDeErros(id, new Usuario());
-		}
+		}*/
 
 		return ResponseEntity.ok().body(service.updatebyID(usuario, id));
 	}

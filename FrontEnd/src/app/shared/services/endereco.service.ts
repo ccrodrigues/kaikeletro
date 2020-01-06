@@ -14,10 +14,10 @@ export class EnderecoService {
   ) { }
 
   getEnderecoById(id){
-
+    return this.http.get<EnderecoModel>(`${this.envService.urlAPI}/enderecos/${id}`);
   }
 
   deleleById(id){
-    return this.http.get<EnderecoModel>(this.envService.urlAPI+ "/enderecos"+"/"+id);
+    return this.http.delete<EnderecoModel>(`${this.envService.urlAPI}/enderecos/${id}`);
   }
 }

@@ -206,6 +206,7 @@ public class PopularBancoService {
 		u1.setTelefone("1345365328");
 		
 		fbc.setCpf("0000000001");
+		fbc.setDataDeNascimento("18/11/2000");
 		fbc.setEmail("fbc@fbc.com");
 		fbc.setNome("fbc");
 		fbc.setSenha(bCryptPasswordEncoder.encode("123"));

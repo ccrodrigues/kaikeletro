@@ -28,13 +28,14 @@
           <div class="col-md-3">
             <label for="nascimento">Data de Nascimento: </label>
             <div class="input-group form-group-dataDeNascimento">
-              <input type="text" class="form-control" formControlName="nascimento">
+              <input type="text" class="form-control" formControlName="dataDeNascimento">
             </div>
-            <app-msg-erro [isError]="isErrorCampo('usuario.nascimento')" mensagem="Preencha os dados corretamente">
+            <app-msg-erro [isError]="isErrorCampo('usuario.dataDeNascimento')" mensagem="Preencha os dados corretamente">
             </app-msg-erro>
           </div><br>
         </div>
 
+        <!-- <field-debug [variavel]="getField('usuario.dataDeNascimento')"></field-debug> -->
 
         <div class="row cpp">
           <div class="col-md-7 ">
@@ -46,6 +47,8 @@
             <app-msg-erro [isError]="isErrorCampo('usuario.cpf')" mensagem="Preencha os dados corretamente">
             </app-msg-erro>
           </div>
+
+          <!-- <field-debug [variavel]="getField('usuario.cpf')"></field-debug> -->
 
           <div class="col-md-4 ">
             <label for="telefone">Telefone: </label>
@@ -111,7 +114,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let end of endereco">
-            <td> <small>{{ end.logradouro }}</small></td>
+            <td><small>{{ end.logradouro }}</small></td>
             <td><small>{{ end.numero }}</small></td>
             <td><small>{{ end.cep }}</small></td>
             <td><small>{{ end.cidade }}</small></td>
@@ -127,8 +130,5 @@
       </table>
       <!-- card -->
   </div>
-
-  {{ usuario | json }}
-  {{ endereco | json }}
 
 </div>

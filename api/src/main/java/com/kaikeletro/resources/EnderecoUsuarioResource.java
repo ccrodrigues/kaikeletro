@@ -43,9 +43,9 @@ public class EnderecoUsuarioResource {
 		return ResponseEntity.ok().body(service.save(end));
 	}
 	
-	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteById(@PathVariable("id") int id) {
-		
+		System.out.println("Delete Endereço " + id);
 		return ResponseEntity.ok().body(service.deleteById(id));
 	}
 }

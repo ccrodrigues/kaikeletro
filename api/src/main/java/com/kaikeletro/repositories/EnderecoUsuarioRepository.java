@@ -14,5 +14,7 @@ public interface EnderecoUsuarioRepository extends JpaRepository<EnderecoUsuario
 	//public List<EnderecoUsuario> acharEmail(int id);
 	
 	public List<EnderecoUsuario> findByUsuariosEmailContaining(String email);
+	
+	public void deleteByIdEndereco(int id);
 		
 }

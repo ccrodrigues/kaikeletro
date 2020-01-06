@@ -4,9 +4,10 @@ import { MsgErroComponent } from './erro/msg-erro/msg-erro.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FieldDebugComponent } from './debug/field-debug/field-debug.component';
 
 @NgModule({
-  declarations: [MsgErroComponent],
+  declarations: [MsgErroComponent, FieldDebugComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   exports: [
-    MsgErroComponent
+    MsgErroComponent,
+    FieldDebugComponent
 
   ]
 })

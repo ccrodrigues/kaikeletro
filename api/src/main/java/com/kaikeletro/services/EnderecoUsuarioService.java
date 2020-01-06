@@ -3,6 +3,7 @@ package com.kaikeletro.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.EnderecoUsuario;
@@ -11,6 +12,7 @@ import com.kaikeletro.repositories.EnderecoUsuarioRepository;
 @Service
 public class EnderecoUsuarioService {
 	
+	@Autowired
 	private EnderecoUsuarioRepository endRepo;
 	
 	public List<EnderecoUsuario> getAll() {
