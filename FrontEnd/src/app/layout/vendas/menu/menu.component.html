@@ -36,7 +36,7 @@
     </div>
   </div>
   
-
+  
 
 <nav  class="navbar navbar-expand-lg navbar-dark  navbar-mine">
   <div class="container-fluid">
@@ -90,24 +90,22 @@
       <div   placement="bottom" delay="500"  >
         <input [popover]="myPopover" class="form-control mr-sm-1" type="search" placeholder="Buscar" aria-label="Buscar" #nomeProduto  (input) = "buscarProdutos(nomeProduto)">
       </div>
-      
-      <div>
+
+      <div id="pesquisarMenu">
         <popover-content #myPopover [hidden]="isHiddden"
             title="Produtos"
             [closeOnClickOutside]="true"
-            
+            id="popoverMenu"
             >
             <!-- <ul *ngFor = "let p of tooltipProdutos">
               <li style="color: #C21F39"><a>{{p.nome}}</a></li>
             </ul> -->
-            <div class="list-group" *ngFor="let p of tooltipProdutos">
+            <div class="list-group" *ngFor="let p of tooltipProdutos" id="ProdutosMenu">
               <a href="#" [routerLink]="['/detalhes', p.idProduto]" class="list-group-item list-group-item-action azul">{{p.nome}}</a>
             </div>
         </popover-content>
-  
          <!-- <button [popover]="myPopover">click this button to see a popover</button>  -->
-    </div>
-
+      </div>
       
     </form>
 

@@ -180,5 +180,19 @@ a {
 }
 
 .azul{
-  background-color: blue;
+  background-color: whitesmoke;
+  color: black;
+
+}
+
+#pesquisarMenu{
+  position: absolute; 
+  left: -100px; 
+  top: 3px;
+  text-align: center;
+  text-align-last: center;
+}
+
+#ProdutosMenu{
+  width: 200px;
 }
