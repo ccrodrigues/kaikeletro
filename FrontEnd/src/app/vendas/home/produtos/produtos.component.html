@@ -1,4 +1,4 @@
-<div class="card  mb-3" >
+<div  class="card  mb-3" [routerLink]="['/detalhes', id]">
     <img class="card-img-top"
         [src]="imgSRC"  alt="Card image cap">
     <div class="card-body">
@@ -8,4 +8,4 @@
         <h5 class="card-title">Preço {{preco| currency:'BRL':'symbol':'1.2-2' }}</h5>
         <button [routerLink]="['/detalhes', id]" class="btn btn-primary">Comprar</button>
     </div>
-</div>
+</div >
