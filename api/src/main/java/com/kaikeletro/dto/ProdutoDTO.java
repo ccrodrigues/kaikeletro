@@ -17,9 +17,9 @@ public class ProdutoDTO {
 
 	private String descricao;
 
-//	private List<CategoriaDTO> categorias;
+	private List<CategoriaDTO> categorias;
 //
-//	private List<ImagemProdDTO> imagens;
+	private List<ImagemProdDTO> imagens;
 
 	public ProdutoDTO() {
 
@@ -30,8 +30,8 @@ public class ProdutoDTO {
 		this.nome = obj.getNome();
 		this.preco = obj.getPreco();
 		this.descricao = obj.getDescricao();
-		//this.imagens = obj.getImagens().stream().map( objDomain -> new ImagemProdDTO(objDomain) ).collect(Collectors.toList());
-		//this.categorias = obj.getCategorias().stream().map( objDomain -> new CategoriaDTO(objDomain) ).collect(Collectors.toList());
+		this.imagens = obj.getImagens().stream().map( objDomain -> new ImagemProdDTO(objDomain) ).collect(Collectors.toList());
+		this.categorias = obj.getCategorias().stream().map( objDomain -> new CategoriaDTO(objDomain) ).collect(Collectors.toList());
 	}
 
 	public int getIdProduto() {
@@ -66,20 +66,20 @@ public class ProdutoDTO {
 		this.descricao = descricao;
 	}
 
-//	public List<CategoriaDTO> getCategorias() {
-//		return categorias;
-//	}
-//
-//	public void setCategorias(List<CategoriaDTO> categorias) {
-//		this.categorias = categorias;
-//	}
-//
-//	public List<ImagemProdDTO> getImagens() {
-//		return imagens;
-//	}
-//
-//	public void setImagens(List<ImagemProdDTO> imagens) {
-//		this.imagens = imagens;
-//	}
+	public List<CategoriaDTO> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<CategoriaDTO> categorias) {
+		this.categorias = categorias;
+	}
+
+	public List<ImagemProdDTO> getImagens() {
+		return imagens;
+	}
+
+	public void setImagens(List<ImagemProdDTO> imagens) {
+		this.imagens = imagens;
+	}
 		
 }

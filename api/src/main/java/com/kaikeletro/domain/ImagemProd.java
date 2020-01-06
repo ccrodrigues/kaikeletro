@@ -37,6 +37,19 @@ public class ImagemProd implements Serializable{
 
 	public ImagemProd() {
 	}
+	
+	public ImagemProd(int idImagem, String imagemProduto, List<Produto> produto) {
+		super();
+		this.idImagem = idImagem;
+		this.imagemProduto = imagemProduto;
+		this.produto = produto;
+	}
+	
+	public ImagemProd(int idImagem, String imagemProduto) {
+		super();
+		this.idImagem = idImagem;
+		this.imagemProduto = imagemProduto;		
+	}
 
 	public int getIdImagem() {
 		return idImagem;
@@ -100,11 +113,6 @@ public class ImagemProd implements Serializable{
 		return true;
 	}
 
-	public ImagemProd(int idImagem, String imagemProduto, List<Produto> produto) {
-		super();
-		this.idImagem = idImagem;
-		this.imagemProduto = imagemProduto;
-		this.produto = produto;
-	}
+
 	
 }
