@@ -90,10 +90,10 @@
                                 <th>Preço produto</th>
                             </tr>
 
-                            <tr >
-                                <td> {{ itens['0'].produto.idProduto }} </td>
-                                <td> {{ itens['0'].produto.nome }} </td>
-                                <td> {{ itens['0'].produto.preco }} </td>
+                            <tr *ngFor="let it of itens">
+                                <td> {{ it.produto?.idProduto }} </td>
+                                <td> {{ it.produto?.nome }} </td>
+                                <td> {{ it.produto?.preco }} </td>
                             </tr>
                         </thead>
 
@@ -110,13 +110,13 @@
                                 <th scope="col">Celular</th>
                             </tr>
 
-                            <tr>
-                                <td>{{ infosPedidos['0'].usuario.id }}</td>
-                                <td>{{ infosPedidos['0'].usuario.nome }}</td>
-                                <td>{{ infosPedidos['0'].usuario.email }}</td>
-                                <td>{{ infosPedidos['0'].usuario.cpf }}</td>
-                                <td>{{ infosPedidos['0'].usuario.telefone }}</td>
-                                <td>{{ infosPedidos['0'].usuario.celular }}</td>
+                            <tr *ngFor="let info of infosPedidos">
+                                <td>{{ info.usuario?.id }}</td>
+                                <td>{{ info.usuario?.nome }}</td>
+                                <td>{{ info.usuario?.email }}</td>
+                                <td>{{ info.usuario?.cpf }}</td>
+                                <td>{{ info.usuario?.telefone }}</td>
+                                <td>{{ info.usuario?.celular }}</td>
                             </tr>
                         </tbody>
                     </table>
