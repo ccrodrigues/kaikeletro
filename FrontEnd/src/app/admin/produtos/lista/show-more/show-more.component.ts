@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, ComponentFactoryResolver } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CategoriasService } from 'src/app/shared/services/categorias.service';
@@ -32,16 +32,8 @@ export class ShowMoreComponent implements OnInit {
               private ps : ProdutosService) { }
 
   ngOnInit() {
+    console.log(this.produto)
     
-
-    this.imagens = [...this.produto.imagens];
-
-    this.imagemPrincipal = this.imagens[0].imagemProduto
-
-    this.imagens.splice(0, 1);
-    
-    console.log(this.imagens)
-
     this.selecionadas = this.produto.categorias;
 
     this.meuForm = this.fb

@@ -52,7 +52,7 @@ export class MenuComponent implements OnInit {
 
   }
 
-  ngAfterViewChecked(){
+  ngAfterContentChecked(){
 
     let localUser = this.storage.getLocalUser();
     //console.log(localUser)

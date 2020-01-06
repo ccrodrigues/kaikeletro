@@ -8,6 +8,8 @@ import { UsuarioService } from 'src/app/shared/services/usuario.service';
 import { UsuarioModel } from 'src/app/shared/models/usuario.model';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
 import { EnderecoService } from 'src/app/shared/services/endereco.service';
+import { VendaService } from 'src/app/shared/services/venda.service';
+import { VendasModel } from 'src/app/shared/models/vendas.model';
 
 @Component({
   selector: 'app-pedidos-form',
@@ -17,44 +19,36 @@ import { EnderecoService } from 'src/app/shared/services/endereco.service';
 export class PedidosFormComponent implements OnInit {
 
   detalhesForm: FormGroup;
-  objEnd: EnderecoModel;
+  
   idRota;
   isEdicao = false;
-  endereco: EnderecoModel[] = [];
-  usuario : UsuarioModel ;
+  
+  pedido : VendasModel ;
+  
 
   constructor(
     private formBuilder: FormBuilder,
     private viaCep: AuthServiceService,
     private activedRoute: ActivatedRoute,
     private router: Router,
-    private usuarioService: UsuarioService,        
-    private enderecoService : EnderecoService,
+    private vendaService: VendaService,        
     private dialogService : DialogService
     
     ) {
 
       this.detalhesForm = this.formBuilder.group(
         {
-          usuario : this.formBuilder.group( {
+          pedido : this.formBuilder.group( {
             id:[ {value: '', disabled: true}, [] ],
-            nome: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
-            dataDeNascimento: ['', [ 
-              Validators.compose(
-                [
-                  Validators.required
-                  ,//Validacoes.MaiorQue18Anos
-                ]
-              )]],
-            cpf: ['', [Validators.compose(
-              [
-                Validators.required
-                //, Validacoes.validaCpf
-              ])]],
-            telefone: ['', [Validators.required]],
-            celular: ['', [Validators.required]],
-            email: ['', [Validators.required]]
             
+            //item : pedido.item,
+            usuario : ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
+            parcela : ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
+            valor: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
+            valorParcela : ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
+            totalItens: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
+            dataVenda : ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]]
+                        
             /*,
   
             endereco: {
@@ -84,14 +78,13 @@ export class PedidosFormComponent implements OnInit {
         console.log('Edição');
         this.isEdicao = true;
 
-        this.usuarioService.getOneUsuario(this.idRota).subscribe((usuarioAPI) => {
-          console.log("=====>> " , usuarioAPI);
-          this.usuario = usuarioAPI;
-          this.endereco = usuarioAPI.idEndereco;
+        this.vendaService.getVendaById(this.idRota).subscribe(
+          (pedido) => {
 
-          console.log ( this.usuario  );
-
-          this.detalhesForm.patchValue( this.convertUsuarioToForm ( this.usuario ) );
+          console.log("=====>> " , pedido);
+          this.pedido = pedido;
+          
+          this.detalhesForm.patchValue( this.convertToForm ( this.pedido ) );
 
       });
 
@@ -106,7 +99,7 @@ export class PedidosFormComponent implements OnInit {
 
   }
 
-  onSubmit() {
+  /*onSubmit() {
     console.log(this.detalhesForm);
     //Criação
     if (this.isEdicao == false) {
@@ -159,18 +152,19 @@ export class PedidosFormComponent implements OnInit {
 
 
   }
-
-  private convertUsuarioToForm(usuario){
+*/
+  private convertToForm(pedido : VendasModel){
 
     return  {
-      usuario : {
-        id : usuario.id,
-        nome : usuario.nome,
-        dataDeNascimento: usuario.dataDeNascimento,
-        cpf: usuario.cpf,
-        telefone: usuario.telefone,
-        celular: usuario.celular,
-        email: usuario.email
+      pedido : {
+        id : pedido.id,
+        item : pedido.item,
+        usuario: pedido.usuario,
+        parcela: pedido.parcela,
+        valor: pedido.valor,
+        valorParcela : pedido.valorParcela,
+        totalItens: pedido.totalItens,
+        dataVenda : pedido.dataVenda        
       }
       
     };
