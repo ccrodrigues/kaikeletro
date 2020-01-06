@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,7 +41,7 @@ public class Venda implements Serializable {
 	@Column(name = "valor")
 	private double valor;
 
-	@OneToMany(mappedBy = "venda")
+	@OneToMany(mappedBy = "venda" ,cascade = CascadeType.ALL, orphanRemoval = true)
 	List<ItemVenda> item;
 
 	@ManyToOne

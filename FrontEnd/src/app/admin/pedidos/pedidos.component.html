@@ -9,8 +9,8 @@
 
     <a [routerLink]="['/admin']"> <img src="../../../assets/imagens/left-arrow.png" alt="" class="icon-back"> </a>
 
-    <table class="table text-center table-hover mt-2" *ngIf="pesquisado == undefined"
-      [hidden]="isDelete == true || isShowMore">
+    <table class="table text-center table-hover mt-2" *ngIf="true"
+      [hidden]="false ">
       <thead>
 
         <tr>
@@ -142,6 +142,6 @@
     </div>
 
     <!-- <app-deletar-produto [hidden]="isDelete == false" [idProduto]="id" (close)="lessDelete()" (deletado)="showMsgApagou($event)"></app-deletar-produto>-->
-    <app-show-more *ngIf="isShowMore" [produto]="selecionado" (close)="lessMore()"></app-show-more>
+    <!-- <app-show-more *ngIf="isShowMore" [produto]="selecionado" (close)="lessMore()"></app-show-more> -->
   </div>
 </div>
