@@ -21,12 +21,12 @@ export class ServiceLoginService {
 
   isMostrarMenu: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private router: Router,    
+  constructor(private router: Router,
     private http: HttpClient,
     private envService: EnvService,
     private storageService: StorageService,
     private dialogService: DialogService
-    
+
   ) {
     this.isMostrarMenu.emit(false);
   }
@@ -77,7 +77,7 @@ export class ServiceLoginService {
       this.isAuth = true;
     }
     //console.log(localUser);
- 
+
     return this.isAuth;
   }
 
@@ -118,14 +118,18 @@ export class ServiceLoginService {
       //atribui o scopes a variavel administrador
       let administrador = this.storageService.getLocalUser().scopes
 
+      //console.log("admin", administrador);
       //percorre o array de scopes e lista eles
       administrador.forEach(element => {
 
         //verifica pelo enum se o perfil é cliente ou administrador
         if (element == Perfil.CLIENTE) {
-          this.isAdministrador = true; //false
+          this.isAdministrador = false; //false
 
-        } else if (element == Perfil.ADMIN) {
+        } else if (element == Perfil.ADMIN && Perfil.CLIENTE) {
+          this.isAdministrador = true
+        }
+        else if (element == Perfil.ADMIN) {
           this.isAdministrador = true
         }
 

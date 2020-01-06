@@ -5,7 +5,7 @@ import { ProdutoModel } from 'src/app/shared/models/produto.model';
 import { ProdutosService } from 'src/app/shared/services/produtos.service';
 import { ProdutosDetalhesService } from './produtos-detalhes.service';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd  } from '@angular/router';
 import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
 
@@ -78,6 +78,7 @@ export class ProdutosDetalhesComponent implements OnInit {
   idProdutoAPI: string;
   id: number;
 
+
   constructor(private produtoService: ProdutosService,
     private prodDetailsCEP: ProdutosDetalhesService,
 
@@ -89,6 +90,7 @@ export class ProdutosDetalhesComponent implements OnInit {
     private dialogService   : DialogService,
 
     config: NgbCarouselConfig
+
   ) {
     config.interval = 2000;
     config.wrap = true;
@@ -98,6 +100,14 @@ export class ProdutosDetalhesComponent implements OnInit {
     this.activatedRoute.params.subscribe(data => {
       this.idProdutoAPI=data.id;
     })
+
+
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+          return;
+      }
+      window.scrollTo(0, 0)
+  });
   }
 
   ngOnInit() {

@@ -26,6 +26,9 @@ export class PedidosComponent implements OnInit {
 
   }
 
+
+  
+
   @ViewChild("modal", { static: false }) modal;
 
 

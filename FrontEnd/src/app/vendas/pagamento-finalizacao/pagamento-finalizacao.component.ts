@@ -32,7 +32,13 @@ export class PagamentoFinalizacaoComponent implements OnInit {
               }
 
   ngOnInit() {
-    this.venda = this.localStorage.getCarrinho();
+    if (this.localStorage.getCarrinho() != null) {
+      this.carrinhoService.itensCarrinho = this.localStorage.getCarrinho();
+    } else {
+      this.carrinhoService.itensCarrinho = [];
+    }
+    this.getCarrinho();
+    
     this.valorTotal=this.carrinhoService.valorTotalFrete()
     //console.log(this.venda)
     this.enderecoObj = this.localStorage.getEndereco();
@@ -41,7 +47,8 @@ export class PagamentoFinalizacaoComponent implements OnInit {
       { nomeCartao: ['', [Validators.required] ],
         numCartao: ['', [CreditCardValidator.validateCCNumber] ],
         exp: ['', [CreditCardValidator.validateExpDate] ],
-        cvv: ['', [Validators.required, Validators.maxLength] ]
+        cvv: ['', [Validators.required, Validators.maxLength] ],
+        'metodo': ['', Validators.required]
       }
     );
   }
@@ -69,6 +76,12 @@ export class PagamentoFinalizacaoComponent implements OnInit {
     return (!this.pagaForm.get(nomeCampo).valid && this.pagaForm.get(nomeCampo).touched ); 
   }
 
+    getCarrinho(): ItemVendaModel[] {
+      let cart: ItemVendaModel[] = this.localStorage.getCarrinho();
+      return cart;
+    }
+  
+  
   tipoCard(numCartao): void{
      this.card = CreditCard.cardFromNumber(numCartao);
     

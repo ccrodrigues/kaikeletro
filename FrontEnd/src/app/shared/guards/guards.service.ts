@@ -16,6 +16,8 @@ export class GuardsService {
   canActivate(){    
     let serviceLogin = this.serviceLogin.isAutenticado() && this.serviceLogin.isAdmin();
 
+    //console.log(serviceLogin);
+
     if(!serviceLogin){
 
       this.dialogService.showError("Acesso não autorizado");

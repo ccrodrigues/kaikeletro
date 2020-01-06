@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kaikeletro.domain.EnderecoUsuario;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.domain.Venda;
 import com.kaikeletro.dto.VendaDTO;
@@ -50,6 +51,18 @@ public class VendaResource {
 			throw new TratamentoDeErros(id, new Usuario());
 		}
 		return ResponseEntity.ok().body(service.deleteById(id));
+	}
+	
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	public ResponseEntity<Optional<Venda>> findById(@PathVariable("id") int id) {
+
+		Optional<Venda> obj = service.findById(id);
+
+		if (obj.isPresent() == false) {
+			throw new TratamentoDeErros(id, new Usuario());
+		}
+
+		return ResponseEntity.ok().body(obj);
 	}
 
 }

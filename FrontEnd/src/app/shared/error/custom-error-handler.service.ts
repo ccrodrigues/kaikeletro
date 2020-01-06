@@ -1,4 +1,5 @@
 import { Injectable, ErrorHandler } from '@angular/core';
+import { DialogService } from '../toaster/dialog.service';
 
 @Injectable({
  providedIn: 'root'

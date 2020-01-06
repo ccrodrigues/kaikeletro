@@ -1,10 +1,6 @@
 import { UsuarioModel } from './usuario.model';
 import { ItemVendaModel } from './item-venda.model';
 
-
-
-
-
 export class VendasModel{
     id:number;
     usuario: UsuarioModel;
@@ -15,5 +11,6 @@ export class VendasModel{
     parcela : number;
     valorParcela : number;
     item:Array<ItemVendaModel>;
+    dataVenda : string;
 
 }

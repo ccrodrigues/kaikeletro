@@ -13,7 +13,7 @@
             </td>
 
             <td>
-                <div class="card-title">Cidade
+                <div class="card-title">Cidade:
                     <small class="atext-muted">{{ enderecoObj?.localidade }}</small>
                 </div>
             </td>
@@ -50,7 +50,7 @@
     <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Seu Carrinho</span>
-            <span class="badge badge-secondary badge-pill">{{ venda?.quantidade }}</span>
+            <span class="badge badge-secondary badge-pill">{{ carrinhoService?.totalItensCarrinho() }}</span>
         </h4>
 
         <ul>
@@ -81,12 +81,12 @@
 
             <div class="d-block my-3">
                 <div class="custom-control custom-radio">
-                    <input id="credito" type="radio" class="custom-control-input" name="metodo" >
+                    <input id="credito" type="radio" class="custom-control-input" formControlName="metodo" value ="credito" required>
                     <label class="custom-control-label" for="credito">Cartão de Crédito</label>
                 </div>
 
                 <div class="custom-control custom-radio">
-                    <input id="debito" type="radio" class="custom-control-input" name="metodo" >
+                    <input id="debito" type="radio" class="custom-control-input" name="metodo" formControlName="metodo" value ="debito" required>
                     <label class="custom-control-label" for="debito">Cartão de Débito</label>
                 </div>
             </div>
