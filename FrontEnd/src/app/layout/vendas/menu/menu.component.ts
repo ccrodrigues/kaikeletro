@@ -42,6 +42,18 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
 
+
+    //  this.qntd = this.carrinhoService.totalItensCarrinho();
+    // // //this.isAuth = this.loginService.getIsAutenticado();
+    // //     //if(this.isAuth == false){
+    // //      //  this.loginService.Logout();
+    // //     // }
+    //  console.log(this.carrinhoService.exibirItens())
+
+  }
+
+  ngAfterViewChecked(){
+
     let localUser = this.storage.getLocalUser();
     //console.log(localUser)
     this.nomeCliente = (localUser ? localUser.nome : '');
@@ -53,13 +65,6 @@ export class MenuComponent implements OnInit {
     } else {
       this.isAuth = false;
     }
-
-    //  this.qntd = this.carrinhoService.totalItensCarrinho();
-    // // //this.isAuth = this.loginService.getIsAutenticado();
-    // //     //if(this.isAuth == false){
-    // //      //  this.loginService.Logout();
-    // //     // }
-    //  console.log(this.carrinhoService.exibirItens())
 
   }
 
