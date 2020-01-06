@@ -28,6 +28,11 @@ public class CategoriaDTO {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	@Override
+	public String toString() {
+		return "CategoriaDTO [idCategoria=" + idCategoria + ", nome=" + nome + "]";
+	}
 	
 
 }

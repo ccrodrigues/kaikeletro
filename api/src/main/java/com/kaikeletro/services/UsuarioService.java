@@ -66,7 +66,7 @@ public class UsuarioService implements Serializable{
 			userBD.get().setNome(user.getNome());
 			userBD.get().setEmail(user.getEmail());
 			//userBD.get().setSenha(user.getSenha());
-			userBD.get().setDataDeNascimento(user.getDataDeNascimento());
+			userBD.get().setDataDeNascimento ( user.getDataDeNascimento());
 			userBD.get().setCpf(user.getCpf());
 			userBD.get().setTelefone(user.getTelefone());
 			userBD.get().setCelular(user.getCelular());

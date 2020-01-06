@@ -48,7 +48,7 @@ public class VendaResource {
 
 		Optional<Venda> obj = service.findById(id);
 		if (obj.isPresent() == false) {
-			throw new TratamentoDeErros(id, new Usuario());
+			throw new TratamentoDeErros(id, new Venda());
 		}
 		return ResponseEntity.ok().body(service.deleteById(id));
 	}

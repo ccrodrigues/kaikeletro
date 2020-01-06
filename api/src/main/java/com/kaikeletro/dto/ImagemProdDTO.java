@@ -25,7 +25,7 @@ public class ImagemProdDTO implements Serializable{
 	
 	private String imagemProduto;
 	
-	//private List <ProdutoDTO> produtoDTO;
+	private List <ProdutoDTO> produtoDTO;
 
 	public ImagemProdDTO() {
 	}
@@ -34,13 +34,13 @@ public class ImagemProdDTO implements Serializable{
 		super();
 		this.idImagem = idImagem;
 		this.imagemProduto = imagemProduto;
-		//this.produtoDTO = produto;
+		this.produtoDTO = produto;
 	}
 	public ImagemProdDTO(ImagemProd obj) {
 		super();
 		this.idImagem = obj.getIdImagem();
 		this.imagemProduto = obj.getImagemProduto();
-		//this.produtoDTO = produto;
+		this.produtoDTO = obj.getProduto().stream().map( objDomain -> new ProdutoDTO(objDomain) ).collect(Collectors.toList());
 	}
 
 	public int getIdImagem() {
@@ -58,10 +58,27 @@ public class ImagemProdDTO implements Serializable{
 	public void setImagemProduto(String imagemProduto) {
 		this.imagemProduto = imagemProduto;
 	}
+	
+
+	public List<ProdutoDTO> getProdutoDTO() {
+		return produtoDTO;
+	}
+
+	public void setProdutoDTO(List<ProdutoDTO> produtoDTO) {
+		this.produtoDTO = produtoDTO;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	@Override
+	public String toString() {
+		return "ImagemProdDTO [idImagem=" + idImagem + ", imagemProduto=" + imagemProduto + ", produtoDTO=" + produtoDTO
+				+ "]";
+	}
+	
+	
 
 		
 }

@@ -4,12 +4,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
+import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.EnderecoUsuario;
 import com.kaikeletro.domain.ImagemProd;
 import com.kaikeletro.domain.ItemVenda;
 import com.kaikeletro.domain.Produto;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.domain.Venda;
+import com.kaikeletro.dto.CategoriaDTO;
 import com.kaikeletro.dto.EnderecoUsuarioDTO;
 import com.kaikeletro.dto.ImagemProdDTO;
 import com.kaikeletro.dto.ItemVendaDTO;
@@ -22,7 +24,11 @@ public class DTOUtil {
 	
 	public static Produto produtoFromDTO(ProdutoDTO prodDTO) {
 
-		return new Produto(prodDTO.getIdProduto(), prodDTO.getNome(), prodDTO.getPreco(), prodDTO.getDescricao(), null, null, null);
+		return new Produto(
+				prodDTO.getIdProduto(), prodDTO.getNome(), prodDTO.getPreco(), prodDTO.getDescricao(), 
+				prodDTO.getCategorias().stream().map(dto -> categoriaFromDTO(dto) ).collect(Collectors.toList()), 
+				prodDTO.getImagens().stream().map(dto -> imagemProdFromDTO(dto) ).collect(Collectors.toList()), 
+				null);
 
 	}
 	
@@ -97,6 +103,14 @@ public class DTOUtil {
 				obj.getComplemento()
 				);
 		
+	}
+	
+	public static Categoria categoriaFromDTO(CategoriaDTO obj) {
+		return new Categoria(obj.getIdCategoria(), obj.getNome());
+	}
+	
+	public static ImagemProd imagemProdFromDTO(ImagemProdDTO obj) {
+		return new ImagemProd(obj.getIdImagem() , obj.getImagemProduto());
 	}
 	
 	

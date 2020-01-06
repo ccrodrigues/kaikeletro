@@ -13,6 +13,7 @@ export class PedidosComponent implements OnInit {
   infosPedidos: any;
   showMoreByid;
   itens = [];
+  isShowMore=false;
 
 
   constructor(private vendaService: VendaService,
@@ -26,11 +27,7 @@ export class PedidosComponent implements OnInit {
 
   }
 
-
-  
-
   @ViewChild("modal", { static: false }) modal;
-
 
   showMore(idSearch) {
     this.showMoreByid = this.infosPedidos[idSearch - 1]
@@ -42,14 +39,15 @@ export class PedidosComponent implements OnInit {
     this.modal.nativeElement.style.display = 'none';
   }
 
-  excluir(id) {
-    if (confirm("Deseja realmente excluir o pedido com id: " + id)) {
-      this.vendaService.deletarPedido(id).subscribe((resposta) => {
-        this.infosPedidos.splice(this.infosPedidos.findIndex(p => p.id == id), 1);
+  excluir(idExcluir) {
+
+    console.log(idExcluir)
+    if (confirm("Deseja realmente excluir o pedido com id: " + idExcluir)) {
+      this.vendaService.deletarPedido(idExcluir).subscribe((resposta) => {
+        this.infosPedidos.splice(this.infosPedidos.findIndex(p => p.id == idExcluir), 1);
         setTimeout(() => { alert("Deletado com sucesso"); }, 400)
       }
       );
-      alert("O pedido foi cancelado!")
     } else {
       alert("O pedido NÃO foi cancelado!")
     }

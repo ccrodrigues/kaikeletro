@@ -18,6 +18,7 @@ import com.kaikeletro.domain.Produto;
 import com.kaikeletro.dto.ProdutoDTO;
 import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.ProdutoService;
+import com.kaikeletro.util.DTOUtil;
 
 @RestController
 @RequestMapping(value = "/produtos")
@@ -78,7 +79,7 @@ public class ProdutoResource {
 		System.out.println(prodDto);
 		
 		//Produto creds = new ObjectMapper().readValue(prod, Produto.class);
-		return ResponseEntity.ok().body(produtoService.createProduto(prodDto));
+		return ResponseEntity.ok().body( produtoService.createProduto( DTOUtil.produtoFromDTO( prodDto ) ) );
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PATCH)

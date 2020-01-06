@@ -9,8 +9,7 @@
 
     <a [routerLink]="['/admin']"> <img src="../../../assets/imagens/left-arrow.png" alt="" class="icon-back"> </a>
 
-    <table class="table text-center table-hover mt-2" *ngIf="pesquisado == undefined"
-      [hidden]="isDelete == true || isShowMore">
+    <table class="table text-center table-hover mt-2" *ngIf="true" [hidden]="false ">
       <thead>
 
         <tr>
@@ -39,13 +38,13 @@
 
           <td>
             <button class="btn btn-info btn-sm mr-2" (click)="showMore(pedido?.id)">
-                <i class="fas fa-plus-square"></i>
+              <i class="fas fa-plus-square"></i>
             </button>
             <button class="btn btn-danger btn-sm mr-2" (click)="excluir(pedido?.id)">
-                <i class="far fa-trash-alt"></i>
+              <i class="far fa-trash-alt"></i>
             </button>
-            <button class="btn btn-primary btn-sm mr-2" [routerLink]="['/admin/pedidos/', pedido.id]" >
-                <i class="far fa-edit"></i>
+            <button class="btn btn-primary btn-sm mr-2" (click)="excluir(pedido?.id)">
+              <i class="far fa-edit"></i>
             </button>
           </td>
 
@@ -142,6 +141,6 @@
     </div>
 
     <!-- <app-deletar-produto [hidden]="isDelete == false" [idProduto]="id" (close)="lessDelete()" (deletado)="showMsgApagou($event)"></app-deletar-produto>-->
-    <app-show-more *ngIf="isShowMore" [produto]="selecionado" (close)="lessMore()"></app-show-more>
+    <!-- <app-show-more *ngIf="isShowMore" [produto]="selecionado" (close)="lessMore()"></app-show-more> -->
   </div>
 </div>
