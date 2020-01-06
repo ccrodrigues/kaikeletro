@@ -123,7 +123,7 @@ export class ServiceLoginService {
 
         //verifica pelo enum se o perfil é cliente ou administrador
         if (element == Perfil.CLIENTE) {
-          this.isAdministrador = true; //false
+          this.isAdministrador = false; //false
 
         } else if (element == Perfil.ADMIN) {
           this.isAdministrador = true
