@@ -27,7 +27,7 @@ import { EnvService } from 'src/app/env.service';
     }
 
     getVendaById(id){
-      return this.http.get(`${this.envService.urlAPI}/vendas/${id}`);
+      return this.http.get<VendasModel>(`${this.envService.urlAPI}/vendas/${id}`);
     }
   
   }
