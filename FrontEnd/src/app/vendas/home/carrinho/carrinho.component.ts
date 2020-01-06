@@ -49,24 +49,7 @@ export class CarrinhoComponent implements OnInit {
 
     this.getCarrinho();
   }
-
-  finalizarVenda() {
-    this.carrinhoService.fecharVenda();
-    this.vendasService.fecharVenda(this.carrinhoService.venda).subscribe(
-      (data) => {
-        data = data
-        console.log(data)
-        console.log(this.carrinhoService.itensCarrinho);
-        this.carrinhoService.itensCarrinho = this.carrinhoService.criarOuLimparCarrinho()
-        this.localStorage.setCarrinho(this.carrinhoService.itensCarrinho)
-
-        this.getCarrinho();
-
-        this.dialog.showSuccess("Venda realizada com sucesso!");
-      }
-    )
-  }
-
+  
   getUser(email) {
 
     let user: Usuario = new Usuario();
