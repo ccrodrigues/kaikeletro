@@ -18,6 +18,7 @@ export class PagamentoFinalizacaoComponent implements OnInit {
   pagaForm: FormGroup;
   showType: boolean = false;
   card : any ;
+  valorTotal;
 
   enderecoObj: EnderecoModel;
   venda: ItemVendaModel[];
@@ -31,7 +32,8 @@ export class PagamentoFinalizacaoComponent implements OnInit {
 
   ngOnInit() {
     this.venda = this.localStorage.getCarrinho();
-    console.log(this.venda)
+    this.valorTotal=this.carrinhoService.valorTotalFrete()
+    //console.log(this.venda)
     this.enderecoObj = this.localStorage.getEndereco();
     this.formBuilder = new FormBuilder();
     this.pagaForm = this.formBuilder.group(
