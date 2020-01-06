@@ -20,6 +20,9 @@ import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.ProdutoService;
 import com.kaikeletro.util.DTOUtil;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/produtos")
 public class ProdutoResource {
@@ -131,6 +134,10 @@ public class ProdutoResource {
 
 		return ResponseEntity.ok().body(pageProdutos);
 	}
+	 @ApiOperation(value = "Paginação de produtos",
+			    notes = "Paginação de produtos",
+			    response = Produto.class,
+			    responseContainer = "List")
 	@RequestMapping(value = "/pages", method = RequestMethod.GET)
 	public ResponseEntity<List<Produto>> findPages(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
 			@RequestParam(value = "qtdLinhas", defaultValue = "10") int qtdLinhas,

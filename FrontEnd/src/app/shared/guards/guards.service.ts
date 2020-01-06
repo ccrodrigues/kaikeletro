@@ -9,20 +9,20 @@ import { DialogService } from '../toaster/dialog.service';
 export class GuardsService {
 
   constructor(
-    private serviceLogin : ServiceLoginService, 
-    private router : Router,
-    private dialogService : DialogService) { }
+    private serviceLogin: ServiceLoginService,
+    private router: Router,
+    private dialogService: DialogService) { }
 
-  canActivate(){    
+  canActivate() {
     let serviceLogin = this.serviceLogin.isAutenticado() && this.serviceLogin.isAdmin();
 
     //console.log(serviceLogin);
 
-    if(!serviceLogin){
+    if (!serviceLogin) {
 
       this.dialogService.showError("Acesso não autorizado");
-      
-      this.router.navigate(['login']); 
+
+      this.router.navigate(['login']);
 
     }
 
@@ -30,5 +30,5 @@ export class GuardsService {
 
   }
 
-  }
+}
 

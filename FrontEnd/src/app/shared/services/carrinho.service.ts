@@ -15,11 +15,8 @@ import { UsuarioService } from './usuario.service';
 export class CarrinhoService {
 
   constructor(
-    private router: Router,
-    private http: HttpClient,
-    private envService: EnvService,
-    private localStorage: StorageService,
-    private usuarioService: UsuarioService) { }
+    private localStorage: StorageService    
+    ) { }
 
 
   itensCarrinho: ItemVendaModel[] = [];

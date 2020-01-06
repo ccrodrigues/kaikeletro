@@ -12,14 +12,15 @@ import { Observable } from 'rxjs';
 })
 export class AuthServiceService {
 
-  
-  constructor(private router: Router, private usuarioService: UsuarioService
-    , private httpClient: HttpClient
-    , private envService: EnvService) { 
 
-}
+  constructor(
+    
+    private httpClient: HttpClient
+    ) {
 
-getEnderecoPorCep(endereco) :Observable<EnderecoModel> {
-  return this.httpClient.get<EnderecoModel>(`https://viacep.com.br/ws/${endereco}/json/`);
-}
+  }
+
+  getEnderecoPorCep(endereco): Observable<EnderecoModel> {
+    return this.httpClient.get<EnderecoModel>(`https://viacep.com.br/ws/${endereco}/json/`);
+  }
 }

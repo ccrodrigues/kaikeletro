@@ -14,10 +14,7 @@ import { LayoutModule } from './layout/layout.module';
 import { CommonModule } from '@angular/common';
 
 
-import { ProdutosComponent } from './vendas/home/produtos/produtos.component';
-import { HomeComponent } from './vendas/home/home.component';
-import { DialogService } from './shared/toaster/dialog.service';
-import { Toast, ToastrService, ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { AuthInterceptorService } from './shared/interceptors/auth-interceptor.service';
 import { HttpConfigInterceptor } from './shared/interceptors/http-config-interceptor.service';
@@ -40,7 +37,6 @@ import { CustomErrorHandlerService } from './shared/error/custom-error-handler.s
     CarouselModule.forRoot(),
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
-    //VendasModule,
     LayoutModule,
   ],
   providers: [  
