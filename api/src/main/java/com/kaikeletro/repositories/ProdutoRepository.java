@@ -17,8 +17,15 @@ import com.kaikeletro.domain.Produto;
 public interface ProdutoRepository extends JpaRepository <Produto, Integer>{
 	
 	//SELECT * FROM produto WHERE nome LIKE
-	List<Produto> findByNomeLike(String nome);
+	List<Produto> findByNomeContaining(String nomeBusca);
 	
+	List<Produto> findByCategorias(int categoria);
+
 	//"SELECT DISTINCT obj FROM Produto obj INNER JOIN obj.categorias cat WHERE obj.nome LIKE %:nomeCategoria%"
 	Page<Produto> findDistinctByCategoriasNomeContaining(@Param("nomeCategoria")String nomeCategoria, Pageable pageRequest);
+	
+	//paginação de produtos pelo nome
+	Page<Produto> findDistinctByNomeContaining(@Param("nome")String nomeBusca, Pageable pageRequest);
+		
 }
+

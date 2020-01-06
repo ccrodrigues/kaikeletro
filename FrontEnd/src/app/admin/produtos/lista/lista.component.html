@@ -5,21 +5,22 @@
     <div class="row barraPesquisa">
             <div class="col-9 padding-0">
                 <input type="text" class="form-control" placeholder="Pesquise..." #pesquise>
+                <p class="error-pesquisa" [hidden]="var_error_pesquisa"> {{ erro_msg_pesquisa }} </p>
             </div>
 
             <div class="col-2 padding-0">
                 <select name="pesquisaPor" class="form-control padding-0" #pesquisaPor>
-                    <option value="id">ID</option>
+                    <option value="idProduto">ID</option>
                     <option value="nome">NOME</option>
                 </select>
             </div>
 
-            <div class="col-1 padding-0">
+            <div class="col-1 div-btn">
                 <button class="btn btn-sm btn-cheio" (click)="pesquisar(pesquisaPor, pesquise)"><img src="https://img.icons8.com/search" class="icon"></button>
             </div>
     </div>
 
-    <table class="table text-center" *ngIf="pesquisado == undefined" [hidden]="isDelete == true || isShowMore">
+    <table class="table text-center" *ngIf="pesquisado == undefined;else notFound" [hidden]="isDelete == true || isShowMore">
         <thead>
             <tr>
                 <th>ID</th>
@@ -28,7 +29,7 @@
                 <th>Ver mais / Excluir</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="isUndefinedPesquisa(result_pesquisa);else exemplo">
                 <tr *ngFor="let produtos of listProducts">
                     <td>{{ produtos.idProduto }}</td>
                     <td>{{ produtos.nome }}</td>
@@ -38,9 +39,25 @@
                         <button class="btn btn-danger btn-sm" (click)="showDelete(produtos.idProduto)">x</button>
                     </td>
                 </tr>
-        </tbody>    
+        </tbody>  
+        <ng-template #exemplo>
+            <tr *ngFor="let result of result_pesquisa">
+                <td>{{ result.idProduto }}</td>
+                <td>{{ result.nome }}</td>
+                <td>{{ result.preco }}</td>
+                <td>
+                    <button class="btn btn-info btn-sm margin-right-5" (click)="showMore(result)">+</button>
+                    <button class="btn btn-danger btn-sm" (click)="showDelete(result.idProduto)">x</button>
+                </td>
+            </tr>
+        </ng-template>
     </table>
-
+    <ng-template #notFound>
+        <div class="notFound">
+            <button class="btn btn-success" (click)="showAll()">Mostrar todos os dados</button>
+            <p> {{ msg_notFound }}</p>
+        </div>
+    </ng-template>
     <app-deletar-produto [hidden]="isDelete == false" [idProduto]="id" (close)="lessDelete()" (deletado)="showMsgApagou($event)"></app-deletar-produto>
     <app-show-more *ngIf="isShowMore" [produto]="selecionado" (close)="lessMore()"></app-show-more>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
+import { ProdutosService } from 'src/app/shared/services/produtos.service';
 
 @Component({
   selector: 'app-deletar-produto',
@@ -23,8 +23,6 @@ export class DeletarProdutoComponent implements OnInit {
 
   excluir() {
 
-    console.log(this.idProduto)
-    
     this.ps.deleteProduto(this.idProduto).subscribe(
       a => {
         console.log("Etstou aqui");

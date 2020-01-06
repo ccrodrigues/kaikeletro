@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { RouteReuseStrategy, Router } from '@angular/router';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProdutosService } from 'src/app/shared/Services/produtos.service';
-import { CarrinhoService } from 'src/app/shared/Services/carrinho.service';
-import { VendaService } from 'src/app/shared/Services/venda.service';
-import { ProdutoModel } from 'src/app/shared/models/produto.model';
+
+import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
+import { VendaService } from 'src/app/shared/services/venda.service';
+import { UsuarioModel } from 'src/app/shared/models/usuario.model';
+import { UsuarioService } from 'src/app/shared/services/usuario.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
+import { DialogService } from 'src/app/shared/toaster/dialog.service';
+import { ItemVendaModel } from 'src/app/shared/models/item-venda.model';
 
 @Component({
   selector: 'app-carrinho',
@@ -13,37 +15,48 @@ import { ProdutoModel } from 'src/app/shared/models/produto.model';
 })
 export class CarrinhoComponent implements OnInit {
 
-  
-  constructor(private router : Router, private formBuilder : FormBuilder,
-    private ps: ProdutosService, private carrinhoService : CarrinhoService, private vendasService : VendaService) { }
+  itensCarrinho: ItemVendaModel[] = [];
+
+  constructor(
+    private vendasService: VendaService,
+    private usuarioService: UsuarioService,
+    private localStorage: StorageService,
+    private carrinhoService: CarrinhoService,
+    private dialog : DialogService) { }
 
 
   ngOnInit() {
-    console.log("Itens: " + this.carrinhoService.exibirItens())
+    if (this.localStorage.getCarrinho() != null) {
+      
+      this.carrinhoService.itensCarrinho = this.localStorage.getCarrinho();
+      
+    } else {
+
+      this.carrinhoService.itensCarrinho = [];
     }
 
-    
-    changeSuit(selectedOption : number, id) : void {
-
-      this.carrinhoService.alterarQuantidade(selectedOption,id)
-      //console.log(typeof(selectedOption)) 
-    }
-    
-    finalizarVenda(){
-      this.carrinhoService.fecharVenda();
-      this.vendasService.fecharVenda(this.carrinhoService.venda).subscribe(
-        (data)=>{
-          data = data
-          console.log(data)
-          console.log(this.carrinhoService.itensCarrinho)
-          while(this.carrinhoService.itensCarrinho.length) {
-            this.carrinhoService.itensCarrinho.pop();
-         }
-          }
-      )
-    }
-    
+    this.getCarrinho();
   }
 
+  changeSuit(selectedOption: number, id): void {
 
+    this.carrinhoService.alterarQuantidade(selectedOption, id)
 
+    this.getCarrinho();
+  }
+  
+  getUser(email) {
+
+    let user: UsuarioModel = new UsuarioModel();
+
+    this.usuarioService.getUserByEmail(email).subscribe(data => {
+      user.id = data.id;
+    })
+    this.carrinhoService.user.id = user.id
+  }
+
+  private getCarrinho(){
+    this.itensCarrinho = this.carrinhoService.itensCarrinho;
+  }
+
+}

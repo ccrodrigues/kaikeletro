@@ -13,7 +13,6 @@ import { ProdutosComponent } from './home/produtos/produtos.component';
 import { ProdutosDetalhesComponent } from './home/produtos-detalhes/produtos-detalhes.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { CarouselModule } from 'ngx-bootstrap/carousel'
 import { CarouselComponent } from './home/carousel/carousel.component';
 import { MelhoresOfertasComponent } from './home/melhores-ofertas/melhores-ofertas.component';
 import { MaisVendidosComponent } from './home/mais-vendidos/mais-vendidos.component';
@@ -21,13 +20,17 @@ import { MaisDesejadosComponent } from './home/mais-desejados/mais-desejados.com
 import { CarrinhoComponent } from './home/carrinho/carrinho.component';
 import { ConfirmacaoEnderecoComponent } from './confirmacao-endereco/confirmacao-endereco.component';
 import { PagamentoFinalizacaoComponent } from './pagamento-finalizacao/pagamento-finalizacao.component';
+import { CreditCardDirectivesModule } from 'angular-cc-library'
+import { ProdutosCategoriaComponent } from './produtos-categoria/produtos-categoria.component';
 
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [TelaRegistroComponent, UsuarioLoginComponent, HomeComponent, TelaRegistroComponent,
      UsuarioLoginComponent, PaginacaoComponent, ProdutosComponent, ProdutosDetalhesComponent,CarouselComponent, 
      MelhoresOfertasComponent, MaisVendidosComponent, MaisDesejadosComponent,CarrinhoComponent, 
-     ConfirmacaoEnderecoComponent, PagamentoFinalizacaoComponent],
+     ConfirmacaoEnderecoComponent, PagamentoFinalizacaoComponent, FaqComponent , ProdutosCategoriaComponent,ProdutosCategoriaComponent],
   imports: [
     CommonModule,
     VendasRoutingModule,
@@ -39,7 +42,9 @@ import { PagamentoFinalizacaoComponent } from './pagamento-finalizacao/pagamento
     BsDropdownModule.forRoot(),
     FormsModule,
     NgxPaginationModule,
-    CarouselModule,
+    CarouselModule.forRoot(),
+    //CarouselModule,
+    CreditCardDirectivesModule
   ],
   exports:[
     PaginacaoComponent,
@@ -50,7 +55,8 @@ import { PagamentoFinalizacaoComponent } from './pagamento-finalizacao/pagamento
     ProdutosDetalhesComponent,
     CarrinhoComponent,
     ConfirmacaoEnderecoComponent,
-    PagamentoFinalizacaoComponent
+    PagamentoFinalizacaoComponent,
+    ProdutosCategoriaComponent
     //CarouselComponent
   ]
 })

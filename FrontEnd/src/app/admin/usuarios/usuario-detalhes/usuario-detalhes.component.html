@@ -1,0 +1,134 @@
+<div class="background Central Center mb-4">
+  <h2><small class="form-text text-muted negrito-padding text-center">Detalhes Usuario</small></h2>
+
+  <form [formGroup]="detalhesForm" (ngSubmit)="onSubmit()">
+
+    <div formGroupName="usuario">
+
+      <div class="card">
+
+        <div class="row cpp mr-1">
+          <div class="col-md-1">
+            <label for="id">ID</label>
+            <div class="input-group form-group">
+              <input type="text" class="form-control" formControlName="id">
+            </div>
+          </div>
+          <div class="col-md-8">
+            <label for="nome">Nome: </label>
+            <div class="input-group form-group">
+              <input type="nome" class="form-control" formControlName="nome" placeholder="Nome Completo">
+            </div>
+            <app-msg-erro [isError]="isErrorCampo('usuario.nome')" mensagem="Preencha os dados corretamente">
+            </app-msg-erro>
+          </div>
+
+          <br>
+
+          <div class="col-md-3">
+            <label for="nascimento">Data de Nascimento: </label>
+            <div class="input-group form-group-dataDeNascimento">
+              <input type="text" class="form-control" formControlName="dataDeNascimento">
+            </div>
+            <app-msg-erro [isError]="isErrorCampo('usuario.dataDeNascimento')" mensagem="Preencha os dados corretamente">
+            </app-msg-erro>
+          </div><br>
+        </div>
+
+        <!-- <field-debug [variavel]="getField('usuario.dataDeNascimento')"></field-debug> -->
+
+        <div class="row cpp">
+          <div class="col-md-7 ">
+            <label for="cpf">CPF: </label>
+            <div class="input-group form-group-cpf">
+              <input type="number" (keypress)="somenteNumerosCpf($event)" class="form-control" formControlName="cpf"
+                placeholder="CPF">
+            </div>
+            <app-msg-erro [isError]="isErrorCampo('usuario.cpf')" mensagem="Preencha os dados corretamente">
+            </app-msg-erro>
+          </div>
+
+          <!-- <field-debug [variavel]="getField('usuario.cpf')"></field-debug> -->
+
+          <div class="col-md-4 ">
+            <label for="telefone">Telefone: </label>
+            <div class="input-group form-group-telefone">
+              <input type="text" class="form-control" formControlName="telefone">
+            </div>
+          </div>
+          <!-- row -->
+        </div>
+
+        <div class="row cpp mb-3">
+
+          <div class="col-md-4">
+            <label for="celular">Celular: </label>
+            <div class="input-group form-group-celular">
+              <input type="text" class="form-control" formControlName="celular">
+            </div>
+          </div>
+
+          <div class="col-md-7">
+            <label for="email">E-mail</label>
+            <div class="input-group form-group-email">
+              <input type="email" class="form-control" formControlName="email">
+            </div>
+
+            <app-msg-erro [isError]="isErrorCampo('usuario.email')" mensagem="Preencha os dados corretamente">
+            </app-msg-erro>
+
+          </div>
+
+          <br>
+          <!-- row -->
+        </div>
+      </div>
+      
+        <!-- formGroupName="usuario" -->
+      </div>
+          
+    <div class="mt-4 mb-4">
+        <div class="form-row text-center">
+            <div class="col-12">
+          <button type="submit" class="btn btn-dark cad_btn mr-1" [routerLink]="['/admin/usuarios']">Voltar</button>
+
+          <button type="submit" class="btn btn-dark cad_btn" [disabled]="!detalhesForm.valid">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+  <div class="card">
+    <table class="table table-hover">
+        <thead>
+          <tr class="bg-primary text-light">
+            <th>Logradouro</th>
+            <th>Número</th>
+            <th>CEP</th>            
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th>Complemento</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let end of endereco">
+            <td><small>{{ end.logradouro }}</small></td>
+            <td><small>{{ end.numero }}</small></td>
+            <td><small>{{ end.cep }}</small></td>
+            <td><small>{{ end.cidade }}</small></td>
+            <td><small>{{ end.estado }}</small></td>
+            <td><small>{{ end.complemento }}</small></td>
+            
+            <td>
+              <a [routerLink]="['endereco', end.idEndereco]" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+              <button (click)="deleteEndereco(end)" class="btn btn-outline-danger btn-sm">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- card -->
+  </div>
+
+</div>

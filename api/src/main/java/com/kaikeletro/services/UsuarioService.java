@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.EnderecoUsuario;
 import com.kaikeletro.domain.Usuario;
+import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.repositories.EnderecoUsuarioRepository;
 import com.kaikeletro.repositories.UsuarioRepository;
 
@@ -32,7 +33,7 @@ public class UsuarioService implements Serializable{
 	private UsuarioRepository userRepo;
 	
 	@Autowired
-	private EnderecoUsuarioRepository endRepo;
+	EnderecoUsuarioRepository endRepo;
 
 	public List<Usuario> getAll() {
 		List<Usuario> usuario = userRepo.findAll();
@@ -49,7 +50,7 @@ public class UsuarioService implements Serializable{
 		Usuario u = userRepo.save(user);
 		
 		for (EnderecoUsuario end : u.getIdEndereco()) {
-			end.setFk_Usuario(u);
+			end.setUsuarios(u);
 			endRepo.save(end);
 		}
 		
@@ -61,17 +62,18 @@ public class UsuarioService implements Serializable{
 		Optional<Usuario> userBD = userRepo.findById(id);
 
 		if (userBD.isPresent() == true) {
-			userBD.get().setId(user.getId());
+			//userBD.get().setId(user.getId());
 			userBD.get().setNome(user.getNome());
 			userBD.get().setEmail(user.getEmail());
-			userBD.get().setSenha(user.getSenha());
+			//userBD.get().setSenha(user.getSenha());
 			userBD.get().setDataDeNascimento(user.getDataDeNascimento());
 			userBD.get().setCpf(user.getCpf());
 			userBD.get().setTelefone(user.getTelefone());
 			userBD.get().setCelular(user.getCelular());
 			return userRepo.save(userBD.get());
 		} else {
-			return null;
+			throw new TratamentoDeErros(id, new Usuario());
+			
 		}
 	}
 
@@ -97,8 +99,8 @@ public class UsuarioService implements Serializable{
 	}
 	
 	// Método do UsuarioController - Busca por Email
-	public List<Usuario> findByEmail(String emailBusca){
-		return userRepo.findByEmailIgnoreCase(emailBusca);
+	public Usuario findByEmail(String emailBusca){
+		return  userRepo.findByEmailIgnoreCase(emailBusca);
 	}
 	
 	// Método do UsuarioController - Busca por cpf

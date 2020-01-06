@@ -1,4 +1,4 @@
-<p class="display-4 my-text-title">Dashboard / Produtos</p>
+<a [routerLink]="['/admin']"> <img src="../../../assets/imagens/left-arrow.png" alt="" class="icon-back"> </a>
 <div class="container dashboard">
     <div class="row"> 
         <div class="col-3" >
@@ -7,7 +7,7 @@
         </div>
         <div class="col-9">
             <app-lista  [Produtos]="produtos" *ngIf="isLista"></app-lista>
-            <app-adicionar name="add" *ngIf="!isLista"></app-adicionar>
+            <app-adicionar name="add" *ngIf="!isLista" (adicionado)="adicionou()"></app-adicionar>
         </div>
     </div>
 </div>

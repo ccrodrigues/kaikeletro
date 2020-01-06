@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, EmailValidator } from '@angular/forms';
 import { ServiceLoginService } from './service-login/service-login.service';
-import { Usuario } from '../../shared/models/usuario.model';
+import { UsuarioModel } from '../../shared/models/usuario.model';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 
 @Component({
@@ -12,28 +13,28 @@ import { Usuario } from '../../shared/models/usuario.model';
 export class UsuarioLoginComponent implements OnInit {
 
   loginForm : FormGroup;
-  usuario : Usuario;
+  usuario : UsuarioModel;
 
-  constructor(private formBuilder :  FormBuilder
+  constructor(private formBuilder :  FormBuilder,
+    private localStorage:StorageService
     , private serviceLogin : ServiceLoginService) {
 
    }
 
   ngOnInit() {
-
+    this.localStorage.setLocalUser(null);
 // declaração das variaveis para a validação dos campos e-mail e senha 
     this.loginForm = this.formBuilder.group( { 
       email : [ '',[Validators.required]  ], 
       senha : [ '' , [Validators.required] ] 
-      
-
     });
   }
   onSubmit(){
-    console.log(this.loginForm);
+    //console.log(this.loginForm);
 
     //Verifica ao enviar se os dados informados são validos
     let login = {email : this.loginForm.value.email, senha : this.loginForm.value.senha};
+    
     return this.serviceLogin.fazerLogin(login);
   }
 
@@ -43,7 +44,7 @@ export class UsuarioLoginComponent implements OnInit {
   }
   //metodo para verificar se os dados de Autenticidade estão de acordo, recebe um boolean
   isErrorLogin(){
-    return this.serviceLogin.getIsAutenticado();
+    return this.serviceLogin.isAutenticado();
           
   }
   

@@ -1,6 +1,7 @@
-export class Endereco {
+export class EnderecoModel {
+    idEndereco : number;
     cep: string;
-    logradouro: string = "";
+    logradouro: string;
     complemento: string;
     bairro: string;
     localidade: string;
@@ -8,6 +9,7 @@ export class Endereco {
     unidade: string;
     ibge: string;
     gia: string;
-  
+    numero: string;
+    cidade : string;
     erro: boolean;
   }

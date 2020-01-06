@@ -1,6 +1,6 @@
 <h2 style="margin-top: 20px;">Meu Carrinho</h2>
 
-<div *ngIf="carrinhoService.exibirItens().length; else carrinhoVazio">
+<div *ngIf="itensCarrinho.length; else carrinhoVazio">
 
     <div class="container-fluid cart-box">
 
@@ -15,7 +15,7 @@
         <div class="row ">
             <div  class="col-sm-8">
                 <ul  class="lista">
-                    <li *ngFor = "let it of carrinhoService.itensCarrinho" style=" margin-top: 10px ;border-top: 1px solid #086575; width: 700px;">
+                    <li *ngFor = "let it of itensCarrinho" style=" margin-top: 10px ;border-top: 1px solid #086575; width: 700px;">
                     <div style="display: inline-flex;">
                             
                         <div  style="display: inline-flex; margin: 0;" class="col-sm-4"> 
@@ -48,13 +48,13 @@
                 <div class="card">
                     <div class="card-body">
                     <h5 class="card-title">Resumo do pedido</h5>
-                    <p class="card-text">{{ carrinhoService.totalItensCarrinho() }} produtos &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <p class="card-text">{{ carrinhoService?.totalItensCarrinho() }} produtos &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         {{ carrinhoService.calculoCarrinho() | currency:'BRL':'symbol':'2.2-2' }}</p>
                     <p class="card-text">Frete &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp; {{ carrinhoService.frete | currency:'BRL':'symbol':'1.2-2' }}</p>
                         <p style="border-top: solid 1px black;">TOTAL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  {{ carrinhoService.valorTotalFrete() | currency:'BRL':'symbol':'1.2-2' }}</p>
-                    <button (click)="finalizarVenda()"  class="btn btn-primary">Continuar</button>
+                    <button [routerLink]="['/entrega']" routerLinkActive="router-link-active"   class="btn btn-primary">Continuar</button>
                     </div>
                 </div>
             </div>

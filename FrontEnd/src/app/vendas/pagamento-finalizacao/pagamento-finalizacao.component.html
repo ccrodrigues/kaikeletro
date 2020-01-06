@@ -1,20 +1,62 @@
+<div class="card" style="width: 70rem">
+    <div class="card-header">
+       <h4> Endereço de Entrega</h4>
+    </div>
+</div>
 
-<p>aqui vai o endereço confirmado</p>
+    <table style="width: 70rem" class="table table-light" >
+        <tr>
+            <td>
+                <div class="card-title">CEP:
+                    <small class="atext-muted">{{ enderecoObj?.cep }}</small>
+                </div>
+            </td>
 
-<div class=row>
+            <td>
+                <div class="card-title">Cidade:
+                    <small class="atext-muted">{{ enderecoObj?.localidade }}</small>
+                </div>
+            </td>
+           
+            <td>
+                <div class="card-title">Bairro:
+                    <small class="atext-muted"> {{ enderecoObj?.bairro }} </small>
+                </div>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="card-title">Logradouro:
+                    <small class="atext-muted">{{ enderecoObj?.logradouro }}</small>
+                </div>
+            </td>
+           
+            <td>
+                <div class="card-title">Estado:
+                    <small class="atext-muted">{{ enderecoObj?.uf }}</small>
+                </div>
+            </td>
+
+            <td>
+                <div class="card-title">Número:
+                    <small class="atext-muted"> {{ enderecoObj?.numero }} </small>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+<div class="row">
     <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Seu Carrinho</span>
-            <span class="badge badge-secondary badge-pill">4</span>
+            <span class="badge badge-secondary badge-pill">{{ carrinhoService?.totalItensCarrinho() }}</span>
         </h4>
 
-        <ul class="list-group mb-3">
+        <ul>
             <li class="list-group-item d-flex justify-content-between">
-                <div>
-                    <h6 class="my-0">Nome do Produto</h6>
-                    <small class="text-muted">Descrição</small>
-                </div>
-                <span class="text-muted">R$90,00</span>
+                <span>TOTAL(BRL) </span>
+                <strong>{{ valorTotal | currency:'BRL':'symbol':'1.2-2'}}</strong>
             </li>
 
             <li class="list-group-item d-flex justify-content-between">
@@ -22,16 +64,19 @@
                 <strong>R$15,00</strong>
             </li>
 
-            <li class="list-group-item d-flex justify-content-between">
-                <span>TOTAL(BRL) </span>
-                <strong>R$105,00</strong>
-            </li>
+            <!-- <li class="list-group-item d-flex justify-content-between">
+                <span>PAGAMENTO FINAL </span>
+                <strong>{{ venda?.parcela }}</strong>
+                <strong>{{ venda?.valorParcela }}</strong>
+            </li> -->
         </ul>
 
     </div>
 
     <div class="col-md-8 order-md-1">
-        <form [formGroup]="pagaForm" (submit)="onSubmit()">
+        <form [formGroup]="pagaForm" 
+            (submit)="finalizarVenda()">
+            
             <h4 class="mb-3">Pagamento</h4>
 
             <div class="d-block my-3">
@@ -49,35 +94,36 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="nomeCartao">Nome no Cartão</label>
-                    <input type="text" class="form-control" id="nomeCartao" formControlName="nomeCartao">
+                    <input type="text" class="form-control" id="nomeCartao" formControlName="nomeCartao" >
                     <small class="text-muted">Nome Completo, como no Cartão.</small>
-                    <app-msg-erro [isError]="isErrorCampo('nomeCartao')" mensagem="Preencha corretamente"></app-msg-erro>
                 </div>
 
-                <div class="col-md-6 mb-3">
-                    <label for="numCartao">Número do Cartão</label>
-                    <input type="text" class="form-control" id="numCartao" formControlName="numCartao" maxlength="16">
-                    <app-msg-erro [isError]="isErrorCampo('numCartao')" mensagem="Preencha corretamente"></app-msg-erro>
+                <div class="col-md-6 mb-3" >
+                    <label for="cc-number">Número do Cartão</label>
+                    <input type="tel" class="form-control" (input)="tipoCard($event.target.value)" autocomplete="cc-number" id="cc-number" formControlName="numCartao" ccNumber>
+                    <div *ngIf="showType == true">
+                        {{ card?.type }}
+                        
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-3 mb-3">
-                    <label for="validade">Data de Validade</label>
-                    <input type="text" class="form-control" id="validade" formControlName="validade">
-                    <app-msg-erro [isError]="isErrorCampo('validade')" mensagem="Preencha corretamente"></app-msg-erro>
+                    <label for="cc-exp">Data de Validade</label>
+                    <input type="tel" class="form-control" autocomplete="cc-exp" id="cc-exp" formControlName="exp" ccExp>
                 </div>
 
                 <div class="col-md-3 mb-3">
-                    <label for="cvv">CVV</label>
-                    <input type="text" class="form-control" id="cvv" formControlName="cvv" maxlength="3">
+                    <label for="cc-csc">CVV</label>
+                    <input type="tel" class="form-control" autocomplete="off" id="cc-csc" formControlName="cvv" maxlength="4" ccCVC >
                     <small class="text-muted">Código de Segurança</small>
-                    <app-msg-erro [isError]="isErrorCampo('cvv')" mensagem="Insira o código (3 dígitos)"></app-msg-erro>
+                    
                 </div>
             </div>
 
             <hr class="mb-3">
-            <button class="btn btn-primary" type="submit" >Confirmar Pagamento</button><br>
+            <button class="btn btn-primary" type="submit"  [disabled]="pagaForm.valid == false" >Confirmar Pagamento</button><br>
         </form>
     </div>
 </div>

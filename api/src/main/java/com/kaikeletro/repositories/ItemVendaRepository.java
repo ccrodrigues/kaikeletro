@@ -4,9 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.stereotype.Repository;
 
-import com.kaikeletro.domain.Item_Venda;
+import com.kaikeletro.domain.ItemVenda;
 
 @Repository
-public interface ItemVendaRepository extends JpaRepository <Item_Venda, Integer> {}
+public interface ItemVendaRepository extends JpaRepository <ItemVenda, Integer> {}
 
 
