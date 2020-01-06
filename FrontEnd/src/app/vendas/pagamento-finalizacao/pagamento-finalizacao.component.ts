@@ -19,6 +19,7 @@ export class PagamentoFinalizacaoComponent implements OnInit {
   showType: boolean = false;
   card : any ;
   valorTotal;
+  frete;
 
   enderecoObj: EnderecoModel;
   venda: ItemVendaModel[];
