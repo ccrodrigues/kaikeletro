@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { CreditCardValidator, CreditCard } from 'angular-cc-library';
 import { StorageService } from 'src/app/shared/services/storage.service';
-import { Endereco } from 'src/app/shared/models/endereco.model';
+import { EnderecoModel } from 'src/app/shared/models/endereco.model';
 import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 import { ItemVendaModel } from 'src/app/shared/models/item-venda.model';
 import { VendaService } from 'src/app/shared/services/venda.service';
@@ -19,7 +19,7 @@ export class PagamentoFinalizacaoComponent implements OnInit {
   showType: boolean = false;
   card : any ;
 
-  enderecoObj: Endereco;
+  enderecoObj: EnderecoModel;
   venda: ItemVendaModel[];
 
   constructor(private router: Router,

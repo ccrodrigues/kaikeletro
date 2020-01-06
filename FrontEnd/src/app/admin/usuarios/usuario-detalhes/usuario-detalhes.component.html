@@ -7,7 +7,7 @@
 
       <div class="card">
 
-        <div class="row cpp">
+        <div class="row cpp mr-1">
           <div class="col-md-1">
             <label for="id">ID</label>
             <div class="input-group form-group">
@@ -119,8 +119,8 @@
             <td><small>{{ end.complemento }}</small></td>
             
             <td>
-              <a [routerLink]="[end.idEndereco, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
-              <button (click)="deleteResource(end)" class="btn btn-outline-danger btn-sm">Excluir</button>
+              <a [routerLink]="['endereco', end.idEndereco]" class="btn btn-outline-info btn-sm mr-2">Editar</a>
+              <button (click)="deleteEndereco(end)" class="btn btn-outline-danger btn-sm">Excluir</button>
             </td>
           </tr>
         </tbody>
@@ -128,7 +128,7 @@
       <!-- card -->
   </div>
 
-  {{ usuario }}
+  {{ usuario | json }}
   {{ endereco | json }}
 
 </div>

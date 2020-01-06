@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Validacoes } from 'src/app/shared/validacoes';
-import { Endereco } from 'src/app/shared/models/endereco.model';
+import { EnderecoModel } from 'src/app/shared/models/endereco.model';
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
-import { Usuario } from 'src/app/shared/models/usuario.model';
+import { UsuarioModel } from 'src/app/shared/models/usuario.model';
 import { EnvService } from 'src/app/env.service';
+import { DialogService } from 'src/app/shared/toaster/dialog.service';
 
 @Component({
   selector: 'app-usuario-detalhes',
@@ -16,11 +17,11 @@ import { EnvService } from 'src/app/env.service';
 export class UsuarioDetalhesComponent implements OnInit {
 
   detalhesForm: FormGroup;
-  objEnd: Endereco;
+  objEnd: EnderecoModel;
   idRota;
   isEdicao = false;
-  endereco: Endereco[] = [];
-  usuario : Usuario ;
+  endereco: EnderecoModel[] = [];
+  usuario : UsuarioModel ;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,6 +29,7 @@ export class UsuarioDetalhesComponent implements OnInit {
     private activedRoute: ActivatedRoute,
     private usuarioService: UsuarioService,
     private router: Router,
+    private dialogService : DialogService,
     private envService: EnvService
     ) {
 
@@ -142,6 +144,10 @@ export class UsuarioDetalhesComponent implements OnInit {
   //validar se os campos forem devidamente preenchidos 
   isErrorCampo(nomeCampo) {
     return (!this.detalhesForm.get(nomeCampo).valid && this.detalhesForm.get(nomeCampo).touched);
+  }
+
+  deleteEndereco(end){
+
   }
 
   private convertUsuarioToForm(usuario){

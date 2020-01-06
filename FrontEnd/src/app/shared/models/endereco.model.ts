@@ -1,6 +1,6 @@
-export class Endereco {
+export class EnderecoModel {
     cep: string;
-    logradouro: string = "";
+    logradouro: string;
     complemento: string;
     bairro: string;
     localidade: string;

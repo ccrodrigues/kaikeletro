@@ -44,7 +44,7 @@ import { CustomErrorHandlerService } from './shared/error/custom-error-handler.s
     LayoutModule,
   ],
   providers: [  
-      {
+     {
         provide: HTTP_INTERCEPTORS,
         useClass: AuthInterceptorService,
         multi: true,

@@ -1,6 +1,6 @@
-import { Endereco } from './endereco.model';
+import { EnderecoModel } from './endereco.model';
 
-export class Usuario {
+export class UsuarioModel {
     id: number;
     nome : string ;
     email: string ;
@@ -10,6 +10,6 @@ export class Usuario {
     celular : String ;
     dataDeNacimento : String ;
 
-    idEndereco : Endereco[]; 
+    idEndereco : EnderecoModel[]; 
     
   }

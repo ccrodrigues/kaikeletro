@@ -21,7 +21,7 @@ public class EnderecoUsuarioService {
 	public Optional<EnderecoUsuario> findById(int id) {
 		return endRepo.findById(id);
 	}
-	public List<EnderecoUsuario> findByFK(int id) {
+	public List<EnderecoUsuario> findByUsuariosEmailContaining(int id) {
 		return endRepo.findByUsuariosEmailContaining("a@a.com");
 	}
 

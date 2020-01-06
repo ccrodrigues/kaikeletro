@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 
 import { Validacoes } from '../../shared/validacoes';
-import { Endereco } from '../../shared/models/endereco.model';
+import { EnderecoModel } from '../../shared/models/endereco.model';
 import { TelaregistroService } from './tela-registro.service';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
 import { ServiceLoginService } from '../usuario-login/service-login/service-login.service';
@@ -16,7 +16,7 @@ import { ServiceLoginService } from '../usuario-login/service-login/service-logi
 export class TelaRegistroComponent implements OnInit {
 
   regForm: FormGroup;
-  objEnd: Endereco;
+  objEnd: EnderecoModel;
   registro: FormGroup;
 
   logradouro: any;

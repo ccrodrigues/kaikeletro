@@ -3,7 +3,7 @@ import { EnvService } from 'src/app/env.service';
 import { LocalUserModel } from '../models/auth/local-user.model';
 import { Carrinho } from '../models/carrinho.model';
 import { ItemVendaModel } from '../models/item-venda.model';
-import { Endereco } from '../models/endereco.model';
+import { EnderecoModel } from '../models/endereco.model';
 
 @Injectable({
     providedIn: 'root'
@@ -49,7 +49,7 @@ export class StorageService {
             localStorage.removeItem(this.envService.storageKeysConfig.carrinho);
         }
     }
-    getEndereco(): Endereco{
+    getEndereco(): EnderecoModel{
         let str = localStorage.getItem(this.envService.storageKeysConfig.endereco);
         if (str != null) {
             return JSON.parse(str);
@@ -59,7 +59,7 @@ export class StorageService {
         }
     }
 
-    setEndereco(obj : Endereco ) {
+    setEndereco(obj : EnderecoModel ) {
         if (obj != null) {
             localStorage.setItem(this.envService.storageKeysConfig.endereco, JSON.stringify(obj)  );
         }

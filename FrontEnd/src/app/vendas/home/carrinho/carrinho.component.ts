@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
-import { ProdutosService } from 'src/app/shared/services/produtos.service';
+
 import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 import { VendaService } from 'src/app/shared/services/venda.service';
-import { Usuario } from 'src/app/shared/models/usuario.model';
+import { UsuarioModel } from 'src/app/shared/models/usuario.model';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
@@ -30,9 +28,7 @@ export class CarrinhoComponent implements OnInit {
   ngOnInit() {
 
     if (this.localStorage.getCarrinho() != null) {
-
-      console.log(this.carrinhoService);
-
+      
       this.carrinhoService.itensCarrinho = this.localStorage.getCarrinho();
       
     } else {
@@ -52,7 +48,7 @@ export class CarrinhoComponent implements OnInit {
   
   getUser(email) {
 
-    let user: Usuario = new Usuario();
+    let user: UsuarioModel = new UsuarioModel();
 
     this.usuarioService.getUserByEmail(email).subscribe(data => {
       user.id = data.id;
@@ -65,6 +61,3 @@ export class CarrinhoComponent implements OnInit {
   }
 
 }
-
-
-
