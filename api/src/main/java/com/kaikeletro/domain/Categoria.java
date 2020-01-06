@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,9 +21,9 @@ public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CATEGORIA_NAME_SEQ")
-    //@SequenceGenerator(sequenceName = "categoria_seq", allocationSize = 1, name = "CATEGORIA_NAME_SEQ")
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CATEGORIA_NAME_SEQ")
+    @SequenceGenerator(sequenceName = "categoria_seq", allocationSize = 1, name = "CATEGORIA_NAME_SEQ")
 	private int idCategoria;
 	
 	@Column(name= "nome")
