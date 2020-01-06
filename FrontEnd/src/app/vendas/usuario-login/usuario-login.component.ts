@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, EmailValidator } from '@angular/forms';
 import { ServiceLoginService } from './service-login/service-login.service';
 import { UsuarioModel } from '../../shared/models/usuario.model';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 
 @Component({
@@ -14,13 +15,14 @@ export class UsuarioLoginComponent implements OnInit {
   loginForm : FormGroup;
   usuario : UsuarioModel;
 
-  constructor(private formBuilder :  FormBuilder
+  constructor(private formBuilder :  FormBuilder,
+    private localStorage:StorageService
     , private serviceLogin : ServiceLoginService) {
 
    }
 
   ngOnInit() {
-
+    this.localStorage.setLocalUser(null);
 // declaração das variaveis para a validação dos campos e-mail e senha 
     this.loginForm = this.formBuilder.group( { 
       email : [ '',[Validators.required]  ], 
