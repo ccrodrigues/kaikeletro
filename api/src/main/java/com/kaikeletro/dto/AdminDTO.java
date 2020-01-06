@@ -2,17 +2,17 @@ package com.kaikeletro.dto;
 
 import com.kaikeletro.domain.Admin;
 
-public class AdminDto {
+public class AdminDTO {
 	
 	private int idAdmin;
 	private String email;
 	private String senha;
 	
-	public AdminDto() {
+	public AdminDTO() {
 		super();
 	}
 
-	public AdminDto(Admin admin) {
+	public AdminDTO(Admin admin) {
 		this.idAdmin = admin.getId();
 		this.email= admin.getEmail();
 		this.senha= admin.getSenha();

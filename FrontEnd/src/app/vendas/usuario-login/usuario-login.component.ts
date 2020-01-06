@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, EmailValidator } from '@angular/forms';
 import { ServiceLoginService } from './service-login/service-login.service';
-import { Usuario } from '../../shared/models/usuario.model';
+import { UsuarioModel } from '../../shared/models/usuario.model';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { Usuario } from '../../shared/models/usuario.model';
 export class UsuarioLoginComponent implements OnInit {
 
   loginForm : FormGroup;
-  usuario : Usuario;
+  usuario : UsuarioModel;
 
   constructor(private formBuilder :  FormBuilder
     , private serviceLogin : ServiceLoginService) {

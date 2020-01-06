@@ -11,10 +11,10 @@ import com.kaikeletro.domain.Admin;
 import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.EnderecoUsuario;
 import com.kaikeletro.domain.ImagemProd;
-import com.kaikeletro.domain.Item_Venda;
+import com.kaikeletro.domain.ItemVenda;
 import com.kaikeletro.domain.Produto;
 import com.kaikeletro.domain.Usuario;
-import com.kaikeletro.domain.Vendas;
+import com.kaikeletro.domain.Venda;
 import com.kaikeletro.domain.enums.Perfil;
 import com.kaikeletro.domain.enums.TipoCliente;
 import com.kaikeletro.enumeration.StatusPagamento;
@@ -206,6 +206,7 @@ public class PopularBancoService {
 		u1.setTelefone("1345365328");
 		
 		fbc.setCpf("0000000001");
+		fbc.setDataDeNascimento("18/11/2000");
 		fbc.setEmail("fbc@fbc.com");
 		fbc.setNome("fbc");
 		fbc.setSenha(bCryptPasswordEncoder.encode("123"));
@@ -231,6 +232,7 @@ public class PopularBancoService {
 		end1.setEstado("SP");
 		end1.setLogradouro("Av. nove de julho");
 		end1.setNumero("15A");
+		end1.setBairro("Bela Vista");
 		end1.setUsuarios(u1);
 
 		end2.setCep("08655410");
@@ -238,12 +240,14 @@ public class PopularBancoService {
 		end2.setEstado("SP");
 		end2.setLogradouro("Rua das nações");
 		end2.setNumero("988");
+		end2.setBairro("Vila Olímpia");
 		end2.setUsuarios(u1);
 
 		end3.setCep("08655410");
 		end3.setCidade("São Paulo");
 		end3.setEstado("SP");
 		end3.setLogradouro("Alameda das Flores");
+		end3.setBairro("Bairro das Flores");
 		end3.setNumero("2156");
 		end3.setUsuarios(u2);
 
@@ -251,20 +255,20 @@ public class PopularBancoService {
 		enderecoRepository.saveAll(Arrays.asList(end1, end2, end3));
 
 		// Teste de incluir Vendas com produtos e usuários
-		Vendas v1 = new Vendas();
-		Vendas v2 = new Vendas();
+		Venda v1 = new Venda();
+		Venda v2 = new Venda();
 		Usuario u3 = new Usuario();
 		Produto pro1 = new Produto();
 		Produto pro2 = new Produto();
 		Categoria ca1 = new Categoria();
 		ImagemProd img1 = new ImagemProd();
 		ImagemProd img2 = new ImagemProd();
-		Item_Venda item = new Item_Venda();
-		Item_Venda item2 = new Item_Venda();
-		Item_Venda item3 = new Item_Venda();
-		Item_Venda item4 = new Item_Venda();
-		ArrayList<Item_Venda> itemArray = new ArrayList<Item_Venda>();
-		ArrayList<Item_Venda> itemArray2 = new ArrayList<Item_Venda>();
+		ItemVenda item = new ItemVenda();
+		ItemVenda item2 = new ItemVenda();
+		ItemVenda item3 = new ItemVenda();
+		ItemVenda item4 = new ItemVenda();
+		ArrayList<ItemVenda> itemArray = new ArrayList<ItemVenda>();
+		ArrayList<ItemVenda> itemArray2 = new ArrayList<ItemVenda>();
 
 		// Atributos categoria
 		ca1.setNome("Eletronicos");
@@ -285,6 +289,7 @@ public class PopularBancoService {
 		end4.setEstado("SP");
 		end4.setLogradouro("Alameda das casas");
 		end4.setNumero("34");
+		end4.setBairro("Bairro das Casas");
 		end4.setUsuarios(u3);
 
 		// Atributos imagem

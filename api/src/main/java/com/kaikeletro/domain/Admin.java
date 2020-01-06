@@ -19,8 +19,8 @@ public class Admin implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	//@GeneratedValue(strategy = GenerationType.AUTO, generator = "ADMINISTRADOR_NAME_SEQ")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ADMINISTRADOR_NAME_SEQ")
 	//@SequenceGenerator(sequenceName = "administrador_seq", allocationSize = 1, name = "ADMINISTRADOR_NAME_SEQ")
 	private int id;
 	
@@ -40,9 +40,6 @@ public class Admin implements Serializable {
 	@NotNull
 	public String cpf;
 	
-
-
-
 	public int getId() {
 		return id;
 	}

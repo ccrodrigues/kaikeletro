@@ -16,13 +16,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "item_venda")
-public class Item_Venda implements Serializable {
+public class ItemVenda implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_NAME_SEQ")
-	@SequenceGenerator(sequenceName = "item_seq", allocationSize = 1, name = "ITEM_NAME_SEQ")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_NAME_SEQ")
+	//@SequenceGenerator(sequenceName = "item_seq", allocationSize = 1, name = "ITEM_NAME_SEQ")
 	int id;
 
 	@ManyToOne
@@ -33,20 +34,20 @@ public class Item_Venda implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "venda_id")
 	@JsonIgnore
-	Vendas venda;
+	Venda venda;
 
 	@Column(name = "quantidade")
 	int quantidade;
 
-	public Item_Venda(int id, Produto produto, Vendas venda, int quantidade) {
+	public ItemVenda(int id, Produto produto, int quantidade) {
 		super();
 		this.id = id;
 		this.produto = produto;
-		this.venda = venda;
+		//this.venda = venda;
 		this.quantidade = quantidade;
 	}
-
-	public Item_Venda() {
+	
+	public ItemVenda() {
 	}
 
 	public int getId() {
@@ -65,11 +66,11 @@ public class Item_Venda implements Serializable {
 		this.produto = produto;
 	}
 
-	public Vendas getVenda() {
+	public Venda getVenda() {
 		return venda;
 	}
 
-	public void setVenda(Vendas venda) {
+	public void setVenda(Venda venda) {
 		this.venda = venda;
 	}
 
@@ -97,7 +98,7 @@ public class Item_Venda implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Item_Venda other = (Item_Venda) obj;
+		ItemVenda other = (ItemVenda) obj;
 		if (id != other.id)
 			return false;
 		return true;

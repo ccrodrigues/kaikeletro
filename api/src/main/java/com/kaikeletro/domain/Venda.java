@@ -24,54 +24,52 @@ import com.kaikeletro.enumeration.StatusVendas;
 
 @Entity
 @Table(name = "vendas")
-public class Vendas implements Serializable {
+public class Venda implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	// Atributos
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VENDAS_NAME_SEQ")
-	@SequenceGenerator(sequenceName = "vendas_seq", allocationSize = 1, name = "VENDAS_NAME_SEQ")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @GeneratedValue(strategy = GenerationType.SEQUENCE, generator =
+	// "VENDAS_NAME_SEQ")
+	// @SequenceGenerator(sequenceName = "vendas_seq", allocationSize = 1, name =
+	// "VENDAS_NAME_SEQ")
 	private int id;
 
 	@Column(name = "valor")
 	private double valor;
 
-	
-	
 	@OneToMany(mappedBy = "venda")
-	List<Item_Venda> item;
-
+	List<ItemVenda> item;
 
 	@ManyToOne
 	private Usuario usuario;
 
-	@DateTimeFormat(pattern = "dd/MM/yy")
-	@Temporal(TemporalType.DATE)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
 	private Date dataVenda = new Date(System.currentTimeMillis());
 
-	//private String status;
-
 	private StatusVendas statusVenda;
-	
+
 	private int totalItens;
-	
+
 	private StatusPagamento pagamento;
-	
-	@Column(name= "parcela")
+
+	@Column(name = "parcela")
 	private int parcela;
-	
-	@Column(name= "valorParcela")
+
+	@Column(name = "valorParcela")
 	private double valorParcela;
 
 	// Construtor
-	public Vendas() {
+	public Venda() {
 
 	}
 
-	public Vendas(int id, double valor, Usuario usuario, Date dataVenda, StatusVendas status, int totalItens,
-			int totalVendas) {
+	public Venda(int id, double valor, Usuario usuario, Date dataVenda, StatusVendas status, int totalItens,
+			List<ItemVenda> item, StatusPagamento pagamento) {
 		super();
 		this.id = id;
 		this.valor = valor;
@@ -79,6 +77,8 @@ public class Vendas implements Serializable {
 		this.dataVenda = dataVenda;
 		this.statusVenda = status;
 		this.totalItens = totalItens;
+		this.item = item;
+		this.pagamento = pagamento;
 	}
 
 	// Getters & Setters
@@ -98,14 +98,13 @@ public class Vendas implements Serializable {
 		this.valor = valor;
 	}
 
-	public List<Item_Venda> getItem() {
+	public List<ItemVenda> getItem() {
 		return this.item;
 	}
 
-	public void setItem(List<Item_Venda> item) {
+	public void setItem(List<ItemVenda> item) {
 		this.item = item;
 	}
-
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -139,33 +138,27 @@ public class Vendas implements Serializable {
 		this.totalItens = totalItens;
 	}
 
-	
 	public StatusPagamento getPagamento() {
 		return pagamento;
 	}
-	
+
 	public int getParcela() {
 		return parcela;
 	}
-
 
 	public void setParcela(int parcela) {
 		this.parcela = parcela;
 	}
 
-
 	public double getValorParcela() {
 		return valorParcela;
 	}
-
 
 	public void setValorParcela(double valorParcela) {
 		this.valorParcela = valorParcela;
 	}
 
-
-	//HashCode e Equals
-
+	// HashCode e Equals
 
 	public void setPagamento(StatusPagamento pagamento) {
 		this.pagamento = pagamento;
@@ -175,9 +168,9 @@ public class Vendas implements Serializable {
 	@Override
 	public String toString() {
 		return "Vendas [id=" + id + ", valor=" + valor + ", item=" + item + ", usuario=" + usuario + ", dataVenda="
-				+ dataVenda + ", status=" + statusVenda + ", totalItens=" + totalItens + ", pagamento=" + pagamento + "]";
+				+ dataVenda + ", status=" + statusVenda + ", totalItens=" + totalItens + ", pagamento=" + pagamento
+				+ "]";
 	}
-	
 
 	// HashCode e Equals
 
@@ -197,13 +190,11 @@ public class Vendas implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Vendas other = (Vendas) obj;
+		Venda other = (Venda) obj;
 		if (id != other.id)
 			return false;
 		return true;
 
 	}
-	
 
-	}		
-
+}

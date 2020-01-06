@@ -18,14 +18,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name="imagem_prod")
 public class ImagemProd implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	//@GeneratedValue(strategy = GenerationType.AUTO, generator = "IMAGEMPROD_NAME_SEQ")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "IMAGEMPROD_NAME_SEQ")
     //@SequenceGenerator(sequenceName = "imagemprod_seq", allocationSize = 1, name = "IMAGEMPROD_NAME_SEQ")
 	private int idImagem;
 	
@@ -33,8 +30,8 @@ public class ImagemProd implements Serializable{
 	@Column(name="imagem")
 	private String imagemProduto;
 	
-	@ManyToMany(mappedBy= "imagens")
 	@JsonIgnore
+	@ManyToMany(mappedBy= "imagens")	
 	private List <Produto> produto;
 
 	public ImagemProd() {
@@ -108,8 +105,5 @@ public class ImagemProd implements Serializable{
 		this.imagemProduto = imagemProduto;
 		this.produto = produto;
 	}
-
-	
-	
 	
 }

@@ -19,7 +19,7 @@ import com.kaikeletro.services.CategoriaService;
 
 @RestController
 @RequestMapping(value="/categorias")
-public class CategoriaController {
+public class CategoriaResource {
 
 	@Autowired
 	CategoriaService categoriaService;

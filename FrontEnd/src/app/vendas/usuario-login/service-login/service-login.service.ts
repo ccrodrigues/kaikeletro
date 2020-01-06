@@ -2,13 +2,10 @@
 import { Injectable, Output, Input, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { UsuarioService } from 'src/app/shared/services/usuario.service';
 import { EnvService } from 'src/app/env.service';
 import { LocalUserModel } from 'src/app/shared/models/auth/local-user.model';
 import { tokenAuth } from 'src/app/shared/models/auth/token-auth.model'
 import { StorageService } from 'src/app/shared/services/storage.service';
-import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
-import { Usuario } from 'src/app/shared/models/usuario.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
 import { Perfil } from 'src/app/shared/models/perfil.enum';
@@ -24,14 +21,12 @@ export class ServiceLoginService {
 
   isMostrarMenu: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private router: Router,
-    private usuarioService: UsuarioService,
+  constructor(private router: Router,    
     private http: HttpClient,
     private envService: EnvService,
     private storageService: StorageService,
     private dialogService: DialogService
-    , private carrinhoService: CarrinhoService
-
+    
   ) {
     this.isMostrarMenu.emit(false);
   }
@@ -128,7 +123,7 @@ export class ServiceLoginService {
 
         //verifica pelo enum se o perfil é cliente ou administrador
         if (element == Perfil.CLIENTE) {
-          this.isAdministrador = false;
+          this.isAdministrador = true; //false
 
         } else if (element == Perfil.ADMIN) {
           this.isAdministrador = true

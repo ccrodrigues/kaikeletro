@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kaikeletro.dto.CredenciaisDTO;
-import com.kaikeletro.dto.UsuarioDto;
+import com.kaikeletro.dto.UsuarioDTO;
 import com.kaikeletro.exception.AuthorizationException;
 import com.kaikeletro.security.AuthToken;
 import com.kaikeletro.security.CredencialSecurityModel;
@@ -23,7 +23,7 @@ import com.kaikeletro.services.CredendialService;
 
 @RestController
 @RequestMapping(value = "autenticacao")
-public class AutenticacaoController {
+public class AutenticacaoResource {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;

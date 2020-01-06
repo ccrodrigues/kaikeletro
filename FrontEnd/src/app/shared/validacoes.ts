@@ -61,12 +61,15 @@ export class Validacoes {
   }
 
   static SenhasCombinam(controle: AbstractControl) {
-    console.log(controle);
     let senha = controle.get('senha').value;
     let confirmarSenha = controle.get('confirmarSenha').value;
 
-    if (senha === confirmarSenha) return null;
 
-    controle.get('confirmarSenha').setErrors({ senhasNaoCoincidem: true });
+    if ((senha != null) && (confirmarSenha != null)) {
+      if (senha === confirmarSenha) {
+        return null;
+      }
+    }
+    controle.get('confirmarSenha').setErrors({ senhasCoincidem: false });
   }
 }

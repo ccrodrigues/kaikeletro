@@ -1,3 +1,4 @@
+import { VendaService } from 'src/app/shared/services/venda.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PedidosComponent implements OnInit {
 
-  constructor() { }
+  infosPedidos: any;
 
-  ngOnInit() {
+  constructor(private vendaService: VendaService) {
+    this.vendaService.getPedidos().subscribe(data => this.infosPedidos = data);
   }
+  
+  ngOnInit() {
 
+    setTimeout(() => {
+      console.log(this.infosPedidos)
+      
+    }, 100);    
+
+  }
 }
+  

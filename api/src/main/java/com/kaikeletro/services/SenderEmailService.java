@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.kaikeletro.domain.Vendas;
+import com.kaikeletro.domain.Venda;
 
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -26,12 +26,12 @@ public class SenderEmailService  {
 	private static final Logger LOG = LoggerFactory.getLogger(SenderEmailService.class);
 	
 	
-	public void sendConfirmacaoVendasEmail(Vendas obj) {
+	public void sendConfirmacaoVendasEmail(Venda obj) {
 		SimpleMailMessage sm = criarEmailConfirmacaodePedido(obj);
 		sendEmail(sm);
 	}
 
-	public SimpleMailMessage criarEmailConfirmacaodePedido(Vendas obj) {
+	public SimpleMailMessage criarEmailConfirmacaodePedido(Venda obj) {
 		SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setTo(obj.getUsuario().getEmail());
 		sm.setFrom(sender);

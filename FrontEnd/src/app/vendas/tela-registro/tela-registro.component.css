@@ -1,8 +1,8 @@
 .card{
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
     /* width: 800px; */
-    background-image: linear-gradient(to bottom, rgb(0, 0, 214), rgb(0, 0, 214), rgb(119, 211, 214), #bcc5c6, #cfd5d5);
+    background-image: linear-gradient(to bottom,  rgb(207, 211, 214), #bcc5c6, #cfd5d5);
     -webkit-box-shadow: 12px 12px 8px rgba(2, 1, 1, 0.77);
     -moz-box-shadow:    12px 12px 8px rgba(34, 32, 32, 0.77);
     box-shadow:         12px 12px 8px rgba(34, 32, 32, 0.77);
@@ -12,5 +12,53 @@
 
 .card-header h4{
     width: 900px;
-    color: white;
+    color: black;
+    }
+.titleColor{
+    color: #262e30;
+}
+.line{
+    width: 112px;
+    height: 47px;
+    border-bottom: 1px solid black;
+    position: absolute;
+    }
+
+
+.button {
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 0px 20px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    }
+    
+    .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    }
+    
+    .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    }
+    
+    .button:hover span {
+    padding-right: 25px;
+    }
+    
+    .button:hover span:after {
+    opacity: 1;
+    right: 0;
     }

@@ -1,151 +1,177 @@
 
 <font color="black">
   <div class="container">
-  <div class="card">
-    <div class="card-header text">
-      <br>
-      <h4 class="text-center">Cadastro</h4>
-      
-      <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
-        <span class="border">
+    <div class="card">
+      <div class="card-header text">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <br>
+
+        <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+
+          <div class="col-md-16">
+            <h4 class="text-center">Cadastro</h4>
+          </div>
 
 
-          <div class="ol-sm-9 col-md-7 col-lg-5 mx-auto ">
-            <div class="col-md-14">
-              <label for="nome">Nome: </label>
-              <input type="nome" class="form-control" formControlName="nome" placeholder="Nome Completo">
+          <div class="col-sm-9 col-md-7 col-lg-5 mx-auto ">
+            <div class="col-md-16">
+              <input type="nome" class="form-control" formControlName="nome" placeholder="Nome Completo" #nome value="">
               <app-msg-erro [isError]="isErrorCampo('nome')" mensagem="Preencha os dados corretamente"></app-msg-erro>
             </div><br>
 
-            <div class="col-md-3">
-              <label for="nascimento">Data de Nascimento: </label>
-              <input type="date" calss="form-control" formControlName="nascimento">
+            <div class="col-md-16">
+              <label for="nascimento" class="titleColor">Data de Nascimento: </label><br>
+              <input type="date" class="form-control" formControlName="nascimento">
               <app-msg-erro [isError]="isErrorCampo('nascimento')" mensagem="Preencha os dados corretamente">
               </app-msg-erro>
             </div><br>
 
-            <div class="col-md-10">
-              <label for="cpf">CPF: </label>
+            <div class="col-md-16">
               <input type="number" (keypress)="somenteNumerosCpf($event)" required class="form-control"
                 formControlName="cpf" placeholder="CPF">
               <app-msg-erro [isError]="isErrorCampo('cpf')" mensagem="Preencha os dados corretamente"></app-msg-erro>
-            </div>
-
-            <div class="col-md-8">
-              <label for="telefone">Telefone: </label>
-              <input type="text" class="form-control" formControlName="telefone">
-            </div>
-
-            <div class="col-md-8">
-              <label for="celular">Celular: </label>
-              <input type="text" class="form-control" formControlName="celular">
-            </div>
-
-            <div class="col-md-8">
-              <label for="email">E-mail</label>
-              <input type="text" class="form-control" formControlName="email">
-              <app-msg-erro [isError]="isErrorCampo('email')" mensagem="Preencha os dados corretamente"></app-msg-erro>
             </div><br>
 
-            <div class="col-md-8">
-              <label for="senha">Senha</label>
-              <input type="password" class="form-control" formControlName="senha">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Telefone" formControlName="telefone">
+              </div><br>
+
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Celular" formControlName="celular">
+              </div><br>
+            </div>
+
+            <div class="col-md-16">
+              <input type="text" class="form-control" placeholder="E-mail" formControlName="email">
+              <app-msg-erro [isError]="isErrorCampo('email')" mensagem="Preencha os dados corretamente">
+              </app-msg-erro>
             </div><br>
 
-            <div class="col-md-8">
-              <label for="confirmarSenha">Digite a Senha Novamente</label>
-              <input type="password" class="form-control" formControlName="confirmarSenha">
-              <app-msg-erro [isError]="isErrorCampo('confirmarSenha')" mensagem="Preencha os dados corretamente">
+            <div class="col-md-16">
+              <input type="password" class="form-control" placeholder="Senha" formControlName="senha">
+              <p>As senhas devem conter no mínimo 8 caracteres</p>
+            </div><br>
+
+            <div class="col-md-16">
+              <input type="password" class="form-control" placeholder="Confirme a senha"
+                formControlName="confirmarSenha">
+              <app-msg-erro [isError]="isErrorCampo('confirmarSenha')" mensagem="As senhas não coincidem. Tente novamente!">
               </app-msg-erro>
             </div>
 
             <br><br>
-            <p class="col-md-6" style="font-size:150%;">Endereço</p>
-            <br>
 
+          </div>
+
+          <div class="col-md-16">
+            <h4 class="text-center">Endereço</h4>
           </div>
 
           <!-- div que centralizar os campos de Endereço -->
 
-          <div class="ol-sm-9 col-md-7 col-lg-5 mx-auto " formGroupName="endereco">
+          <div class="col-sm-12 col-md-7 col-lg-5 mx-auto " formGroupName="endereco">
 
-            <div class="form-group">
+            <div class="form-row">
 
-              <div class="col-md-6">
+              <div class="form-group col-md-6">
                 <label for="cep" class="control-label">CEP</label>
-                <input #cep type="number" (keypress)="somenteNumerosCep($event)" required class="form-control" id="cep"
+                <input #cep type="text" (keypress)="somenteNumerosCep($event)" required class="form-control" id="cep"
                   formControlName="cep">
-                <button class="btn btn-primary" (click)="buscarCep(cep.value)">Buscar</button>
                 <app-msg-erro [isError]="isErrorCampo('endereco.cep')" mensagem="Preencha os dados corretamente">
                 </app-msg-erro>
-              </div><br>
-
-              <div class="col-sm-10">
-                <label for="rua" class="control-label">Logradouro</label>
-
               </div>
-              <div class="col-sm-10">
+
+              <div class="form-group col-md-6">
+                <button class="btn btn-primary" (click)="buscarCep(cep.value)"
+                  style="position:absolute; bottom:0px;">Buscar</button>
+              </div>
+
+            </div>
+
+
+            <div class="row">
+
+
+              <div class="col">
+                <label for="rua" class="control-label">Logradouro</label>
                 <input type="text" [value]="objEnd?.logradouro" class="form-control" id="logradouro"
-                  formControlName="logradouro">
+                  formControlName="logradouro" [(ngModel)]="logradouro">
                 <app-msg-erro [isError]="isErrorCampo('endereco.logradouro')" mensagem="Preencha os dados corretamente">
                 </app-msg-erro>
               </div>
 
-              <div class="col-md-3">
-                <label for="numero" class="control-label">Número</label>
-                <input type="text" class="form-control" id="numero" formControlName="numero">
+
+
+
+              <div class="col">
+                <label for="rua" class="control-label">Número</label>
+                <input type="text" class="form-control"
+                  formControlName="numero">
                 <app-msg-erro [isError]="isErrorCampo('endereco.numero')" mensagem="Preencha os dados corretamente">
                 </app-msg-erro>
               </div>
+            </div>
 
-              <div class="col-md-10">
+            <div class="form-row">
+
+              <div class="col-sm">
+                <!-- tag que colocou alinhado -->
                 <label for="complemento" class="control-label">Complemento</label>
                 <input type="text" class="form-control" id="complemento" formControlName="complemento">
               </div>
+            </div>
 
-              <div class="form-group">
-                <div class="col-md-10">
-                  <label for="bairro" class="control-label">Bairro</label>
-                  <input [value]="objEnd?.bairro" type="text" class="form-control" id="bairro" formControlName="bairro">
-                  <app-msg-erro [isError]="isErrorCampo('endereco.bairro')" mensagem="Preencha os dados corretamente">
-                  </app-msg-erro>
+            <div class="form-row">
+              <div class="form-row">
+                <div class="form-group">
+                  <div class="col-sm">
+                    <label for="bairro" class="control-label">Bairro</label>
+                    <input [value]="objEnd?.bairro" type="text" class="form-control" id="bairro"
+                      formControlName="bairro" [(ngModel)]="bairro">
+                    <app-msg-erro [isError]="isErrorCampo('endereco.bairro')" mensagem="Preencha os dados corretamente">
+                    </app-msg-erro>
+                  </div>
                 </div>
 
-                <div class="col-md-10">
+
+                <div class="col-md-3">
                   <label for="cidade" class="control-label">Cidade</label>
                   <input [value]="objEnd?.localidade" type="text" class="form-control" id="cidade"
-                    formControlName="cidade">
+                    formControlName="cidade"[(ngModel)]="cidade">
                   <app-msg-erro [isError]="isErrorCampo('endereco.cidade')" mensagem="Preencha os dados corretamente">
                   </app-msg-erro>
                 </div>
 
-                <div class="col-md-10">
+
+                <div class="col">
                   <label for="estado" class="control-label">Estado</label>
-                  <input [value]="objEnd?.uf" type="text" class="form-control" id="estado" formControlName="estado">
+                  <input [value]="objEnd?.uf" type="text" class="form-control" formControlName="estado" [(ngModel)]="estado">
                   <app-msg-erro [isError]="isErrorCampo('endereco.estado')" mensagem="Preencha os dados corretamente">
                   </app-msg-erro>
                 </div>
+
               </div>
 
             </div>
-
             <br>
             <div style="width:100%; height:100%; align-content: center;">
-              <button type="submit" class="btn btn-dark cad_btn" 
-              [disabled]="regForm.valid? false : true">Cadastrar</button>
+              <button (click)="cadastrar()" class="button " ><span>Cadastrar</span></button>
               <br><br>
             </div>
 
-            <label for="exampleInputLink1" class="corCadastro" [routerLink]="['./login']">Já possui cadastro?
-            </label>
-            <a href="">Clique aqui</a>
-            <span class="clearfix"></span>
+            <div class="d-flex justify-content-end">
+              <label for="exampleInputLink1" class="corCadastro">Já possui cadastro?
+              </label>
+              <a [routerLink]="['/login']"> Clique aqui</a>
+              <span class="clearfix"></span>
+            </div>
 
           </div>
 
-        </span>
-      </form>
+
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </font>

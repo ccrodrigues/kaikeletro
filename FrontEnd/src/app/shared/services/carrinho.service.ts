@@ -5,7 +5,7 @@ import { VendasModel } from '../models/vendas.model';
 import { ProdutoModel } from '../models/produto.model';
 import { Router } from '@angular/router';
 import { EnvService } from 'src/app/env.service';
-import { Usuario } from '../models/usuario.model';
+import { UsuarioModel } from '../models/usuario.model';
 import { StorageService } from './storage.service';
 import { UsuarioService } from './usuario.service';
 
@@ -26,16 +26,18 @@ export class CarrinhoService {
 
   venda: VendasModel = new VendasModel();
 
-  user: Usuario = new Usuario();
+  user: UsuarioModel = new UsuarioModel();
 
   valorTotal: number;
   frete: number = 20;
 
   criarOuLimparCarrinho(): ItemVendaModel[] {
-    let carrinho: ItemVendaModel[] = null;
-    this.localStorage
+    //let carrinho: ItemVendaModel[] = null;
+    //this.localStorage
     this.itensCarrinho = []
-    return carrinho;
+    //return carrinho;
+
+    return this.itensCarrinho;
   }
 
   getCarrinho(): ItemVendaModel[] {

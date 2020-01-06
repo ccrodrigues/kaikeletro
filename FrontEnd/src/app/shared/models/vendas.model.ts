@@ -1,4 +1,4 @@
-import { Usuario } from './usuario.model';
+import { UsuarioModel } from './usuario.model';
 import { ItemVendaModel } from './item-venda.model';
 
 
@@ -7,7 +7,7 @@ import { ItemVendaModel } from './item-venda.model';
 
 export class VendasModel{
     id:number;
-    usuario: Usuario;
+    usuario: UsuarioModel;
     status : string;
     pagamento : string;
     totalItens: number;

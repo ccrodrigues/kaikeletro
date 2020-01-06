@@ -3,7 +3,6 @@ package com.kaikeletro.domain;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,7 +26,7 @@ public class Produto implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@GeneratedValue(strategy = GenerationType.AUTO, generator = "PRODUTO_NAME_SEQ")
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUTO_NAME_SEQ")
     //@SequenceGenerator(sequenceName = "produto_seq", allocationSize = 1, name = "PRODUTO_NAME_SEQ")
 	private int idProduto;
 	
@@ -55,7 +54,7 @@ public class Produto implements Serializable {
 	
 	@OneToMany(mappedBy = "produto")
 	@JsonIgnore
-	List<Item_Venda> item;
+	List<ItemVenda> item;
 
 	public Produto() {
 		
@@ -67,7 +66,7 @@ public class Produto implements Serializable {
 	}
 
 	public Produto(int idProduto, String nome, double preco, String descricao, List<Categoria> categorias,
-			List<ImagemProd> imagens, List<Item_Venda> item) {
+			List<ImagemProd> imagens, List<ItemVenda> item) {
 		super();
 		this.idProduto = idProduto;
 		this.nome = nome;
@@ -126,11 +125,11 @@ public class Produto implements Serializable {
 		this.imagens = imagens;
 	}
 
-	public List<Item_Venda> getItem() {
+	public List<ItemVenda> getItem() {
 		return item;
 	}
 
-	public void setItem(List<Item_Venda> item) {
+	public void setItem(List<ItemVenda> item) {
 		this.item = item;
 	}
 

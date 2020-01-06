@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TelaregistroService } from '../tela-registro/tela-registro.service';
-import { Endereco } from 'src/app/shared/models/endereco.model';
+import { EnderecoModel } from 'src/app/shared/models/endereco.model';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class ConfirmacaoEnderecoComponent implements OnInit {
 
   endForm: FormGroup;
-  objEnd: Endereco;
+  objEnd: EnderecoModel;
 
   constructor(private formBuilder: FormBuilder,
     private localStorage:StorageService,

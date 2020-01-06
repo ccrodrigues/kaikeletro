@@ -1,4 +1,4 @@
-<a [routerLink]="['/dashboardAdm']"> <img src="../../../assets/imagens/left-arrow.png" alt="" class="icon-back"> </a>
+<a [routerLink]="['/admin']"> <img src="../../../assets/imagens/left-arrow.png" alt="" class="icon-back"> </a>
 
 <div class="background rounded">
 
@@ -25,22 +25,34 @@
         <thead>
             <tr>
                 <th>ID do pedido</th>
-                <th>Nome Usuario</th>
+                <th >Nome Usuario</th>
                 <th>CPF</th>
                 <th>R$</th>
+                <th>Data da venda</th>
+                <th>Status</th>
+                <th>Pagamento</th>
+            
+
                 <th>Ver mais / Excluir</th>
             </tr>
         </thead>
         <tbody>
-                <tr *ngFor="let produtos of listProducts">
-                    <td>{{ produtos.idProduto }}</td>
-                    <td>{{ produtos.nome }}</td>
-                    <td>{{ produtos.preco }}</td>
+
+                
+                        <tr *ngFor="let pedido of infosPedidos; let i=index">
+                            <td> {{ pedido.id  }}</td>
+                             <td> {{ pedido.usuario.nome }}</td> 
+                             <td> {{ pedido.usuario.cpf }}</td> 
+                             <td> {{ pedido.valor }}</td> 
+                             <td> {{ pedido.dataVenda }}</td> 
+                             <td> {{ pedido.status }}</td> 
+                             <td> {{ pedido.pagamento }}</td> 
+                    
                     <td>
                         <button class="btn btn-info btn-sm margin-right-5" (click)="showMore(produtos)">+</button>
                         <button class="btn btn-danger btn-sm" (click)="showDelete(produtos.idProduto)">x</button>
                     </td>
-                </tr>
+                
         </tbody>    
     </table>
 
