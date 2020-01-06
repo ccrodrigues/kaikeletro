@@ -50,13 +50,13 @@
     <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Seu Carrinho</span>
-            <span class="badge badge-secondary badge-pill">{{ venda?.produto.quantidade }}</span>
+            <span class="badge badge-secondary badge-pill">{{ venda?.quantidade }}</span>
         </h4>
 
         <ul>
             <li class="list-group-item d-flex justify-content-between">
                 <span>TOTAL(BRL) </span>
-                <strong>{{ venda.venda?.valor }}</strong>
+                <strong>{{ venda?.valor }}</strong>
             </li>
 
             <li class="list-group-item d-flex justify-content-between">
@@ -66,8 +66,8 @@
 
             <li class="list-group-item d-flex justify-content-between">
                 <span>PAGAMENTO FINAL </span>
-                <strong>{{ venda.venda?.parcela }}</strong>
-                <strong>{{ venda.venda?.valorParcela }}</strong>
+                <strong>{{ venda?.parcela }}</strong>
+                <strong>{{ venda?.valorParcela }}</strong>
             </li>
         </ul>
 
