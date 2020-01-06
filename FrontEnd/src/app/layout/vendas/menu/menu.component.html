@@ -87,10 +87,30 @@
 
   </div>
     <form class="form-inline my-1 my-lg-0 search-form">
-      <input class="form-control mr-sm-1" type="search" placeholder="Buscar" aria-label="Buscar">
-      <!-- <button class="btn btn-dark" type="submit">Buscar Produto</button> -->
+      <div   placement="bottom" delay="500"  >
+        <input [popover]="myPopover" class="form-control mr-sm-1" type="search" placeholder="Buscar" aria-label="Buscar" #nomeProduto  (input) = "buscarProdutos(nomeProduto)">
+      </div>
+      
+      <div>
+        <popover-content #myPopover [hidden]="isHiddden"
+            title="Produtos"
+            [closeOnClickOutside]="true"
+            
+            >
+            <!-- <ul *ngFor = "let p of tooltipProdutos">
+              <li style="color: #C21F39"><a>{{p.nome}}</a></li>
+            </ul> -->
+            <div class="list-group" *ngFor="let p of tooltipProdutos">
+              <a href="#" class="list-group-item list-group-item-action">{{p.nome}}</a>
+            </div>
+        </popover-content>
+  
+         <!-- <button [popover]="myPopover">click this button to see a popover</button>  -->
+    </div>
+
+      
     </form>
- 
+
 
 </div>
 </nav>

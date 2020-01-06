@@ -36,7 +36,7 @@ export class ProdutosCategoriaComponent implements OnInit  {
   } 
 
   paginacaoRequest(){
-    this.produtoService.getProdutosCategoria(this.categoria).subscribe(
+    this.produtoService.getProdutosCategorias(this.categoria).subscribe(
       ( dados: ProdutoModel[]) => {
       this.produtos = dados;
       console.log(dados);

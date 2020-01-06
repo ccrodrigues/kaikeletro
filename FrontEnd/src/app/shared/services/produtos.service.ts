@@ -58,8 +58,15 @@ export class ProdutosService {
     +`pagina=${pagina}&qtdLinhas=${qtdLinhas}&direcao=${direcao}&campo=${campo}`)
   }
 
+  getProdutoNome(nomeBusca){
+    return this.http.get<ProdutoModel[]>(this.envService.urlAPI + "/produtos/nome/" + nomeBusca)
   //Recebe categoria e retorna produtos dela
-  getProdutosCategoria(categoria){
-    return this.http.get<ProdutoModel[]>(this.envService.urlAPI + "/produtos/page/?nomeCategoria=" + categoria);
   }
+    getProdutosCategoria(categoria){
+      return this.http.get<ProdutoModel[]>(this.envService.urlAPI + "/produtos/page/?nomeCategoria=" + categoria);
+    }
+  getProdutosCategorias(categoria){
+    return this.http.get<ProdutoModel[]>(this.envService.urlAPI + "/produtos/pages/?nomeCategoria=" + categoria);
+  }
+ 
 }

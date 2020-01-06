@@ -32,6 +32,7 @@
     "ngx-card": "^0.2.4",
     "ngx-credit-cards": "^1.0.9",
     "ngx-pagination": "^5.0.0",
+    "ngx-popover": "0.0.16",
     "ngx-toastr": "^11.2.1",
     "rxjs": "^6.5.4",
     "serialize-javascript": "^2.1.2",
