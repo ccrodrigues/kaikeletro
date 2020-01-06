@@ -24,7 +24,8 @@ public class DTOUtil {
 	
 	public static Produto produtoFromDTO(ProdutoDTO prodDTO) {
 
-		return new Produto(prodDTO.getIdProduto(), prodDTO.getNome(), prodDTO.getPreco(), prodDTO.getDescricao(), 
+		return new Produto(
+				prodDTO.getIdProduto(), prodDTO.getNome(), prodDTO.getPreco(), prodDTO.getDescricao(), 
 				prodDTO.getCategorias().stream().map(dto -> categoriaFromDTO(dto) ).collect(Collectors.toList()), 
 				prodDTO.getImagens().stream().map(dto -> imagemProdFromDTO(dto) ).collect(Collectors.toList()), 
 				null);

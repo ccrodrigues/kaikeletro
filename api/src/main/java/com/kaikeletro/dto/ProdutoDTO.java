@@ -81,5 +81,12 @@ public class ProdutoDTO {
 	public void setImagens(List<ImagemProdDTO> imagens) {
 		this.imagens = imagens;
 	}
+
+	@Override
+	public String toString() {
+		return "ProdutoDTO [idProduto=" + idProduto + ", nome=" + nome + ", preco=" + preco + ", descricao=" + descricao
+				+ ", categorias=" + categorias + ", imagens=" + imagens + "]";
+	}
+		
 		
 }
