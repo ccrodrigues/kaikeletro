@@ -54,7 +54,7 @@
                         &nbsp;&nbsp;&nbsp;&nbsp; {{ carrinhoService.frete | currency:'BRL':'symbol':'1.2-2' }}</p>
                         <p style="border-top: solid 1px black;">TOTAL &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;  {{ carrinhoService.valorTotalFrete() | currency:'BRL':'symbol':'1.2-2' }}</p>
-                    <button (click)="finalizarVenda()"  class="btn btn-primary">Continuar</button>
+                    <button [routerLink]="['/entrega']" routerLinkActive="router-link-active"   class="btn btn-primary">Continuar</button>
                     </div>
                 </div>
             </div>

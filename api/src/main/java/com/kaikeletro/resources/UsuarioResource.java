@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kaikeletro.domain.Admin;
 import com.kaikeletro.domain.Usuario;
+import com.kaikeletro.dto.UsuarioDTO;
+import com.kaikeletro.dto.UsuarioNewDTO;
 import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.services.UsuarioService;
+import com.kaikeletro.util.DTOUtil;
 
 
 @RestController
@@ -56,17 +58,20 @@ public class UsuarioResource {
 		return ResponseEntity.ok().body(service.deleteById(id));
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.POST)
-	public ResponseEntity<Usuario> save(@RequestBody @Valid Usuario usuario) {
-		return ResponseEntity.ok().body(service.save(usuario));
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Usuario> save(@RequestBody @Valid UsuarioNewDTO usuarioNewDTO) {
+		
+		System.out.println(usuarioNewDTO);		
+		Usuario usuario = DTOUtil.usuarioNewFromDTO( usuarioNewDTO ) ;
+		return ResponseEntity.ok().body(service.save( usuario   ));
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
 	public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable("id") int id) {
-		Optional<Usuario> obj = service.findById(id);
+		/*Optional<Usuario> obj = service.findById(id);
 		if (obj.isPresent() == false) {
 			throw new TratamentoDeErros(id, new Usuario());
-		}
+		}*/
 
 		return ResponseEntity.ok().body(service.updatebyID(usuario, id));
 	}
@@ -110,8 +115,4 @@ public class UsuarioResource {
 		
 	}
 	
-
-	
-	
-
 }

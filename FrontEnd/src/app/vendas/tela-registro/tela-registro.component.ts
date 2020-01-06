@@ -3,8 +3,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 
 import { Validacoes } from '../../shared/validacoes';
-import { Endereco } from '../../shared/models/endereco.model';
+import { EnderecoModel } from '../../shared/models/endereco.model';
 import { TelaregistroService } from './tela-registro.service';
+import { DialogService } from 'src/app/shared/toaster/dialog.service';
+import { ServiceLoginService } from '../usuario-login/service-login/service-login.service';
 
 @Component({
   selector: 'app-telaregistro',
@@ -14,13 +16,20 @@ import { TelaregistroService } from './tela-registro.service';
 export class TelaRegistroComponent implements OnInit {
 
   regForm: FormGroup;
-  objEnd: Endereco;
+  objEnd: EnderecoModel;
   registro: FormGroup;
+
+  logradouro: any;
+  estado: any;
+  bairro: any;
+  cidade: any;
 
 
   constructor(private formBuilder: FormBuilder,
     private viaCep: TelaregistroService,
-    private usuarioService: UsuarioService) { }
+    private usuarioService: UsuarioService,
+    private dialogService: DialogService,
+    private serviceLoginService : ServiceLoginService) { }
 
   ngOnInit() {
     this.regForm = this.formBuilder.group(
@@ -80,10 +89,6 @@ export class TelaRegistroComponent implements OnInit {
     }
   }
 
-  logradouro
-  estado
-  bairro
-  cidade
 
   buscarCep(cep) {
     this.viaCep.getEnderecoPorCep(cep).subscribe((data) => {
@@ -112,12 +117,23 @@ export class TelaRegistroComponent implements OnInit {
           //valido
 
           console.log(this.regForm.status)
-          this.usuarioService.addUsuario(this.regForm)
-          console.log("salvou")
+          console.log(this.regForm)
+          this.usuarioService.addUsuario(this.regForm.value)
+            .subscribe(
+              (dado) => {
+                this.dialogService.showSuccess("Usuário salvo com sucesso");
+                
+                this.serviceLoginService.fazerLogin( 
+                  {email:this.regForm.value.email, senha : this.regForm.value.senha} 
+                  );
+
+              }
+            );
+
 
         } else {
-          console.log(this.regForm.status)
-          console.error("erro")
+          this.dialogService.showError("O formulário está inválido");
+          console.log(this.regForm.status)        
           console.log(this.regForm.value)
 
         }

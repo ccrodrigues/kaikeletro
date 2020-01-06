@@ -228,7 +228,8 @@ export class ProdutosDetalhesComponent implements OnInit {
   }
 
   navigateComprarAgora(){
-    console.log("comprar agora"); 
+    console.log("comprar agora");
+    this.carrinhoService.verifyItemExists(this.produto,this.quantidade);
     this.router.navigate([`/entrega`])
   }
  

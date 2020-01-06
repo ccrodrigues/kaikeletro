@@ -3,7 +3,10 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { CreditCardValidator, CreditCard } from 'angular-cc-library';
 import { StorageService } from 'src/app/shared/services/storage.service';
-import { Endereco } from 'src/app/shared/models/endereco.model';
+import { EnderecoModel } from 'src/app/shared/models/endereco.model';
+import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
+import { ItemVendaModel } from 'src/app/shared/models/item-venda.model';
+import { VendaService } from 'src/app/shared/services/venda.service';
 
 @Component({
   selector: 'app-pagamento-finalizacao',
@@ -15,17 +18,23 @@ export class PagamentoFinalizacaoComponent implements OnInit {
   pagaForm: FormGroup;
   showType: boolean = false;
   card : any ;
+  valorTotal;
 
-  enderecoObj: Endereco;
-
+  enderecoObj: EnderecoModel;
+  venda: ItemVendaModel[];
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
-              private enderecoStorage: StorageService) {
+              private localStorage: StorageService,
+              private carrinhoService: CarrinhoService,
+              private vendaService: VendaService) {
               }
 
   ngOnInit() {
-    this.enderecoObj = this.enderecoStorage.getEndereco();
+    this.venda = this.localStorage.getCarrinho();
+    this.valorTotal=this.carrinhoService.valorTotalFrete()
+    //console.log(this.venda)
+    this.enderecoObj = this.localStorage.getEndereco();
     this.formBuilder = new FormBuilder();
     this.pagaForm = this.formBuilder.group(
       { nomeCartao: ['', [Validators.required] ],
@@ -36,13 +45,25 @@ export class PagamentoFinalizacaoComponent implements OnInit {
     );
   }
 
-  onSubmit(){
+  finalizarVenda() {
+    this.carrinhoService.fecharVenda();
+    this.vendaService.fecharVenda(this.carrinhoService.venda).subscribe(
+      (data) => {
+        data = data
+        console.log(data)
+        console.log(this.carrinhoService.itensCarrinho);
+        
+        this.carrinhoService.itensCarrinho = this.carrinhoService.criarOuLimparCarrinho()
+        this.localStorage.setCarrinho(this.carrinhoService.itensCarrinho)
+      } 
+    )
+
     console.log(this.pagaForm);
     alert('Pedido realizado com sucesso!');
-    this.router.navigate( ['/home']);
+    this.router.navigateByUrl("/home")
   }
 
-   //validar se os campos forem devidamente preenchidos 
+  //validar se os campos forem devidamente preenchidos 
    isErrorCampo(nomeCampo){
     return (!this.pagaForm.get(nomeCampo).valid && this.pagaForm.get(nomeCampo).touched ); 
   }

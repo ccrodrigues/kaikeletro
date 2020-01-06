@@ -13,7 +13,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.kaikeletro.dto.ItemVendaDTO;
 
 @Entity
 @Table(name = "item_venda")

@@ -3,14 +3,18 @@ package com.kaikeletro.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kaikeletro.domain.EnderecoUsuario;
+import com.kaikeletro.domain.Usuario;
+import com.kaikeletro.exception.TratamentoDeErros;
 import com.kaikeletro.repositories.EnderecoUsuarioRepository;
 
 @Service
 public class EnderecoUsuarioService {
 	
+	@Autowired
 	private EnderecoUsuarioRepository endRepo;
 	
 	public List<EnderecoUsuario> getAll() {
@@ -21,8 +25,8 @@ public class EnderecoUsuarioService {
 	public Optional<EnderecoUsuario> findById(int id) {
 		return endRepo.findById(id);
 	}
-	public List<EnderecoUsuario> findByFK(int id) {
-		return endRepo.findByUsuariosEmailContaining("a@a.com");
+	public List<EnderecoUsuario> findByUsuariosEmailContaining(String email) {
+		return endRepo.findByUsuariosEmailContaining(email);
 	}
 
 	public EnderecoUsuario save(EnderecoUsuario end) {
@@ -34,16 +38,17 @@ public class EnderecoUsuarioService {
 		Optional<EnderecoUsuario> endBD = endRepo.findById(id);
 
 		if (endBD.isPresent() == true) {
-			endBD.get().setIdEndereco(end.getIdEndereco());
+			//endBD.get().setIdEndereco(end.getIdEndereco());
 			endBD.get().setCep(end.getCep());
 			endBD.get().setCidade(end.getCidade());
 			endBD.get().setEstado(end.getEstado());
-			endBD.get().setUsuarios(end.getUsuarios());
+			//endBD.get().setUsuarios(end.getUsuarios());
 			endBD.get().setLogradouro(end.getLogradouro());
 			endBD.get().setNumero(end.getNumero());
+			endBD.get().setComplemento(end.getComplemento());
 			return endRepo.save(endBD.get());
 		} else {
-			return null;
+			throw new TratamentoDeErros(id, new EnderecoUsuario());
 		}
 	}
 

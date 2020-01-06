@@ -1,9 +1,6 @@
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { VendaService } from 'src/app/shared/Services/venda.service';
+import { VendaService } from 'src/app/shared/services/venda.service';
 import { Component, OnInit, ElementRef, Output, ViewChild, EventEmitter } from '@angular/core';
-
-
-
 
 
 @Component({
@@ -26,11 +23,7 @@ export class PedidosComponent implements OnInit {
 
   ngOnInit() {
 
-    setTimeout(() => {
-      // console.log(this.infosPedidos)
 
-      console.log(this.infosPedidos)
-    }, 100);
   }
 
   @ViewChild("modal", { static: false }) modal;
@@ -45,19 +38,19 @@ export class PedidosComponent implements OnInit {
   closeModal() {
     this.modal.nativeElement.style.display = 'none';
   }
-  
+
   excluir(id) {
-    if(confirm("Deseja realmente excluir o pedido com id: "+id)){
-      this.vendaService.deletarPedido(id).subscribe(  (resposta) => {
-        this.infosPedidos.splice( this.infosPedidos.findIndex(p => p.id==id), 1);
-        setTimeout( () => {alert("Deletado com sucesso");}, 400 )
-       }
-       );
+    if (confirm("Deseja realmente excluir o pedido com id: " + id)) {
+      this.vendaService.deletarPedido(id).subscribe((resposta) => {
+        this.infosPedidos.splice(this.infosPedidos.findIndex(p => p.id == id), 1);
+        setTimeout(() => { alert("Deletado com sucesso"); }, 400)
+      }
+      );
       alert("O pedido foi cancelado!")
-    }else{
+    } else {
       alert("O pedido NÃO foi cancelado!")
     }
   }
 
-    }
+}
 

@@ -11,7 +11,7 @@
       <div id="right" style="display: inline-flex;">
 
         <div class="box" *ngIf="logadoAdmin() == true" >
-          <i routerLink="dashboardAdm" style="font-size: 20px;" class="fas fa-lock cursor" title="Entrar como administrador" width="500px" height="500px" ></i>
+          <i [routerLink]="['/admin']" style="font-size: 20px;" class="fas fa-lock cursor" title="Entrar como administrador" width="500px" height="500px" ></i>
         </div>
 
         <div *ngIf="!isAuth" class="box">
@@ -101,7 +101,7 @@
               <li style="color: #C21F39"><a>{{p.nome}}</a></li>
             </ul> -->
             <div class="list-group" *ngFor="let p of tooltipProdutos">
-              <a href="#" class="list-group-item list-group-item-action">{{p.nome}}</a>
+              <a href="#" [routerLink]="['/detalhes', p.idProduto]" class="list-group-item list-group-item-action azul">{{p.nome}}</a>
             </div>
         </popover-content>
   

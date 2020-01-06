@@ -1,82 +1,86 @@
 nav.navbar-mine {
-    background-color: blue;
-    color: rgb(0, 0, 255);  
+  background-color: blue;
+  color: rgb(0, 0, 255);
+}
+
+li {
+  color: white;
+}
+
+.menu {
+  color: white;
+}
+
+h6 {
+  color: #ffffff;
+}
+
+.navbar-nav>li>a>h6:hover {
+  color: orange;
+  font: bold;
+}
+
+.divisor {
+  width: 1px;
+  height: 16px;
+  background: white;
+  margin: 16px 10px;
+}
+
+a {
+  color: white;
+  opacity: 1;
+}
+
+.img-logo {
+
+  height: 50px;
+  width: 100px;
+  display: block;
+  color: transparent;
+}
+
+#btn-busca {
+  margin-left: 5px;
+}
+
+.navbar-nav>li>a {
+  color: white;
 }
 
 
 
-li{
-    color: white;
+.barra-topo {
+  background-color: rgb(119, 211, 214);
 
 }
 
-.menu{
-    color: white;
-    
-}
-
-h6{
-    color: #ffffff;
-}
-
-.navbar-nav>li>a>h6:hover{
-    color: orange;
-    font: bold;
-   
-}
-
-.divisor{
-	width:1px;
-	height:16px;
-	background: white;
-	margin: 16px 10px;
-}
-
-a{
-    color:white;
-    opacity: 1;
-}
-
-.img-logo{
-
-    height:50px;
-	width:100px;
-	display:block;
-    color:transparent;
-}
-
-#btn-busca{
-    margin-left: 5px;
-}
-
-.navbar-nav > li >a{
-    color: white;
-  }
-
-  
-
-  .barra-topo{
-    background-color: rgb(119, 211, 214);
-   
-  }
-
-  /*.search-form{
+/*.search-form{
       margin-left: 90px;
   }
 */
-  .subscribe{
-  
-    height: 30px;
-    width: 26px;
-    padding: 0;
+.subscribe {
 
- }
+  height: 30px;
+  width: 26px;
+  padding: 0;
 
- #left{float:left;width:100px;}
+}
 
-#right{float:right;width:100px;}
+#left {
+  float: left;
+  width: 100px;
+}
 
-#center{margin:0 auto;width:100px;}
+#right {
+  float: right;
+  width: 100px;
+}
+
+#center {
+  margin: 0 auto;
+  width: 100px;
+}
 
 /*
  #grupoImagem{
@@ -89,82 +93,92 @@ a{
   }
 */
 
-.box{
-    float: right;
-    margin-right: 15px;
-    margin-left: 3px;
+.box {
+  float: right;
+  margin-right: 15px;
+  margin-left: 3px;
 }
 
 .cursor {
-    cursor: pointer;
-  }
+  cursor: pointer;
+}
 
 
- 
-  
-
-  
 
 
-  .tooltip-example {
-    text-align: center;
-    padding: 0 50px;
-  }
-  .tooltip-example [tooltip] {
-    display: inline-block;
-    margin: 50px 20px;
-    width: 180px;
-    height: 50px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    line-height: 50px;
-    text-align: center;
-  }
-  .ng-tooltip {
-    position: absolute;
-    max-width: 150px;
-    font-size: 14px;
-    text-align: center;
-    color: #f8f8f2;
-    padding: 3px 8px;
-    background: #282a36;
-    border-radius: 4px;
-    z-index: 1000;
-    opacity: 0;
-  }
-  .ng-tooltip:after {
-    content: "";
-    position: absolute;
-    border-style: solid;
-  }
-  .ng-tooltip-top:after {
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-color: black transparent transparent transparent;
-  }
-  .ng-tooltip-bottom:after {
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-color: transparent transparent black transparent;
-  }
-  .ng-tooltip-left:after {
-    top: 50%;
-    left: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-color: transparent transparent transparent black;
-  }
-  .ng-tooltip-right:after {
-    top: 50%;
-    right: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-color: transparent black transparent transparent;
-  }
-  .ng-tooltip-show {
-    opacity: 1;
-  }
+
+/* tooltip */
+.tooltip-example {
+  text-align: center;
+  padding: 0 50px;
+}
+
+.tooltip-example [tooltip] {
+  display: inline-block;
+  margin: 50px 20px;
+  width: 180px;
+  height: 50px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.ng-tooltip {
+  position: absolute;
+  max-width: 150px;
+  font-size: 14px;
+  text-align: center;
+  color: #f8f8f2;
+  padding: 3px 8px;
+  background: #282a36;
+  border-radius: 4px;
+  z-index: 1000;
+  opacity: 0;
+}
+
+.ng-tooltip:after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+}
+
+.ng-tooltip-top:after {
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-color: black transparent transparent transparent;
+}
+
+.ng-tooltip-bottom:after {
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-color: transparent transparent black transparent;
+}
+
+.ng-tooltip-left:after {
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-color: transparent transparent transparent black;
+}
+
+.ng-tooltip-right:after {
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-color: transparent black transparent transparent;
+}
+
+.ng-tooltip-show {
+  opacity: 1;
+}
+
+.azul{
+  background-color: blue;
+}
