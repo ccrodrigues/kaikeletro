@@ -77,15 +77,15 @@
               <div class="form-group col-md-6">
                 <label for="cep" class="control-label">CEP</label>
                 <input #cep type="text" (keypress)="somenteNumerosCep($event)" required class="form-control" id="cep"
-                  formControlName="cep">
+                  formControlName="cep" (blur)="buscarCep(cep.value)">
                 <app-msg-erro [isError]="isErrorCampo('endereco.cep')" mensagem="Preencha os dados corretamente">
                 </app-msg-erro>
               </div>
 
-              <div class="form-group col-md-6">
+              <!-- <div class="form-group col-md-6">
                 <button class="btn btn-primary" (click)="buscarCep(cep.value)"
                   style="position:absolute; bottom:0px;">Buscar</button>
-              </div>
+              </div> -->
 
             </div>
 

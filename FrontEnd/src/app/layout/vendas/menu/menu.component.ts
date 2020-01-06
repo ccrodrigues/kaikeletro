@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
   @ViewChild("myPopover", { static: true }) myPopover: Popover;
 
   isCollapsed = false;
-  isAuth: boolean;
+  isAuth: boolean=false;
   isDashboard: boolean = false;
   tooltipProdutos: ProdutoModel[];
 
