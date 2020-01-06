@@ -43,6 +43,11 @@ export class UsuarioDetalhesComponent implements OnInit {
         this.usuarioService.getOneUsuario(this.idRota).subscribe((usuarioAPI) => {
           console.log("=====>> " , usuarioAPI)
           this.cliente = usuarioAPI;
+
+          console.log (this.convertUsuarioToForm ( this.cliente ) );
+
+          this.detalhesForm.patchValue( this.convertUsuarioToForm ( this.cliente ) );
+
       });
 
       } else {
@@ -57,6 +62,12 @@ export class UsuarioDetalhesComponent implements OnInit {
       {
         usuario : this.formBuilder.group( {
           id:['', []],
+          nome: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
+          nascimento: ['', [Validators.compose([Validators.required, Validacoes.MaiorQue18Anos])]],
+          cpf: ['', [Validators.compose([Validators.required, Validacoes.validaCpf])]],
+          telefone: ['', [Validators.required]],
+          celular: ['', [Validators.required]],
+          email: ['', [Validators.required]],
 
           endereco: {
             cep: ['', [Validators.required]],
@@ -66,14 +77,8 @@ export class UsuarioDetalhesComponent implements OnInit {
             bairro: ['', [Validators.required]],
             cidade: ['', [Validators.required]],
             estado: ['', [Validators.required]]
-          },
+          }
 
-          nome: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
-          nascimento: ['', [Validators.compose([Validators.required, Validacoes.MaiorQue18Anos])]],
-          cpf: ['', [Validators.compose([Validators.required, Validacoes.validaCpf])]],
-          telefone: ['', [Validators.required]],
-          celular: ['', [Validators.required]],
-          email: ['', [Validators.required]],
         })
 
       });
@@ -130,6 +135,24 @@ export class UsuarioDetalhesComponent implements OnInit {
   //validar se os campos forem devidamente preenchidos 
   isErrorCampo(nomeCampo) {
     return (!this.detalhesForm.get(nomeCampo).valid && this.detalhesForm.get(nomeCampo).touched);
+  }
+
+  private convertUsuarioToForm(usuario){
+
+    return  {
+      usuario : {
+        id : usuario.id,
+        nome : usuario.nome,
+        nascimento: usuario.dataDeNascimento,
+        cpf: usuario.cpf,
+        telefone: usuario.telefone,
+        celular: usuario.celular,
+        email: usuario.email
+      }
+      
+
+    };
+
   }
 
 }

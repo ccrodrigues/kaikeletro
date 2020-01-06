@@ -10,18 +10,16 @@ import { EnvService } from 'src/app/env.service';
   
     constructor(private http : HttpClient, private envService:EnvService) { }
   
-    private url : string = "http://localhost:8080/";
-  
     getAll() {
-      return this.http.get(this.url);
+      return this.http.get(`${this.envService.urlAPI}/vendas`);
     }
 
     fecharVenda(vendas){
-        return this.http.post<VendasModel>(this.envService.urlAPI+ "/vendas",vendas);
+        return this.http.post<VendasModel>( `${this.envService.urlAPI}/vendas`, vendas);
     }
     
     getPedidos(){
-      return this.http.get(" http://localhost:8080/vendas");
+      return this.http.get(`${this.envService.urlAPI}/vendas`);
     }
   
   }

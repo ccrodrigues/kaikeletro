@@ -16,11 +16,11 @@ export class PedidosComponent implements OnInit {
   
   ngOnInit() {
 
-setTimeout(() => {
-  console.log(this.infosPedidos)
-  
-}, 100);    
+    setTimeout(() => {
+      console.log(this.infosPedidos)
+      
+    }, 100);    
 
   }
-  }
+}
   

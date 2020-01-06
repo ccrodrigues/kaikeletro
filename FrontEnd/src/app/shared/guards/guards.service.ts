@@ -10,6 +10,7 @@ export class GuardsService {
   constructor(private serviceLogin : ServiceLoginService, private router : Router) { }
 
   canActivate(){
+    console.log("aqui1")
 
     let serviceLogin = this.serviceLogin.isAutenticado() && this.serviceLogin.isAdmin();
 
@@ -19,6 +20,7 @@ export class GuardsService {
       this.router.navigate(['login']); 
 
     }
+
     return serviceLogin;
 
   }
