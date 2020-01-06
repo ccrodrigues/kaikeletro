@@ -33,14 +33,31 @@ public class EnderecoUsuarioResource {
 	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<List<EnderecoUsuario>> findByFK(@PathVariable("id")int id) {
+	public ResponseEntity<Optional<EnderecoUsuario>> findById(@PathVariable("id") int id) {
+		Optional<EnderecoUsuario> obj = service.findById(id);
 
-		return ResponseEntity.ok().body(service.findByUsuariosEmailContaining(id));
+		if (obj.isPresent() == false) {
+			throw new TratamentoDeErros(id, new Usuario());
+		}
+
+		return ResponseEntity.ok().body(obj);
+	}
+	
+	@RequestMapping(value = "/email/{email}", method = RequestMethod.GET)
+	public ResponseEntity<List<EnderecoUsuario>> findById(@PathVariable("email")String email) {
+
+		return ResponseEntity.ok().body(service.findByUsuariosEmailContaining(email));
 	}
 	
 	@RequestMapping( method = RequestMethod.POST)
 	public ResponseEntity<EnderecoUsuario> save(@RequestBody @Valid EnderecoUsuario end) {
 		return ResponseEntity.ok().body(service.save(end));
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+	public ResponseEntity<EnderecoUsuario> update(@RequestBody EnderecoUsuario endereco, @PathVariable("id") int id) {
+
+		return ResponseEntity.ok().body(service.updatebyID(endereco, id));
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

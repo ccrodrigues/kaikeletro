@@ -6,7 +6,6 @@ import { AuthServiceService } from 'src/app/shared/services/auth-service.service
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
 import { UsuarioModel } from 'src/app/shared/models/usuario.model';
-import { EnvService } from 'src/app/env.service';
 import { DialogService } from 'src/app/shared/toaster/dialog.service';
 import { EnderecoService } from 'src/app/shared/services/endereco.service';
 
@@ -28,11 +27,11 @@ export class UsuarioDetalhesComponent implements OnInit {
     private formBuilder: FormBuilder,
     private viaCep: AuthServiceService,
     private activedRoute: ActivatedRoute,
-    private usuarioService: UsuarioService,
     private router: Router,
-    private dialogService : DialogService,
+    private usuarioService: UsuarioService,        
     private enderecoService : EnderecoService,
-    private envService: EnvService
+    private dialogService : DialogService
+    
     ) {
 
       this.detalhesForm = this.formBuilder.group(

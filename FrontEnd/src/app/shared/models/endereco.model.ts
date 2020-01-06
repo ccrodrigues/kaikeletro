@@ -10,6 +10,6 @@ export class EnderecoModel {
     ibge: string;
     gia: string;
     numero: string;
-  
+    cidade : string;
     erro: boolean;
   }

@@ -15,6 +15,8 @@ public class EnderecoUsuarioDTO implements Serializable {
 	
 	private String cep;
 	
+	private String bairro;
+	
 	private String cidade;
 	
 	private String estado;
@@ -52,6 +54,15 @@ public class EnderecoUsuarioDTO implements Serializable {
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+	
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
 
 	public String getCidade() {

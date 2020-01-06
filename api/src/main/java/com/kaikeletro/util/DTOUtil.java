@@ -91,6 +91,7 @@ public class DTOUtil {
 				obj.getLogradouro(),
 				obj.getNumero(),
 				obj.getCep(),
+				obj.getBairro(),
 				obj.getCidade(),
 				obj.getEstado(),
 				obj.getComplemento()

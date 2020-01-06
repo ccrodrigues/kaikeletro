@@ -20,4 +20,14 @@ export class EnderecoService {
   deleleById(id){
     return this.http.delete<EnderecoModel>(`${this.envService.urlAPI}/enderecos/${id}`);
   }
+
+  create(endereco) {
+
+    return this.http.post<EnderecoModel>(this.envService.urlAPI + `/enderecos`, endereco);
+  }
+  update(id, endereco) {
+
+    return this.http.patch<EnderecoModel>(this.envService.urlAPI + `/enderecos/${id}`, endereco);
+  }
+  
 }

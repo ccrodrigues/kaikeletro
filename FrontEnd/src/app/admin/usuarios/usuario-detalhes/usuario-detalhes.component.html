@@ -83,20 +83,20 @@
           <!-- row -->
         </div>
       </div>
-
-
       
         <!-- formGroupName="usuario" -->
       </div>
           
-    
-    <div class="salvar mt-4">
-      <button type="submit" class="btn btn-dark cad_btn mr-1" [routerLink]="['/admin/usuarios']">Voltar</button>
-      
-      <button type="submit" class="btn btn-dark cad_btn" [disabled]="!detalhesForm.valid">Salvar</button>
+    <div class="mt-4 mb-4">
+        <div class="form-row text-center">
+            <div class="col-12">
+          <button type="submit" class="btn btn-dark cad_btn mr-1" [routerLink]="['/admin/usuarios']">Voltar</button>
+
+          <button type="submit" class="btn btn-dark cad_btn" [disabled]="!detalhesForm.valid">Salvar</button>
+        </div>
+      </div>
     </div>
   </form>
-
 
 
   <div class="card">

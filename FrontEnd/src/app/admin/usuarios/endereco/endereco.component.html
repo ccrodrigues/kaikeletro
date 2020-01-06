@@ -1,107 +1,119 @@
-<p>endereco works!</p>
+<div class="card mt-4 mb-4">
 
-<br>
-      <h2><small class="form-text text-muted negrito-padding text-center">Endereço</small></h2>
-      <div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Endereço</h5>
 
-        <!-- <div formGroupName="endereco"> -->
-          
-            <div class="row cpp">
+    <form [formGroup]="detalhesForm" (ngSubmit)="onSubmit()">
 
-              <div class="col-md-6">
-                <label for="cep" class="control-label">CEP</label>
-                <div class="input-group form-group-cep">
-                  <input type="number" (keypress)="somenteNumerosCep($event)" required class="form-control" id="cep"
-                    formControlName="cep">
-                </div>
-              </div>
+      <div formGroupName="endereco">
 
-              <div class="col-md-1 but">
-                <button class="btn btn-primary" (click)="buscarCep(cep.value)">Buscar</button>
-                <app-msg-erro [isError]="isErrorCampo('endereco.cep')" mensagem="Preencha os dados corretamente">
-                </app-msg-erro>
-              </div>
+        <div class="row cpp ml-4 mt-4">
 
+          <div class="col-md-6">
+            <label for="cep" class="control-label">CEP</label>
+            <div class="input-group form-group-cep">
+              <input type="number" (keypress)="somenteNumerosCep($event)" required class="form-control" id="cep"
+                formControlName="cep">
             </div>
-
-
-            <div class="row cpp">
-
-              <div class="col-md-8">
-                <label for="rua" class="control-label">Logradouro</label>
-                <div class="input-group form-group-logradouro">
-                  <input type="text" [value]="objEnd?.logradouro" class="form-control" id="logradouro"
-                    formControlName="logradouro">
-                  <app-msg-erro [isError]="isErrorCampo('endereco.logradouro')"
-                    mensagem="Preencha os dados corretamente">
-                  </app-msg-erro>
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <label for="numero" class="control-label">Número</label>
-                <div class="input-group form-group-numero">
-                  <input type="text" class="form-control" id="numero" formControlName="numero">
-
-                </div>
-
-                <app-msg-erro [isError]="isErrorCampo('endereco.numero')" mensagem="Preencha os dados corretamente">
-                </app-msg-erro>
-
-              </div>
-
-            </div>
-
-            
-            <div class="row cpp">
-
-              <div class="col-md-6">
-                <label for="complemento" class="control-label">Complemento</label>
-                <div class="input-group form-group-complemento">
-                  <input type="text" class="form-control" id="complemento" formControlName="complemento">
-                </div>
-              </div>
-
-              <div class="col-md-5">
-                <label for="bairro" class="control-label">Bairro</label>
-                <div class="input-group form-group-bairro">
-                  <input [value]="objEnd?.bairro" type="text" class="form-control" id="bairro" formControlName="bairro">
-                  <app-msg-erro [isError]="isErrorCampo('endereco.bairro')" mensagem="Preencha os dados corretamente">
-                  </app-msg-erro>
-                </div>
-              </div>
-              <!-- row -->
-            </div>
-
-            <div class="row cpp mb-3">
-
-              <div class="col-md-10">
-                <label for="cidade" class="control-label">Cidade</label>
-                <div class="input-group form-group-cidade">
-                  <input [value]="objEnd?.localidade" type="text" class="form-control" id="cidade"
-                    formControlName="cidade">
-                </div>
-
-                <app-msg-erro [isError]="isErrorCampo('endereco.cidade')" mensagem="Preencha os dados corretamente">
-                </app-msg-erro>
-
-              </div>
-
-              
-              <div class="col-md-1">
-                <label for="estado" class="control-label">Estado</label>
-                <div class="input-group form-group-estado">
-                  <input [value]="objEnd?.uf" type="text" class="form-control" id="estado" formControlName="estado">
-                </div>
-
-                <app-msg-erro [isError]="isErrorCampo('endereco.estado')" mensagem="Preencha os dados corretamente">
-                </app-msg-erro>
-
-
-              </div>
-
-            <!-- </div> -->
-            <!-- formgroupendereco -->
           </div>
-          <!-- card -->
+
+          <div class="col-md-1 but">
+            <button class="btn btn-primary" (click)="buscarCep(cep.value)">Buscar</button>
+            <app-msg-erro [isError]="isErrorCampo('endereco.cep')" mensagem="Preencha os dados corretamente">
+            </app-msg-erro>
+          </div>
+
         </div>
+
+
+        <div class="row cpp ml-4">
+
+          <div class="col-md-8">
+            <label for="rua" class="control-label">Logradouro</label>
+            <div class="input-group form-group-logradouro">
+              <input type="text" [value]="objEnd?.logradouro" class="form-control" id="logradouro"
+                formControlName="logradouro">
+              <app-msg-erro [isError]="isErrorCampo('endereco.logradouro')" mensagem="Preencha os dados corretamente">
+              </app-msg-erro>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label for="numero" class="control-label">Número</label>
+            <div class="input-group form-group-numero">
+              <input type="text" class="form-control" id="numero" formControlName="numero">
+
+            </div>
+
+            <app-msg-erro [isError]="isErrorCampo('endereco.numero')" mensagem="Preencha os dados corretamente">
+            </app-msg-erro>
+
+          </div>
+
+        </div>
+
+
+        <div class="row cpp ml-4">
+
+          <div class="col-md-6">
+            <label for="complemento" class="control-label">Complemento</label>
+            <div class="input-group form-group-complemento">
+              <input type="text" class="form-control" id="complemento" formControlName="complemento">
+            </div>
+          </div>
+
+          <div class="col-md-5">
+            <label for="bairro" class="control-label">Bairro</label>
+            <div class="input-group form-group-bairro">
+              <input [value]="objEnd?.bairro" type="text" class="form-control" id="bairro" formControlName="bairro">
+              <app-msg-erro [isError]="isErrorCampo('endereco.bairro')" mensagem="Preencha os dados corretamente">
+              </app-msg-erro>
+            </div>
+          </div>
+          <!-- row -->
+        </div>
+
+        <div class="row cpp mb-3 ml-4">
+
+          <div class="col-md-10">
+            <label for="cidade" class="control-label">Cidade</label>
+            <div class="input-group form-group-cidade">
+              <input [value]="objEnd?.localidade" type="text" class="form-control" id="cidade" formControlName="cidade">
+            </div>
+
+            <app-msg-erro [isError]="isErrorCampo('endereco.cidade')" mensagem="Preencha os dados corretamente">
+            </app-msg-erro>
+
+          </div>
+
+
+          <div class="col-md-1">
+            <label for="estado" class="control-label">Estado</label>
+            <div class="input-group form-group-estado">
+              <input [value]="objEnd?.uf" type="text" class="form-control" id="estado" formControlName="estado">
+            </div>
+
+            <app-msg-erro [isError]="isErrorCampo('endereco.estado')" mensagem="Preencha os dados corretamente">
+            </app-msg-erro>
+
+
+          </div>
+
+        </div>
+        <!-- formgroupendereco -->
+      </div>
+      <!-- card -->
+
+      <div class="mt-4 mb-4">
+        <div class="form-row text-center">
+            <div class="col-12">
+          <button class="btn btn-dark cad_btn mr-1" [routerLink]="['/admin/usuarios',idUsuarioRota]">Voltar</button>
+
+          <button type="submit" class="btn btn-dark cad_btn" [disabled]="!detalhesForm.valid">Salvar</button>
+        </div>
+      </div>
+    </div>
+
+    </form>
+  </div>
+</div>

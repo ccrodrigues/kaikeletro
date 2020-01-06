@@ -36,6 +36,8 @@ public class EnderecoUsuario implements Serializable {
 	@NotNull
 	private String cep;
 	
+	private String bairro;
+	
 	private String cidade;
 	
 	private String estado;
@@ -45,13 +47,14 @@ public class EnderecoUsuario implements Serializable {
 	public EnderecoUsuario() {}
 		
 
-	public EnderecoUsuario(int idEndereco,  String logradouro, String numero, String cep,
+	public EnderecoUsuario(int idEndereco,  String logradouro, String numero, String cep, String bairro,
 			String cidade, String estado, String complemento) {
 		super();
 		this.idEndereco = idEndereco;		
 		this.logradouro = logradouro;
 		this.numero = numero;
 		this.cep = cep;
+		this.bairro = bairro;
 		this.cidade = cidade;
 		this.estado = estado;
 		this.complemento = complemento;
@@ -91,6 +94,16 @@ public class EnderecoUsuario implements Serializable {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
+		
+	public String getBairro() {
+		return bairro;
+	}
+
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
 
 	public String getCidade() {
 		return cidade;
