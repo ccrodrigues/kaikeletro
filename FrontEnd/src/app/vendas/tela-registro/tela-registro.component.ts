@@ -35,8 +35,8 @@ export class TelaRegistroComponent implements OnInit {
     this.regForm = this.formBuilder.group(
       {
         nome: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
-        nascimento: ['', [Validators.compose([Validators.required, Validacoes.MaiorQue18Anos])]],
-        cpf: ['', [Validators.compose([Validators.required, Validacoes.validaCpf])]],
+        nascimento: ['', [Validators.compose([Validators.required])]],
+        cpf: ['', [Validators.compose([Validators.required])]],
         telefone: ['',],
         celular: ['', [Validators.required]],
         email: ['', [Validators.required]],

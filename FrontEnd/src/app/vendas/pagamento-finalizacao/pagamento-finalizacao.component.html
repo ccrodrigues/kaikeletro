@@ -56,7 +56,7 @@
         <ul>
             <li class="list-group-item d-flex justify-content-between">
                 <span>TOTAL(BRL) </span>
-                <strong>{{ valorTotal }}</strong>
+                <strong>{{ valorTotal | currency:'BRL':'symbol':'1.2-2'}}</strong>
             </li>
 
             <li class="list-group-item d-flex justify-content-between">
@@ -64,11 +64,11 @@
                 <strong>R$15,00</strong>
             </li>
 
-            <li class="list-group-item d-flex justify-content-between">
+            <!-- <li class="list-group-item d-flex justify-content-between">
                 <span>PAGAMENTO FINAL </span>
                 <strong>{{ venda?.parcela }}</strong>
                 <strong>{{ venda?.valorParcela }}</strong>
-            </li>
+            </li> -->
         </ul>
 
     </div>

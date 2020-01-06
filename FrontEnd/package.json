@@ -28,6 +28,7 @@
     "bootstrap": "^4.4.1",
     "card": "^2.4.0",
     "ng-multiselect-dropdown": "^0.2.10",
+    "ng2-opd-popup": "^1.1.21",
     "ngx-bootstrap": "^5.2.0",
     "ngx-card": "^0.2.4",
     "ngx-credit-cards": "^1.0.9",

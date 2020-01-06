@@ -2,6 +2,7 @@ package com.kaikeletro.services;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.transaction.UserTransaction;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kaikeletro.domain.ItemVenda;
+import com.kaikeletro.domain.Produto;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.domain.Venda;
 import com.kaikeletro.dto.ItemVendaDTO;
@@ -74,5 +76,18 @@ public class VendasService {
 
 		return sell;
 	}
+	
+
+	public Optional<Venda> findById(int id) {
+		return vendasRepo.findById(id);
+	}
+	
+
+	public boolean deleteById(int id) {
+		vendasRepo.deleteById(id);
+		return true;
+	}
+	
+	}
+
 			
-}

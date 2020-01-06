@@ -21,5 +21,9 @@ import { EnvService } from 'src/app/env.service';
     getPedidos(){
       return this.http.get(`${this.envService.urlAPI}/vendas`);
     }
+
+    deletarPedido(id){
+      return this.http.delete(`${this.envService.urlAPI}/vendas/${id}`)
+    }
   
   }

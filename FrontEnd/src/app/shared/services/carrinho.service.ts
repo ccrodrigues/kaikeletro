@@ -29,7 +29,7 @@ export class CarrinhoService {
   user: UsuarioModel = new UsuarioModel();
 
   valorTotal: number;
-  frete: number = 20;
+  frete: number = 15;
 
   criarOuLimparCarrinho(): ItemVendaModel[] {
     //let carrinho: ItemVendaModel[] = null;
@@ -38,6 +38,10 @@ export class CarrinhoService {
     //return carrinho;
 
     return this.itensCarrinho;
+  }
+
+  getFrete(){
+    return this.frete;
   }
 
   getCarrinho(): ItemVendaModel[] {
