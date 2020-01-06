@@ -359,7 +359,7 @@ public class PopularBancoService {
 		v1.setItem(itemArray);
 		v2.setItem(itemArray2);
 		
-		p11.setCategorias(Arrays.asList(ca1));
+		p11.setCategorias(Arrays.asList(ca1, cat3));
 
 		// Salvando dados de venda
 		categoriaRepository.save(ca1);
