@@ -26,7 +26,6 @@ export class CarrinhoComponent implements OnInit {
 
 
   ngOnInit() {
-
     if (this.localStorage.getCarrinho() != null) {
       
       this.carrinhoService.itensCarrinho = this.localStorage.getCarrinho();
