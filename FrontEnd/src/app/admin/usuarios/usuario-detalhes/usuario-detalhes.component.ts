@@ -20,14 +20,43 @@ export class UsuarioDetalhesComponent implements OnInit {
   idRota;
   isEdicao = false;
   endereco: Endereco[] = [];
-  cliente : any = [];
+  usuario : Usuario ;
 
-  constructor(private formBuilder: FormBuilder
-    , private viaCep: AuthServiceService
-    , private activedRoute: ActivatedRoute
-    , private usuarioService: UsuarioService
-    , private router: Router
-    , private envService: EnvService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private viaCep: AuthServiceService,
+    private activedRoute: ActivatedRoute,
+    private usuarioService: UsuarioService,
+    private router: Router,
+    private envService: EnvService
+    ) {
+
+      this.detalhesForm = this.formBuilder.group(
+        {
+          usuario : this.formBuilder.group( {
+            id:['', []],
+            nome: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
+            nascimento: ['', [Validators.compose([Validators.required, Validacoes.MaiorQue18Anos])]],
+            cpf: ['', [Validators.compose([Validators.required, Validacoes.validaCpf])]],
+            telefone: ['', [Validators.required]],
+            celular: ['', [Validators.required]],
+            email: ['', [Validators.required]],
+  
+            endereco: {
+              cep: ['', [Validators.required]],
+              numero: ['', [Validators.required]],
+              complemento: ['', []],
+              logradouro: ['', [Validators.required]],
+              bairro: ['', [Validators.required]],
+              cidade: ['', [Validators.required]],
+              estado: ['', [Validators.required]]
+            }
+  
+          })
+  
+        });
+
+     }
 
   ngOnInit() {
 
@@ -41,12 +70,13 @@ export class UsuarioDetalhesComponent implements OnInit {
         this.isEdicao = true;
 
         this.usuarioService.getOneUsuario(this.idRota).subscribe((usuarioAPI) => {
-          console.log("=====>> " , usuarioAPI)
-          this.cliente = usuarioAPI;
+          console.log("=====>> " , usuarioAPI);
+          this.usuario = usuarioAPI;
+          this.endereco = usuarioAPI.idEndereco;
 
-          console.log (this.convertUsuarioToForm ( this.cliente ) );
+          console.log ( this.usuario  );
 
-          this.detalhesForm.patchValue( this.convertUsuarioToForm ( this.cliente ) );
+          this.detalhesForm.patchValue( this.convertUsuarioToForm ( this.usuario ) );
 
       });
 
@@ -58,30 +88,7 @@ export class UsuarioDetalhesComponent implements OnInit {
 
     });
 
-    this.detalhesForm = this.formBuilder.group(
-      {
-        usuario : this.formBuilder.group( {
-          id:['', []],
-          nome: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
-          nascimento: ['', [Validators.compose([Validators.required, Validacoes.MaiorQue18Anos])]],
-          cpf: ['', [Validators.compose([Validators.required, Validacoes.validaCpf])]],
-          telefone: ['', [Validators.required]],
-          celular: ['', [Validators.required]],
-          email: ['', [Validators.required]],
 
-          endereco: {
-            cep: ['', [Validators.required]],
-            numero: ['', [Validators.required]],
-            complemento: ['', []],
-            logradouro: ['', [Validators.required]],
-            bairro: ['', [Validators.required]],
-            cidade: ['', [Validators.required]],
-            estado: ['', [Validators.required]]
-          }
-
-        })
-
-      });
   }
 
 
@@ -150,7 +157,6 @@ export class UsuarioDetalhesComponent implements OnInit {
         email: usuario.email
       }
       
-
     };
 
   }

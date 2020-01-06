@@ -15,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EnderecoComponent } from './usuarios/endereco/endereco.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdicionarComponent,
     PedidosComponent,
     UsuariosComponent,
-    UsuarioDetalhesComponent
+    UsuarioDetalhesComponent,
+    EnderecoComponent
 
   ],
   imports: [
