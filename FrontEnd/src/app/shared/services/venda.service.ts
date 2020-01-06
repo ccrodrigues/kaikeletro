@@ -21,7 +21,11 @@ import { EnvService } from 'src/app/env.service';
     }
     
     getPedidos(){
-      return this.http.get(" http://localhost:8080/vendas");
+      return this.http.get(this.url+"vendas");
+    }
+
+    deletarPedido(id){
+      return this.http.delete("http://localhost:8080/vendas/"+id)
     }
   
   }

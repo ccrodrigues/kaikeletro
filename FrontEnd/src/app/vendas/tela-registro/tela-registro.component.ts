@@ -1,13 +1,10 @@
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
-import { Cadastro } from './cadastro.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 
 import { Validacoes } from '../../shared/validacoes';
 import { Endereco } from '../../shared/models/endereco.model';
 import { TelaregistroService } from './tela-registro.service';
-import { DatePipe } from '@angular/common';
-import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-telaregistro',

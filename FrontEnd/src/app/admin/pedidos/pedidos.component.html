@@ -4,58 +4,136 @@
 
     <h2><small class="form-text text-muted negrito-padding text-center">Lista de Pedidos</small></h2>
 
-    <div class="row barraPesquisa">
-            <div class="col-9 padding-0">
-                <input type="text" class="form-control" placeholder="Pesquise..." #pesquise>
-            </div>
-
-            <div class="col-2 padding-0">
-                <select name="pesquisaPor" class="form-control padding-0" #pesquisaPor>
-                    <option value="id">ID</option>
-                    <option value="nome">CPF</option>
-                </select>
-            </div>
-
-            <div class="col-1 padding-0">
-                <button class="btn btn-sm btn-cheio" (click)="pesquisar(pesquisaPor, pesquise)"><img src="https://img.icons8.com/search" class="icon"></button>
-            </div>
-    </div>
-
     <table class="table text-center" *ngIf="pesquisado == undefined" [hidden]="isDelete == true || isShowMore">
         <thead>
+
             <tr>
                 <th>ID do pedido</th>
-                <th >Nome Usuario</th>
+                <th>Nome Usuario</th>
                 <th>CPF</th>
                 <th>R$</th>
                 <th>Data da venda</th>
                 <th>Status</th>
                 <th>Pagamento</th>
-            
+
 
                 <th>Ver mais / Excluir</th>
             </tr>
         </thead>
+
         <tbody>
 
-                
-                        <tr *ngFor="let pedido of infosPedidos; let i=index">
-                            <td> {{ pedido.id  }}</td>
-                             <td> {{ pedido.usuario.nome }}</td> 
-                             <td> {{ pedido.usuario.cpf }}</td> 
-                             <td> {{ pedido.valor }}</td> 
-                             <td> {{ pedido.dataVenda }}</td> 
-                             <td> {{ pedido.status }}</td> 
-                             <td> {{ pedido.pagamento }}</td> 
-                    
-                    <td>
-                        <button class="btn btn-info btn-sm margin-right-5" (click)="showMore(produtos)">+</button>
-                        <button class="btn btn-danger btn-sm" (click)="showDelete(produtos.idProduto)">x</button>
-                    </td>
-                
-        </tbody>    
+            <tr *ngFor="let pedido of infosPedidos; let i=index">
+                <td> {{ pedido?.id  }}</td>
+                <td> {{ pedido?.usuario?.nome }}</td>
+                <td> {{ pedido?.usuario?.cpf }}</td>
+                <td> {{ pedido?.valor }}</td>
+                <td> {{ pedido?.dataVenda }}</td>
+                <td> {{ pedido?.status }}</td>
+                <td> {{ pedido?.pagamento }}</td>
+
+                <td>
+                    <button class="btn btn-info btn-sm margin-right-5" (click)="showMore(pedido?.id)">+</button>
+                    <button class="btn btn-danger btn-sm" (click)="excluir(pedido?.id)">x</button>
+                </td>
+
+        </tbody>
     </table>
 
+    <!-- Modal -->
+    <div class="modal" #modal style="overflow: auto; ">
+        <div style="width: 80%; height: 80%; margin: auto;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Detalhes do pedido</h4>
+                    <button type="button" class="close" (click)="closeModal()" >&times;</button>
+                </div>
+                <div class="modal-body">
+
+
+                    <table class="table text-center">
+
+                        <thead class="thead-dark" >
+                            <div class="alert alert-success">
+                                Detalhes do Produto
+                            </div>
+
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Data de venda</th>
+                                <th scope="col">Total de itens</th>
+                                <th scope="col">Pagamento </th>
+                                <th scope="col">Parcelas</th>
+                                <th scope="col">Valor Parcelas</th>
+                                <th scope="col">Status</th>
+                            </tr>
+
+                            <tr scope="row" >
+                                <td>{{ showMoreByid?.id }}</td>
+                                <td>{{ showMoreByid?.valor }}</td>
+                                <td>{{ showMoreByid?.dataVenda }}</td>
+                                <td>{{ showMoreByid?.totalItens }}</td>
+                                <td>{{ showMoreByid?.pagamento }}</td>
+                                <td>{{ showMoreByid?.parcelas }}</td>
+                                <td>{{ showMoreByid?.valorParcela }}</td>
+                                <td>{{ showMoreByid?.status }}</td>
+                            </tr>
+
+                            <div colspan="2" class="alert alert-success">
+                                Item(s)
+                            </div>
+
+                            <tr>
+                                <th>Id produto</th>
+                                <th>Nome produto</th>
+                                <th>Preço produto</th>
+                            </tr>
+
+                            <tr >
+                                <td> {{ itens['0'].produto.idProduto }} </td>
+                                <td> {{ itens['0'].produto.nome }} </td>
+                                <td> {{ itens['0'].produto.preco }} </td>
+                            </tr>
+                        </thead>
+
+                        <div class="alert alert-success">
+                            Detalhes do cliente
+                        </div>
+                        <tbody class="thead-dark">
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">CPF</th>
+                                <th scope="col">Telefone</th>
+                                <th scope="col">Celular</th>
+                            </tr>
+
+                            <tr>
+                                <td>{{ infosPedidos['0'].usuario.id }}</td>
+                                <td>{{ infosPedidos['0'].usuario.nome }}</td>
+                                <td>{{ infosPedidos['0'].usuario.email }}</td>
+                                <td>{{ infosPedidos['0'].usuario.cpf }}</td>
+                                <td>{{ infosPedidos['0'].usuario.telefone }}</td>
+                                <td>{{ infosPedidos['0'].usuario.celular }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="closeModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- <app-deletar-produto [hidden]="isDelete == false" [idProduto]="id" (close)="lessDelete()" (deletado)="showMsgApagou($event)"></app-deletar-produto>-->
-    <app-show-more *ngIf="isShowMore" [produto]="selecionado" (close)="lessMore()"></app-show-more> 
+    <app-show-more *ngIf="isShowMore" [produto]="selecionado" (close)="lessMore()"></app-show-more>
 </div>
+
+
+
