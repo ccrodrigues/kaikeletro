@@ -107,7 +107,7 @@ export class TelaRegistroComponent implements OnInit {
     return (!this.regForm.get(nomeCampo).valid && this.regForm.get(nomeCampo).touched);
   }
 
-  cadastrar() {
+  onSubmit() {
 
     if (this.regForm.get('confirmarSenha').errors == null) {
 
