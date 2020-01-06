@@ -47,7 +47,8 @@ export class PagamentoFinalizacaoComponent implements OnInit {
       { nomeCartao: ['', [Validators.required] ],
         numCartao: ['', [CreditCardValidator.validateCCNumber] ],
         exp: ['', [CreditCardValidator.validateExpDate] ],
-        cvv: ['', [Validators.required, Validators.maxLength] ]
+        cvv: ['', [Validators.required, Validators.maxLength] ],
+        'metodo': ['', Validators.required]
       }
     );
   }
