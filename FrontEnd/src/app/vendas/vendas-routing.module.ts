@@ -11,6 +11,7 @@ import { PagamentoFinalizacaoComponent } from './pagamento-finalizacao/pagamento
 import { ProdutosComponent } from './home/produtos/produtos.component';
 import { FaqComponent } from './faq/faq.component';
 import { ProdutosCategoriaComponent } from './produtos-categoria/produtos-categoria.component';
+import { GuardsService} from '../shared/guards/guards.service';
 
 
 const routes: Routes = [
@@ -21,9 +22,9 @@ const routes: Routes = [
   {path:'produtos', component: ProdutosComponent},
   {path:'faq', component: FaqComponent},  
   {path: 'paginacao', component: PaginacaoComponent},
-  {path: 'carrinho', component: CarrinhoComponent},
-  {path: 'entrega', component: ConfirmacaoEnderecoComponent},
-  {path: 'pagamento', component: PagamentoFinalizacaoComponent},
+  {path: 'carrinho', component: CarrinhoComponent, canActivate:[ GuardsService] },
+  {path: 'entrega', component: ConfirmacaoEnderecoComponent, canActivate:[ GuardsService] },
+  {path: 'pagamento', component: PagamentoFinalizacaoComponent, canActivate:[ GuardsService] },
   {path: 'detalhes/:id', component: ProdutosDetalhesComponent},
   {path: 'nossos-produtos', component: ProdutosCategoriaComponent}
 
