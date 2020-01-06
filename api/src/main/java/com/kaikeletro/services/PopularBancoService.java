@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.kaikeletro.domain.Admin;
 import com.kaikeletro.domain.Categoria;
 import com.kaikeletro.domain.EnderecoUsuario;
 import com.kaikeletro.domain.ImagemProd;
@@ -16,7 +15,6 @@ import com.kaikeletro.domain.Produto;
 import com.kaikeletro.domain.Usuario;
 import com.kaikeletro.domain.Venda;
 import com.kaikeletro.domain.enums.Perfil;
-import com.kaikeletro.domain.enums.TipoCliente;
 import com.kaikeletro.enumeration.StatusPagamento;
 import com.kaikeletro.enumeration.StatusVendas;
 import com.kaikeletro.repositories.CategoriaRepository;
@@ -71,13 +69,14 @@ public class PopularBancoService {
 		Produto p1 = new Produto("Notebook Lenovo ", 6000.00);
 		Produto p2 = new Produto("Impressora HP ", 800.00);
 		Produto p3 = new Produto("Mouse Sem Fio ", 80.00);
-		Produto p4 = new Produto("Fone De Ouvido Xiaomi Redmi Airdots", 50.00);
-		Produto p5 = new Produto("Batedeira 8 Velocidades 220W/110W", 200.00);
-		Produto p6 = new Produto("TV 55 Polegadas Kaik Eletro Smart Tv LED", 9200.00);
+		Produto p4 = new Produto("Xiaomi Redmi Airdots", 50.00);
+		Produto p5 = new Produto("Batedeira 220W/110W", 200.00);
+		Produto p6 = new Produto("TV 55 Polegadas Smart", 9200.00);
 		Produto p7 = new Produto("Playstation 4 TB", 500.00);
 		Produto p8 = new Produto("Xiaomi 11 PRO", 3000.00);
 		Produto p9 = new Produto("Geladeira Frost Free", 9000.00);
 		Produto p10 = new Produto("Ar-condicionado LG", 100.00);
+		Produto p11 = new Produto("JBL Xtreme Portátil", 869.99);	
 
 		// Criando imagens para os produtos
 		ImagemProd a1 = new ImagemProd();
@@ -124,12 +123,15 @@ public class PopularBancoService {
 
 		ImagemProd a13 = new ImagemProd();
 		a13.setImagemProduto(
-				"https://a-static.mlcdn.com.br/618x463/ar-condicionado-split-lg-12-000-btus-frio-dual-inverter-voice-s4-q12ja31c/magazineluiza/015196000/cbc0ec513610d94fa7a5a706657d3974.jpg");
+				"https://images-americanas.b2w.io/produtos/01/00/img/48302/5/48302545_1GG.jpg");
 
+		ImagemProd a14 = new ImagemProd();
+		a14.setImagemProduto("https://www.jbl.com.br/on/demandware.static/-/Sites-masterCatalog_Harman/default/dwc8d7820f/JBL_Party_Box_200HERO.png");
+		
 		// Incluindo produtos nas categorias
 		cat1.setProdutos(Arrays.asList(p1, p2, p3));
-		cat2.setProdutos(Arrays.asList(p2, p6));
-		cat3.setProdutos(Arrays.asList(p4, p5));
+		cat2.setProdutos(Arrays.asList(p6));
+		cat3.setProdutos(Arrays.asList(p4, p6, p11));
 		cat4.setProdutos(Arrays.asList(p4, p5, p6));
 		cat5.setProdutos(Arrays.asList(p7, p8, p9));
 		cat7.setProdutos(Arrays.asList(p1, p2, p3));
@@ -139,15 +141,16 @@ public class PopularBancoService {
 
 		// Incluindo categorias nos produtos
 		p1.setCategorias(Arrays.asList(cat1, cat7));
-		p2.setCategorias(Arrays.asList(cat1, cat2, cat7));
+		p2.setCategorias(Arrays.asList(cat1, cat7));
 		p3.setCategorias(Arrays.asList(cat1, cat7));
-		p4.setCategorias(Arrays.asList(cat3, cat4));
-		p5.setCategorias(Arrays.asList(cat3, cat4));
-		p6.setCategorias(Arrays.asList(cat4, cat4));
+		p4.setCategorias(Arrays.asList(cat3, cat4, cat2));
+		p5.setCategorias(Arrays.asList(cat4));
+		p6.setCategorias(Arrays.asList(cat4, cat3));
 		p7.setCategorias(Arrays.asList(cat10, cat5, cat6));
-		p8.setCategorias(Arrays.asList(cat8, cat10, cat5));
-		p9.setCategorias(Arrays.asList(cat9, cat10, cat5));
-		p10.setCategorias(Arrays.asList(cat1));
+		p8.setCategorias(Arrays.asList(cat8, cat10, cat5, cat2));
+		p9.setCategorias(Arrays.asList(cat9, cat10, cat5, cat6));
+		p10.setCategorias(Arrays.asList(cat6));
+		p11.setCategorias(Arrays.asList(cat3));
 
 		// Incluindo imagens nos produtos
 		p1.setImagens(Arrays.asList(a1));
@@ -160,6 +163,7 @@ public class PopularBancoService {
 		p8.setImagens(Arrays.asList(a10, a11, a10, a11));
 		p9.setImagens(Arrays.asList(a12));
 		p10.setImagens(Arrays.asList(a13));
+		p11.setImagens(Arrays.asList(a14));
 		
 		p1.setDescricao("O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem Ipsum tem vindo a ser o texto "
 				+ "padrão usado por estas indústrias desde o ano de 1500");
@@ -181,11 +185,13 @@ public class PopularBancoService {
 				+ "padrão usado por estas indústrias desde o ano de 1500");
 		p10.setDescricao("O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem Ipsum tem vindo a ser o texto "
 				+ "padrão usado por estas indústrias desde o ano de 1500");
+		p11.setDescricao("O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem Ipsum tem vindo a ser o texto "
+				+ "padrão usado por estas indústrias desde o ano de 1500");
 
 		// Salvando Produtos, Categorias e Imagens
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7, cat8, cat9, cat10));
-		imagemRepository.saveAll(Arrays.asList(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13));
-		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10));
+		imagemRepository.saveAll(Arrays.asList(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14));
+		produtoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11));
 
 		// Criando Usuario e Endereco
 		Usuario u1 = new Usuario();
@@ -211,8 +217,6 @@ public class PopularBancoService {
 		fbc.setNome("fbc");
 		fbc.setSenha(bCryptPasswordEncoder.encode("123"));
 		fbc.addPerfil(Perfil.ADMIN);
-		
-		
 		
 
 		u2.setCelular("11438-8743");
@@ -294,10 +298,10 @@ public class PopularBancoService {
 
 		// Atributos imagem
 		img1.setImagemProduto(
-				"https://i.zst.com.br/images/console-xbox-one-s-500-gb-microsoft-4k-hdr-photo127268018-12-15-34.jpg");
+				"https://images-submarino.b2w.io/produtos/01/00/img/1295708/9/1295708988_1GG.jpg");
 
 		img2.setImagemProduto(
-				"https://i.zst.com.br/images/smartphone-apple-iphone-11-64gb-camera-dupla-apple-a13-bionic-ios-13-photo929874933-12-1f-15.jpg");
+				"https://www.extra-imagens.com.br/TelefoneseCelulares/Smartphones/iPhone/50004400/1175168102/iphone-11-apple-com-64gb-tela-retina-hd-de-61-ios-13-dupla-camera-traseira-de-12-mp-resistente-a-agua-e-bateria-de-longa-duracao-vermelho-50004400.jpg");
 
 		// Atributos produtos
 		pro1.setNome("Xbox One S 500 GB");
@@ -307,7 +311,7 @@ public class PopularBancoService {
 
 		pro2.setNome("Apple iPhone 11 64GB");
 		pro2.setPreco(200.0);
-		pro2.setCategorias(Arrays.asList(ca1));
+		pro2.setCategorias(Arrays.asList(ca1, cat2));
 		pro2.setImagens(Arrays.asList(img2));
 		
 		pro1.setDescricao("O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem Ipsum tem vindo a ser o texto "
@@ -354,12 +358,15 @@ public class PopularBancoService {
 
 		v1.setItem(itemArray);
 		v2.setItem(itemArray2);
+		
+		p11.setCategorias(Arrays.asList(ca1));
 
 		// Salvando dados de venda
 		categoriaRepository.save(ca1);
 		imagemRepository.saveAll(Arrays.asList(img1, img2));
 		produtoRepository.save(pro1);
 		produtoRepository.save(pro2);
+		produtoRepository.save(p11);
 		usuarioRepository.save(u3);
 		usuarioRepository.save(fbc);
 		

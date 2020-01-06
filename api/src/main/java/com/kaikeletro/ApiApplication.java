@@ -1,23 +1,11 @@
 package com.kaikeletro;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.kaikeletro.domain.Categoria;
-import com.kaikeletro.domain.EnderecoUsuario;
-import com.kaikeletro.domain.ImagemProd;
-import com.kaikeletro.domain.ItemVenda;
-import com.kaikeletro.domain.Produto;
-import com.kaikeletro.domain.Usuario;
-import com.kaikeletro.domain.Venda;
-import com.kaikeletro.enumeration.StatusPagamento;
-import com.kaikeletro.enumeration.StatusVendas;
 import com.kaikeletro.repositories.CategoriaRepository;
 import com.kaikeletro.repositories.EnderecoUsuarioRepository;
 import com.kaikeletro.repositories.ImagemProdutoRepository;
