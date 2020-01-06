@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,9 +20,9 @@ public class EnderecoUsuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id	
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ENDERECO_USUARIO_NAME_SEQ")
-	//@SequenceGenerator(sequenceName = "endereco_usuario_seq", allocationSize = 1, name = "ENDERECO_USUARIO_NAME_SEQ")
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ENDERECO_USUARIO_NAME_SEQ")
+	@SequenceGenerator(sequenceName = "endereco_usuario_seq", allocationSize = 1, name = "ENDERECO_USUARIO_NAME_SEQ")
 	private int idEndereco;
 
     @ManyToOne
